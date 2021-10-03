@@ -7,6 +7,7 @@ public class TraderController : MonoBehaviour, IEntity
     public string Name;
 
     [HideInInspector] public Inventory inventory;
+    [SerializeField] GameObject signal;
 
     private void Awake()
     {
@@ -21,5 +22,13 @@ public class TraderController : MonoBehaviour, IEntity
     public void takeDamage(int dmg)
     {
         print("scemo demmerda");
+    }
+
+    public void ShowSignal()
+    {
+        if(!signal.activeSelf)
+        {
+            signal.SetActive(true);
+        }
     }
 }

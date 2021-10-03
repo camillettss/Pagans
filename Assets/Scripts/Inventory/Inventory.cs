@@ -46,7 +46,10 @@ public class Inventory : MonoBehaviour
 
     public List<InventorySlot> GetSlots(int cat)
     {
-        return allSlots[cat];
+        if (cat == 0 || cat == 1)
+            return allSlots[cat];
+        else
+            return new List<InventorySlot>();
     }
 
     public InventorySlot getEquiped(int typeIndex)
@@ -96,7 +99,31 @@ public class Inventory : MonoBehaviour
         if (alreadyInStock(item))
             findItem(item).count += 1;
         else
-            GetSlots(item.category).Add(new InventorySlot(item));
+        {
+            if(item.category == 0 || item.category == 1) // item or consumable
+                GetSlots(item.category).Add(new InventorySlot(item));
+
+            else if(item.category < 0) // is an equipment item
+            {
+                if(item.category == -1) // close weapon
+                {
+                    Weapons.Add(new InventorySlot(item));
+                }
+                if (item.category == -2) // arrow
+                {
+                    Arrows.Add(new InventorySlot(item));
+                }
+                if (item.category == -3) // shield
+                {
+                    Shields.Add(new InventorySlot(item));
+                }
+                if (item.category == -4) // ring
+                {
+                    Rings.Add(new InventorySlot(item));
+                }
+            }
+        }
+        NotificationsUI.i.AddNotification($"took {item.Name}");
     }
 
     public void Remove(ItemBase item)
@@ -114,6 +141,11 @@ public class Inventory : MonoBehaviour
             print("bruh tf");
         }
             
+    }
+
+    public void RemoveAt(int cat, int sel)
+    {
+        GetSlots(cat).RemoveAt(sel);
     }
 
     bool alreadyInStock(ItemBase item)

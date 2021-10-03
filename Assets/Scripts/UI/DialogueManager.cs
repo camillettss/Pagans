@@ -8,17 +8,23 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Text content;
     public Animator animator;
 
+    System.Action afterDialogue;
+
     Queue<string> sentences;
     void Awake()
     {
         sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, System.Action onEndDialogue)
     {
         animator.SetBool("isOpen", true);
+        // appena esegue la riga sopra esce dalla funzione ._. FIXME // ORA FUNZIONA E NON HO CAMBIATO NULLA UNITY ERA BUGGATO PORCODDIO
+
         GameController.Instance.state = GameState.Dialogue;
         GameController.Instance.dialogueBox.gameObject.SetActive(true);
+
+        afterDialogue = onEndDialogue;
 
         sentences.Clear();
 
@@ -30,8 +36,9 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    public IEnumerator InfoDialogue(Dialogue dialogue, float duration)
+    public IEnumerator InfoDialogue(Dialogue dialogue, float duration, System.Action onEnd)
     {
+        afterDialogue = onEnd;
         animator.SetBool("isOpen", true);
         GameController.Instance.dialogueBox.gameObject.SetActive(true);
 
@@ -62,6 +69,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
+        afterDialogue?.Invoke();
         GameController.Instance.state = GameState.FreeRoam;
         if(GameController.Instance.ActiveNPC != null)
             GameController.Instance.ActiveNPC.onTalk();

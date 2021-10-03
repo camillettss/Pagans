@@ -8,7 +8,9 @@ public enum NPCType
 {
     Talking,
     QuestGiver,
-    Enemy
+    Enemy,
+    TalkAndGive,
+    ComplexQuestGiver
 }
 
 public class NPCController : MonoBehaviour, IEntity
@@ -17,7 +19,7 @@ public class NPCController : MonoBehaviour, IEntity
     public Dialogue dialogue;
 
     public NPCType type = NPCType.Talking;
-    [ConditionalField(nameof(type), false, NPCType.QuestGiver)] public Quest quest;
+    [ConditionalField(nameof(type), false, NPCType.QuestGiver, NPCType.ComplexQuestGiver)] public Quest quest;
 
     [ConditionalField(nameof(type), false, NPCType.Enemy)] [SerializeField] int attackDamage;
 
@@ -26,6 +28,8 @@ public class NPCController : MonoBehaviour, IEntity
 
     public int HP = 10;
     [ConditionalField(nameof(type), true, NPCType.Enemy)] public bool canBeDamaged = false;
+
+    [ConditionalField(nameof(type), false, NPCType.TalkAndGive, NPCType.ComplexQuestGiver)] [SerializeField] ItemBase drop;
 
     Animator animator;
 
@@ -52,14 +56,32 @@ public class NPCController : MonoBehaviour, IEntity
             TriggerDialogue();
         else if (type == NPCType.QuestGiver)
             OpenQuestWindow();
+        else if(type == NPCType.TalkAndGive)
+        {
+            TriggerDialogue();
+            player.inventory.Add(drop);
+        }
+        else if(type == NPCType.ComplexQuestGiver)
+        {
+            TriggerDialogue();
+        }
     }
 
     public void TriggerDialogue()
     {
         if (storyCharacter && FindObjectOfType<Player>().quest != null)
-            GameController.Instance.dialogueBox.StartDialogue(onStoryDialogue);
+            GameController.Instance.dialogueBox.StartDialogue(onStoryDialogue, ()=> { });
         else
-            GameController.Instance.dialogueBox.StartDialogue(dialogue);
+            GameController.Instance.dialogueBox.StartDialogue(dialogue, () => {
+                if(type == NPCType.ComplexQuestGiver || type == NPCType.TalkAndGive)
+                {
+                    Player.i.inventory.Add(drop);
+                }
+                if(type == NPCType.ComplexQuestGiver || type == NPCType.QuestGiver)
+                {
+                    Player.i.QuestsContainer.Add(quest);
+                }
+            });
         //onTalk();
     }
 
@@ -168,5 +190,10 @@ public class NPCController : MonoBehaviour, IEntity
         {
             Destroy(gameObject);
         }
-    } 
+    }
+
+    public void ShowSignal()
+    {
+
+    }
 }

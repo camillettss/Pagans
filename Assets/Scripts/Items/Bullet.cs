@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
         Instantiate(hitEffectPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
 
-        if(collision.collider.TryGetComponent(out NPCController npc))
+        if(collision.collider.TryGetComponent(out IEntity npc))
         {
             print(FindObjectOfType<Player>().inventory.Equipment.Count);
             var eqArrow = FindObjectOfType<Player>().inventory.getEquiped("arrow").item;

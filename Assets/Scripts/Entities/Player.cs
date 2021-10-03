@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
 
     public SceneDetails currentScene;
     public bool SnapToGridMovments = false;
+    public int kents = 0;
 
     private void Awake()
     {
@@ -70,11 +71,17 @@ public class Player : MonoBehaviour
             animator.SetFloat("FacingHorizontal", moveInput.x);
             animator.SetFloat("FacingVertical", moveInput.y);
         }
-        if(moveInput.x != 0 && moveInput.y != 0)
+        /*if(moveInput.x != 0 && moveInput.y != 0)
         {
             moveInput.x *= moveLimiter;
             moveInput.y *= moveLimiter;
-        }
+        }*/
+
+        if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
+            moveInput.y = 0;
+        else
+            moveInput.x = 0;
+
         
         animator.SetFloat("Horizontal", moveInput.x);
         animator.SetFloat("Vertical", moveInput.y);
@@ -109,6 +116,11 @@ public class Player : MonoBehaviour
                     equipedItem.item.Use(this);
                 }
             }
+            
+        }
+
+        if(Input.GetKeyDown(KeyCode.P)) // test feature key
+        {
             
         }
 
@@ -158,6 +170,16 @@ public class Player : MonoBehaviour
                 quest.Complete();
     }
 
+    public bool isInRange(IEntity entity, float radius=1.5f)
+    {
+        foreach(var item in Physics2D.OverlapCircleAll(transform.position, radius))
+        {
+            if (item.GetComponent<IEntity>() == entity)
+                return true;
+        }
+        return false;
+    }
+
     public void UpdateQuestUI()
     {
         if(quest!=null)
@@ -170,6 +192,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AcceptQuest(Quest qst)
+    {
+        qst.isActive = true;
+        quest = qst;
+        UpdateQuestUI();
+    }
+
     void Attack()
     {
         // start animation
@@ -177,7 +206,7 @@ public class Player : MonoBehaviour
         animator.SetBool("Attacking", false);
         
         // use the equiped sword to hit the npc
-        inventory.getEquiped("weapon").item.Use(this, GetFrontalCollider().GetComponent<NPCController>(), inventory.getEquiped("weapon").item.GetCloseDamage());
+        inventory.getEquiped("weapon").item.Use(this, GetFrontalCollider().GetComponent<IEntity>(), inventory.getEquiped("weapon").item.GetCloseDamage());
     }
 
     void Shoot()

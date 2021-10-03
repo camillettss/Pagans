@@ -11,8 +11,10 @@ public class FishingPole : ItemBase
     {
         var pos = new Vector3(player.transform.position.x + player.animator.GetFloat("FacingHorizontal"), player.transform.position.y + player.animator.GetFloat("FacingVertical"), 0);
         var collider = Physics2D.OverlapCircle(pos, 0.3f, player.seaLayer);
-        GameController.Instance.ShowInfo("fishing", 0.8f);
-        player.inventory.Add(foundables[Random.Range(0, foundables.Count-1)]);
+        GameController.Instance.ShowInfo("fishing", ()=>
+        {
+            player.inventory.Add(foundables[Random.Range(0, foundables.Count - 1)]);
+        }, 1f);
     }
 
 }

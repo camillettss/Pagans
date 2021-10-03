@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 630751a0ef362da45b3850db8321aac7, type: 3}
-  m_Name: Cutter
+  m_Script: {fileID: 11500000, guid: 9546bee0cccbc564fa3fb5a82850e4c1, type: 3}
+  m_Name: Wood
   m_EditorClassIdentifier: 
-  Name: forbici
-  description: usato per prendere cogliere la verdura
-  icon: {fileID: 21300000, guid: 36fcd1b22e1c52c4b8a26f0ad0e48261, type: 3}
+  Name: wood
+  description: legna di un albero
+  price: 5
+  icon: {fileID: 21300000, guid: efe2ac1e04c61d1429e370eb4e493aa0, type: 3}
   closeDamage: 0
   longDamage: 0
   Defense: 0
   dust: {fileID: 0}
-  category: -3
-  type: 0
+  category: 0

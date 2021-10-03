@@ -14,38 +14,70 @@ public class ShopUI : MonoBehaviour
     [SerializeField] Text itemPrice;
     [SerializeField] Text itemDescription;
 
+    [SerializeField] Text BalanceText;
+
     TraderController trader;
     List<ShopItemUI> shopUIs;
 
     int selected = 0;
     int category = 0;
 
+    bool sellMode = false;
+
     private void Awake()
     {
+        sellMode = false;
         UpdateView();
     }
 
     public void SetTrader(TraderController trader)
     {
+        sellMode = false;
         this.trader = trader;
+    }
+
+    void switchToSell()
+    {
+        sellMode = !sellMode;
+        UpdateView();
     }
 
     void UpdateView()
     {
-        traderName.text = trader.Name;
-
-        foreach (Transform child in scrollviewContent.transform)
-            Destroy(child.gameObject);
-
-        shopUIs = new List<ShopItemUI>();
-        foreach (var item in trader.inventory.GetSlots(category))
+        if(!sellMode)
         {
-            var itemUI = Instantiate(itemPrefab, scrollviewContent.transform);
-            itemUI.SetData(item, 5);
+            traderName.text = trader.Name;
 
-            shopUIs.Add(itemUI);
+            foreach (Transform child in scrollviewContent.transform)
+                Destroy(child.gameObject);
+
+            shopUIs = new List<ShopItemUI>();
+            foreach (var item in trader.inventory.GetSlots(category))
+            {
+                var itemUI = Instantiate(itemPrefab, scrollviewContent.transform);
+                itemUI.SetData(item, item.item.price);
+
+                shopUIs.Add(itemUI);
+            }
+        }
+        else
+        {
+            traderName.text = "you";
+
+            foreach (Transform child in scrollviewContent.transform)
+                Destroy(child.gameObject);
+
+            shopUIs = new List<ShopItemUI>();
+            foreach (var item in Player.i.inventory.GetSlots(category))
+            {
+                var itemUI = Instantiate(itemPrefab, scrollviewContent.transform);
+                itemUI.SetData(item, item.item.price);
+
+                shopUIs.Add(itemUI);
+            }
         }
 
+        BalanceText.text = $"kents: {Player.i.kents}";
         UpdateSelection();
     }
 
@@ -61,6 +93,14 @@ public class ShopUI : MonoBehaviour
             {
                 shopUIs[i].nameTxt.color = Color.black;
             }
+        }
+
+        if (shopUIs.Count == 0)
+        {
+            itemName.text = "";
+            itemDescription.text = "there are no more items, for now.";
+            itemPrice.text = "";
+            return;
         }
 
         itemName.text = shopUIs[selected].item.Name;
@@ -88,9 +128,27 @@ public class ShopUI : MonoBehaviour
         if (prev != selected)
             UpdateSelection();
 
-        if(Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            FindObjectOfType<Player>().quest.goal.SomethingBought(trader, trader.inventory.GetSlots(category)[selected].item);
+            var player = FindObjectOfType<Player>();
+            if(!sellMode)
+            {
+                if (player.kents < shopUIs[selected].price)
+                    return;
+                player.inventory.Add(shopUIs[selected].item);
+                player.quest.goal.SomethingBought(trader, trader.inventory.GetSlots(category)[selected].item);
+                trader.inventory.RemoveAt(category, selected);
+            }
+            else
+            {
+                player.kents += shopUIs[selected].price;
+                player.inventory.Remove(shopUIs[selected].item);
+            }
+
+            selected = 0;
+            UpdateView();
         }
+        else if (Input.GetKeyDown(KeyCode.Tab))
+            switchToSell();
     }
 }

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class QuestSlotUI : MonoBehaviour
 {
-    public UnityEngine.UI.Text NameTxt;
+    [SerializeField] public UnityEngine.UI.Text NameTxt;
     [HideInInspector] public Quest quest;
     public void SetData(Quest quest)
     {
         this.quest = quest;
+        NameTxt.text = quest.title;
     }
 }

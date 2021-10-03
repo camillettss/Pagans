@@ -7,6 +7,7 @@ public abstract class ItemBase : ScriptableObject
 {
     public string Name;
     public string description;
+    public int price = 5;
     public Sprite icon;
 
     [Header("Equipment")]
@@ -24,7 +25,7 @@ public abstract class ItemBase : ScriptableObject
 
     public abstract void Use(Player player);
 
-    public virtual void Use(Player player, NPCController npc, int damage = 1)
+    public virtual void Use(Player player, IEntity npc, int damage = 1)
     {
 
     }

@@ -9,6 +9,7 @@ public class QuestInventory : MonoBehaviour
 
     public void Add(Quest quest)
     {
+        NotificationsUI.i.AddNotification("got new quest.");
         quests.Add(quest);
     }
 

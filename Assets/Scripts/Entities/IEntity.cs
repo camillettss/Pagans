@@ -7,4 +7,6 @@ public interface IEntity
     void Interact(Player player);
 
     void takeDamage(int dmg);
+
+    void ShowSignal();
 }

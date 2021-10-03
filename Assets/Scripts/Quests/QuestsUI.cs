@@ -69,5 +69,12 @@ public class QuestsUI : MonoBehaviour
             GameController.Instance.state = GameState.FreeRoam;
             gameObject.SetActive(false);
         }
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            player.AcceptQuest(slotUIs[selected].quest);
+            gameObject.SetActive(false);
+            GameController.Instance.state = GameState.FreeRoam;
+        }
     }
 }

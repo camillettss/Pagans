@@ -6,7 +6,7 @@ using System;
 using TMPro;
 using UnityEngine.Rendering;
 
-public enum GameState { FreeRoam, Menu, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting };
+public enum GameState { FreeRoam, Menu, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Chest };
 public class GameController : MonoBehaviour
 {
     public GameObject EssentialObjectsPrefab;
@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     [SerializeField] QuestsUI questsUI;
     [SerializeField] EnchantingUI enchantingUI;
     [SerializeField] public Hotbar hotbar;
+    [SerializeField] ChestUI basicChestUI;
     [SerializeField] Volume ppv; // post processing volume
 
     float tick=60, seconds, mins, hours, days = 1;
@@ -132,6 +133,10 @@ public class GameController : MonoBehaviour
             questsUI.gameObject.SetActive(true);
             questsUI.UpdateContents();
         }
+        else if(state == GameState.Chest)
+        {
+
+        }
 
         this.state = state;
     }
@@ -139,7 +144,6 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         // fast switching: inventory -> equipment -> quests -> inventory.
-
         if (state != GameState.FreeRoam)
             player.animator.SetFloat("Speed", 0.0f);
 
@@ -207,11 +211,11 @@ public class GameController : MonoBehaviour
 
     public void ShowMessage(string msg)
     {
-        dialogueBox.StartDialogue(new Dialogue(new string[] { msg }));
+        dialogueBox.StartDialogue(new Dialogue(new string[] { msg }), () => { });
     }
 
-    public void ShowInfo(string text, float duration = 1f)
+    public void ShowInfo(string text, Action onEndDialogue, float duration = 1f)
     {
-        StartCoroutine(dialogueBox.InfoDialogue(new Dialogue(new string[] { text }), duration));
+        StartCoroutine(dialogueBox.InfoDialogue(new Dialogue(new string[] { text }), duration, onEndDialogue));
     }
 }
