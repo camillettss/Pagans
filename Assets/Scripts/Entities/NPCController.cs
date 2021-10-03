@@ -87,6 +87,11 @@ public class NPCController : MonoBehaviour, IEntity
 
     private void Update()
     {
+        if (GameController.Instance.state != GameState.FreeRoam)
+        {
+            return;
+        }
+
         if (HP <= 0)
             onDie();
 

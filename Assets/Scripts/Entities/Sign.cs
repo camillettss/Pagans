@@ -31,6 +31,11 @@ public class Sign : MonoBehaviour, IEntity
 
     private void FixedUpdate()
     {
+        if (GameController.Instance.state != GameState.FreeRoam)
+        {
+            return;
+        }
+
         if (FindObjectOfType<Player>().isInRange(this))
         {
             ShowSignal();

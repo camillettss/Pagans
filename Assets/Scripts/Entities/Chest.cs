@@ -10,6 +10,8 @@ public class Chest : MonoBehaviour, IEntity
     [SerializeField] Sprite openSprite;
     [SerializeField] GameObject signal;
 
+    [SerializeField] Animator animator;
+
     [SerializeField] Sprite background;
 
     bool isOpen = false;
@@ -20,6 +22,9 @@ public class Chest : MonoBehaviour, IEntity
             return;
 
         isOpen = true;
+        animator.SetTrigger("Open");
+        animator.SetBool("isOpen", true);
+
         foreach(var item in drop)
         {
             player.inventory.Add(item);
@@ -39,6 +44,11 @@ public class Chest : MonoBehaviour, IEntity
 
     private void FixedUpdate()
     {
+        if(GameController.Instance.state != GameState.FreeRoam)
+        {
+            return;
+        }
+
         if (FindObjectOfType<Player>().isInRange(this))
         {
             ShowSignal();

@@ -6,7 +6,7 @@ using System;
 using TMPro;
 using UnityEngine.Rendering;
 
-public enum GameState { FreeRoam, Menu, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Chest };
+public enum GameState { FreeRoam, Menu, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Chest, Battle };
 public class GameController : MonoBehaviour
 {
     public GameObject EssentialObjectsPrefab;
@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public Hotbar hotbar;
     [SerializeField] ChestUI basicChestUI;
     [SerializeField] Volume ppv; // post processing volume
+    [SerializeField] GameObject BattleScene;
 
     float tick=60, seconds, mins, hours, days = 1;
     bool activateLights;
@@ -139,6 +140,22 @@ public class GameController : MonoBehaviour
         }
 
         this.state = state;
+    }
+
+    public void StartBattle()
+    {
+        state = GameState.Battle;
+        player.transform.GetChild(0).GetComponent<Camera>().enabled = false;
+        player.gameObject.SetActive(false);
+        BattleScene.gameObject.SetActive(true);
+    }
+
+    public void EndBattle()
+    {
+        BattleScene.gameObject.SetActive(false);
+        player.transform.GetChild(0).GetComponent<Camera>().enabled = true;
+        player.gameObject.SetActive(true);
+        state = GameState.FreeRoam;
     }
 
     private void Update()

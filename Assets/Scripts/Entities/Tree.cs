@@ -30,7 +30,12 @@ public class Tree : MonoBehaviour, IEntity
 
     private void Update()
     {
-        if(hp<=0 && !check)
+        if (GameController.Instance.state != GameState.FreeRoam)
+        {
+            return;
+        }
+
+        if (hp<=0 && !check)
         {
             GetComponent<SpriteRenderer>().sprite = CuttedSprite;
 

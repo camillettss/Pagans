@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.P)) // test feature key
         {
-            
+            GameController.Instance.StartBattle();
         }
 
         if (Input.GetKeyDown(KeyCode.F1) && !GameController.Instance.hotbar.isActiveAndEnabled)
@@ -161,6 +161,19 @@ public class Player : MonoBehaviour
         {
             GetFrontalCollider(farmingLayer).GetComponent<Plant>().Grow();
         }
+    }
+
+    public void Save()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+    public void Load()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        hp = data.health;
+        transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
     }
 
     private void FixedUpdate()
