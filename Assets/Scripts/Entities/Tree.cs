@@ -30,7 +30,7 @@ public class Tree : MonoBehaviour, IEntity
 
     private void Update()
     {
-        if (GameController.Instance.state != GameState.FreeRoam)
+        if (GameController.Instance.state != GameState.FreeRoam || !GameController.Instance.player.isActiveAndEnabled)
         {
             return;
         }

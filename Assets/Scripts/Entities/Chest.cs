@@ -44,7 +44,7 @@ public class Chest : MonoBehaviour, IEntity
 
     private void FixedUpdate()
     {
-        if(GameController.Instance.state != GameState.FreeRoam)
+        if(GameController.Instance.state != GameState.FreeRoam || !GameController.Instance.player.isActiveAndEnabled)
         {
             return;
         }

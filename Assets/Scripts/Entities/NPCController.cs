@@ -65,6 +65,10 @@ public class NPCController : MonoBehaviour, IEntity
         {
             TriggerDialogue();
         }
+        else if(type == NPCType.Enemy)
+        {
+            TriggerDialogue();
+        }
     }
 
     public void TriggerDialogue()
@@ -80,6 +84,12 @@ public class NPCController : MonoBehaviour, IEntity
                 if(type == NPCType.ComplexQuestGiver || type == NPCType.QuestGiver)
                 {
                     Player.i.QuestsContainer.Add(quest);
+                }
+
+                if(type == NPCType.Enemy)
+                {
+                    GameController.Instance.state = GameState.Battle;
+                    GameController.Instance.StartBattle();
                 }
             });
         //onTalk();

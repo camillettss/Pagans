@@ -20,6 +20,5 @@ public class BattleController : MonoBehaviour
     {
         yield return new WaitForSeconds(WinDuration);
         GameController.Instance.EndBattle();
-
     }
 }

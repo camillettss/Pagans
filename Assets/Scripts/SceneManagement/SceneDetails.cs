@@ -16,7 +16,7 @@ public class SceneDetails : MonoBehaviour
 
     bool IsLoaded = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         print(collision.tag);
         if(collision.tag == "Player")
@@ -34,18 +34,26 @@ public class SceneDetails : MonoBehaviour
 
             FindObjectOfType<Player>().currentScene = this;
         }
+    }*/
+
+    public void LoadSceneAsMain()
+    {
+        LoadScene();
+        foreach (var scene in connectedScenes)
+            scene.LoadScene();
     }
 
-    void LoadScene()
+    public void LoadScene()
     {
         if(!IsLoaded)
         {
+            print(gameObject.name + " will be loaded");
             SceneManager.LoadSceneAsync(gameObject.name, LoadSceneMode.Additive);
             IsLoaded = true;
         }
     }
 
-    void UnloadScene()
+    public void UnloadScene()
     {
         if(IsLoaded)
         {

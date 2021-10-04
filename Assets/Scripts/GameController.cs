@@ -6,7 +6,7 @@ using System;
 using TMPro;
 using UnityEngine.Rendering;
 
-public enum GameState { FreeRoam, Menu, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Chest, Battle };
+public enum GameState { FreeRoam, Menu, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Battle };
 public class GameController : MonoBehaviour
 {
     public GameObject EssentialObjectsPrefab;
@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
 
     [HideInInspector] public GameState state = GameState.FreeRoam;
     [HideInInspector] public NPCController ActiveNPC;
+    [HideInInspector] public StoryController storyController;
 
     public static GameController Instance;
     public EnchantingUI EnchUI => enchantingUI;
@@ -38,6 +39,9 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        storyController = GetComponent<StoryController>();
+        storyController.onLaunch();
+        
     }
     private void Start()
     {
@@ -51,6 +55,7 @@ public class GameController : MonoBehaviour
         //CalcTime(); // unrem for day night [Bugged] cycle.
     }
 
+    #region daynight
     void CalcTime() // Used to calculate sec, min and hours
     {
         seconds += Time.fixedDeltaTime * tick; // multiply time between fixed update by tick
@@ -107,9 +112,11 @@ public class GameController : MonoBehaviour
             }
         }
     }
+    #endregion
 
     public void OpenState(GameState state, TraderController trader = null)
     {
+        #region statecontrol
         if(state == GameState.Menu)
         {
             menu.gameObject.SetActive(true);
@@ -134,14 +141,12 @@ public class GameController : MonoBehaviour
             questsUI.gameObject.SetActive(true);
             questsUI.UpdateContents();
         }
-        else if(state == GameState.Chest)
-        {
-
-        }
+        #endregion
 
         this.state = state;
     }
 
+    #region battle stuffs
     public void StartBattle()
     {
         state = GameState.Battle;
@@ -157,9 +162,11 @@ public class GameController : MonoBehaviour
         player.gameObject.SetActive(true);
         state = GameState.FreeRoam;
     }
+    #endregion
 
     private void Update()
     {
+        #region update choose
         // fast switching: inventory -> equipment -> quests -> inventory.
         if (state != GameState.FreeRoam)
             player.animator.SetFloat("Speed", 0.0f);
@@ -224,6 +231,7 @@ public class GameController : MonoBehaviour
         {
             enchantingUI.HandleUpdate();
         }
+        #endregion
     }
 
     public void ShowMessage(string msg)

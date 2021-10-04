@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.P)) // test feature key
         {
-            GameController.Instance.StartBattle();
+            
         }
 
         if (Input.GetKeyDown(KeyCode.F1) && !GameController.Instance.hotbar.isActiveAndEnabled)

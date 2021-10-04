@@ -7303,6 +7303,7 @@ GameObject:
   - component: {fileID: 5379045465088737348}
   - component: {fileID: 5379045465088737371}
   - component: {fileID: 7942474048947313888}
+  - component: {fileID: 5767523851788211469}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -7347,6 +7348,7 @@ MonoBehaviour:
   hotbar: {fileID: 1946088143146292771}
   basicChestUI: {fileID: 0}
   ppv: {fileID: 7942474048947313888}
+  BattleScene: {fileID: 0}
   dialogueBox: {fileID: 5379045465510515555}
   questWindow: {fileID: 5379045465577444028}
   state: 0
@@ -7368,6 +7370,33 @@ MonoBehaviour:
   blendDistance: 0
   weight: 0
   sharedProfile: {fileID: 11400000, guid: 8431b7c242f9a96489f8c0b7fb3247fe, type: 2}
+--- !u!114 &5767523851788211469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379045465088737349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 736ce7f40bf81d14ea45a872eba511c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstLaunch: 1
+  activeQuest:
+    isActive: 0
+    title: 
+    description: 
+    experienceReward: 0
+    goldReward: 0
+    goal:
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      talkTo: 
+      sellerName: 
+      itemName: 
 --- !u!1 &5379045465181957405
 GameObject:
   m_ObjectHideFlags: 0
@@ -10305,12 +10334,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c77417093a6d4964da188de9263370c3, type: 3}
---- !u!224 &5379045463906486783 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8538426089012354899, guid: c77417093a6d4964da188de9263370c3,
-    type: 3}
-  m_PrefabInstance: {fileID: 4384430242896336556}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5379045463906486782 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8538426089012354898, guid: c77417093a6d4964da188de9263370c3,
@@ -10323,6 +10346,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &5379045463906486783 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8538426089012354899, guid: c77417093a6d4964da188de9263370c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4384430242896336556}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4557288964491738882
 PrefabInstance:
   m_ObjectHideFlags: 0
