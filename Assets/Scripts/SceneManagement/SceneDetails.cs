@@ -16,25 +16,25 @@ public class SceneDetails : MonoBehaviour
 
     bool IsLoaded = false;
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         print(collision.tag);
         if(collision.tag == "Player")
         {
             print($"entered {gameObject.name}");
-            LoadScene();
+            /*LoadScene();
 
             foreach(var scene in connectedScenes)
             {
                 scene.LoadScene();
-            }
+            }*/
 
             light.color = lightColor;
             light.intensity = lightBrightness;
 
             FindObjectOfType<Player>().currentScene = this;
         }
-    }*/
+    }
 
     public void LoadSceneAsMain()
     {

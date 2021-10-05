@@ -136,7 +136,7 @@ public class ShopUI : MonoBehaviour
                 if (player.kents < shopUIs[selected].price)
                     return;
                 player.inventory.Add(shopUIs[selected].item);
-                player.quest.goal.SomethingBought(trader, trader.inventory.GetSlots(category)[selected].item);
+                player.quest.goal[0].SomethingBought(trader, trader.inventory.GetSlots(category)[selected].item);
                 trader.inventory.RemoveAt(category, selected);
             }
             else

@@ -24,7 +24,7 @@ public class QuestInventory : MonoBehaviour
         var res = new List<Quest>();
         foreach(var quest in quests)
         {
-            if (quest.goal.goalType == type)
+            if (quest.goal[0].goalType == type)
                 res.Add(quest);
         }
 
@@ -40,7 +40,7 @@ public class QuestInventory : MonoBehaviour
         var res = new List<Quest>();
         foreach (var quest in quests)
         {
-            if (quest.goal.goalType == type)
+            if (quest.goal[0].goalType == type)
                 res.Add(quest);
         }
 

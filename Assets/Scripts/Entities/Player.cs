@@ -101,6 +101,23 @@ public class Player : MonoBehaviour
             }
         }
 
+        // Update quest goals
+        if(quest != null)
+        {
+            if(quest.goal[0].isReached())
+            {
+                quest.goal.RemoveAt(0);
+                if(quest.goal.Count == 0)
+                {
+                    quest.Complete();
+                }
+                else
+                {
+                    UpdateQuestUI();
+                }
+            }
+        }
+
         // HANDLE INPUTS
         if (Input.GetKeyDown(KeyCode.E)) // Interact
         {
@@ -176,10 +193,16 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
     }
 
+    public void Load(PlayerData data)
+    {
+        hp = data.health;
+        transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+    }
+
     private void FixedUpdate()
     {
         if (quest != null)
-            if (quest.goal.isReached())
+            if (quest.goal[0].isReached() && quest.goal.Count == 1)
                 quest.Complete();
     }
 
@@ -197,7 +220,7 @@ public class Player : MonoBehaviour
     {
         if(quest!=null)
         {
-            questUI.text = quest.goal.goal;
+            questUI.text = quest.goal[0].goal;
         }
         else
         {

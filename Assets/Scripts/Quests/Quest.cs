@@ -13,7 +13,10 @@ public class Quest
     public int experienceReward;
     public int goldReward;
 
-    public QuestGoal goal;
+    public string successReaction;
+    public NPCController giver;
+
+    public List<QuestGoal> goal;
 
     public void Complete()
     {
@@ -24,5 +27,10 @@ public class Quest
         GameController.Instance.player.QuestsContainer.OnComplete(this);
 
         isActive = false;
+
+        if(successReaction != null && giver != null)
+        {
+            giver.dialoguesQueue.Add(new string[] {successReaction});
+        }
     }
 }

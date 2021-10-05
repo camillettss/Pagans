@@ -27,13 +27,25 @@ public class StoryController : MonoBehaviour
 
     public void onLaunch()
     {
+        Midgardr.LoadSceneAsMain();
+        /*var data = SaveSystem.LoadPlayer();
+        if(data == null)
+        {
+            firstLaunch = true;
+        }
+        else
+        {
+            firstLaunch = data.firstLaunch;
+        }
         if(firstLaunch)
         {
             TutorialScene.LoadSceneAsMain();
+            //Player.i.Save(); // crea uno slot di salvataggio
         }
         else
         {
             Midgardr.LoadSceneAsMain();
-        }
+            //Player.i.Load();
+        }*/
     }
 }

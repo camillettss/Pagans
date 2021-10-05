@@ -7,6 +7,7 @@ public class PlayerData
 {
     public int health;
     public float[] position;
+    public bool firstLaunch;
 
     public PlayerData(Player player)
     {
@@ -17,5 +18,6 @@ public class PlayerData
         position[1] = player.transform.position.y;
         position[2] = player.transform.position.z;
 
+        firstLaunch = GameController.Instance.storyController.firstLaunch;
     }
 }

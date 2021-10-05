@@ -23,15 +23,21 @@ public class NPCController : MonoBehaviour, IEntity
 
     [ConditionalField(nameof(type), false, NPCType.Enemy)] [SerializeField] int attackDamage;
 
-    public bool storyCharacter = false;
-    [ConditionalField(nameof(storyCharacter))] Dialogue onStoryDialogue;
-
     public int HP = 10;
     [ConditionalField(nameof(type), true, NPCType.Enemy)] public bool canBeDamaged = false;
 
     [ConditionalField(nameof(type), false, NPCType.TalkAndGive, NPCType.ComplexQuestGiver)] [SerializeField] ItemBase drop;
 
+    [SerializeField] bool repeatOperation;
+    [ConditionalField(nameof(repeatOperation), true)] [SerializeField] List<Dialogue> dialoguesAfterWork;
+
     Animator animator;
+
+    bool done = false;
+    int i = 0;
+
+
+    [HideInInspector] public List<string[]> dialoguesQueue = new List<string[]>();
 
     // IA variables
     bool isDistanceCheck = false;
@@ -41,6 +47,7 @@ public class NPCController : MonoBehaviour, IEntity
     private void Start()
     {
         animator = GetComponent<Animator>();
+        quest.giver = this;
     }
 
     private void Awake()
@@ -52,46 +59,59 @@ public class NPCController : MonoBehaviour, IEntity
     public void Interact(Player player)
     {
         GameController.Instance.ActiveNPC = this;
-        if (type == NPCType.Talking)
+        if (type == NPCType.Talking || type == NPCType.ComplexQuestGiver || type == NPCType.Enemy)
             TriggerDialogue();
+
         else if (type == NPCType.QuestGiver)
             OpenQuestWindow();
+
         else if(type == NPCType.TalkAndGive)
         {
             TriggerDialogue();
             player.inventory.Add(drop);
         }
-        else if(type == NPCType.ComplexQuestGiver)
-        {
-            TriggerDialogue();
-        }
-        else if(type == NPCType.Enemy)
-        {
-            TriggerDialogue();
-        }
+
+        done = true;
     }
 
     public void TriggerDialogue()
     {
-        if (storyCharacter && FindObjectOfType<Player>().quest != null)
-            GameController.Instance.dialogueBox.StartDialogue(onStoryDialogue, ()=> { });
-        else
-            GameController.Instance.dialogueBox.StartDialogue(dialogue, () => {
-                if(type == NPCType.ComplexQuestGiver || type == NPCType.TalkAndGive)
+        if(repeatOperation || !done)
+        {
+            GameController.Instance.dialogueBox.StartDialogue(dialogue, () =>
+            {
+                if (type == NPCType.ComplexQuestGiver || type == NPCType.TalkAndGive)
                 {
-                    Player.i.inventory.Add(drop);
+                    if (drop != null)
+                        Player.i.inventory.Add(drop);
                 }
-                if(type == NPCType.ComplexQuestGiver || type == NPCType.QuestGiver)
+                if (type == NPCType.ComplexQuestGiver || type == NPCType.QuestGiver)
                 {
                     Player.i.QuestsContainer.Add(quest);
                 }
 
-                if(type == NPCType.Enemy)
+                if (type == NPCType.Enemy)
                 {
                     GameController.Instance.state = GameState.Battle;
                     GameController.Instance.StartBattle();
                 }
             });
+        }
+        else
+        {
+            if(dialoguesQueue.Count>0)
+            {
+                GameController.Instance.dialogueBox.StartDialogue(new Dialogue(dialoguesQueue[0]), () => { });
+                dialoguesQueue.RemoveAt(0);
+            }
+            else
+            {
+                GameController.Instance.dialogueBox.StartDialogue(dialoguesAfterWork[i], () => { });
+                i++;
+                if (i >= dialoguesAfterWork.Count)
+                    i = 0;
+            }
+        }
         //onTalk();
     }
 
@@ -148,7 +168,7 @@ public class NPCController : MonoBehaviour, IEntity
     {
         if (GameController.Instance.player.quest != null)
         {
-            GameController.Instance.player.quest.goal.EnemyKilled(this);
+            GameController.Instance.player.quest.goal[0].EnemyKilled(this);
         }
     }
 
@@ -156,7 +176,7 @@ public class NPCController : MonoBehaviour, IEntity
     {
         if(GameController.Instance.player.quest != null)
         {
-            GameController.Instance.player.quest.goal.NPCTalked(this);
+            GameController.Instance.player.quest.goal[0].NPCTalked(this);
         }
     }
 

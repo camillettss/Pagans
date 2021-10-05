@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public enum Locations { Shop };
+public enum Locations { FadsHeimr, AsbjarnarHeimr };
 
 public class Portal : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var destPortal = FindObjectsOfType<Portal>().First(x => x != this && x.destination == this.destination);
-        print($"destPortal: {destPortal}, this {this}");
+        print($"destPortal: {destPortal.name}, this {name}");
         GameController.Instance.player.transform.position = destPortal.spawnPoint.position;
     }
 }
