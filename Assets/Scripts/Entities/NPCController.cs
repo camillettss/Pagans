@@ -59,7 +59,7 @@ public class NPCController : MonoBehaviour, IEntity
     public void Interact(Player player)
     {
         GameController.Instance.ActiveNPC = this;
-        if (type == NPCType.Talking || type == NPCType.ComplexQuestGiver || type == NPCType.Enemy)
+        if (type == NPCType.Talking || type == NPCType.ComplexQuestGiver)
             TriggerDialogue();
 
         else if (type == NPCType.QuestGiver)
@@ -92,8 +92,7 @@ public class NPCController : MonoBehaviour, IEntity
 
                 if (type == NPCType.Enemy)
                 {
-                    GameController.Instance.state = GameState.Battle;
-                    GameController.Instance.StartBattle();
+                    
                 }
             });
         }
@@ -115,6 +114,31 @@ public class NPCController : MonoBehaviour, IEntity
         //onTalk();
     }
 
+    void PointToPlayer() // nessuno ha capito perchè non cambia i float dell'animator ma okk
+    {
+        var n = transform.position; // you
+        var p = Player.i.transform.position; // player
+
+        print($"actual face: x: {animator.GetFloat("FaceX")}, y:{animator.GetFloat("FaceY")}");
+
+        if(n.y == p.y)
+        {
+            // sono allineati orizzontalmente
+            if (n.x - p.x > 0)
+                animator.SetFloat("FaceX", -1f);
+            else
+                animator.SetFloat("FaceX", 1f);
+        }
+
+        else if(n.x == p.x)
+        {
+            if (n.y > p.y)
+                animator.SetFloat("FaceY", 1f);
+            else
+                animator.SetFloat("FaceY", -1f);
+        }
+    }
+
     private void Update()
     {
         if (GameController.Instance.state != GameState.FreeRoam)
@@ -124,6 +148,9 @@ public class NPCController : MonoBehaviour, IEntity
 
         if (HP <= 0)
             onDie();
+
+        if (Player.i.isInRange(this))
+            PointToPlayer();
 
         if(isAttacking)
         {

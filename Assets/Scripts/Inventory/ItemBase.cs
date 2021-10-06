@@ -23,6 +23,17 @@ public abstract class ItemBase : ScriptableObject
 
     public int category;
 
+    #region inventory stuffs
+    public virtual void onEquip()
+    {
+
+    }
+    public virtual void onUnequip()
+    {
+
+    }
+    #endregion
+
     public abstract void Use(Player player);
 
     public virtual void Use(Player player, IEntity npc, int damage = 1)
@@ -47,11 +58,6 @@ public abstract class ItemBase : ScriptableObject
         foreach (var rune in runes.OnlyFilledSlots())
             res += rune.closeDmgAmount;
         return res;
-    }
-
-    public virtual void Equip(InventorySlot item)
-    {
-        FindObjectOfType<Player>().equipedItem = item;
     }
 
 }

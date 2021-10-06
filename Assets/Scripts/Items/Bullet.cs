@@ -15,10 +15,15 @@ public class Bullet : MonoBehaviour
 
         if(collision.collider.TryGetComponent(out IEntity npc))
         {
+            var bow = Player.i.inventory.Weapons[Player.i.inventory.equipedWeapon].item;
+            bow.Use(Player.i, npc, bow.GetLongDamage());
+
+            /*
             print(FindObjectOfType<Player>().inventory.Equipment.Count);
             var eqArrow = FindObjectOfType<Player>().inventory.getEquiped("arrow").item;
             print($"arrow found: {eqArrow}");
             eqArrow.Use(FindObjectOfType<Player>(), npc, eqArrow.GetLongDamage()); // Usa la freccia equipaggiata
+            */
         }
     }
 

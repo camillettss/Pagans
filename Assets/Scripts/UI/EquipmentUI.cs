@@ -95,18 +95,26 @@ public class EquipmentUI : MonoBehaviour
             else if(Input.GetKeyDown(KeyCode.Z))
             {
                 // Equip
-                inventory.equips[selected] = pageSelected;
+                inventory.Equip(selected, pageSelected); // servivano i puntatori
+                slotUIs[pageSelected].item.onEquip();
+                print($"setted: {inventory.equips[selected]} to {pageSelected}");
+
+                /*
+                 * inventory.equips[selected] = pageSelected;
                 // set equips[index] al valore corrispondente ad item IN INVENTORY.EQUIPMENT, equips tiene l'indice dentro le sublists di equipment.
-                print($"setted equips[] to {pageSelected}, that matches with: {inventory.getEquiped(selected).item.Name}");
+                print($"setted equips[] to {pageSelected}, that matches with: {inventory.Equipment[selected][pageSelected].item.Name}");
                 // now update hotbars data
                 GameController.Instance.hotbar.UpdateItems();
+                 */
             }
+            /*
             else if (Input.GetKeyDown(KeyCode.E))
             {
                 gameObject.SetActive(false);
                 print($"itll open with: {slotUIs[pageSelected].item.name}");
                 GameController.Instance.EnchUI.Open(slotUIs[pageSelected].item);
             }
+            */
 
             if (Input.GetKeyDown(KeyCode.UpArrow))
                 --pageSelected;

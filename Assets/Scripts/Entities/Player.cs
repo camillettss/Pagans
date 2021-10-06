@@ -14,11 +14,13 @@ public class Player : MonoBehaviour
     [SerializeField] public LayerMask farmingLayer;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Text questUI;
-    [SerializeField] Light2D light;
+    [SerializeField] public Light2D torchLight;
+    [SerializeField] Transform attackPoint;
+    [SerializeField] float attackRange;
 
     float moveLimiter = 0.7f;
     Rigidbody2D rb;
-    Vector2 moveInput;
+    public Vector2 moveInput;
     float attackTime = 0.7f;
     float attackCounter;
     float arrowSpeed = 15f;
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Inventory inventory;
     [HideInInspector] public InventorySlot equipedItem = null;
     [HideInInspector] public QuestInventory QuestsContainer;
+    [HideInInspector] public Altar activeAltar = null;
 
     public SceneDetails currentScene;
     public bool SnapToGridMovments = false;
@@ -52,17 +55,6 @@ public class Player : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if (inventory.torch != null && inventory.torch.bright)
-        {
-            light.intensity = inventory.torch.brightness;
-            light.pointLightInnerRadius = inventory.torch.radius;
-            light.pointLightOuterRadius = inventory.torch.radius + 3f;
-        }
-        else
-        {
-            light.intensity = 0f;
-        }
-
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
@@ -71,6 +63,7 @@ public class Player : MonoBehaviour
             animator.SetFloat("FacingHorizontal", moveInput.x);
             animator.SetFloat("FacingVertical", moveInput.y);
         }
+
         /*if(moveInput.x != 0 && moveInput.y != 0)
         {
             moveInput.x *= moveLimiter;
@@ -89,6 +82,9 @@ public class Player : MonoBehaviour
 
         rb.velocity = moveInput * speed;
         rb.MovePosition(rb.position + moveInput * speed * Time.fixedDeltaTime);
+
+        // sposta l'attackPoint!!!
+        attackPoint.position = new Vector3(transform.position.x+animator.GetFloat("FacingHorizontal"), transform.position.y+animator.GetFloat("FacingVertical"), transform.position.z);
 
         if(animator.GetBool("Attacking")) // shoot on animation ends
         {
@@ -118,19 +114,49 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (quest != null)
+            if (quest.goal[0].isReached() && quest.goal.Count == 1)
+                quest.Complete();
+
         // HANDLE INPUTS
-        if (Input.GetKeyDown(KeyCode.E)) // Interact
+
+        // BINDS: E: use, Z: attack|interact, X: shield
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            // if possible interact with an npc, else use the equiped item.
-            try
+            if (inventory.equipedTool != -1)
+                inventory.Tools[inventory.equipedTool].item.Use(this);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z)) // Interact
+        {
+            // if possible interact with an npc, else use the equiped item. Altar has the first priority.
+            if(activeAltar != null)
             {
-                GetFrontalCollider().GetComponent<IEntity>().Interact(this);
+                StartCoroutine(activeAltar.Use());
             }
-            catch(System.NullReferenceException)
+            else
             {
-                if(equipedItem != null && equipedItem.item != null)
+                try
                 {
-                    equipedItem.item.Use(this);
+                    var front = GetFrontalCollider();
+                    if (front.TryGetComponent(out NPCController npc))
+                    {
+                        if (npc.type == NPCType.Enemy)
+                            throw new System.NullReferenceException();
+
+                        npc.Interact(this);
+                    }
+                    else if (front.TryGetComponent(out NPCController trader))
+                    {
+                        trader.Interact(this);
+                    }
+                }
+                catch (System.NullReferenceException)
+                {
+                    print(inventory.equipedWeapon);
+                    if (inventory.equipedWeapon != -1)
+                        inventory.Weapons[inventory.equipedWeapon].item.Use(this); // trova l'arma e usala
                 }
             }
             
@@ -141,26 +167,13 @@ public class Player : MonoBehaviour
             
         }
 
-        if (Input.GetKeyDown(KeyCode.F1) && !GameController.Instance.hotbar.isActiveAndEnabled)
-        {
-            // toggle hotbar visibility setting to the opposite state
-            GameController.Instance.hotbar.gameObject.SetActive(true);
-        }
-
-        if (Input.GetKeyUp(KeyCode.F1) && GameController.Instance.hotbar.isActiveAndEnabled)
-        {
-            // toggle hotbar visibility setting to the opposite state
-            GameController.Instance.hotbar.gameObject.SetActive(false);
-        }
 
         if (Input.GetKeyDown(KeyCode.Space) && inventory.torch != null && !currentScene.outdoor) // Toggle torch
             inventory.torch.Use(this);
 
-        if (Input.GetKeyDown(KeyCode.L)) // Attack
-            Attack();
-
         if (Input.GetKeyDown(KeyCode.Return)) // Menu
         {
+            moveInput = Vector2.zero;
             GameController.Instance.OpenState(GameState.Menu); // PERCHE MOSTRA SWORD NEL ENCHUI?????
         }
 
@@ -180,6 +193,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
     public void Save()
     {
         SaveSystem.SavePlayer(this);
@@ -197,13 +215,6 @@ public class Player : MonoBehaviour
     {
         hp = data.health;
         transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
-    }
-
-    private void FixedUpdate()
-    {
-        if (quest != null)
-            if (quest.goal[0].isReached() && quest.goal.Count == 1)
-                quest.Complete();
     }
 
     public bool isInRange(IEntity entity, float radius=1.5f)
@@ -235,17 +246,22 @@ public class Player : MonoBehaviour
         UpdateQuestUI();
     }
 
-    void Attack()
+    public void Attack(Weapon weapon)
     {
         // start animation
         animator.SetTrigger("SwordAttack");
         animator.SetBool("Attacking", false);
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, interactableLayer);
+
+        foreach (Collider2D enemy in hitEnemies)
+            enemy.GetComponent<IEntity>().takeDamage(inventory.Weapons[inventory.equipedWeapon].item.GetCloseDamage());
         
         // use the equiped sword to hit the npc
-        inventory.getEquiped("weapon").item.Use(this, GetFrontalCollider().GetComponent<IEntity>(), inventory.getEquiped("weapon").item.GetCloseDamage());
+        //inventory.getEquiped("weapon").item.Use(this, GetFrontalCollider().GetComponent<IEntity>(), inventory.getEquiped("weapon").item.GetCloseDamage());
     }
 
-    void Shoot()
+    public void Shoot()
     {
         // genera una freccia e spingila nella facing direction.
         var FirePos = new Vector3(transform.position.x+animator.GetFloat("FacingHorizontal"), transform.position.y+animator.GetFloat("FacingVertical"), 0);

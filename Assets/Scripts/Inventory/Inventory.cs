@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     public List<InventorySlot> Rings;
     public List<InventorySlot> Weapons;
     public List<InventorySlot> Shields;
-    public List<InventorySlot> Arrows;
+    public List<InventorySlot> Tools;
 
     public Torch torch = null;
 
@@ -21,10 +21,10 @@ public class Inventory : MonoBehaviour
     public int equipedWeapon = -1;
     public int equipedRing = -1;
     public int equipedShield = -1;
-    public int equipedArrows = 0; // -1 stands for null
+    public int equipedTool = 0; // -1 stands for null
 
-    [HideInInspector] public List<int> equips;
-
+    public List<int> equips;
+    
     public List<List<InventorySlot>> Equipment;
 
     public List<Rune> runes; // rune che hai trovato 
@@ -34,8 +34,9 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         allSlots = new List<List<InventorySlot>> { itemSlots, consumableSlots };
-        Equipment = new List<List<InventorySlot>>() {Weapons, Arrows, Shields, Rings };
-        equips = new List<int>() { equipedWeapon, equipedArrows, equipedShield, equipedRing };
+        Equipment = new List<List<InventorySlot>>() {Weapons, Tools, Shields, Rings };
+        equips = new List<int>() { equipedWeapon, equipedTool, equipedShield, equipedRing }; // è completamente inutile, dovrebbe essere una lista di puntatori.
+        // wp, tool, shield, ring
     }
 
     public static List<string> Categories = new List<string>
@@ -79,19 +80,18 @@ public class Inventory : MonoBehaviour
         return getEquiped(ind);
     }
 
-    public void Equip(string itemName, int category = 0)
+    public void Equip(int itype, int val)
     {
-        foreach(var item in GetSlots(category))
-        {
-            if (item.item.Name == itemName)
-            {
-                Player.i.equipedItem = item;
-                return;
-            }
-            else
-                print(item.item.Name);
-        }
-        GameController.Instance.ShowMessage("item not found");
+        if (itype == 0)
+            equipedWeapon = val;
+        else if (itype == 1)
+            equipedTool = val;
+        else if (itype == 2)
+            equipedShield = val;
+        else if (itype == 3)
+            equipedRing = val;
+        else
+            return;
     }
 
     public void Add(ItemBase item)
@@ -109,9 +109,9 @@ public class Inventory : MonoBehaviour
                 {
                     Weapons.Add(new InventorySlot(item));
                 }
-                if (item.category == -2) // arrow
+                if (item.category == -2) // tool
                 {
-                    Arrows.Add(new InventorySlot(item));
+                    Tools.Add(new InventorySlot(item));
                 }
                 if (item.category == -3) // shield
                 {

@@ -27,7 +27,7 @@ public class StoryController : MonoBehaviour
 
     public void onLaunch()
     {
-        Midgardr.LoadSceneAsMain();
+        //Midgardr.LoadSceneAsMain();
         /*var data = SaveSystem.LoadPlayer();
         if(data == null)
         {

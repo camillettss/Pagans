@@ -10,6 +10,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] UnityEngine.UI.Text DescriptionTxt;
     [SerializeField] UnityEngine.UI.Text CategoryTxt;
     [SerializeField] UnityEngine.UI.Image Icon;
+    [SerializeField] Sprite empty_icon;
 
     List<SlotUI> slotUIs;
 
@@ -34,7 +35,7 @@ public class InventoryUI : MonoBehaviour
         if(inventory.GetSlots(selectedCat).Count <= 0)
         {
             DescriptionTxt.text = "no items here";
-            Icon.sprite = null;
+            Icon.sprite = empty_icon;
             return;
         }
 
@@ -47,6 +48,7 @@ public class InventoryUI : MonoBehaviour
         }
 
         selectedItm = 0;
+
         try
         {
             UpdateSelection();
@@ -108,12 +110,12 @@ public class InventoryUI : MonoBehaviour
         else if (prevSel != selectedItm && inventory.GetSlots(selectedCat).Count > 0)
             UpdateSelection();
 
-        if (Input.GetKeyDown(KeyCode.Z)) // Equip
+        /*if (Input.GetKeyDown(KeyCode.Z)) // Equip
         {
             var item = inventory.GetSlots(selectedCat)[selectedItm];
             item.item.Equip(item);
             GameController.Instance.hotbar.UpdateItems();
-        }
+        }*/
 
     }
 }

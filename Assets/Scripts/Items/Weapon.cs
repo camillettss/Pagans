@@ -8,13 +8,11 @@ public class Weapon : ItemBase
 {
     public override void Use(Player player)
     {
-        Debug.Log($"{name}'s use() non ha ricevuto i parametri necessari quindi non è stato possibile chiamare l'overload.");
+        player.Attack(this);
     }
 
     public override void Use(Player player, IEntity npc, int damage = 1)
     {
-        npc.takeDamage(damage);
-        if (dust != null)
-            dust.onHit();
+        
     }
 }

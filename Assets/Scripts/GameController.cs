@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
     }
     private void Start()
     {
-        hotbar.UpdateItems();
+        //hotbar.UpdateItems();
         hotbar.gameObject.SetActive(false);
         ppv = gameObject.GetComponent<Volume>();
     }
@@ -166,10 +166,12 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        if (state != GameState.FreeRoam)
+        {
+            player.animator.SetFloat("Speed", 0.0f);
+        }
         #region update choose
         // fast switching: inventory -> equipment -> quests -> inventory.
-        if (state != GameState.FreeRoam)
-            player.animator.SetFloat("Speed", 0.0f);
 
         if (state == GameState.FreeRoam)
         {
