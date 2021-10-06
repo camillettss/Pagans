@@ -40,6 +40,7 @@ immaginiamo la scena, hai l'inventario vuoto e nessun'arma equipaggiata ma devi 
 Fallisco?
 1. Potenzio l'arma
 2. incanto l'arma
+
 come si potenzia?
 - vai da un nano e paghi
 - vai ad un'altare con un libro e una gemma
