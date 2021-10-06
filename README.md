@@ -18,18 +18,26 @@ ma avendo una mappatura gba facciamo gli override per state.
 abbiamo 4 tasti:
 
 start (Enter) -> open menu
+
 select (tab)  -> null
+
 A (Z)         -> Spada, (se possibile) Parla
+
 B (X)         -> Scudo
+
 [temp] RShoulder (E) -> Use
 
 COME USO L'OGGETTO EQUIPAGGIATO? sul computer con E, sul controller con le shoulder? :/
 
 ### UI
 start (Enter) -> back to freeroam
+
 select (Tab)  -> cambia la pagina se sei su Bag
+
 A (Z)         -> scegli, conferma
+
 B (X)         -> indietro
+
 
 # Gaming Functionalities
 during exploration:
