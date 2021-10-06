@@ -8,26 +8,44 @@ scritto per funzionare su controller nes-like, Pagans usa 4 tasti direzionali (W
 ## movement
 i movimenti non sono bloccati nella griglia, è possibile spostarsi di 1/4 di tassello ma non ci sono i movimenti diagonali.
 
-## gaming
-attualmente il battle system è gravemente in discussione. in base a questo potrei adattare i tasti ad un controller gameboy o nes.
-possibilità:
-1. il battle system potrebbe essere come `zelda link's awakening 1995`, quindi si combatte e si esplora nella stessa scena
-2. il battle system potrebbe essere melee, quindi quando si incontra un nemico si passa a questa scena e poi si torna alla principale
+## gaming binds
+attualmente il battle system è gravemente in discussione ma probabilmente sceglierò di combattere come zelda.
+i tasti quindi sono:
+Z(A), X(B) rispettivamente per confermare e annullare
+ma avendo una mappatura gba facciamo gli override per state.
 
-### pro e contro
-zelda like:
+### Exploring:
+abbiamo 4 tasti:
 
-PRO:
-1. cambiare scena rende tutto dinamico, quindi fastidioso perchè stressante. restare nel gioco rende i combattimenti più veloci e meno ripetitivi.
-2. a livello di codice, si evitano meno bug e collegamenti.
+start (Enter) -> open menu
+select (tab)  -> null
+A (Z)         -> Spada, (se possibile) Parla
+B (X)         -> Scudo
+[temp] RShoulder (E) -> Use
 
-CONTRO:
-1. trova le differenza con zelda
+COME USO L'OGGETTO EQUIPAGGIATO? sul computer con E, sul controller con le shoulder? :/
 
-melee:
+### UI
+start (Enter) -> back to freeroam
+select (Tab)  -> cambia la pagina se sei su Bag
+A (Z)         -> scegli, conferma
+B (X)         -> indietro
 
-PRO:
-1. ha dei bei disegnini
+# Gaming Functionalities
+during exploration:
 
-CONTRO:
-1. annoia come pokemon.
+immaginiamo la scena, hai l'inventario vuoto e nessun'arma equipaggiata ma devi sconfiggere un nemico. cosa fai?
+1. equipaggio un'arma (per forza perchè subito dopo l'avvio ottieni la spada di tuo padre.)
+2. attacco
+Fallisco?
+1. Potenzio l'arma
+2. incanto l'arma
+come si potenzia?
+- vai da un nano e paghi
+- vai ad un'altare con un libro e una gemma
+
+libri:
+i libri si trovano nei dungeon o nelle librerie. sono gratis.
+
+gemme:
+le gemme sono pietre preziose che lasciano cadere i satiri quando muoiono, ma posso essere comprate da alcuni nani.
