@@ -50,3 +50,38 @@ i libri si trovano nei dungeon o nelle librerie. sono gratis.
 
 gemme:
 le gemme sono pietre preziose che lasciano cadere i satiri quando muoiono, ma posso essere comprate da alcuni nani.
+
+## ordinamento degli oggetti
+ci sono 3 UI:
+- inventario
+- equipaggiamento
+- quests
+
+nell'inventario ci devono stare:
+- i consumabili (cibo, pozioni...)
+- gli oggetti (chiavi, frammenti)
+- le cose da vendere (legna)
+
+invece nell'equipment si hanno gli oggetti collegati ai tasti. noi usiamo Z, X, E (cioè arma-scudo-usa).
+vuol dire che qui ci sono 3 categorie (+1 per gli anelli):
+- Armi
+- Scudi
+- Strumenti
+- Anelli
+
+nel player controller quando viene premuto (ad esempio) Z (o A sui controller) si parla con qualcuno, ma se davanti non c'è nessuno invece di fare Interact() si fa Attack().
+Attack() usa l'arma equipaggiata e fa .Use(), abbiamo Weapons che è la lista delle armi che possediamo e equipedWeapon CHE E' UN INTERO, corrisponde all'*indice* dell'arma equipaggiata. quindi in Attack() per trovare la nostra arma facciamo: equipment.Weapons[equipment.equipedWeapon] che corrisponde alla nostra arma ma come InvSlot quindi .item.Use().
+
+## ordinamento delle UI
+nel menu ci sono 3 opzioni:
+- Codex
+- Bag
+- Exit
+
+ ### Codex
+ è un nome temporaneo visto che non è in realtà un bestiario. qui ci vanno tutti i fogli e le storie che troviamo/apprendiamo esplorando.
+ 
+ usano la grafica di page-with-border
+ 
+ ### Bag
+ questo è l'inventario. da qui si apre L'INVENTARIO. per aprire L'EQUIPAGGIAMENTO bisogna sfogliare le pagine dell'inventario quindi premendo select(tab)
