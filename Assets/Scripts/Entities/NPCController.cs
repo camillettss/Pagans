@@ -48,6 +48,7 @@ public class NPCController : MonoBehaviour, IEntity
     {
         animator = GetComponent<Animator>();
         quest.giver = this;
+        done = false;
     }
 
     private void Awake()
@@ -59,19 +60,13 @@ public class NPCController : MonoBehaviour, IEntity
     public void Interact(Player player)
     {
         GameController.Instance.ActiveNPC = this;
-        if (type == NPCType.Talking || type == NPCType.ComplexQuestGiver)
+        if (type == NPCType.Talking || type == NPCType.ComplexQuestGiver || type == NPCType.QuestGiver || type == NPCType.TalkAndGive)
             TriggerDialogue();
 
-        else if (type == NPCType.QuestGiver)
-            OpenQuestWindow();
-
-        else if(type == NPCType.TalkAndGive)
+        if(type == NPCType.TalkAndGive)
         {
-            TriggerDialogue();
             player.inventory.Add(drop);
         }
-
-        done = true;
     }
 
     public void TriggerDialogue()
@@ -94,24 +89,40 @@ public class NPCController : MonoBehaviour, IEntity
                 {
                     
                 }
+
+                if (Name == "Asbjorn" && !done)
+                {
+                    GameController.Instance.storyController.talkedWithAsbjorn = true;
+                    StartCoroutine(GameController.Instance.storyController.AsbjornDialogueDone());
+                }
+
+                else if (Name == "Ulfr" && !done && GameController.Instance.storyController.talkedWithAsbjorn)
+                    StartCoroutine(GameController.Instance.storyController.UlfrDialogueDone());
+
+                GameController.Instance.state = GameState.FreeRoam;
+                Player.i.quest.goal[0].NPCTalked(this);
+
+                done = true;
+
+                if (Name == "Ulfr" && !GameController.Instance.storyController.talkedWithAsbjorn)
+                    done = false;
             });
         }
         else
         {
             if(dialoguesQueue.Count>0)
             {
-                GameController.Instance.dialogueBox.StartDialogue(new Dialogue(dialoguesQueue[0]), () => { });
+                GameController.Instance.dialogueBox.StartDialogue(new Dialogue(dialoguesQueue[0]), () => { GameController.Instance.state = GameState.FreeRoam; Player.i.quest.goal[0].NPCTalked(this); });
                 dialoguesQueue.RemoveAt(0);
             }
             else
             {
-                GameController.Instance.dialogueBox.StartDialogue(dialoguesAfterWork[i], () => { });
+                GameController.Instance.dialogueBox.StartDialogue(dialoguesAfterWork[i], () => { GameController.Instance.state = GameState.FreeRoam; Player.i.quest.goal[0].NPCTalked(this); });
                 i++;
                 if (i >= dialoguesAfterWork.Count)
                     i = 0;
             }
         }
-        //onTalk();
     }
 
     void PointToPlayer() // nessuno ha capito perchè non cambia i float dell'animator ma okk

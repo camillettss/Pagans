@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public InventorySlot equipedItem = null;
     [HideInInspector] public QuestInventory QuestsContainer;
     [HideInInspector] public Altar activeAltar = null;
+    [HideInInspector] public bool canMove = true;
 
     public SceneDetails currentScene;
     public bool SnapToGridMovments = false;
@@ -75,15 +76,16 @@ public class Player : MonoBehaviour
         else
             moveInput.x = 0;
 
-        
-        animator.SetFloat("Horizontal", moveInput.x);
-        animator.SetFloat("Vertical", moveInput.y);
-        animator.SetFloat("Speed", moveInput.sqrMagnitude);
+        if(canMove)
+        {
+            animator.SetFloat("Horizontal", moveInput.x);
+            animator.SetFloat("Vertical", moveInput.y);
+            animator.SetFloat("Speed", moveInput.sqrMagnitude);
 
-        rb.velocity = moveInput * speed;
-        rb.MovePosition(rb.position + moveInput * speed * Time.fixedDeltaTime);
+            rb.velocity = moveInput * speed;
+            rb.MovePosition(rb.position + moveInput * speed * Time.fixedDeltaTime);
+        }
 
-        // sposta l'attackPoint!!!
         attackPoint.position = new Vector3(transform.position.x+animator.GetFloat("FacingHorizontal"), transform.position.y+animator.GetFloat("FacingVertical"), transform.position.z);
 
         if(animator.GetBool("Attacking")) // shoot on animation ends
@@ -147,9 +149,9 @@ public class Player : MonoBehaviour
 
                         npc.Interact(this);
                     }
-                    else if (front.TryGetComponent(out NPCController trader))
+                    else if (front.TryGetComponent(out IEntity entity))
                     {
-                        trader.Interact(this);
+                        entity.Interact(this);
                     }
                 }
                 catch (System.NullReferenceException)
@@ -207,14 +209,15 @@ public class Player : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
-        hp = data.health;
-        transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+        Load(data);
     }
 
     public void Load(PlayerData data)
     {
         hp = data.health;
         transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+        print("[*] is first launch: " + data.firstLaunch);
+        GameController.Instance.storyController.firstLaunch = data.firstLaunch;
     }
 
     public bool isInRange(IEntity entity, float radius=1.5f)
@@ -241,6 +244,8 @@ public class Player : MonoBehaviour
 
     public void AcceptQuest(Quest qst)
     {
+        if (qst.title == "L'origine del mondo")
+            StartCoroutine(GameController.Instance.storyController.AsbjornQuestAccepted());
         qst.isActive = true;
         quest = qst;
         UpdateQuestUI();

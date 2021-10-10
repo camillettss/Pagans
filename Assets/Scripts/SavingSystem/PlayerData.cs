@@ -20,4 +20,17 @@ public class PlayerData
 
         firstLaunch = GameController.Instance.storyController.firstLaunch;
     }
+
+    public PlayerData() // empty
+    {
+        health = 10;
+        position = new float[3];
+        position[0] = -2;
+        position[1] = 1.3f;
+        position[2] = 0;
+
+        firstLaunch = true;
+    }
+
+    public static PlayerData emtpy => new PlayerData();
 }

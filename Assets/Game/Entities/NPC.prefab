@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   dialogue:
     sentences:
     - Heil esploratore, io sono ormr.
+  type: 0
   quest:
     isActive: 0
     title: First quest
@@ -156,14 +157,50 @@ MonoBehaviour:
       is going to read this.
     experienceReward: 30
     goldReward: 780
+    successReaction: 
+    giver: {fileID: 0}
     goal:
-      goal: 
-      goalType: 1
-      requiredAmount: 1
+    - goal: 
+      goalType: 0
+      requiredAmount: 0
       currentAmount: 0
       talkTo: 
+      sellerName: 
+      itemName: 
+    - goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      talkTo: 
+      sellerName: 
+      itemName: 
+    - goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      talkTo: 
+      sellerName: 
+      itemName: 
+    - goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      talkTo: 
+      sellerName: 
+      itemName: 
+    - goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      talkTo: 
+      sellerName: 
+      itemName: 
+  attackDamage: 0
   HP: 10
-  type: 0
+  canBeDamaged: 0
+  drop: {fileID: 0}
+  repeatOperation: 0
+  dialoguesAfterWork: []
 --- !u!95 &2576448740519100611
 Animator:
   serializedVersion: 3

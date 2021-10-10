@@ -18,6 +18,20 @@ public class Quest
 
     public List<QuestGoal> goal;
 
+    public Quest(string title, string description, int expReward, int goldReward, List<QuestGoal> goals, string successReaction = "ottimo!", NPCController giver = null)
+    {
+        this.title = title;
+        this.description = description;
+
+        experienceReward = expReward;
+        this.goldReward = goldReward;
+        this.successReaction = successReaction;
+
+        this.giver = giver;
+
+        this.goal = goals;
+    }
+
     public void Complete()
     {
         GameController.Instance.player.experience += experienceReward;

@@ -6,11 +6,14 @@ public static class SaveSystem
 {
     public static void SavePlayer(Player player)
     {
+        SavePlayer(new PlayerData(player));
+    }
+
+    static void SavePlayer(PlayerData data)
+    {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.fun";
         FileStream stream = new FileStream(path, FileMode.Create);
-
-        PlayerData data = new PlayerData(player);
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -34,5 +37,11 @@ public static class SaveSystem
             Debug.LogError("Save file not found in " + path);
             return null;
         }
+    }
+
+    public static void Reset()
+    {
+        string path = Application.persistentDataPath + "/player.fun";
+        SavePlayer(PlayerData.emtpy);
     }
 }

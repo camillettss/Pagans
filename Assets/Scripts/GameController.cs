@@ -6,13 +6,13 @@ using System;
 using TMPro;
 using UnityEngine.Rendering;
 
-public enum GameState { FreeRoam, Menu, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Battle };
+public enum GameState { FreeRoam, Menu, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Battle, ChoosingItem };
 public class GameController : MonoBehaviour
 {
     public GameObject EssentialObjectsPrefab;
 
     public Player player;
-    [SerializeField] MenuController menu;
+    [SerializeField] public MenuController menu;
     [SerializeField] InventoryUI inventoryUI;
     [SerializeField] public EquipmentUI equipmentUI;
     [SerializeField] ShopUI shopUI;
@@ -22,6 +22,10 @@ public class GameController : MonoBehaviour
     [SerializeField] ChestUI basicChestUI;
     [SerializeField] Volume ppv; // post processing volume
     [SerializeField] GameObject BattleScene;
+    [SerializeField] public ChoosingUI choosingUI;
+    [SerializeField] bool LaunchStory;
+
+    [SerializeField] bool ResetOnEnd = false;
 
     float tick=60, seconds, mins, hours, days = 1;
     bool activateLights;
@@ -40,14 +44,31 @@ public class GameController : MonoBehaviour
     {
         Instance = this;
         storyController = GetComponent<StoryController>();
-        storyController.onLaunch();
         
     }
+
     private void Start()
     {
         //hotbar.UpdateItems();
         hotbar.gameObject.SetActive(false);
         ppv = gameObject.GetComponent<Volume>();
+        if (LaunchStory)
+            StartCoroutine(launchStory());
+        /*else
+            storyController.Midgardr.LoadSceneAsMain();*/
+    }
+
+    IEnumerator launchStory()
+    {
+        yield return new WaitForSeconds(.5f);
+        storyController.Launch();
+    }
+
+    private void OnDestroy()
+    {
+        print("destroying");
+        if (ResetOnEnd)
+            SaveSystem.Reset();
     }
 
     private void FixedUpdate()
@@ -125,6 +146,7 @@ public class GameController : MonoBehaviour
         {
             inventoryUI.gameObject.SetActive(true);
             inventoryUI.UpdateContents();
+            StartCoroutine(storyController.FirstInventoryOpen());
         }
         else if(state == GameState.Equipment)
         {
@@ -140,6 +162,12 @@ public class GameController : MonoBehaviour
         {
             questsUI.gameObject.SetActive(true);
             questsUI.UpdateContents();
+        }
+        else if(state == GameState.ChoosingItem)
+        {
+            choosingUI.gameObject.SetActive(true);
+            choosingUI.GetComponent<Animator>().SetTrigger("Anim");
+            choosingUI.UpdateItems();
         }
         #endregion
 
@@ -166,9 +194,12 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        print(state);
         if (state != GameState.FreeRoam)
         {
             player.animator.SetFloat("Speed", 0.0f);
+            player.moveInput = Vector2.zero;
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
         #region update choose
         // fast switching: inventory -> equipment -> quests -> inventory.
@@ -229,6 +260,11 @@ public class GameController : MonoBehaviour
             }
         }
 
+        else if(state == GameState.ChoosingItem)
+        {
+            choosingUI.HandleUpdate();
+        }
+
         else if(state == GameState.Enchanting)
         {
             enchantingUI.HandleUpdate();
@@ -238,7 +274,14 @@ public class GameController : MonoBehaviour
 
     public void ShowMessage(string msg)
     {
-        dialogueBox.StartDialogue(new Dialogue(new string[] { msg }), () => { });
+        var prevState = state;
+        dialogueBox.StartDialogue(new Dialogue(new string[] { msg }), () => { state = prevState; });
+    }
+
+    public void ShowMessage(string[] msgs)
+    {
+        var prevState = state;
+        dialogueBox.StartDialogue(new Dialogue(msgs), () => { state = prevState; });
     }
 
     public void ShowInfo(string text, Action onEndDialogue, float duration = 1f)

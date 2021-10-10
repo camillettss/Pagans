@@ -18,6 +18,7 @@ public class QuestGoal
     [ConditionalField(nameof(goalType), false, GoalType.Buy)] [SerializeField] string sellerName;
     [ConditionalField(nameof(goalType), false, GoalType.Buy)] [SerializeField] string itemName;
 
+    [ConditionalField(nameof(goalType), false, GoalType.EnterADoor)] [SerializeField] string PortalName; 
     public bool isReached()
     {
         if (goalType == GoalType.Kill)
@@ -43,6 +44,12 @@ public class QuestGoal
         }
     }
 
+    public void DoorEntered(Portal door)
+    {
+        if (door.name == PortalName)
+            done = true;
+    }
+
     public void SomethingBought(TraderController seller, ItemBase item)
     {
         if(seller.Name == sellerName && item.Name == itemName)
@@ -56,5 +63,6 @@ public enum GoalType
 {
     Kill,
     Talk,
-    Buy
+    Buy,
+    EnterADoor
 }

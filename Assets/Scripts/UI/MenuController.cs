@@ -44,7 +44,8 @@ public class MenuController : MonoBehaviour
     {
         if (choosen == 0) // Codex
         {
-            print("Still not implemented");
+            gameObject.SetActive(false);
+            GameController.Instance.OpenState(GameState.Quests);
         }
         else if (choosen == 1) // Bag
         {

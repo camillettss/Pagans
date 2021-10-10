@@ -19,9 +19,11 @@ public class Altar : MonoBehaviour
     {
         Player.i.animator.SetFloat("FacingHorizontal", 0);
         Player.i.animator.SetFloat("FacingVertical", -1);
+        Player.i.canMove = false;
 
         yield return StartCoroutine(fireAnim());
         ChooseWeapon();
+        Player.i.canMove = true;
     }
 
     IEnumerator fireAnim()
@@ -33,6 +35,7 @@ public class Altar : MonoBehaviour
     public void ChooseWeapon()
     {
         // show a list, return quella su cui preme Z
-        print("choosing");
+        GameController.Instance.OpenState(GameState.ChoosingItem);
+
     }
 }

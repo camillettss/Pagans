@@ -8,9 +8,20 @@ public class Sign : MonoBehaviour, IEntity
     [SerializeField] GameObject signal;
     bool isRead = false;
 
+    private void Awake()
+    {
+        isRead = false;
+    }
+
     public void Interact(Player player)
     {
-        GameController.Instance.dialogueBox.StartDialogue(dialogue, () => { isRead = true; });
+        if (dialogue.sentences.Length == 0)
+            return;
+        GameController.Instance.dialogueBox.StartDialogue(dialogue, () =>
+        {
+            isRead = true;
+            GameController.Instance.state = GameState.FreeRoam;
+        });
     }
 
     public void takeDamage(int dmg)
@@ -20,9 +31,10 @@ public class Sign : MonoBehaviour, IEntity
 
     public void ShowSignal()
     {
-        if (!signal.activeSelf && !isRead)
+        if ((!isRead) && (!signal.activeSelf))
             signal.gameObject.SetActive(true);
     }
+
     void unShowSignal()
     {
         if (signal.activeSelf)
@@ -31,12 +43,13 @@ public class Sign : MonoBehaviour, IEntity
 
     private void FixedUpdate()
     {
-        if (GameController.Instance.state != GameState.FreeRoam || !GameController.Instance.player.isActiveAndEnabled)
+        //print(name + ":" + isRead);
+        if (GameController.Instance.state != GameState.FreeRoam || !Player.i.isActiveAndEnabled)
         {
             return;
         }
 
-        if (FindObjectOfType<Player>().isInRange(this))
+        if (Player.i.isInRange(this))
         {
             ShowSignal();
         }
