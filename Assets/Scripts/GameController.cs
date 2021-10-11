@@ -52,10 +52,11 @@ public class GameController : MonoBehaviour
         //hotbar.UpdateItems();
         hotbar.gameObject.SetActive(false);
         ppv = gameObject.GetComponent<Volume>();
-        if (LaunchStory)
+        player.Load();
+        if (player.isFirstLaunch)
             StartCoroutine(launchStory());
-        /*else
-            storyController.Midgardr.LoadSceneAsMain();*/
+        else
+            storyController.Midgardr.LoadSceneAsMain();
     }
 
     IEnumerator launchStory()
@@ -69,6 +70,8 @@ public class GameController : MonoBehaviour
         print("destroying");
         if (ResetOnEnd)
             SaveSystem.Reset();
+        else
+            player.Save();
     }
 
     private void FixedUpdate()

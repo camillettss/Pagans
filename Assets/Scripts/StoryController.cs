@@ -71,6 +71,7 @@ public class StoryController : MonoBehaviour
             Player.i.kents = 10;
             //Player.i.QuestsContainer.Add(new Quest("le prime armi", "il mondo non è solo rosa e fiori. bisogna imparare a combattere.", 50, 5));
             GameController.Instance.state = GameState.FreeRoam; // GameController.ShowMessage ha uno state switching automatico, qui passa sempre a Freeroam.
+            Player.i.isFirstLaunch = false;
         });
     }
 

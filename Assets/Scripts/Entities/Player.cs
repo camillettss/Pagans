@@ -44,6 +44,11 @@ public class Player : MonoBehaviour
     public bool SnapToGridMovments = false;
     public int kents = 0;
 
+    #region saving stuffs
+    public bool isFirstLaunch = false;
+    public int storyProgressValue = 0;
+    #endregion
+
     private void Awake()
     {
         inventory = GetComponent<Inventory>();
@@ -217,7 +222,7 @@ public class Player : MonoBehaviour
         hp = data.health;
         transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
         print("[*] is first launch: " + data.firstLaunch);
-        GameController.Instance.storyController.firstLaunch = data.firstLaunch;
+        isFirstLaunch = data.firstLaunch;
     }
 
     public bool isInRange(IEntity entity, float radius=1.5f)
