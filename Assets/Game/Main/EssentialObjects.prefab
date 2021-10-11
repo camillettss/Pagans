@@ -7238,6 +7238,8 @@ MonoBehaviour:
   currentScene: {fileID: 0}
   SnapToGridMovments: 1
   kents: 0
+  isFirstLaunch: 0
+  storyProgressValue: 0
 --- !u!114 &5379045464971056017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8364,7 +8366,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1024, y: 768}
+  m_ReferenceResolution: {x: 1024, y: 1280}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3

@@ -214,6 +214,9 @@ public class Player : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
+        if (data == null)
+            data = PlayerData.emtpy;
+
         Load(data);
     }
 
