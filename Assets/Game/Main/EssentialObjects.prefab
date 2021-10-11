@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8886628842638417892}
   - component: {fileID: 3415125850195710791}
   m_Layer: 0
-  m_Name: Codex
+  m_Name: Quests
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1840,7 +1840,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7164800446369084705}
   m_HandleRect: {fileID: 77238962456227816}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -8463,7 +8463,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -199.99997}
+  m_AnchoredPosition: {x: 0, y: -200}
   m_SizeDelta: {x: -80, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5379045465510515564
@@ -10192,7 +10192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 842076704848555139}
-  choosablePrefab: {fileID: 2784338651333579937, guid: 19c056830b527d341ae7302b1165f629,
+  choosablePrefab: {fileID: 4671760819347871362, guid: 19c056830b527d341ae7302b1165f629,
     type: 3}
 --- !u!95 &5971613973804259775
 Animator:

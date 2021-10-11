@@ -182,8 +182,8 @@ public class EnchantingUI : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.X))
             {
                 gameObject.SetActive(false);
-                GameController.Instance.equipmentUI.gameObject.SetActive(true);
-                GameController.Instance.state = GameState.Equipment;
+                //GameController.Instance.equipmentUI.gameObject.SetActive(true);
+                GameController.Instance.state = GameState.FreeRoam;
             }
 
             if (Input.GetKeyDown(KeyCode.DownArrow))
