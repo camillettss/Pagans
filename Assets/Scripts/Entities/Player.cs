@@ -38,7 +38,9 @@ public class Player : MonoBehaviour
     [HideInInspector] public InventorySlot equipedItem = null;
     [HideInInspector] public QuestInventory QuestsContainer;
     [HideInInspector] public Altar activeAltar = null;
+    [HideInInspector] public Plant activePlant = null;
     [HideInInspector] public bool canMove = true;
+    [HideInInspector] public bool canShowMinimap = true;
 
     public SceneDetails currentScene;
     public bool SnapToGridMovments = false;
@@ -129,8 +131,15 @@ public class Player : MonoBehaviour
 
         // BINDS: E: use, Z: attack|interact, X: shield
 
+        // minimap show
+        if (Input.GetKeyDown(KeyCode.Q) && canShowMinimap && !GameController.Instance.MinimapCanvas.activeSelf)
+            GameController.Instance.MinimapCanvas.SetActive(true);
+        if (Input.GetKeyUp(KeyCode.Q))
+            GameController.Instance.MinimapCanvas.SetActive(false);
+
         if (Input.GetKeyDown(KeyCode.E))
         {
+            print("equiped:" + inventory.equipedTool);
             if (inventory.equipedTool != -1)
                 inventory.Tools[inventory.equipedTool].item.Use(this);
         }

@@ -31,7 +31,7 @@ public class Sign : MonoBehaviour, IEntity
 
     public void ShowSignal()
     {
-        if ((!isRead) && (!signal.activeSelf))
+        if ((!isRead) && (!signal.activeSelf) && dialogue.sentences.Length > 0)
             signal.gameObject.SetActive(true);
     }
 

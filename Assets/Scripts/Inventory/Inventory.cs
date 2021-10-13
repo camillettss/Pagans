@@ -109,7 +109,7 @@ public class Inventory : MonoBehaviour
                 {
                     Weapons.Add(new InventorySlot(item));
                 }
-                if (item.category == -2) // tool
+                if (item.category == -2) // tool or consumableTool
                 {
                     Tools.Add(new InventorySlot(item));
                 }

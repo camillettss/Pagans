@@ -8,6 +8,16 @@ public class Plant : MonoBehaviour
     [SerializeField] ItemBase plant;
     int growState = 0;
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Player.i.activePlant = this;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Player.i.activePlant = null;
+    }
+
     private void Start()
     {
         GetComponent<SpriteRenderer>().sprite = sprites[0];
@@ -17,7 +27,7 @@ public class Plant : MonoBehaviour
     {
         growState = Mathf.Clamp(growState+1, 0, sprites.Count-1);
         print(growState);
-        UpdateSprite();
+        UpdateSprite(); // non aggiorna
     }
 
     public void Take(Player player)

@@ -100,7 +100,9 @@ public class NPCController : MonoBehaviour, IEntity
                     StartCoroutine(GameController.Instance.storyController.UlfrDialogueDone());
 
                 GameController.Instance.state = GameState.FreeRoam;
-                Player.i.quest.goal[0].NPCTalked(this);
+
+                if(Player.i.quest != null)
+                    Player.i.quest.goal[0].NPCTalked(this);
 
                 done = true;
 

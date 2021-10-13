@@ -52,10 +52,14 @@ public class MenuController : MonoBehaviour
             gameObject.SetActive(false);
             GameController.Instance.OpenState(GameState.Inventory);
         }
-        else if (choosen == 2)
-            print("still not implemented");
 
-        else if (choosen == 3)
+        else if (choosen == 2) // Settings
+        {
+            gameObject.SetActive(false);
+            GameController.Instance.OpenState(GameState.Settings);
+        }
+
+        else if (choosen == 3) // Exit
             Application.Quit();
     }
 }

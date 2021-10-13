@@ -9,17 +9,13 @@ public class GrowingDust : ItemBase
     public int fortune = 0;
     public override void Use(Player player)
     {
-        var collider = player.GetFrontalCollider(player.farmingLayer);
-        if(collider != null)
+        if(player.activePlant != null)
         {
-            if(Random.Range(0, 100)<percentage+fortune)
-            {
-                collider.GetComponent<Plant>().Grow();
-            }
-            else
-            {
-                Debug.Log("sei un fallito bro");
-            }
+            Debug.Log("using grow dust");
+            if (Random.Range(0, 100) < percentage + fortune)
+                player.activePlant.Grow();
+
+            player.inventory.Remove(this); // Remove one
         }
     }
 }

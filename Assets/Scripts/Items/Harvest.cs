@@ -13,10 +13,9 @@ public class Harvest : ItemBase
         if(type == HarvestingToolType.get)
         {
             // raccoglie
-            var collider = player.GetFrontalCollider(player.farmingLayer);
-            if(collider != null)
+            if(player.activePlant != null)
             {
-                collider.GetComponent<Plant>().Take(player);
+                player.activePlant.Take(player);
             }
         }
         else

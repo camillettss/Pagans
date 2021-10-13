@@ -6,7 +6,7 @@ using System;
 using TMPro;
 using UnityEngine.Rendering;
 
-public enum GameState { FreeRoam, Menu, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Battle, ChoosingItem };
+public enum GameState { FreeRoam, Menu, Settings, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Battle, ChoosingItem };
 public class GameController : MonoBehaviour
 {
     public GameObject EssentialObjectsPrefab;
@@ -19,11 +19,13 @@ public class GameController : MonoBehaviour
     [SerializeField] QuestsUI questsUI;
     [SerializeField] EnchantingUI enchantingUI;
     [SerializeField] public Hotbar hotbar;
+    [SerializeField] public SettingsUI settingsUI;
     [SerializeField] ChestUI basicChestUI;
     [SerializeField] Volume ppv; // post processing volume
     [SerializeField] GameObject BattleScene;
     [SerializeField] public ChoosingUI choosingUI;
-    [SerializeField] bool LaunchStory;
+    [SerializeField] public GameObject MinimapCanvas;
+    [SerializeField] public bool LaunchStory;
 
     [SerializeField] bool ResetOnEnd = false;
 
@@ -51,10 +53,16 @@ public class GameController : MonoBehaviour
     {
         //hotbar.UpdateItems();
         hotbar.gameObject.SetActive(false);
+        MinimapCanvas.SetActive(false);
         ppv = gameObject.GetComponent<Volume>();
         player.Load();
-        if (player.isFirstLaunch)
-            StartCoroutine(launchStory());
+        if (LaunchStory)
+        {
+            if (player.isFirstLaunch)
+                StartCoroutine(launchStory());
+            else
+                storyController.Midgardr.LoadSceneAsMain();
+        }
         else
             storyController.Midgardr.LoadSceneAsMain();
     }
@@ -140,7 +148,7 @@ public class GameController : MonoBehaviour
 
     public void OpenState(GameState state, TraderController trader = null)
     {
-        #region statecontrol
+        #region state control
         if(state == GameState.Menu)
         {
             menu.gameObject.SetActive(true);
@@ -172,6 +180,12 @@ public class GameController : MonoBehaviour
             choosingUI.GetComponent<Animator>().SetTrigger("Anim");
             choosingUI.UpdateItems();
         }
+        else if(state == GameState.Settings)
+        {
+            settingsUI.gameObject.SetActive(true);
+            menu.gameObject.SetActive(false);
+            settingsUI.UpdateSelection();
+        }
         #endregion
 
         this.state = state;
@@ -197,18 +211,21 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        print(state);
         if (state != GameState.FreeRoam)
         {
             player.animator.SetFloat("Speed", 0.0f);
             player.moveInput = Vector2.zero;
             player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            player.canShowMinimap = false;
         }
         #region update choose
         // fast switching: inventory -> equipment -> quests -> inventory.
 
         if (state == GameState.FreeRoam)
         {
+            if (!player.canShowMinimap)
+                player.canShowMinimap = true;
+
             player.HandleUpdate();
         }
 
@@ -271,6 +288,16 @@ public class GameController : MonoBehaviour
         else if(state == GameState.Enchanting)
         {
             enchantingUI.HandleUpdate();
+        }
+
+        else if(state == GameState.Settings)
+        {
+            Action onBack = () =>
+            {
+                settingsUI.gameObject.SetActive(false);
+                OpenState(GameState.Menu);
+            };
+            settingsUI.HandleUpdate(onBack);
         }
         #endregion
     }

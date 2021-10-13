@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
+// Add different save files.
 public static class SaveSystem
 {
     public static void SavePlayer(Player player)
@@ -41,7 +42,6 @@ public static class SaveSystem
 
     public static void Reset()
     {
-        string path = Application.persistentDataPath + "/player.fun";
         SavePlayer(PlayerData.emtpy);
     }
 }

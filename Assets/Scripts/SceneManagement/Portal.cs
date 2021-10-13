@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public enum Locations { FadsHeimr, AsbjarnarHeimr, TutorialShop };
+public enum Locations { FadsHeimr, AsbjarnarHeimr, TutorialShop, FarmHouse, MagicianHouse, Cave1 };
 
 public class Portal : MonoBehaviour
 {

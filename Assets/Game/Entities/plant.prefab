@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 444779690686986729}
   - component: {fileID: 444779690686986734}
   - component: {fileID: 444779690686986728}
-  - component: {fileID: 444779690686986730}
   - component: {fileID: 444779690686986731}
   m_Layer: 14
   m_Name: plant
@@ -71,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -602258873
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -8647118614806966127, guid: c0794d9e8c8aa694e95b1c10484f4390,
     type: 3}
@@ -102,27 +101,6 @@ MonoBehaviour:
   - {fileID: 6098956821194664052, guid: c0794d9e8c8aa694e95b1c10484f4390, type: 3}
   - {fileID: -5614626324758365740, guid: c0794d9e8c8aa694e95b1c10484f4390, type: 3}
   plant: {fileID: 11400000, guid: 852010e32bb98e6458a0d946c9cf2d46, type: 2}
---- !u!50 &444779690686986730
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444779690686986735}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &444779690686986731
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,7 +111,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

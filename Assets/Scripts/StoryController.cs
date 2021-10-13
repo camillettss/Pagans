@@ -83,7 +83,7 @@ public class StoryController : MonoBehaviour
 
     public IEnumerator FirstInventoryOpen()
     {
-        if (!FirstTime_inventory)
+        if (!FirstTime_inventory || !GameController.Instance.LaunchStory)
             yield return null;
         else
         {
