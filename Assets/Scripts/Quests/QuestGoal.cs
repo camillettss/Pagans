@@ -10,8 +10,10 @@ public class QuestGoal
 
     bool done = false;
 
-    [ConditionalField(nameof(goalType), false, GoalType.Kill)] public int requiredAmount;
-    [ConditionalField(nameof(goalType), false, GoalType.Kill)] public int currentAmount;
+    [ConditionalField(nameof(goalType), false, GoalType.KillTot)] public int requiredAmount;
+    [ConditionalField(nameof(goalType), false, GoalType.KillTot)] public int currentAmount;
+
+    [ConditionalField(nameof(goalType), false, GoalType.KillSomeone)] public string enemyName;
 
     [ConditionalField(nameof(goalType), false, GoalType.Talk)] public string talkTo;
 
@@ -21,7 +23,7 @@ public class QuestGoal
     [ConditionalField(nameof(goalType), false, GoalType.EnterADoor)] [SerializeField] string PortalName; 
     public bool isReached()
     {
-        if (goalType == GoalType.Kill)
+        if (goalType == GoalType.KillTot)
             return (currentAmount >= requiredAmount && requiredAmount != 0);
 
         else
@@ -30,8 +32,16 @@ public class QuestGoal
 
     public void EnemyKilled(NPCController enemy)
     {
-        if(goalType == GoalType.Kill)
+        if(goalType == GoalType.KillTot)
             currentAmount++;
+        else if(goalType == GoalType.KillSomeone)
+        {
+            if (enemy.Name == enemyName)
+                done = true;
+
+            if (enemy.Name == "Ent1")
+                GameController.Instance.StartCoroutine(GameController.Instance.storyController.FinalDialogue());
+        }
     }
 
     public void NPCTalked(NPCController npc)
@@ -61,7 +71,8 @@ public class QuestGoal
 
 public enum GoalType
 {
-    Kill,
+    KillTot,
+    KillSomeone,
     Talk,
     Buy,
     EnterADoor

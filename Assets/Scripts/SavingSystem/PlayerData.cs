@@ -9,6 +9,7 @@ public class PlayerData
     public float[] position;
     public bool firstLaunch;
     // public int storyProgress;
+    public bool firstinventory;
 
     public PlayerData(Player player)
     {
@@ -33,6 +34,7 @@ public class PlayerData
             position[0] = player.transform.position.x;
             position[1] = player.transform.position.y;
             position[2] = player.transform.position.z;
+            firstinventory = GameController.Instance.storyController.FirstTime_inventory;
         }
     }
 

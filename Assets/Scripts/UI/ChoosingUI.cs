@@ -30,17 +30,41 @@ public class ChoosingUI : MonoBehaviour
 
             slotUIs.Add(obj);
         }
+
+        UpdateSelection();
+    }
+
+    void UpdateSelection()
+    {
+        for (int i = 0; i < slotUIs.Count; i++)
+        {
+            if (i == sel)
+                slotUIs[sel].text.color = GameController.Instance.selectedDefaultColor;
+            else
+                slotUIs[sel].text.color = GameController.Instance.unselectedDefaultColor;
+        }
     }
 
     public void HandleUpdate()
     {
+        var prev = sel;
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+            sel++;
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            --sel;
+
+        sel = Mathf.Clamp(sel, 0, slotUIs.Count-1);
+
+        if (prev != sel)
+            UpdateSelection();
+
         if(Input.GetKeyDown(KeyCode.X))
         {
             GameController.Instance.state = GameState.FreeRoam;
             gameObject.SetActive(false);
         }
 
-        if(Input.GetKeyDown(KeyCode.Z))
+        else if(Input.GetKeyDown(KeyCode.Z))
         {
             gameObject.SetActive(false);
             GameController.Instance.EnchUI.Open(slotUIs[sel].item);

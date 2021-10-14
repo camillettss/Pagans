@@ -87,11 +87,11 @@ public class ShopUI : MonoBehaviour
         {
             if(i==selected)
             {
-                shopUIs[i].nameTxt.color = Color.cyan;
+                shopUIs[i].nameTxt.color = GameController.Instance.selectedDefaultColor;
             }
             else
             {
-                shopUIs[i].nameTxt.color = Color.black;
+                shopUIs[i].nameTxt.color = GameController.Instance.unselectedDefaultColor;
             }
         }
 

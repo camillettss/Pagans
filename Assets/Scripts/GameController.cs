@@ -17,7 +17,6 @@ public class GameController : MonoBehaviour
     [SerializeField] EnchantingUI enchantingUI;
     [SerializeField] public Hotbar hotbar;
     [SerializeField] public SettingsUI settingsUI;
-    [SerializeField] ChestUI basicChestUI;
     [SerializeField] Volume ppv; // post processing volume
     [SerializeField] GameObject BattleScene;
     [SerializeField] public ChoosingUI choosingUI;
@@ -31,6 +30,10 @@ public class GameController : MonoBehaviour
 
     public DialogueManager dialogueBox;
     public QuestController questWindow;
+
+    public Color selectedDefaultColor;
+    public Color unselectedDefaultColor = Color.black;
+    public Color selectedOnBookColor;
 
     [HideInInspector] public GameState state = GameState.FreeRoam;
     [HideInInspector] public NPCController ActiveNPC;

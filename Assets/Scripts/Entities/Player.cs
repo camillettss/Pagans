@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
         }
 
         // Update quest goals
-        if(quest != null)
+        if(quest != null && quest.goal.Count > 0)
         {
             if(quest.goal[0].isReached())
             {
@@ -230,6 +230,7 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
         print("[*] is first launch: " + data.firstLaunch);
         isFirstLaunch = data.firstLaunch;
+        GameController.Instance.storyController.FirstTime_inventory = data.firstinventory;
     }
 
     public bool isInRange(IEntity entity, float radius=1.5f)

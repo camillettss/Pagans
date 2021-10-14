@@ -142,9 +142,9 @@ public class EquipmentUI : MonoBehaviour
             for(int i=0; i<slotUIs.Count; i++)
             {
                 if (i == pageSelected)
-                    slotUIs[i].nameTxt.color = Color.cyan;
+                    slotUIs[i].nameTxt.color = GameController.Instance.selectedDefaultColor;
                 else
-                    slotUIs[i].nameTxt.color = Color.black;
+                    slotUIs[i].nameTxt.color = GameController.Instance.unselectedDefaultColor;
             }
         }
     }

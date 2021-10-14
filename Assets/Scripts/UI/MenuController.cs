@@ -35,9 +35,9 @@ public class MenuController : MonoBehaviour
     void UpdateSelection()
     {
         foreach(Transform child in transform)
-            child.GetComponent<UnityEngine.UI.Text>().color = Color.black;
+            child.GetComponent<UnityEngine.UI.Text>().color = GameController.Instance.unselectedDefaultColor;
         
-        transform.GetChild(selected).GetComponent<UnityEngine.UI.Text>().color = Color.cyan;
+        transform.GetChild(selected).GetComponent<UnityEngine.UI.Text>().color = GameController.Instance.selectedDefaultColor;
     }
 
     void Perform(int choosen)

@@ -17,6 +17,8 @@ public class Portal : MonoBehaviour
         if(Player.i.quest != null)
         {
             Player.i.quest.goal[0].DoorEntered(this);
+            if (destination == Locations.Cave1)
+                StartCoroutine(GameController.Instance.storyController.EnteredCave());
         }
         GameController.Instance.player.transform.position = destPortal.spawnPoint.position;
 

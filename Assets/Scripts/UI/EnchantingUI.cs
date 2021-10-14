@@ -116,9 +116,9 @@ public class EnchantingUI : MonoBehaviour
         for(int i=0; i<slotUIs.Count; i++)
         {
             if (i == selected)
-                slotUIs[i].nameTxt.color = Color.cyan;
+                slotUIs[i].nameTxt.color = GameController.Instance.selectedDefaultColor;
             else
-                slotUIs[i].nameTxt.color = Color.black;
+                slotUIs[i].nameTxt.color = GameController.Instance.unselectedDefaultColor;
         }
     }
 
@@ -127,9 +127,9 @@ public class EnchantingUI : MonoBehaviour
         for(int i=0; i<CircleSlots.transform.childCount; i++) 
         {
             if (i == slotSelected)
-                CircleSlots.transform.GetChild(i).GetComponent<Image>().color = Color.cyan;
+                CircleSlots.transform.GetChild(i).GetComponent<Image>().color = GameController.Instance.selectedDefaultColor;
             else
-                CircleSlots.transform.GetChild(i).GetComponent<Image>().color = Color.black;
+                CircleSlots.transform.GetChild(i).GetComponent<Image>().color = GameController.Instance.unselectedDefaultColor;
         }
     }
     public void HandleUpdate()

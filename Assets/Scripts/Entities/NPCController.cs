@@ -160,7 +160,7 @@ public class NPCController : MonoBehaviour, IEntity
         if (Player.i.isInRange(this))
             PointToPlayer();
 
-        if(isAttacking)
+        /*if(isAttacking)
         {
             if(DistanceFromPlayer() < 3.0f)
             {
@@ -185,7 +185,7 @@ public class NPCController : MonoBehaviour, IEntity
                 isDistanceCheck = false;
                 timeLeft = 3.0f;
             }
-        }
+        }*/
     }
 
     // Animation event
@@ -196,7 +196,7 @@ public class NPCController : MonoBehaviour, IEntity
 
     float DistanceFromPlayer()
     {
-        return Vector2.Distance(GameController.Instance.player.transform.position, transform.position);
+        return Vector2.Distance(Player.i.transform.position, transform.position);
     }
 
     void onDie()
@@ -259,6 +259,7 @@ public class NPCController : MonoBehaviour, IEntity
         if (HP <= 0)
         {
             Destroy(gameObject);
+            onDie();
         }
     }
 

@@ -22,6 +22,7 @@ public class SceneDetails : MonoBehaviour
         if(collision.tag == "Player")
         {
             print($"entered {gameObject.name}");
+
             /*LoadScene();
 
             foreach(var scene in connectedScenes)
@@ -32,7 +33,10 @@ public class SceneDetails : MonoBehaviour
             light.color = lightColor;
             light.intensity = lightBrightness;
 
-            FindObjectOfType<Player>().currentScene = this;
+            Player.i.currentScene = this;
+
+            if (gameObject.name != "Midgardr")
+                NotificationsUI.i.AddNotification("entered " + gameObject.name);
         }
     }
 

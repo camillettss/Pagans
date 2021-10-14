@@ -20,8 +20,11 @@ public class StoryController : MonoBehaviour
     [SerializeField] SceneDetails Asgardr;
     List<SceneDetails> allScenes;
 
-    bool FirstTime_inventory = true;
+    [SerializeField] Quest CaveQuest;
+
+    public bool FirstTime_inventory = true;
     public bool talkedWithAsbjorn = false;
+    public bool firstTimeInCave = true;
 
     private void Awake()
     {
@@ -57,23 +60,6 @@ public class StoryController : MonoBehaviour
         });
     }
 
-    public IEnumerator UlfrDialogueDone()
-    {
-        yield return new WaitForSeconds(.5f);
-        GameController.Instance.dialogueBox.StartDialogue(new Dialogue(new string[]
-        {
-            "avrai molte cose da fare, purtroppo questa versione è solo una trial quindi dovrai aspettare per partire verso Asgardr.",
-            "per tua fortuna c'è molto da fare anche in questa piccola città.",
-            "adesso vai dal fabbro e compra qualcosa, sei libero di fare ciò che vuoi qui."
-        }),
-        () =>
-        {
-            Player.i.kents = 10;
-            //Player.i.QuestsContainer.Add(new Quest("le prime armi", "il mondo non è solo rosa e fiori. bisogna imparare a combattere.", 50, 5));
-            GameController.Instance.state = GameState.FreeRoam; // GameController.ShowMessage ha uno state switching automatico, qui passa sempre a Freeroam.
-            Player.i.isFirstLaunch = false;
-        });
-    }
 
     public IEnumerator AsbjornQuestAccepted()
     {
@@ -91,5 +77,54 @@ public class StoryController : MonoBehaviour
             GameController.Instance.ShowMessage("Questo è l'inventario. qui troverai consumabili e oggetti utili.");
             FirstTime_inventory = false;
         }
+    }
+    public IEnumerator UlfrDialogueDone()
+    {
+        yield return new WaitForSeconds(.5f);
+        GameController.Instance.dialogueBox.StartDialogue(new Dialogue(new string[]
+        {
+            "avrai molte cose da fare, purtroppo questa versione è solo una trial quindi dovrai aspettare per partire verso Asgardr.",
+            "per tua fortuna c'è molto da fare anche in questa piccola città.",
+            "verso le montagne a nord c'è una caverna. per raggiungerla usa la minimappa (tieni premuto Q mentre esplori)."
+        }),
+        () =>
+        {
+            Player.i.kents = 10;
+            GameController.Instance.state = GameState.FreeRoam; // GameController.ShowMessage ha uno state switching automatico, qui no.
+
+            Player.i.QuestsContainer.Add(CaveQuest);
+            Player.i.AcceptQuest(CaveQuest);
+        });
+    }
+
+
+    public IEnumerator EnteredCave()
+    {
+        if(firstTimeInCave)
+        {
+            yield return new WaitForSeconds(0.2f);
+            GameController.Instance.ShowMessage(new string[]
+            {
+                "QUELLO E' UN ENT!",
+                "gli ent sono delle creature del bosco. da grandi sono enormi alberi capaci di muoversi, ma da piccoli beh.. eccoli qua.",
+                "puoi stordirlo a distanza con l'arco premendo [TASTO], altrimenti avvicinati e usa la spada.",
+                "per farlo vai nell'equipaggiamento aprendo l'inventario e poi premendo Tab, così potrai cambiare velocemente fra Zaino, Equipaggiamento e Quests.",
+                "seleziona la tipologia di arma che intendi vedere con Z, poi usa lo stesso tasto per scegliere l'arma da equipaggiare."
+            });
+            firstTimeInCave = false;
+        }
+        else
+            yield return null;
+    }
+
+    public IEnumerator FinalDialogue()
+    {
+        yield return new WaitForSeconds(0.3f);
+        GameController.Instance.ShowMessage(new string[]
+        {
+            "Ce l'hai fatta! purtroppo il tutorial finisce qui, ma ci sono moltissime altre funzionalità di gioco come il commercio, la magia, la pesca o l'agricoltura",
+            "potrai scoprirle da solo, tutte quante. adesso puoi esplorare liberamente."
+        });
+        firstLaunch = false;
     }
 }
