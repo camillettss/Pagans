@@ -62,11 +62,6 @@ public class NPCController : MonoBehaviour, IEntity
         GameController.Instance.ActiveNPC = this;
         if (type == NPCType.Talking || type == NPCType.ComplexQuestGiver || type == NPCType.QuestGiver || type == NPCType.TalkAndGive)
             TriggerDialogue();
-
-        if(type == NPCType.TalkAndGive)
-        {
-            player.inventory.Add(drop);
-        }
     }
 
     public void TriggerDialogue()

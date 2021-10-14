@@ -202,11 +202,6 @@ public class Player : MonoBehaviour
                 animator.SetBool("Attacking", true);
             }
         }
-
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            GetFrontalCollider(farmingLayer).GetComponent<Plant>().Grow();
-        }
     }
 
     private void OnDrawGizmosSelected()

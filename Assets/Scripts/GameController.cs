@@ -1,9 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using System;
-using TMPro;
 using UnityEngine.Rendering;
 
 public enum GameState { FreeRoam, Menu, Settings, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Battle, ChoosingItem };

@@ -608,6 +608,11 @@ PrefabInstance:
       propertyPath: LaunchStory
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5379045465332533998, guid: 8f267ce035dcbc146a50a5715e515f90,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5379045465510515566, guid: 8f267ce035dcbc146a50a5715e515f90,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1037,7 +1042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedScenes: []
   light: {fileID: 1417378506}
-  lightBrightness: 1
+  lightBrightness: 0.3
   lightColor: {r: 1, g: 1, b: 1, a: 0}
   lights: []
   outdoor: 0
@@ -1185,7 +1190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedScenes: []
   light: {fileID: 1417378506}
-  lightBrightness: 1
+  lightBrightness: 0.4
   lightColor: {r: 1, g: 1, b: 1, a: 0}
   lights: []
   outdoor: 0
