@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e67be4e9796aa554ba07953bb9938d7a, type: 3}
-  m_Name: arrow-wood
+  m_Script: {fileID: 11500000, guid: 5f11ccdbd1f674d48a53cea37ea3a007, type: 3}
+  m_Name: IronBow
   m_EditorClassIdentifier: 
-  Name: wooden arrow
-  description: a stick and a stone.
-  icon: {fileID: 21300000, guid: 6d14e68add0530d459de5b49e47dc169, type: 3}
+  Name: iron bow
+  description: wow.
+  price: 5
+  icon: {fileID: 21300000, guid: 78f063b314234c24491dace7fed946a3, type: 3}
   closeDamage: 0
-  longDamage: 1
+  longDamage: 6
   Defense: 0
   dust: {fileID: 0}
-  category: -2
+  category: 0

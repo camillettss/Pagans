@@ -85,23 +85,23 @@ public class NPCController : MonoBehaviour, IEntity
                     
                 }
 
-                if (Name == "Asbjorn" && !done)
+                if (Name == "Asbjorn" && !done && GameController.Instance.storyController.firstLaunch)
                 {
                     GameController.Instance.storyController.talkedWithAsbjorn = true;
                     StartCoroutine(GameController.Instance.storyController.AsbjornDialogueDone());
                 }
 
-                else if (Name == "Ulfr" && !done && GameController.Instance.storyController.talkedWithAsbjorn)
+                else if (Name == "Ulfr" && !done && GameController.Instance.storyController.talkedWithAsbjorn && GameController.Instance.storyController.firstLaunch)
                     StartCoroutine(GameController.Instance.storyController.UlfrDialogueDone());
 
                 GameController.Instance.state = GameState.FreeRoam;
 
-                if(Player.i.quest != null)
+                if(Player.i.quest.goal != null)
                     Player.i.quest.goal[0].NPCTalked(this);
 
                 done = true;
 
-                if (Name == "Ulfr" && !GameController.Instance.storyController.talkedWithAsbjorn)
+                if (Name == "Ulfr" && !GameController.Instance.storyController.talkedWithAsbjorn && GameController.Instance.storyController.firstLaunch)
                     done = false;
             });
         }
@@ -109,12 +109,22 @@ public class NPCController : MonoBehaviour, IEntity
         {
             if(dialoguesQueue.Count>0)
             {
-                GameController.Instance.dialogueBox.StartDialogue(new Dialogue(dialoguesQueue[0]), () => { GameController.Instance.state = GameState.FreeRoam; Player.i.quest.goal[0].NPCTalked(this); });
+                GameController.Instance.dialogueBox.StartDialogue(new Dialogue(dialoguesQueue[0]), () =>
+                {
+                    GameController.Instance.state = GameState.FreeRoam;
+                    if(Player.i.quest.goal != null)
+                        Player.i.quest.goal[0].NPCTalked(this);
+                });
                 dialoguesQueue.RemoveAt(0);
             }
             else
             {
-                GameController.Instance.dialogueBox.StartDialogue(dialoguesAfterWork[i], () => { GameController.Instance.state = GameState.FreeRoam; Player.i.quest.goal[0].NPCTalked(this); });
+                GameController.Instance.dialogueBox.StartDialogue(dialoguesAfterWork[i], () =>
+                {
+                    GameController.Instance.state = GameState.FreeRoam;
+                    if(Player.i.quest.goal != null)
+                        Player.i.quest.goal[0].NPCTalked(this);
+                });
                 i++;
                 if (i >= dialoguesAfterWork.Count)
                     i = 0;
@@ -201,7 +211,7 @@ public class NPCController : MonoBehaviour, IEntity
 
     void onDie()
     {
-        if (GameController.Instance.player.quest != null)
+        if (GameController.Instance.player.quest != null && Player.i.quest.goal != null)
         {
             GameController.Instance.player.quest.goal[0].EnemyKilled(this);
         }
@@ -209,7 +219,7 @@ public class NPCController : MonoBehaviour, IEntity
 
     public void onTalk()
     {
-        if(GameController.Instance.player.quest != null)
+        if(GameController.Instance.player.quest != null && Player.i.quest.goal != null)
         {
             GameController.Instance.player.quest.goal[0].NPCTalked(this);
         }
@@ -230,9 +240,9 @@ public class NPCController : MonoBehaviour, IEntity
     public void AcceptQuest()
     {
         GameController.Instance.questWindow.gameObject.SetActive(false);
-        FindObjectOfType<Player>().QuestsContainer.Add(quest);
+        Player.i.QuestsContainer.Add(quest);
         quest.isActive = true;
-        FindObjectOfType<Player>().quest = quest;
+        Player.i.quest = quest;
         GameController.Instance.state = GameState.FreeRoam;
     }
 

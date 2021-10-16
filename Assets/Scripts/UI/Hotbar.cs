@@ -5,40 +5,29 @@ using UnityEngine.UI;
 
 public class Hotbar : MonoBehaviour
 {
-    public List<Image> itemSlots;
-    Player player;
+    [SerializeField] Image equipedSlot; // Image interne
+    [SerializeField] Image secondarySlot;
 
-    [SerializeField] Sprite torchBG;
-    [SerializeField] Sprite weaponBG;
-    [SerializeField] Sprite equipedBG;
-    [SerializeField] Sprite arrowBG;
+    [SerializeField] Sprite nothingEquiped;
+
+    Inventory inventory;
 
     private void Start()
     {
-        player = GameController.Instance.player;
+        inventory = Player.i.inventory;
+        UpdateItems();
     }
 
     public void UpdateItems()
     {
-        if (player.inventory.torch != null)
-            itemSlots[0].sprite = player.inventory.torch.icon;
+        if (inventory.equipedWeapon == -1)
+            equipedSlot.sprite = nothingEquiped;
         else
-            itemSlots[0].sprite = torchBG;
+            equipedSlot.sprite = inventory.Weapons[inventory.equipedWeapon].item.icon;
 
-        if (player.equipedItem != null && player.equipedItem.item != null)
-            itemSlots[1].sprite = player.equipedItem.item.icon;
+        if (inventory.secondaryWeapon == -1)
+            secondarySlot.sprite = nothingEquiped;
         else
-            itemSlots[1].sprite = equipedBG;
-
-        if (player.inventory.getEquiped("weapon") != null)
-            itemSlots[2].sprite = player.inventory.getEquiped("weapon").item.icon;
-        else
-            itemSlots[2].sprite = weaponBG;
-
-        if (player.inventory.getEquiped("arrow") != null)
-            itemSlots[3].sprite = player.inventory.getEquiped("arrow").item.icon;
-        else
-            itemSlots[3].sprite = arrowBG;
-
+            secondarySlot.sprite = inventory.Weapons[inventory.secondaryWeapon].item.icon;
     }
 }

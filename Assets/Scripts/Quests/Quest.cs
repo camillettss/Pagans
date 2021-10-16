@@ -17,8 +17,8 @@ public class Quest
     public NPCController giver;
 
     public List<QuestGoal> goal;
-
-    public Quest(string title, string description, int expReward, int goldReward, List<QuestGoal> goals, string successReaction = "ottimo!", NPCController giver = null)
+    
+    /*public Quest(string title, string description, int expReward, int goldReward, List<QuestGoal> goals, string successReaction = "ottimo!", NPCController giver = null)
     {
         this.title = title;
         this.description = description;
@@ -30,7 +30,7 @@ public class Quest
         this.giver = giver;
 
         this.goal = goals;
-    }
+    }*/
 
     public void Complete()
     {

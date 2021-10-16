@@ -66,11 +66,11 @@ public class InventoryUI : MonoBehaviour
         {
             if(i == selectedItm)
             {
-                slotUIs[i].nameTxt.color = Color.cyan;
+                slotUIs[i].nameTxt.color = GameController.Instance.selectedOnBookColor;
             }
             else
             {
-                slotUIs[i].nameTxt.color = Color.black;
+                slotUIs[i].nameTxt.color = GameController.Instance.unselectedDefaultColor;
             }
         }
 

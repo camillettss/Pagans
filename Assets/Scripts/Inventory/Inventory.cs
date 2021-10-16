@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour
 
     [Header("equiped type index")]
     public int equipedWeapon = -1;
+    public int secondaryWeapon = -1;
     public int equipedRing = -1;
     public int equipedShield = -1;
     public int equipedTool = 0; // -1 stands for null
@@ -35,8 +36,8 @@ public class Inventory : MonoBehaviour
     {
         allSlots = new List<List<InventorySlot>> { itemSlots, consumableSlots };
         Equipment = new List<List<InventorySlot>>() {Weapons, Tools, Shields, Rings };
-        equips = new List<int>() { equipedWeapon, equipedTool, equipedShield, equipedRing }; // è completamente inutile, dovrebbe essere una lista di puntatori.
-        // wp, tool, shield, ring
+        updateEquipsList(); // dovrebbe essere una lista di puntatori..
+        // wp, tool, shield, ring, secondary
     }
 
     public static List<string> Categories = new List<string>
@@ -44,6 +45,11 @@ public class Inventory : MonoBehaviour
         "ITEMS",
         "CONSUMABLES"
     };
+
+    void updateEquipsList()
+    {
+        equips = new List<int>() { equipedWeapon, equipedTool, equipedShield, equipedRing, secondaryWeapon };
+    }
 
     public List<InventorySlot> GetSlots(int cat)
     {
@@ -82,6 +88,9 @@ public class Inventory : MonoBehaviour
 
     public void Equip(int itype, int val)
     {
+        if (itype == 4)
+            print("lesgoo");
+
         if (itype == 0)
             equipedWeapon = val;
         else if (itype == 1)
@@ -90,8 +99,13 @@ public class Inventory : MonoBehaviour
             equipedShield = val;
         else if (itype == 3)
             equipedRing = val;
+        else if (itype == 4)
+            secondaryWeapon = val;
         else
             return;
+        
+
+        updateEquipsList();
     }
 
     public void Add(ItemBase item)
@@ -124,6 +138,7 @@ public class Inventory : MonoBehaviour
             }
         }
         NotificationsUI.i.AddNotification($"took {item.Name}");
+        updateEquipsList();
     }
 
     public void Remove(ItemBase item)
@@ -140,12 +155,15 @@ public class Inventory : MonoBehaviour
         {
             print("bruh tf");
         }
+
+        updateEquipsList();
             
     }
 
     public void RemoveAt(int cat, int sel)
     {
         GetSlots(cat).RemoveAt(sel);
+        updateEquipsList();
     }
 
     bool alreadyInStock(ItemBase item)

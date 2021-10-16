@@ -47,6 +47,7 @@ public class EquipmentUI : MonoBehaviour
 
             slotUIs.Add(obj);
         }
+        UpdateSelection();
     }
 
     public void HandleUpdate()
@@ -59,6 +60,7 @@ public class EquipmentUI : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.X))
             {
                 gameObject.SetActive(false);
+                GameController.Instance.hotbar.UpdateItems();
                 GameController.Instance.state = GameState.FreeRoam;
             }
 
@@ -94,18 +96,36 @@ public class EquipmentUI : MonoBehaviour
             }
             else if(Input.GetKeyDown(KeyCode.Z))
             {
-                // Equip
-                inventory.Equip(selected, pageSelected); // servivano i puntatori
-                slotUIs[pageSelected].item.onEquip();
-                print($"setted: {inventory.equips[selected]} to {pageSelected}");
-
-                /*
-                 * inventory.equips[selected] = pageSelected;
-                // set equips[index] al valore corrispondente ad item IN INVENTORY.EQUIPMENT, equips tiene l'indice dentro le sublists di equipment.
-                print($"setted equips[] to {pageSelected}, that matches with: {inventory.Equipment[selected][pageSelected].item.Name}");
-                // now update hotbars data
-                GameController.Instance.hotbar.UpdateItems();
-                 */
+                if(inventory.equips[selected] != pageSelected)
+                {
+                    // Equip
+                    inventory.Equip(selected, pageSelected); // servivano i puntatori
+                    slotUIs[pageSelected].item.onEquip();
+                    UpdateSelection();
+                }
+                else
+                {
+                    // Unequip
+                    inventory.Equip(selected, -1);
+                    UpdateSelection();
+                }
+            }
+            
+            if(Input.GetKeyDown(KeyCode.S))
+            {
+                if (inventory.equips[4] != pageSelected)
+                {
+                    // Equip as secondary
+                    if (selected == 0)
+                        inventory.Equip(4, pageSelected);
+                    UpdateSelection();
+                }
+                else
+                {
+                    // Unequip
+                    inventory.Equip(4, -1);
+                    UpdateSelection();
+                }
             }
             /*
             else if (Input.GetKeyDown(KeyCode.E))
@@ -142,9 +162,24 @@ public class EquipmentUI : MonoBehaviour
             for(int i=0; i<slotUIs.Count; i++)
             {
                 if (i == pageSelected)
-                    slotUIs[i].nameTxt.color = GameController.Instance.selectedDefaultColor;
+                {
+                    if (inventory.equips[selected] == pageSelected)
+                        slotUIs[i].nameTxt.color = GameController.Instance.equipedSelectedColor;
+                    else if (inventory.secondaryWeapon == pageSelected)
+                        slotUIs[i].nameTxt.color = GameController.Instance.secondarySelectedColor;
+                    else
+                        slotUIs[i].nameTxt.color = GameController.Instance.selectedOnBookColor; // Alternativa di colore
+                }
+
                 else
-                    slotUIs[i].nameTxt.color = GameController.Instance.unselectedDefaultColor;
+                {
+                    if (inventory.equips[selected] == i)
+                        slotUIs[i].nameTxt.color = GameController.Instance.equipedDefaultColor;
+                    else if(inventory.secondaryWeapon == i)
+                        slotUIs[i].nameTxt.color = GameController.Instance.secondaryDefaultColor;
+                    else
+                        slotUIs[i].nameTxt.color = GameController.Instance.unselectedDefaultColor;
+                }
             }
         }
     }

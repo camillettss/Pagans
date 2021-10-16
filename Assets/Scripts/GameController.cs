@@ -31,9 +31,16 @@ public class GameController : MonoBehaviour
     public DialogueManager dialogueBox;
     public QuestController questWindow;
 
+    // basic
     public Color selectedDefaultColor;
     public Color unselectedDefaultColor = Color.black;
     public Color selectedOnBookColor;
+    // firsts
+    public Color equipedDefaultColor;
+    public Color equipedSelectedColor;
+    // secondaries
+    public Color secondaryDefaultColor;
+    public Color secondarySelectedColor;
 
     [HideInInspector] public GameState state = GameState.FreeRoam;
     [HideInInspector] public NPCController ActiveNPC;
@@ -46,13 +53,11 @@ public class GameController : MonoBehaviour
     {
         Instance = this;
         storyController = GetComponent<StoryController>();
-        
     }
 
     private void Start()
     {
         //hotbar.UpdateItems();
-        hotbar.gameObject.SetActive(false);
         MinimapCanvas.SetActive(false);
         ppv = gameObject.GetComponent<Volume>();
         player.Load();

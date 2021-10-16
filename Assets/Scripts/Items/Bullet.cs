@@ -15,7 +15,9 @@ public class Bullet : MonoBehaviour
 
         if(collision.collider.TryGetComponent(out IEntity npc))
         {
+            print("shooting, from bullet");
             var bow = Player.i.inventory.Weapons[Player.i.inventory.equipedWeapon].item;
+            print("ur bow is:" + bow);
             bow.Use(Player.i, npc, bow.GetLongDamage());
 
             /*
@@ -24,7 +26,7 @@ public class Bullet : MonoBehaviour
             print($"arrow found: {eqArrow}");
             eqArrow.Use(FindObjectOfType<Player>(), npc, eqArrow.GetLongDamage()); // Usa la freccia equipaggiata
             */
-        }
+        } 
     }
 
     private void Update()

@@ -39,7 +39,7 @@ public class StoryController : MonoBehaviour
         if(firstLaunch)
         {
             GameController.Instance.ShowMessage(new string[] {
-                "benvenuto, questo è Pagans ed ora sei a midgardr. premi Z per continuare.",
+                "benvenuto, questo è Pagans ed ora sei a midgardr.",
                 "piccolo appunto, generalmente si usa Z per confermare e X per annullare. non dimenticarlo o sarà molto divertente.",
                 "tornando a noi, quell'omino vestito di rosso si chiama Asbjorn, vai a fargli una visita e premi Z per parlargli, ha qualcosa da dirti."
             });
@@ -107,9 +107,9 @@ public class StoryController : MonoBehaviour
             {
                 "QUELLO E' UN ENT!",
                 "gli ent sono delle creature del bosco. da grandi sono enormi alberi capaci di muoversi, ma da piccoli beh.. eccoli qua.",
-                "puoi stordirlo a distanza con l'arco premendo [TASTO], altrimenti avvicinati e usa la spada.",
-                "per farlo vai nell'equipaggiamento aprendo l'inventario e poi premendo Tab, così potrai cambiare velocemente fra Zaino, Equipaggiamento e Quests.",
-                "seleziona la tipologia di arma che intendi vedere con Z, poi usa lo stesso tasto per scegliere l'arma da equipaggiare."
+                "vai nel tuo equipaggiamento, per farlo apri lo zaino e premi TAB. questo tasto serve per cambiare pagina.",
+                "ora seleziona la categoria delle armi con Z. poi usa Z su un'arma per equipaggiarla come primaria ed S per farlo come secondaria.",
+                "quei quadrati in basso a destra nella schermata di gioco servono a mostrarti quali armi hai impostato. premi T per scambiarli e R per usare quello equipaggiato!"
             });
             firstTimeInCave = false;
         }

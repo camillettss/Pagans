@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] public LayerMask farmingLayer;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Text questUI;
+    [SerializeField] Image ActiveQuestBG;
     [SerializeField] public Light2D torchLight;
     [SerializeField] Transform attackPoint;
     [SerializeField] float attackRange;
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public int experience=0;
     [HideInInspector] public int hp = 10;
 
-    [HideInInspector] public Quest quest;
+    [HideInInspector] public Quest quest = null;
     [HideInInspector] public static Player i;
     [HideInInspector] public Inventory inventory;
     [HideInInspector] public InventorySlot equipedItem = null;
@@ -107,29 +108,22 @@ public class Player : MonoBehaviour
         }
 
         // Update quest goals
-        if(quest != null && quest.goal.Count > 0)
+        if(quest != null && (quest.goal != null || quest.goal.Count > 0))
         {
             if(quest.goal[0].isReached())
             {
-                quest.goal.RemoveAt(0);
-                if(quest.goal.Count == 0)
-                {
+                if (quest.goal.Count == 1)
                     quest.Complete();
-                }
                 else
-                {
-                    UpdateQuestUI();
-                }
+                    quest.goal.RemoveAt(0);
+
+                UpdateQuestUI();
             }
         }
 
-        if (quest != null)
-            if (quest.goal[0].isReached() && quest.goal.Count == 1)
-                quest.Complete();
-
         // HANDLE INPUTS
 
-        // BINDS: E: use, Z: attack|interact, X: shield
+        // BINDS: E: use, Z: interact, X: shield
 
         // minimap show
         if (Input.GetKeyDown(KeyCode.Q) && canShowMinimap && !GameController.Instance.MinimapCanvas.activeSelf)
@@ -137,72 +131,93 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Q))
             GameController.Instance.MinimapCanvas.SetActive(false);
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            print("equiped:" + inventory.equipedTool);
-            if (inventory.equipedTool != -1)
-                inventory.Tools[inventory.equipedTool].item.Use(this);
-        }
-
         if (Input.GetKeyDown(KeyCode.Z)) // Interact
         {
-            // if possible interact with an npc, else use the equiped item. Altar has the first priority.
-            if(activeAltar != null)
-            {
+            // use altar, else interact.
+            if (activeAltar != null)
                 StartCoroutine(activeAltar.Use());
-            }
             else
-            {
-                try
-                {
-                    var front = GetFrontalCollider();
-                    if (front.TryGetComponent(out NPCController npc))
-                    {
-                        if (npc.type == NPCType.Enemy)
-                            throw new System.NullReferenceException();
-
-                        npc.Interact(this);
-                    }
-                    else if (front.TryGetComponent(out IEntity entity))
-                    {
-                        entity.Interact(this);
-                    }
-                }
-                catch (System.NullReferenceException)
-                {
-                    print(inventory.equipedWeapon);
-                    if (inventory.equipedWeapon != -1)
-                        inventory.Weapons[inventory.equipedWeapon].item.Use(this); // trova l'arma e usala
-                }
-            }
-            
+                interact();
         }
-
-        if(Input.GetKeyDown(KeyCode.P)) // test feature key
-        {
-            
-        }
-
 
         if (Input.GetKeyDown(KeyCode.Space) && inventory.torch != null && !currentScene.outdoor) // Toggle torch
             inventory.torch.Use(this);
 
         if (Input.GetKeyDown(KeyCode.Return)) // Menu
-        {
-            moveInput = Vector2.zero;
-            GameController.Instance.OpenState(GameState.Menu); // PERCHE MOSTRA SWORD NEL ENCHUI?????
-        }
+            GameController.Instance.OpenState(GameState.Menu);
 
-        if (Input.GetKeyDown(KeyCode.T)) // Bow
+        if (Input.GetKeyDown(KeyCode.R)) // Attack
         {
-            if(!animator.GetBool("Attacking"))
+            if(inventory.equipedWeapon != -1)
             {
-                // this only start animation cuz this HandleUpdate() wait for animation to complete for shooting a bullet.
-                attackCounter = attackTime;
-                animator.SetBool("Attacking", true);
+                if (inventory.Weapons[inventory.equipedWeapon].item.longDamage == 0) // arma da vicino (spada)
+                    useWeapon();
+                else
+                    useBow();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.E)) // Use
+            useItem();
+
+        if (Input.GetKeyDown(KeyCode.G)) // Shield
+            useShield();
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            var temp = inventory.equipedWeapon;
+            inventory.equipedWeapon = inventory.secondaryWeapon;
+            inventory.secondaryWeapon = temp;
+            GameController.Instance.hotbar.UpdateItems();
+        }
     }
+
+    void useWeapon()
+    {
+        print(inventory.equipedWeapon);
+        if (inventory.equipedWeapon != -1)
+            inventory.Weapons[inventory.equipedWeapon].item.Use(this); // trova l'arma e usala
+    }
+
+    void useBow()
+    {
+        
+        if (!animator.GetBool("Attacking"))
+        {
+            // this only start animation cuz this HandleUpdate() wait for animation to complete for shooting a bullet.
+            attackCounter = attackTime;
+            animator.SetBool("Attacking", true);
+        }
+    }
+
+    void useShield()
+    {
+        print("Using the shield");
+    }
+
+    void useItem()
+    {
+        print("equiped:" + inventory.equipedTool);
+        if (inventory.equipedTool != -1)
+            inventory.Tools[inventory.equipedTool].item.Use(this);
+    }
+
+    void interact()
+    {
+        var front = GetFrontalCollider();
+        if (front.TryGetComponent(out NPCController npc))
+        {
+            if (npc.type == NPCType.Enemy)
+                throw new System.NullReferenceException();
+
+            npc.Interact(this);
+        }
+        else if (front.TryGetComponent(out IEntity entity))
+        {
+            entity.Interact(this);
+        }
+    }
+
 
     private void OnDrawGizmosSelected()
     {
@@ -245,13 +260,21 @@ public class Player : MonoBehaviour
 
     public void UpdateQuestUI()
     {
-        if(quest!=null)
+        if(quest!=null && quest.goal != null)
         {
+            // enable quests on hud cuz instead of removing text now i'll turn off the container gameobj.
+            ActiveQuestBG.gameObject.SetActive(true);
+
+            // now set text
             questUI.text = quest.goal[0].goal;
+
+            if(quest.goal[0].goal == "")
+                ActiveQuestBG.gameObject.SetActive(false);
         }
         else
         {
-            questUI.text = "";
+            // only disable background image
+            ActiveQuestBG.gameObject.SetActive(false);
         }
     }
 

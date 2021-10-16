@@ -20,7 +20,8 @@ public class QuestGoal
     [ConditionalField(nameof(goalType), false, GoalType.Buy)] [SerializeField] string sellerName;
     [ConditionalField(nameof(goalType), false, GoalType.Buy)] [SerializeField] string itemName;
 
-    [ConditionalField(nameof(goalType), false, GoalType.EnterADoor)] [SerializeField] string PortalName; 
+    [ConditionalField(nameof(goalType), false, GoalType.EnterADoor)] [SerializeField] string PortalName;
+
     public bool isReached()
     {
         if (goalType == GoalType.KillTot)
