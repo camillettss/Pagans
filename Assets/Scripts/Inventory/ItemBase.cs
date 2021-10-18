@@ -7,8 +7,11 @@ public abstract class ItemBase : ScriptableObject
 {
     public string Name;
     public string description;
+    public string presentationDesc = "a new item.";
     public int price = 5;
     public Sprite icon;
+
+    public bool discovered = false;
 
     [Header("Equipment")]
     public int closeDamage;
@@ -58,6 +61,11 @@ public abstract class ItemBase : ScriptableObject
         foreach (var rune in runes.OnlyFilledSlots())
             res += rune.closeDmgAmount;
         return res;
+    }
+
+    public int GetDefense()
+    {
+        return Defense;
     }
 
 }

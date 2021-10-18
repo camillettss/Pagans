@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     [SerializeField] public ChoosingUI choosingUI;
     [SerializeField] public GameObject MinimapCanvas;
     [SerializeField] public bool LaunchStory;
+    [SerializeField] public doorKeyUI keyUI;
+    [SerializeField] public GameObject sparksParticle;
 
     [SerializeField] bool ResetOnEnd = false;
 
@@ -30,6 +32,7 @@ public class GameController : MonoBehaviour
 
     public DialogueManager dialogueBox;
     public QuestController questWindow;
+    public NewItemUI newItemUI;
 
     // basic
     public Color selectedDefaultColor;
@@ -63,10 +66,7 @@ public class GameController : MonoBehaviour
         player.Load();
         if (LaunchStory)
         {
-            if (player.isFirstLaunch)
-                StartCoroutine(launchStory());
-            else
-                storyController.Midgardr.LoadSceneAsMain();
+            StartCoroutine(launchStory());
         }
         else
             storyController.Midgardr.LoadSceneAsMain();
@@ -81,10 +81,11 @@ public class GameController : MonoBehaviour
     private void OnDestroy()
     {
         print("destroying");
-        if (ResetOnEnd)
+        player.Save();
+        /*if (ResetOnEnd)
             SaveSystem.Reset();
         else
-            player.Save();
+            player.Save();*/
     }
 
     private void FixedUpdate()

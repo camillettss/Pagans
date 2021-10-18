@@ -91,7 +91,8 @@ public class EquipmentUI : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                UpdateContents();
+                ResetColors();
+                //UpdateContents();
                 page = 0;
             }
             else if(Input.GetKeyDown(KeyCode.Z))
@@ -145,6 +146,14 @@ public class EquipmentUI : MonoBehaviour
 
             if (prev != pageSelected)
                 UpdateSelection();
+        }
+    }
+
+    void ResetColors()
+    {
+        for(int i=0; i<slotUIs.Count; i++)
+        {
+            slotUIs[i].nameTxt.color = GameController.Instance.unselectedDefaultColor;
         }
     }
 

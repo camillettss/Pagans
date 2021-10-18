@@ -126,5 +126,6 @@ public class StoryController : MonoBehaviour
             "potrai scoprirle da solo, tutte quante. adesso puoi esplorare liberamente."
         });
         firstLaunch = false;
+        Player.i.isFirstLaunch = false;
     }
 }

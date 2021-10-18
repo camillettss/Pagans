@@ -9,13 +9,11 @@ public class GrowingDust : ItemBase
     public int fortune = 0;
     public override void Use(Player player)
     {
-        if(player.activePlant != null)
-        {
-            Debug.Log("using grow dust");
-            if (Random.Range(0, 100) < percentage + fortune)
-                player.activePlant.Grow();
+        Collider2D plant = Physics2D.OverlapCircle(player.attackPoint.position, player.plantRange, player.farmingLayer);
 
-            player.inventory.Remove(this); // Remove one
+        if(plant != null)
+        {
+            plant.GetComponent<Plant>().Grow();
         }
     }
 }

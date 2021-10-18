@@ -15,6 +15,9 @@ public class EnchantingUI : MonoBehaviour
     [SerializeField] Image GemIcon;
     [SerializeField] Image itemIcon;
 
+    [SerializeField] Sprite selectedCircle;
+    [SerializeField] Sprite deselectedCircle;
+
     [SerializeField] GameObject EntireScrollview;
     [SerializeField] GameObject CircleSlots;
 
@@ -127,9 +130,9 @@ public class EnchantingUI : MonoBehaviour
         for(int i=0; i<CircleSlots.transform.childCount; i++) 
         {
             if (i == slotSelected)
-                CircleSlots.transform.GetChild(i).GetComponent<Image>().color = GameController.Instance.selectedDefaultColor;
+                CircleSlots.transform.GetChild(i).GetComponent<Image>().sprite = selectedCircle;
             else
-                CircleSlots.transform.GetChild(i).GetComponent<Image>().color = GameController.Instance.unselectedDefaultColor;
+                CircleSlots.transform.GetChild(i).GetComponent<Image>().sprite = deselectedCircle;
         }
     }
     public void HandleUpdate()

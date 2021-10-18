@@ -1,18 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewItemUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Text itemName;
+    [SerializeField] Text itemDesc;
+    [SerializeField] Image itemIcon;
+
+    void UpdateView(ItemBase item)
     {
-        
+        itemName.text = item.Name;
+        itemDesc.text = item.presentationDesc;
+
+        itemIcon.sprite = item.icon;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Open(ItemBase item)
     {
-        
+        UpdateView(item);
+        gameObject.SetActive(true);
+        StartCoroutine(close());
+    }
+
+    IEnumerator close()
+    {
+        yield return new WaitForSeconds(3f);
+        gameObject.SetActive(false);
     }
 }

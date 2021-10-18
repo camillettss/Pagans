@@ -8,7 +8,7 @@ public class Plant : MonoBehaviour
     [SerializeField] ItemBase plant;
     int growState = 0;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         Player.i.activePlant = this;
     }
@@ -16,7 +16,7 @@ public class Plant : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         Player.i.activePlant = null;
-    }
+    }*/
 
     private void Start()
     {

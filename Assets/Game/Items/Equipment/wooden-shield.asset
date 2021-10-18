@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384587703e20b964291ae04e15cabb36, type: 3}
+  m_Name: wooden-shield
+  m_EditorClassIdentifier: 
+  Name: shield
+  description: l'antico scudo di thorinn
+  price: 5
+  icon: {fileID: 21300000, guid: 266ea92c53e46934da802262d609e278, type: 3}
+  closeDamage: 0
+  longDamage: 0
+  Defense: 2
+  dust: {fileID: 0}
+  category: 0

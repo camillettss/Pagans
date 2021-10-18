@@ -12,7 +12,9 @@ public class ShopUI : MonoBehaviour
 
     [SerializeField] Text itemName;
     [SerializeField] Text itemPrice;
-    [SerializeField] Text itemDescription;
+    [SerializeField] Text itemAmount;
+    [SerializeField] Text TotalPrice;
+    [SerializeField] Image itemIcon;
 
     [SerializeField] Text BalanceText;
 
@@ -21,6 +23,7 @@ public class ShopUI : MonoBehaviour
 
     int selected = 0;
     int category = 0;
+    int amount = 1;
 
     bool sellMode = false;
 
@@ -98,19 +101,30 @@ public class ShopUI : MonoBehaviour
         if (shopUIs.Count == 0)
         {
             itemName.text = "";
-            itemDescription.text = "there are no more items, for now.";
+            //itemDescription.text = "there are no more items, for now.";
             itemPrice.text = "";
+            itemAmount.text = "";
+            TotalPrice.text = "";
+            itemIcon.enabled = false;
             return;
         }
 
-        itemName.text = shopUIs[selected].item.Name;
-        itemDescription.text = shopUIs[selected].item.description;
-        itemPrice.text = shopUIs[selected].price.ToString();
+        if(shopUIs.Count > 0)
+        {
+            itemName.text = shopUIs[selected].item.Name;
+            itemPrice.text = $"{shopUIs[selected].item.price}";
+            itemAmount.text = $"{amount}";
+            itemPrice.text = shopUIs[selected].price.ToString();
+            TotalPrice.text = $"{shopUIs[selected].item.price*amount}";
+            itemIcon.enabled = true;
+            itemIcon.sprite = shopUIs[selected].item.icon;
+        }
     }
 
     public void HandleUpdate()
     {
         int prev = selected;
+        int prevcat = category;
         
         if(Input.GetKeyDown(KeyCode.X))
         {
@@ -123,14 +137,23 @@ public class ShopUI : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.UpArrow))
             --selected;
 
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            --category;
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+            ++category;
+
+        category = Mathf.Clamp(category, 0, 1);
         selected = Mathf.Clamp(selected, 0, shopUIs.Count - 1);
+
+        if (prevcat != category)
+            UpdateView();
 
         if (prev != selected)
             UpdateSelection();
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            var player = FindObjectOfType<Player>();
+            var player = Player.i;
             if(!sellMode)
             {
                 if (player.kents < shopUIs[selected].price)
@@ -139,6 +162,8 @@ public class ShopUI : MonoBehaviour
 
                 if(Player.i.quest.goal != null)
                     player.quest.goal[0].SomethingBought(trader, trader.inventory.GetSlots(category)[selected].item);
+
+                player.kents -= shopUIs[selected].price;
 
                 trader.inventory.RemoveAt(category, selected);
             }

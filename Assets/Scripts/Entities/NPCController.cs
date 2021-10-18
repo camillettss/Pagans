@@ -266,11 +266,31 @@ public class NPCController : MonoBehaviour, IEntity
         /*var miniNum = Instantiate(numPrefab, transform);
         miniNum.GetComponent<UnityEngine.UI.Text>().text = dmg.ToString();*/
 
+        if(type == NPCType.Enemy)
+        {
+            getKnockBack();
+        }
+
         if (HP <= 0)
         {
             Destroy(gameObject);
             onDie();
         }
+    }
+
+    IEnumerator getKnockBack()
+    {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(Player.i.animator.GetFloat("FacingHorizontal") * 15, Player.i.animator.GetFloat("FacingVertical") * 15);
+        yield return new WaitForFixedUpdate();
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    }
+
+    IEnumerator getMortalKnockBack()
+    {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(Player.i.animator.GetFloat("FacingHorizontal") * 20, Player.i.animator.GetFloat("FacingVertical") * 20);
+        yield return new WaitForSeconds(1f);
+        onDie();
+        Destroy(gameObject);
     }
 
     public void ShowSignal()

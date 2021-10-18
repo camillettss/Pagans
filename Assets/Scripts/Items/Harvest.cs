@@ -12,10 +12,11 @@ public class Harvest : ItemBase
     {
         if(type == HarvestingToolType.get)
         {
-            // raccoglie
-            if(player.activePlant != null)
+            Collider2D plant = Physics2D.OverlapCircle(player.attackPoint.position, player.plantRange, player.farmingLayer);
+
+            if (plant != null)
             {
-                player.activePlant.Take(player);
+                plant.GetComponent<Plant>().Take(player);
             }
         }
         else

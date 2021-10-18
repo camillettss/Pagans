@@ -110,6 +110,11 @@ public class Inventory : MonoBehaviour
 
     public void Add(ItemBase item)
     {
+        if(!item.discovered)
+        {
+            GameController.Instance.newItemUI.Open(item);
+            item.discovered = true;
+        }
         if (alreadyInStock(item))
             findItem(item).count += 1;
         else
@@ -166,7 +171,7 @@ public class Inventory : MonoBehaviour
         updateEquipsList();
     }
 
-    bool alreadyInStock(ItemBase item)
+    public bool alreadyInStock(ItemBase item)
     {
         foreach(var obj in GetSlots(item.category))
         {

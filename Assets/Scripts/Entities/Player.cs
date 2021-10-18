@@ -16,8 +16,9 @@ public class Player : MonoBehaviour
     [SerializeField] Text questUI;
     [SerializeField] Image ActiveQuestBG;
     [SerializeField] public Light2D torchLight;
-    [SerializeField] Transform attackPoint;
-    [SerializeField] float attackRange;
+    [SerializeField] public Transform attackPoint;
+    [SerializeField] public float attackRange;
+    public float plantRange;
 
     float moveLimiter = 0.7f;
     Rigidbody2D rb;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     float attackCounter;
     float arrowSpeed = 15f;
     bool toggleHotbar = false;
+    float walkingSpeedDefault = 5f;
 
     [HideInInspector] public int maxHp = 30;
 
@@ -39,9 +41,13 @@ public class Player : MonoBehaviour
     [HideInInspector] public InventorySlot equipedItem = null;
     [HideInInspector] public QuestInventory QuestsContainer;
     [HideInInspector] public Altar activeAltar = null;
-    [HideInInspector] public Plant activePlant = null;
+    //[HideInInspector] public Plant activePlant = null;
     [HideInInspector] public bool canMove = true;
     [HideInInspector] public bool canShowMinimap = true;
+    public Key keyToUse = null;
+    [HideInInspector] public Door closeDoor = null;
+
+    [HideInInspector] public int defense; // quando attaccano il danno subito è danno-defense 
 
     public SceneDetails currentScene;
     public bool SnapToGridMovments = false;
@@ -66,6 +72,11 @@ public class Player : MonoBehaviour
     {
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
+
+        if (animator.GetBool("holdingShield"))
+            speed = 2.5f;
+        else
+            speed = walkingSpeedDefault;
 
         if(moveInput != Vector2.zero)
         {
@@ -95,6 +106,11 @@ public class Player : MonoBehaviour
         }
 
         attackPoint.position = new Vector3(transform.position.x+animator.GetFloat("FacingHorizontal"), transform.position.y+animator.GetFloat("FacingVertical"), transform.position.z);
+
+        if (inventory.equipedShield != -1)
+            animator.SetBool("hasShield", true);
+        else
+            animator.SetBool("hasShield", false);
 
         if(animator.GetBool("Attacking")) // shoot on animation ends
         {
@@ -140,8 +156,8 @@ public class Player : MonoBehaviour
                 interact();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && inventory.torch != null && !currentScene.outdoor) // Toggle torch
-            inventory.torch.Use(this);
+        /*if (Input.GetKeyDown(KeyCode.Space) && inventory.torch != null && !currentScene.outdoor) // Toggle torch
+            inventory.torch.Use(this);*/
 
         if (Input.GetKeyDown(KeyCode.Return)) // Menu
             GameController.Instance.OpenState(GameState.Menu);
@@ -158,10 +174,35 @@ public class Player : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.E)) // Use
-            useItem();
+        {
+            if(GameController.Instance.keyUI.isActiveAndEnabled)
+            {
+                keyToUse.Use(this);
+                inventory.Remove(keyToUse);
+                closeDoor.Open();
+            } else
+            {
+                useItem();
+            }
+        }
 
-        if (Input.GetKeyDown(KeyCode.G)) // Shield
-            useShield();
+        if (Input.GetKeyDown(KeyCode.X)) // Shield
+        {
+            if(inventory.equipedShield != -1)
+            {
+                defense = inventory.Shields[inventory.equipedShield].item.GetDefense();
+                useShield();
+            }
+            
+        }
+        if (Input.GetKeyUp(KeyCode.X)) // off
+        {
+            if(inventory.equipedShield != -1)
+            {
+                defense = 0;
+                animator.SetBool("holdingShield", false);
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -174,6 +215,7 @@ public class Player : MonoBehaviour
 
     void useWeapon()
     {
+        rb.velocity = Vector2.zero;
         print(inventory.equipedWeapon);
         if (inventory.equipedWeapon != -1)
             inventory.Weapons[inventory.equipedWeapon].item.Use(this); // trova l'arma e usala
@@ -181,7 +223,7 @@ public class Player : MonoBehaviour
 
     void useBow()
     {
-        
+        rb.velocity = Vector2.zero;
         if (!animator.GetBool("Attacking"))
         {
             // this only start animation cuz this HandleUpdate() wait for animation to complete for shooting a bullet.
@@ -193,6 +235,8 @@ public class Player : MonoBehaviour
     void useShield()
     {
         print("Using the shield");
+        animator.SetBool("holdingShield", true);
+        animator.SetTrigger("useShield");
     }
 
     void useItem()
@@ -205,6 +249,10 @@ public class Player : MonoBehaviour
     void interact()
     {
         var front = GetFrontalCollider();
+
+        if (front == null)
+            return;
+
         if (front.TryGetComponent(out NPCController npc))
         {
             if (npc.type == NPCType.Enemy)
@@ -233,7 +281,7 @@ public class Player : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
-        if (data == null)
+        if (data == null || data.firstLaunch == true)
             data = PlayerData.emtpy;
 
         Load(data);
@@ -244,7 +292,7 @@ public class Player : MonoBehaviour
         hp = data.health;
         transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
         print("[*] is first launch: " + data.firstLaunch);
-        isFirstLaunch = data.firstLaunch;
+        GameController.Instance.storyController.firstLaunch = data.firstLaunch; ;
         GameController.Instance.storyController.FirstTime_inventory = data.firstinventory;
     }
 

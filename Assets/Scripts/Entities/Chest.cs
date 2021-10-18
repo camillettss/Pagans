@@ -49,7 +49,7 @@ public class Chest : MonoBehaviour, IEntity
             return;
         }
 
-        if (FindObjectOfType<Player>().isInRange(this))
+        if (Player.i.isInRange(this))
         {
             ShowSignal();
         }
