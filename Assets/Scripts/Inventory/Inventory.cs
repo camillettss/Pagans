@@ -34,7 +34,9 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
+        //                                            0           1
         allSlots = new List<List<InventorySlot>> { itemSlots, consumableSlots };
+        //                                             -1       -2     -3      -4
         Equipment = new List<List<InventorySlot>>() {Weapons, Tools, Shields, Rings };
         updateEquipsList(); // dovrebbe essere una lista di puntatori..
         // wp, tool, shield, ring, secondary
@@ -55,8 +57,26 @@ public class Inventory : MonoBehaviour
     {
         if (cat == 0 || cat == 1)
             return allSlots[cat];
+        else if (cat == -1)
+            return Weapons;
+        else if (cat == -2)
+            return Tools;
+        else if (cat == -3)
+            return Shields;
+        else if (cat == -4)
+            return Rings;
         else
             return new List<InventorySlot>();
+    }
+
+    public bool isThereObjectOfType<T>(int type)
+    {
+        foreach(var item in GetSlots(type))
+        {
+            if (item.item is T)
+                return true;
+        }
+        return false;
     }
 
     public InventorySlot getEquiped(int typeIndex)
@@ -73,20 +93,20 @@ public class Inventory : MonoBehaviour
         objname = objname.ToLower();
         //print($"[SYS] {objname} gonna become an :int");
         if (objname == "weapon")
-            ind = 0;
+            ind = -1;
         else if (objname == "arrow")
-            ind = 1;
+            ind = -2;
         else if (objname == "shield")
-            ind = 2;
+            ind = -3;
         else if (objname == "ring")
-            ind = 3;
+            ind = -4;
         else
             return null;
 
         return getEquiped(ind);
     }
 
-    public void Equip(int itype, int val)
+    public void Equip(int itype, int val) // questo deve fare riferimento alla UI
     {
         if (itype == 4)
             print("lesgoo");
@@ -110,7 +130,7 @@ public class Inventory : MonoBehaviour
 
     public void Add(ItemBase item)
     {
-        if(!item.discovered)
+        if(!item.discovered && !GameController.Instance.newItemUI.isActiveAndEnabled) // altrimenti se prende due oggetti fa un casino della madonna
         {
             GameController.Instance.newItemUI.Open(item);
             item.discovered = true;
@@ -124,7 +144,7 @@ public class Inventory : MonoBehaviour
 
             else if(item.category < 0) // is an equipment item
             {
-                if(item.category == -1) // close weapon
+                if(item.category == -1) // weapon
                 {
                     Weapons.Add(new InventorySlot(item));
                 }
@@ -140,6 +160,19 @@ public class Inventory : MonoBehaviour
                 {
                     Rings.Add(new InventorySlot(item));
                 }
+            }
+
+            else
+            {
+                if(item.category == 2) // 2 are runes
+                {
+                    runes.Add((Rune)item);
+                }
+                else if(item.category == 3) // 3 are dusts
+                {
+                    dusts.Add((Dust)item);
+                }
+
             }
         }
         NotificationsUI.i.AddNotification($"took {item.Name}");

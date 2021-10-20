@@ -142,7 +142,7 @@ public class ShopUI : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow))
             ++category;
 
-        category = Mathf.Clamp(category, 0, 1);
+        category = Mathf.Clamp(category, 0, 1); // Hardcoded, fix!
         selected = Mathf.Clamp(selected, 0, shopUIs.Count - 1);
 
         if (prevcat != category)

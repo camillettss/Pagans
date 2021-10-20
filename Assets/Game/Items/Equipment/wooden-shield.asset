@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: shield
   description: l'antico scudo di thorinn
+  presentationDesc: a new item.
   price: 5
   icon: {fileID: 21300000, guid: 266ea92c53e46934da802262d609e278, type: 3}
+  discovered: 0
   closeDamage: 0
   longDamage: 0
   Defense: 2
   dust: {fileID: 0}
-  category: 0
+  category: -2

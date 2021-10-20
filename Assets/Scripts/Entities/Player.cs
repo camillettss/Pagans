@@ -266,6 +266,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Cut()
+    {
+        var tree = GetFrontalCollider(farmingLayer);
+
+        if(tree != null && tree.TryGetComponent(out Tree tempTree))
+        {
+            Debug.Log("cutting");
+            tempTree.Cut();
+        }
+    }
+
 
     private void OnDrawGizmosSelected()
     {
@@ -409,7 +420,7 @@ public class Player : MonoBehaviour
     // overload
     public Collider2D GetFrontalCollider()
     {
-        return GetFrontalCollider(interactableLayer);
+        return GetFrontalCollider(interactableLayer | farmingLayer);
     }
 
     public void TakeDamage(int damageAmount)

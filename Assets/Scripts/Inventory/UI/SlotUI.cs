@@ -5,6 +5,7 @@ using UnityEngine;
 public class SlotUI : MonoBehaviour
 {
     public UnityEngine.UI.Text nameTxt;
+    public UnityEngine.UI.Text countText;
     public ItemBase item;
     public int count;
 
@@ -13,5 +14,6 @@ public class SlotUI : MonoBehaviour
         item = slot.item;
         count = slot.count;
         nameTxt.text = item.Name;
+        countText.text = $"X{slot.count}";
     }
 }

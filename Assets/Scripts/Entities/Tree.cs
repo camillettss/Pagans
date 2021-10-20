@@ -11,43 +11,82 @@ public class Tree : MonoBehaviour, IEntity
 
     [SerializeField] List<ItemBase> drop = new List<ItemBase>();
 
-    bool check = false;
+    [SerializeField] bool hasFruits = false;
+    [MyBox.ConditionalField(nameof(hasFruits), false, true)] [SerializeField] ItemBase dropfruit;
+
+    bool cutted = false;
+    bool showingSignal = false;
 
     private void Awake()
     {
         GetComponent<SpriteRenderer>().sprite = TreeSprite;
     }
 
+    void unshowSignal()
+    {
+        if (showingSignal)
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+            showingSignal = false;
+        }
+    }
+
     public void ShowSignal()
     {
+        if (!showingSignal && Player.i.inventory.equipedTool != -1 && !cutted) // hardcoded. but axes are always -2 as type.
+        {
+            if (Player.i.inventory.Tools[Player.i.inventory.equipedTool].item is Axe)
+            {
+                Instantiate(GameController.Instance.keytip_E, transform);
+                showingSignal = true;
+            }
+        }
+        else if(!showingSignal && !cutted && hasFruits)
+        {
+            Instantiate(GameController.Instance.keytip_Z, transform);
+            showingSignal = true;
+        }
+    }
 
+    private void FixedUpdate()
+    {
+        if (GameController.Instance.state != GameState.FreeRoam)
+        {
+            unshowSignal();
+            return;
+        }
+
+        if (Player.i.isInRange(this))
+            ShowSignal();
+        else
+            unshowSignal();
     }
 
     public void Interact(Player player)
     {
-        
+        // Drop a fruit
+        print("interagisce con un albero sto schizofrenico");
+        player.inventory.Add(dropfruit);
     }
 
-    private void Update()
+    public void Cut()
     {
-        if (GameController.Instance.state != GameState.FreeRoam || !GameController.Instance.player.isActiveAndEnabled)
-        {
+        if (cutted)
             return;
-        }
 
-        if (hp<=0 && !check)
-        {
-            GetComponent<SpriteRenderer>().sprite = CuttedSprite;
+        GetComponent<SpriteRenderer>().sprite = CuttedSprite;
 
-            foreach(var item in drop)
-                Player.i.inventory.Add(item);
-            
-            check = true;
-        }
+        foreach (var item in drop)
+            Player.i.inventory.Add(item);
+
+        cutted = true;
     }
 
     public void takeDamage(int dmg)
     {
-        hp -= dmg;
+
     }
 }

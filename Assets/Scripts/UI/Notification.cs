@@ -17,7 +17,7 @@ public class Notification : MonoBehaviour
     {
         if (timer <= 0f)
         {
-            Destroy(gameObject);
+            StartCoroutine(goAway());
             caller.OnNotificationDeath();
         }
 
@@ -25,5 +25,12 @@ public class Notification : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
+    }
+
+    IEnumerator goAway()
+    {
+        GetComponent<Animator>().SetTrigger("destroy");
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }

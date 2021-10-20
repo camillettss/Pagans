@@ -5,14 +5,24 @@ using UnityEngine;
 public class Altar : MonoBehaviour
 {
     [SerializeField] GameObject fireExplosion;
+
+    Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Player.i.activeAltar = this;
+        animator.SetBool("isOn", true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         Player.i.activeAltar = null;
+        animator.SetBool("isOn", false);
     }
 
     public IEnumerator Use()

@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: blue fish
   description: poteva andare peggio.
-  price: 5
-  icon: {fileID: 0}
+  presentationDesc: un pesce delle acque fredde.
+  price: 2
+  icon: {fileID: 21300000, guid: 78040fcc3a5ca0646b20e131d68b3660, type: 3}
+  discovered: 0
   closeDamage: 0
   longDamage: 0
   Defense: 0
   dust: {fileID: 0}
-  category: 0
-  cure: 0
+  category: 1
+  cure: 2

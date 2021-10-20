@@ -148,11 +148,13 @@ public class EnchantingUI : MonoBehaviour
             }
 
             if (Input.GetKeyDown(KeyCode.DownArrow))
-                ++selected;
+                selected = 3;
             else if (Input.GetKeyDown(KeyCode.UpArrow))
-                --selected;
-
-            selected = Mathf.Clamp(selected, 0, slotUIs.Count - 1);
+                selected = 2;
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+                selected = 1;
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                selected = 0;
 
             if (prev != selected)
                 UpdateSelection();

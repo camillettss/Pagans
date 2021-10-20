@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4869073015858571069}
+  - component: {fileID: 8099367534076677713}
   - component: {fileID: 4869073015858571068}
   - component: {fileID: 4869073015858571042}
   - component: {fileID: 4869073015858571043}
@@ -19,20 +19,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4869073015858571069
-Transform:
+--- !u!224 &8099367534076677713
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4869073015858571071}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.985197, y: -1.2972225, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 4.985197, y: -1.2972225}
+  m_SizeDelta: {x: 2, y: 1.9375}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &4869073015858571068
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -70,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 510808553
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 6848400946329070220, guid: 7b4586991208fb84cb36e72ff108b6f6,
     type: 3}
@@ -101,8 +106,12 @@ MonoBehaviour:
     type: 3}
   CuttedSprite: {fileID: -6986749091672745172, guid: 7b4586991208fb84cb36e72ff108b6f6,
     type: 3}
+  cutSignal: {fileID: 0}
+  takeSignal: {fileID: 0}
   drop:
   - {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
+  hasFruits: 0
+  dropfruit: {fileID: 0}
 --- !u!61 &4869073015858571043
 BoxCollider2D:
   m_ObjectHideFlags: 0

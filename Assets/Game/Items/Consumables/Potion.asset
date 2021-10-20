@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Green Potion
   description: an elvish potion, hope it will not hurt.
+  presentationDesc: a new item.
+  price: 5
   icon: {fileID: 21300000, guid: 91abb9512054bdd458feb87fe4fa9140, type: 3}
+  discovered: 0
   closeDamage: 0
   longDamage: 0
   Defense: 0
   dust: {fileID: 0}
   category: 1
-  cure: -1
+  cure: 1

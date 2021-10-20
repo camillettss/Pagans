@@ -34,6 +34,9 @@ public class GameController : MonoBehaviour
     public QuestController questWindow;
     public NewItemUI newItemUI;
 
+    public GameObject keytip_E;
+    public GameObject keytip_Z;
+
     // basic
     public Color selectedDefaultColor;
     public Color unselectedDefaultColor = Color.black;

@@ -34,6 +34,7 @@ public class NPCController : MonoBehaviour, IEntity
     Animator animator;
 
     bool done = false;
+    bool showingSignal = false;
     int i = 0;
 
 
@@ -134,6 +135,7 @@ public class NPCController : MonoBehaviour, IEntity
 
     void PointToPlayer() // nessuno ha capito perchè non cambia i float dell'animator ma okk
     {
+        /*
         var n = transform.position; // you
         var p = Player.i.transform.position; // player
 
@@ -154,6 +156,27 @@ public class NPCController : MonoBehaviour, IEntity
                 animator.SetFloat("FaceY", 1f);
             else
                 animator.SetFloat("FaceY", -1f);
+        }*/
+    }
+
+    void unshowSignal()
+    {
+        if(showingSignal)
+        {
+            foreach(Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+            showingSignal = false;
+        }
+    }
+
+    public void ShowSignal()
+    {
+        if (!showingSignal)
+        {
+            Instantiate(GameController.Instance.keytip_Z, transform);
+            showingSignal = true;
         }
     }
 
@@ -161,6 +184,7 @@ public class NPCController : MonoBehaviour, IEntity
     {
         if (GameController.Instance.state != GameState.FreeRoam)
         {
+            unshowSignal();
             return;
         }
 
@@ -168,7 +192,9 @@ public class NPCController : MonoBehaviour, IEntity
             onDie();
 
         if (Player.i.isInRange(this))
-            PointToPlayer();
+            ShowSignal();
+        else
+            unshowSignal();
 
         /*if(isAttacking)
         {
@@ -291,10 +317,5 @@ public class NPCController : MonoBehaviour, IEntity
         yield return new WaitForSeconds(1f);
         onDie();
         Destroy(gameObject);
-    }
-
-    public void ShowSignal()
-    {
-
     }
 }
