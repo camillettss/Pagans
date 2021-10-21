@@ -148,13 +148,11 @@ public class EnchantingUI : MonoBehaviour
             }
 
             if (Input.GetKeyDown(KeyCode.DownArrow))
-                selected = 3;
+                --selected;
             else if (Input.GetKeyDown(KeyCode.UpArrow))
-                selected = 2;
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-                selected = 1;
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                selected = 0;
+                ++selected;
+
+            selected = Mathf.Clamp(selected, 0, slotUIs.Count - 1);
 
             if (prev != selected)
                 UpdateSelection();
@@ -192,11 +190,13 @@ public class EnchantingUI : MonoBehaviour
             }
 
             if (Input.GetKeyDown(KeyCode.DownArrow))
-                ++slotSelected;
+                slotSelected = 3;
             else if (Input.GetKeyDown(KeyCode.UpArrow))
-                --slotSelected;
-
-            slotSelected = Mathf.Clamp(slotSelected, 0, CircleSlots.transform.childCount - 1); // 3 is hardcoded, i will fix this.  // four hours later: im a stupid bitch. // this is no more hardcoded but i love these comments so ill leave them.
+                slotSelected = 2;
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+                slotSelected = 1;
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                slotSelected = 0;
 
             if (prevSlot != slotSelected)
                 UpdateCirclesSelection();
@@ -224,4 +224,9 @@ public class ItemConfig
         runes = item.runes.slots;
         dust = item.dust;
     }
+}
+
+public class AnchestralFormatter
+{
+    
 }

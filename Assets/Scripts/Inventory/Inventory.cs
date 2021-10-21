@@ -166,6 +166,7 @@ public class Inventory : MonoBehaviour
             {
                 if(item.category == 2) // 2 are runes
                 {
+                    print("Adding a rune");
                     runes.Add((Rune)item);
                 }
                 else if(item.category == 3) // 3 are dusts
