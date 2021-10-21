@@ -1,0 +1,157 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class newInventory : MonoBehaviour
+{
+    // pagina sinistra - choosing
+    [SerializeField] GameObject tags_container;
+    [SerializeField] Text categoryText;
+    [SerializeField] GameObject content;
+    [SerializeField] SlotUI itemUIprefab;
+    // pagina destra - details
+    [SerializeField] Text selectedName;
+    [SerializeField] Text selectedDescription;
+    [SerializeField] Image selectedIcon;
+
+    int bookmark = 0;
+    int category = 0;
+    int selected = 0;
+
+    List<SlotUI> slotUIs;
+
+    public const int weapons_category = 0;
+    public const int tools_category = 1;
+
+    public const int runes_category = 0;
+    public const int dusts_category = 1;
+    public const int gems_category = 2;
+
+    private void Awake()
+    {
+        UpdateView();
+    }
+
+    public void UpdateView(bool resetCategory=true)
+    {
+        slotUIs = new List<SlotUI>();
+
+        foreach (Transform child in content.transform)
+            Destroy(child.gameObject);
+
+        selected = 0;
+        if(resetCategory)
+            category = 0;
+
+        foreach (var item in Player.i.inventory.GetByBookmark(bookmark)[category])
+        {
+            var slotUI = Instantiate(itemUIprefab, content.transform);
+            slotUI.SetData(item);
+
+            slotUIs.Add(slotUI);
+        }
+        
+
+        categoryText.text = Inventory.GetCategoryName(bookmark, category);
+        UpdateSelection();
+    }
+
+    void UpdateSelection()
+    {
+        if (slotUIs.Count < 1)
+            return;
+
+        for(int i=0; i<slotUIs.Count; i++)
+        {
+            if (i == selected)
+            {
+                if(bookmark == 0)
+                {
+                    if(Player.i.inventory.equips[category] == selected)
+                        slotUIs[i].nameTxt.color = GameController.Instance.equipedSelectedColor;
+
+                    else if(Player.i.inventory.secondaryWeapon == selected)
+                        slotUIs[i].nameTxt.color = GameController.Instance.secondarySelectedColor;
+
+                    else
+                        slotUIs[i].nameTxt.color = GameController.Instance.selectedDefaultColor;
+                }
+                else
+                    slotUIs[i].nameTxt.color = GameController.Instance.selectedDefaultColor;
+            }
+
+            else
+            {
+                if (bookmark == 0)
+                {
+                    if (Player.i.inventory.equips[category] == i)
+                        slotUIs[i].nameTxt.color = GameController.Instance.equipedDefaultColor;
+
+                    else if (Player.i.inventory.secondaryWeapon == i)
+                        slotUIs[i].nameTxt.color = GameController.Instance.secondaryDefaultColor;
+
+                    else
+                        slotUIs[i].nameTxt.color = GameController.Instance.unselectedDefaultColor;
+                }
+                else
+                    slotUIs[i].nameTxt.color = GameController.Instance.unselectedDefaultColor;
+            }
+        }
+
+        selectedName.text = slotUIs[selected].item.Name;
+        selectedDescription.text = slotUIs[selected].item.description;
+        selectedIcon.sprite = slotUIs[selected].item.icon;
+    }
+
+    public void HandleUpdate()
+    {
+        int prev_sel = selected;
+        int prev_cat = category;
+        int prev_bok = bookmark;
+
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            gameObject.SetActive(false);
+            GameController.Instance.state = GameState.FreeRoam;
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+            ++selected;
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            --selected;
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            --category;
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            ++category;
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+            ++bookmark;
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+            --bookmark;
+
+        bookmark = Mathf.Clamp(bookmark, 0, tags_container.transform.childCount - 2); // 0, 3 tecnicamente. (-2 perchè manca da programmare uno slot)
+        category = Mathf.Clamp(category, 0, Inventory.BookmarkSize(bookmark) - 1);
+        selected = Mathf.Clamp(selected, 0, slotUIs.Count - 1);
+
+        if (prev_bok != bookmark)
+            UpdateView();
+
+        if (prev_cat != category)
+            UpdateView(false);
+
+        if (selected != prev_sel)
+            UpdateSelection();
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            if(slotUIs.Count > 0 && bookmark == 0) // solo nel primo si può quipaggiare
+            {
+                Player.i.inventory.Equip(category, selected);
+                slotUIs[selected].item.onEquip();
+                GameController.Instance.hotbar.UpdateItems();
+            }
+        }
+    }
+}

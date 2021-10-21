@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public bool LaunchStory;
     [SerializeField] public doorKeyUI keyUI;
     [SerializeField] public GameObject sparksParticle;
+    [SerializeField] newInventory inventory2;
 
     [SerializeField] bool ResetOnEnd = false;
 
@@ -164,9 +165,10 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.Inventory)
         {
-            inventoryUI.gameObject.SetActive(true);
+            inventory2.gameObject.SetActive(true);
+            /*inventoryUI.gameObject.SetActive(true);
             inventoryUI.UpdateContents();
-            StartCoroutine(storyController.FirstInventoryOpen());
+            StartCoroutine(storyController.FirstInventoryOpen());*/
         }
         else if(state == GameState.Equipment)
         {
@@ -256,12 +258,13 @@ public class GameController : MonoBehaviour
 
         else if (state == GameState.Inventory)
         {
-            inventoryUI.HandleUpdate();
+            /*inventoryUI.HandleUpdate();
             if(Input.GetKeyDown(KeyCode.Tab) || Input.GetButtonDown("RShoulder"))
             {
                 inventoryUI.gameObject.SetActive(false);
                 OpenState(GameState.Equipment);
-            }
+            }*/
+            inventory2.HandleUpdate();
         }
 
         else if (state == GameState.Equipment)

@@ -19,7 +19,7 @@ public class ShopUI : MonoBehaviour
     [SerializeField] Text BalanceText;
 
     TraderController trader;
-    List<ShopItemUI> shopUIs;
+    List<ShopItemUI> shopUIs = new List<ShopItemUI>();
 
     int selected = 0;
     int category = 0;
@@ -54,8 +54,7 @@ public class ShopUI : MonoBehaviour
             foreach (Transform child in scrollviewContent.transform)
                 Destroy(child.gameObject);
 
-            shopUIs = new List<ShopItemUI>();
-            foreach (var item in trader.inventory.GetSlots(category))
+            foreach (var item in trader.inventory.GetShopSlots())
             {
                 var itemUI = Instantiate(itemPrefab, scrollviewContent.transform);
                 itemUI.SetData(item, item.item.price);
@@ -71,7 +70,7 @@ public class ShopUI : MonoBehaviour
                 Destroy(child.gameObject);
 
             shopUIs = new List<ShopItemUI>();
-            foreach (var item in Player.i.inventory.GetSlots(category))
+            foreach (var item in Player.i.inventory.GetShopSlots())
             {
                 var itemUI = Instantiate(itemPrefab, scrollviewContent.transform);
                 itemUI.SetData(item, item.item.price);
@@ -98,7 +97,7 @@ public class ShopUI : MonoBehaviour
             }
         }
 
-        if (shopUIs.Count == 0)
+        if (shopUIs.Count < 1)
         {
             itemName.text = "";
             //itemDescription.text = "there are no more items, for now.";
@@ -108,8 +107,7 @@ public class ShopUI : MonoBehaviour
             itemIcon.enabled = false;
             return;
         }
-
-        if(shopUIs.Count > 0)
+        else
         {
             itemName.text = shopUIs[selected].item.Name;
             itemPrice.text = $"{shopUIs[selected].item.price}";
@@ -124,7 +122,7 @@ public class ShopUI : MonoBehaviour
     public void HandleUpdate()
     {
         int prev = selected;
-        int prevcat = category;
+        int pamount = amount;
         
         if(Input.GetKeyDown(KeyCode.X))
         {
@@ -138,17 +136,20 @@ public class ShopUI : MonoBehaviour
             --selected;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
-            --category;
+            --amount;
         else if (Input.GetKeyDown(KeyCode.RightArrow))
-            ++category;
+            ++amount;
 
-        category = Mathf.Clamp(category, 0, 1); // Hardcoded, fix!
+        //category = Mathf.Clamp(category, 0, 1); // Hardcoded, fix!
+        if (sellMode && shopUIs.Count > 0)
+            amount = Mathf.Clamp(amount, 1, Player.i.inventory.findItem(shopUIs[selected].item).count);
+        /*else if (!sellMode && shopUIs.Count > 0)
+            amount = Mathf.Clamp(amount, 1, trader.inventory.findItem(shopUIs[selected].item).count); //FIX
+        */
+
         selected = Mathf.Clamp(selected, 0, shopUIs.Count - 1);
 
-        if (prevcat != category)
-            UpdateView();
-
-        if (prev != selected)
+        if (prev != selected || pamount != amount)
             UpdateSelection();
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -156,21 +157,24 @@ public class ShopUI : MonoBehaviour
             var player = Player.i;
             if(!sellMode)
             {
-                if (player.kents < shopUIs[selected].price)
+                if (player.kents*amount < shopUIs[selected].price)
                     return;
                 player.inventory.Add(shopUIs[selected].item);
 
                 if(Player.i.quest.goal != null)
-                    player.quest.goal[0].SomethingBought(trader, trader.inventory.GetSlots(category)[selected].item);
+                    player.quest.goal[0].SomethingBought(trader, shopUIs[selected].item);
 
-                player.kents -= shopUIs[selected].price;
+                player.kents -= shopUIs[selected].price * amount;
 
-                trader.inventory.RemoveAt(category, selected);
+                for (int i = 0; i < amount; i++)
+                    trader.inventory.Remove(shopUIs[selected].item);
             }
             else
             {
-                player.kents += shopUIs[selected].price;
-                player.inventory.Remove(shopUIs[selected].item);
+                player.kents += shopUIs[selected].price * amount;
+
+                for(int i=0; i<amount; i++)
+                    player.inventory.Remove(shopUIs[selected].item);
             }
 
             selected = 0;

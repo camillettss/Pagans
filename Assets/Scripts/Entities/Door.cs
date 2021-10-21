@@ -42,6 +42,9 @@ public class Door : MonoBehaviour, IEntity
 
     Key findCorrectKey()
     {
+        if (!Player.i.inventory.isThereObjectOfType<Key>(0))
+            return null;
+
         foreach(var key in Player.i.inventory.GetSlots(0)) // slots[0] = keys, 1-> cons
         {
             print(key.item.name);

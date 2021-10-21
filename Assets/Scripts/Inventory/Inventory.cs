@@ -79,6 +79,93 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
+    public static int BookmarkSize(int bookmark)
+    {
+        if (bookmark == 0)
+            return 2; // weapons and tools
+        if (bookmark == 1)
+            return 3; // runes, dusts and gems
+        if (bookmark == 2)
+            return 1;
+
+        return -1;
+    }
+
+    public List<List<InventorySlot>> GetByBookmark(int bookmark)
+    {
+        var res = new List<List<InventorySlot>>();
+        if (bookmark == 0) // weapons and tools
+        {
+            res.Add(new List<InventorySlot>());
+            res[newInventory.weapons_category].AddRange(Weapons);
+            res.Add(new List<InventorySlot>());
+            res[newInventory.tools_category].AddRange(Tools);
+        }
+        else if(bookmark == 1) // magic stuffs
+        {
+            res.Add(new List<InventorySlot>());
+            foreach(var rune in runes)
+                res[newInventory.runes_category].Add(new InventorySlot(rune));
+
+            res.Add(new List<InventorySlot>());
+            foreach (var dust in dusts)
+                res[newInventory.dusts_category].Add(new InventorySlot(dust));
+
+            res.Add(new List<InventorySlot>());
+            foreach (var gem in gems)
+                res[newInventory.gems_category].Add(new InventorySlot(gem));
+        }
+        else if(bookmark == 2) // consumabili, chiavi e cose varie
+        {
+            res.Add(new List<InventorySlot>());
+            res[0].AddRange(consumableSlots);
+            res[0].AddRange(itemSlots); // tutti insieme, in hardcode <3
+        }
+
+        print(res.Count);
+        return res;
+    }
+
+    public List<InventorySlot> GetShopSlots()
+    {
+        var res = new List<InventorySlot>();
+        foreach (var slot in allSlots)
+            res.AddRange(slot);
+
+        return res;
+    }
+
+    public static string GetCategoryName(int bookmark, int category)
+    {
+        if(bookmark == 0) // in ordine di inventory.equips;
+        {
+            if (category == 0)
+                return "WEAPONS";
+            else if (category == 1)
+                return "TOOLS";
+            else if (category == 2)
+                return "SHIELDS";
+            else if (category == 3)
+                return "RINGS";
+        }
+        else if(bookmark == 1)
+        {
+            if (category == 0)
+                return "RUNES";
+            else if (category == 1)
+                return "DUSTS";
+            else if (category == 2)
+                return "GEMS";
+
+        }
+        else if(bookmark == 2)
+        {
+            if (category == 0)
+                return "CONSUMABLES";
+        }
+        return "";
+    }
+
     public InventorySlot getEquiped(int typeIndex)
     {
         // 0-> weapon, 1-> arrows, 2-> shield< 3-> ring
@@ -214,7 +301,7 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
-    InventorySlot findItem(ItemBase item)
+    public InventorySlot findItem(ItemBase item)
     {
         foreach(var obj in GetSlots(item.category))
         {
