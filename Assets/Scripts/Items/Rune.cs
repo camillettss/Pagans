@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(menuName ="Items/new rune")]
+[CreateAssetMenu(menuName ="Runes/new generic rune")]
 public class Rune : ItemBase
 {
     public int longDmgAmount = 0;
@@ -12,13 +12,19 @@ public class Rune : ItemBase
 
     public string Letter;
 
-    private void Awake()
-    {
-        category = -1;
-    }
+    [SerializeField] protected List<Skill> skillsRequired;
 
     public override void Use(Player player)
     {
         
+    }
+
+    public void skillCheck(Func<int> runlater)
+    {
+        foreach (var skill in skillsRequired)
+            if (!Player.i.inventory.Skills.Contains(skill))
+                return;
+
+        runlater();
     }
 }

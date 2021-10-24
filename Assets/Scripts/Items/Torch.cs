@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Items/new torch")]
+[CreateAssetMenu(menuName = "Tools/new torch")]
 public class Torch : ItemBase
 {
     public float brightness = 0.3f;

@@ -833,15 +833,52 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
+      propertyPath: dialoguesAfterWork.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
+      value: eccoti qua, ti stavo cercando.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: repeatOperation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.data[0]
       value: "sapevi che fra agosto e settembre \xE8 il primo mese della dispensa?
         noi lo chiamiamo Tv\xEDm\xE1nu\xF0r."
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
-      propertyPath: repeatOperation
-      value: 1
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: ho questo libro per te, non posso dirti come usarlo ma sono sicuro lo
+        capirai da solo.
       objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: drop
+      value: 
+      objectReference: {fileID: 11400000, guid: 268c6b7439363bc48b59ca87ac0efb76,
+        type: 2}
     - target: {fileID: 2576448740519100733, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
       propertyPath: m_Name

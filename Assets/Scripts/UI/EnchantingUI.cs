@@ -94,6 +94,7 @@ public class EnchantingUI : MonoBehaviour
     void UpdateRunes()
     {
         ResetRunes();
+        print($"{config.runes[0]}");
 
         if(config.dust != null)
         {
@@ -157,12 +158,14 @@ public class EnchantingUI : MonoBehaviour
             if (prev != selected)
                 UpdateSelection();
 
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyUp(KeyCode.Z))
             {
                 if(slotSelected == 0 || slotSelected == 1) // Rune
                 {
+                    print($"applying a rune:{slotUIs[selected].runeItem}, name:{slotUIs[selected].runeItem.Name}, on {config}");
                     config.runes[slotSelected] = slotUIs[selected].runeItem;
                     //FindObjectOfType<Player>().inventory.runes.Remove(slotUIs[selected].runeItem);
+                    UpdateRunes();
                 }
                 else if(slotSelected == 2) // Dust
                 {
@@ -171,7 +174,7 @@ public class EnchantingUI : MonoBehaviour
                 }
 
                 UpdateContents();
-                UpdateRunes();
+                //UpdateRunes();
             }
 
             // PERCHE CAZZO ITEM.RUNES.SLOTS VIENE SOVRASCRITTO SE NON HA RIFERIMENTI???
@@ -224,9 +227,4 @@ public class ItemConfig
         runes = item.runes.slots;
         dust = item.dust;
     }
-}
-
-public class AnchestralFormatter
-{
-    
 }

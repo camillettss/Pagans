@@ -68,12 +68,13 @@ public class GameController : MonoBehaviour
         MinimapCanvas.SetActive(false);
         ppv = gameObject.GetComponent<Volume>();
         player.Load();
-        if (LaunchStory)
+        storyController.Midgardr.LoadSceneAsMain();
+        /*if (LaunchStory)
         {
             StartCoroutine(launchStory());
         }
         else
-            storyController.Midgardr.LoadSceneAsMain();
+            storyController.Midgardr.LoadSceneAsMain();*/
     }
 
     IEnumerator launchStory()
@@ -165,6 +166,7 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.Inventory)
         {
+            inventory2.UpdateView();
             inventory2.gameObject.SetActive(true);
             /*inventoryUI.gameObject.SetActive(true);
             inventoryUI.UpdateContents();
@@ -188,8 +190,8 @@ public class GameController : MonoBehaviour
         else if(state == GameState.ChoosingItem)
         {
             choosingUI.gameObject.SetActive(true);
-            choosingUI.GetComponent<Animator>().SetTrigger("Anim");
             choosingUI.UpdateItems();
+            choosingUI.GetComponent<Animator>().SetTrigger("Anim");
         }
         else if(state == GameState.Settings)
         {

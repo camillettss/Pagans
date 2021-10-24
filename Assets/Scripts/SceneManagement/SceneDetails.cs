@@ -40,11 +40,18 @@ public class SceneDetails : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     public void LoadSceneAsMain()
     {
         LoadScene();
         foreach (var scene in connectedScenes)
             scene.LoadScene();
+
+        AstarPath.active.Scan();
     }
 
     public void LoadScene()
@@ -52,9 +59,13 @@ public class SceneDetails : MonoBehaviour
         if(!IsLoaded)
         {
             print(gameObject.name + " will be loaded");
-            SceneManager.LoadSceneAsync(gameObject.name, LoadSceneMode.Additive);
-            IsLoaded = true;
+            SceneManager.LoadScene(gameObject.name, LoadSceneMode.Additive);
         }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        AstarPath.active.Scan();
     }
 
     public void UnloadScene()

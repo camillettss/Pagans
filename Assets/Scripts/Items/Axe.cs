@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Items(new axe")]
+[CreateAssetMenu(menuName ="Tools/new axe")]
 public class Axe : ItemBase
 {
     public override void Use(Player player)

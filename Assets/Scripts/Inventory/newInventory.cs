@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class newInventory : MonoBehaviour
 {
+    // bookmarks
+    [SerializeField] Sprite unselectedBookmark;
+    [SerializeField] Sprite selectedBookmark;
+    // category count text
+    [SerializeField] Text category_count;
     // pagina sinistra - choosing
     [SerializeField] GameObject tags_container;
     [SerializeField] Text categoryText;
@@ -14,6 +19,7 @@ public class newInventory : MonoBehaviour
     [SerializeField] Text selectedName;
     [SerializeField] Text selectedDescription;
     [SerializeField] Image selectedIcon;
+    [SerializeField] Text actualLPS;
 
     int bookmark = 0;
     int category = 0;
@@ -51,7 +57,14 @@ public class newInventory : MonoBehaviour
 
             slotUIs.Add(slotUI);
         }
-        
+
+        if (bookmark == 3 && category == 1)
+        {
+            actualLPS.gameObject.SetActive(true);
+            actualLPS.text = $"EXP: {Player.i.experience}";
+        }
+        else
+            actualLPS.gameObject.SetActive(false);
 
         categoryText.text = Inventory.GetCategoryName(bookmark, category);
         UpdateSelection();
@@ -59,8 +72,25 @@ public class newInventory : MonoBehaviour
 
     void UpdateSelection()
     {
-        if (slotUIs.Count < 1)
+
+        for(int i=0; i<tags_container.transform.childCount; i++)
+        {
+            if (i == bookmark)
+                tags_container.transform.GetChild(i).GetComponent<Image>().sprite = selectedBookmark;
+            else
+                tags_container.transform.GetChild(i).GetComponent<Image>().sprite = unselectedBookmark;
+        }
+        category_count.text = $"{category+1}/{Inventory.BookmarkSize(bookmark)}";
+
+        if (slotUIs.Count < 1) // turn all off and write an alert.
+        {
+            selectedIcon.enabled = false;
+            selectedName.text = "";
+            selectedDescription.text = "no items here, for now (i hope).";
             return;
+        }
+        else
+            selectedIcon.enabled = true;
 
         for(int i=0; i<slotUIs.Count; i++)
         {
@@ -131,7 +161,7 @@ public class newInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftAlt))
             --bookmark;
 
-        bookmark = Mathf.Clamp(bookmark, 0, tags_container.transform.childCount - 2); // 0, 3 tecnicamente. (-2 perchè manca da programmare uno slot)
+        bookmark = Mathf.Clamp(bookmark, 0, tags_container.transform.childCount - 1); // 0, 3 tecnicamente.
         category = Mathf.Clamp(category, 0, Inventory.BookmarkSize(bookmark) - 1);
         selected = Mathf.Clamp(selected, 0, slotUIs.Count - 1);
 
@@ -151,7 +181,24 @@ public class newInventory : MonoBehaviour
                 Player.i.inventory.Equip(category, selected);
                 slotUIs[selected].item.onEquip();
                 GameController.Instance.hotbar.UpdateItems();
+                UpdateView(false);
+            }
+            else if(slotUIs.Count > 0 && bookmark == 3 && category == 1) // libri
+            {
+                slotUIs[selected].item.Use(Player.i); // usa il libro
+                GameController.Instance.StartCoroutine(learn_book());
+            }
+            else if(slotUIs.Count > 0 && bookmark == 1 && category == 0) // runes
+            {
+                slotUIs[selected].item.Use(Player.i);
             }
         }
+    }
+
+    IEnumerator learn_book()
+    {
+        slotUIs[selected].GetComponent<Animator>().SetTrigger("die");
+        yield return new WaitForSeconds(.5f);
+        UpdateView(false);
     }
 }

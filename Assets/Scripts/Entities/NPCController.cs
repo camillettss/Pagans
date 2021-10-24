@@ -31,6 +31,8 @@ public class NPCController : MonoBehaviour, IEntity
     [SerializeField] bool repeatOperation;
     [ConditionalField(nameof(repeatOperation), true)] [SerializeField] List<Dialogue> dialoguesAfterWork;
 
+    [SerializeField] int expDrop = 0;
+
     Animator animator;
 
     bool done = false;
@@ -191,7 +193,12 @@ public class NPCController : MonoBehaviour, IEntity
         if (HP <= 0)
             onDie();
 
-        if (Player.i.isInRange(this))
+        if(type==NPCType.Enemy)
+        {
+            EnemyUpdate();
+        }
+
+        if (Player.i.isInRange(this) && type != NPCType.Enemy && !done)
             ShowSignal();
         else
             unshowSignal();
@@ -224,6 +231,18 @@ public class NPCController : MonoBehaviour, IEntity
         }*/
     }
 
+    // Enemy update, called by Unity's Update if is an enemy.
+    void EnemyUpdate()
+    {
+        if (Player.i.isInRange(this))
+            Attack();
+    }
+
+    public void Attack()
+    {
+        print("attack");
+    }
+
     // Animation event
     public void AttackEnd()
     {
@@ -241,6 +260,7 @@ public class NPCController : MonoBehaviour, IEntity
         {
             GameController.Instance.player.quest.goal[0].EnemyKilled(this);
         }
+        Player.i.experience += expDrop;
     }
 
     public void onTalk()
@@ -270,11 +290,6 @@ public class NPCController : MonoBehaviour, IEntity
         quest.isActive = true;
         Player.i.quest = quest;
         GameController.Instance.state = GameState.FreeRoam;
-    }
-
-    public void Attack()
-    {
-        animator.SetTrigger("SwordAttack");
     }
 
     public virtual void takeDamage(int dmg)

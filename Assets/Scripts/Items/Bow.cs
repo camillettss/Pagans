@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Items/New bow")]
+[CreateAssetMenu(menuName ="Weapons/New bow")]
 public class Bow : ItemBase
 {
     public override void Use(Player player)

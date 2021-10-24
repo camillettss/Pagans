@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3407645501571097584}
   - component: {fileID: 4203945019879670700}
   - component: {fileID: 1621996850379896958}
+  - component: {fileID: 6180510882996489305}
   m_Layer: 0
   m_Name: inventory_itemUI
   m_TagString: Untagged
@@ -37,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3407645501571097584
 CanvasRenderer:
@@ -96,6 +97,25 @@ MonoBehaviour:
   countText: {fileID: 7539026150251731341}
   item: {fileID: 0}
   count: 0
+--- !u!95 &6180510882996489305
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779336190659994039}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b3245c7898caed49a114bc99ae1e817, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2702871677239684504
 GameObject:
   m_ObjectHideFlags: 0

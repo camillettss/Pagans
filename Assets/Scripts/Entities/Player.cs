@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public int maxHp = 30;
 
     [HideInInspector] public int gold=1;
-    [HideInInspector] public int experience=0;
+    [HideInInspector] public int experience=9;
     [HideInInspector] public int hp = 10;
 
     [HideInInspector] public Quest quest = null;
@@ -66,6 +66,13 @@ public class Player : MonoBehaviour
         attackCounter = attackTime;
         UpdateQuestUI();
         i = this;
+        experience = 9;
+    }
+
+    private void Start()
+    {
+        // questo viene dopo l'awake
+        AstarPath.active.Scan();
     }
 
     public void HandleUpdate()
@@ -75,8 +82,12 @@ public class Player : MonoBehaviour
 
         if (animator.GetBool("holdingShield"))
             speed = 2.5f;
+        else if (Input.GetKey(KeyCode.LeftShift))
+            speed = 7.5f;
         else
             speed = walkingSpeedDefault;
+
+
 
         if(moveInput != Vector2.zero)
         {
@@ -428,3 +439,14 @@ public class Player : MonoBehaviour
         hp -= damageAmount;
     }
 }
+
+/*namespace Pagans
+{
+    public static class PlayerThings
+    {
+        public static Player GetPlayerInstance()
+        {
+            return Player.i;
+        }
+    }
+}*/

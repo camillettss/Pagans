@@ -36,12 +36,12 @@ public class ChoosingUI : MonoBehaviour
 
     void UpdateSelection()
     {
-        for (int i = 0; i < slotUIs.Count; i++)
+        for(int i=0; i<slotUIs.Count; i++)
         {
             if (i == sel)
-                slotUIs[sel].text.color = GameController.Instance.selectedDefaultColor;
+                slotUIs[i].text.color = GameController.Instance.selectedDefaultColor;
             else
-                slotUIs[sel].text.color = GameController.Instance.unselectedDefaultColor;
+                slotUIs[i].text.color = GameController.Instance.unselectedDefaultColor;
         }
     }
 

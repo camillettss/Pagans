@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Items/new Ring")]
+[CreateAssetMenu(menuName ="Rings/new Basic Ring")]
 public class Ring : ItemBase
 {
     [Header("Ring")]

@@ -24,7 +24,8 @@ public abstract class ItemBase : ScriptableObject
 
     // categories: 0 -> item, 1 -> consumable, -1 -> magic item, -2 -> equipment/weapon, -3 equipment/arrow
 
-    public int category;
+    [SerializeField] protected int Category;
+    public virtual int category { get => Category; }
 
     #region inventory stuffs
     public virtual void onEquip()

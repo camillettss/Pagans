@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Items/Dust")]
+[CreateAssetMenu(menuName ="Magic/Dust")]
 public class Dust : ItemBase
 {
     public void onHit()

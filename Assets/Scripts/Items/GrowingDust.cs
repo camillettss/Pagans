@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Items/growing dust")]
+[CreateAssetMenu(menuName ="Tools/growing dust")]
 public class GrowingDust : ItemBase
 {
     [SerializeField] int percentage;
     public int fortune = 0;
+
     public override void Use(Player player)
     {
         Collider2D plant = Physics2D.OverlapCircle(player.attackPoint.position, player.plantRange, player.farmingLayer);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(menuName ="Items/new fishing pole")]
+[CreateAssetMenu(menuName ="Tools/new fishing pole")]
 public class FishingPole : ItemBase
 {
     [SerializeField] List<ItemBase> foundables;

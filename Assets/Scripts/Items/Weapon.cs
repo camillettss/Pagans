@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Items/Weapon")]
+[CreateAssetMenu(menuName ="Weapon/generic weapon")]
 public class Weapon : ItemBase
 {
     public override void Use(Player player)

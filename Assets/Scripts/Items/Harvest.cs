@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 enum HarvestingToolType { get, put };
-[CreateAssetMenu(menuName ="Items/new Harvesting tool")]
+[CreateAssetMenu(menuName ="Tools/new Harvesting tool")]
 public class Harvest : ItemBase
 {
     [SerializeField] HarvestingToolType type;

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a98d596a1a6e34aa293346527bd763, type: 3}
+  m_Name: readrunes-book
+  m_EditorClassIdentifier: 
+  Name: Runes Book
+  description: "questo libro arcaico ti insegner\xE0 ad attivare il potere nascosto
+    delle rune."
+  presentationDesc: "uno dei libri pi\xF9 antichi."
+  price: 245
+  icon: {fileID: 21300000, guid: b94a824ab1351e24aa2a404d7ae4b5fd, type: 3}
+  discovered: 1
+  closeDamage: 0
+  longDamage: 0
+  Defense: 0
+  dust: {fileID: 0}
+  Category: 4
+  skillToLearn: {fileID: 11400000, guid: 7703cd3f24774934bb60410f1c49cc6a, type: 2}
+  learningCost: 5

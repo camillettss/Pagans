@@ -32,6 +32,9 @@ public class Inventory : MonoBehaviour
     public List<Dust> dusts;
     public List<ItemBase> gems;
 
+    public List<Skill> Skills;
+    public List<Book> Books;
+
     private void Awake()
     {
         //                                            0           1
@@ -83,10 +86,12 @@ public class Inventory : MonoBehaviour
     {
         if (bookmark == 0)
             return 2; // weapons and tools
-        if (bookmark == 1)
+        else if (bookmark == 1)
             return 3; // runes, dusts and gems
-        if (bookmark == 2)
-            return 1;
+        else if (bookmark == 2)
+            return 1; // consumable
+        else if (bookmark == 3)
+            return 2; // skills, books
 
         return -1;
     }
@@ -120,6 +125,16 @@ public class Inventory : MonoBehaviour
             res.Add(new List<InventorySlot>());
             res[0].AddRange(consumableSlots);
             res[0].AddRange(itemSlots); // tutti insieme, in hardcode <3
+        }
+        else if(bookmark == 3)
+        {
+            res.Add(new List<InventorySlot>());
+            foreach (var skill in Skills)
+                res[0].Add(new InventorySlot(skill));
+
+            res.Add(new List<InventorySlot>());
+            foreach (var book in Books)
+                res[1].Add(new InventorySlot(book));
         }
 
         print(res.Count);
@@ -163,6 +178,13 @@ public class Inventory : MonoBehaviour
             if (category == 0)
                 return "CONSUMABLES";
         }
+        else if(bookmark == 3)
+        {
+            if (category == 0)
+                return ("SKILLS");
+            else if (category == 1)
+                return "BOOKS";
+        }
         return "";
     }
 
@@ -193,6 +215,12 @@ public class Inventory : MonoBehaviour
         return getEquiped(ind);
     }
 
+    public void Learn(Book skillbook)
+    {
+        Skills.Add(skillbook.skillToLearn);
+        Books.Remove(skillbook);
+    }
+
     public void Equip(int itype, int val) // questo deve fare riferimento alla UI
     {
         if (itype == 4)
@@ -217,6 +245,7 @@ public class Inventory : MonoBehaviour
 
     public void Add(ItemBase item)
     {
+        print($"gettin:{item.category}");
         if(!item.discovered && !GameController.Instance.newItemUI.isActiveAndEnabled) // altrimenti se prende due oggetti fa un casino della madonna
         {
             GameController.Instance.newItemUI.Open(item);
@@ -251,15 +280,18 @@ public class Inventory : MonoBehaviour
 
             else
             {
-                if(item.category == 2) // 2 are runes
+                if (item.category == 2) // 2 are runes
                 {
                     print("Adding a rune");
                     runes.Add((Rune)item);
                 }
-                else if(item.category == 3) // 3 are dusts
+                else if (item.category == 3) // 3 are dusts
                 {
                     dusts.Add((Dust)item);
                 }
+
+                else if (item.category == 4) // 4 ar books
+                    Books.Add((Book)item);
 
             }
         }
