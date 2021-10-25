@@ -31,7 +31,10 @@ public class EnchantingUI : MonoBehaviour
 
     private void Awake()
     {
-        print("EnchUI awaked");
+        print("EnchUI awakening");
+        config = new AnchestralConfiguration();
+        config.setup(item);
+        print($"config original rune0 before calling UpdateContents: {config.rune0}");
         UpdateContents();
         UpdateCirclesSelection();
         UpdateRunes();
@@ -41,8 +44,6 @@ public class EnchantingUI : MonoBehaviour
 
     public void Open(ItemBase item)
     {
-        config = new AnchestralConfiguration();
-        config.setup(item);
         print($"setted up with rune0: {item.runes.slots[0]}");
         GameController.Instance.state = GameState.Enchanting;
         this.item = item;
@@ -239,6 +240,7 @@ public class EnchantingUI : MonoBehaviour
             {
                 if(config.hasGem())
                 {
+                    print("buying");
                     Player.i.inventory.gems.Remove(config.Gem);
                     config.Upload(item);
                 }
@@ -264,10 +266,11 @@ public class AnchestralConfiguration
 
     public void setup(ItemBase item)
     {
+        Debug.Log($"setting up with r0:{item.runes.slots[0]}, r1:{item.runes.slots[1]}, dust:{item.dust}");
         _rune0 = item.runes.slots[0];
         _rune0 = item.runes.slots[1];
         _dust = item.dust;
-        Debug.Log($"setted up, rune0 is {item.runes.slots[0]}"); // FIXME, this is never reached, dont know y :/
+        Debug.Log($"setted up, rune0 is {item.runes.slots[0]}"); 
     }
 
     public AnchestralConfiguration()

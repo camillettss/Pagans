@@ -361,6 +361,7 @@ public class InventorySlot
     }
 }
 
+[System.Serializable]
 public class RuneContainer
 {
     public List<Rune> slots = new List<Rune>(2) { null, null };
