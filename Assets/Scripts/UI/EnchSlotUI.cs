@@ -8,6 +8,7 @@ public class EnchSlotUI : MonoBehaviour
 
     public Rune runeItem;
     public Dust dustItem;
+    public ItemBase gemItem;
 
     public void SetData(Rune slot)
     {
@@ -19,5 +20,11 @@ public class EnchSlotUI : MonoBehaviour
     {
         dustItem = slot;
         nameTxt.text = slot.Name;
+    }
+
+    public void SetData(ItemBase gem)
+    {
+        gemItem = gem;
+        nameTxt.text = gem.Name;
     }
 }

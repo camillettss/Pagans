@@ -14,6 +14,7 @@ public class EnchantingUI : MonoBehaviour
     [SerializeField] Text RuneSlot2;
     [SerializeField] Image GemIcon;
     [SerializeField] Image itemIcon;
+    [SerializeField] Image accceptButton;
 
     [SerializeField] Sprite selectedCircle;
     [SerializeField] Sprite deselectedCircle;
@@ -26,7 +27,7 @@ public class EnchantingUI : MonoBehaviour
     int selected = 0;
     int slotSelected = 0; // 0 = rune slot 1, 1 = "2, 2 = dust slot, 3 = gem slot
 
-    ItemConfig config;
+    AnchestralConfiguration config;
 
     private void Awake()
     {
@@ -40,8 +41,9 @@ public class EnchantingUI : MonoBehaviour
 
     public void Open(ItemBase item)
     {
-        config = new ItemConfig();
-        config.Setup(item);
+        config = new AnchestralConfiguration();
+        config.setup(item);
+        print($"setted up with rune0: {item.runes.slots[0]}");
         GameController.Instance.state = GameState.Enchanting;
         this.item = item;
         gameObject.SetActive(true);
@@ -69,12 +71,22 @@ public class EnchantingUI : MonoBehaviour
         }
         else if(slotSelected == 2) // dust
         {
-            foreach (var dust in GameController.Instance.player.inventory.dusts)
+            foreach (var dust in Player.i.inventory.dusts)
             {
                 var dustSlot = Instantiate(slotPrefab, content.transform);
                 dustSlot.SetData(dust);
 
                 slotUIs.Add(dustSlot);
+            }
+        }
+        else if(slotSelected == 3) // gem
+        {
+            foreach(var gem in Player.i.inventory.gems)
+            {
+                var gemSlot = Instantiate(slotPrefab, content.transform);
+                gemSlot.SetData(gem);
+
+                slotUIs.Add(gemSlot);
             }
         }
 
@@ -94,7 +106,8 @@ public class EnchantingUI : MonoBehaviour
     void UpdateRunes()
     {
         ResetRunes();
-        print($"{config.runes[0]}");
+
+        print($"updating runes, rune0 is:{config.rune0}");
 
         if(config.dust != null)
         {
@@ -102,17 +115,28 @@ public class EnchantingUI : MonoBehaviour
             DustIcon.sprite = config.dust.icon;
         }
 
-        if (config.runes[0] != null)
-            RuneSlot1.text = config.runes[0].Letter;
+        if (config.rune0 != null)
+            RuneSlot1.text = config.rune0.Letter;
         else
             RuneSlot1.text = "";
 
-        if (config.runes[1] != null)
-            RuneSlot2.text = config.runes[1].Letter;
+        if (config.rune1 != null)
+            RuneSlot2.text = config.rune1.Letter;
         else
             RuneSlot2.text = "";
 
-        // Add gems
+        if (config.hasGem())
+        {
+            GemIcon.enabled = true;
+            GemIcon.sprite = config.gemSprite();
+            accceptButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            GemIcon.enabled = false;
+            accceptButton.gameObject.SetActive(false);
+        }
+        
     }
 
     void UpdateSelection()
@@ -158,27 +182,27 @@ public class EnchantingUI : MonoBehaviour
             if (prev != selected)
                 UpdateSelection();
 
-            if (Input.GetKeyUp(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 if(slotSelected == 0 || slotSelected == 1) // Rune
                 {
                     print($"applying a rune:{slotUIs[selected].runeItem}, name:{slotUIs[selected].runeItem.Name}, on {config}");
-                    config.runes[slotSelected] = slotUIs[selected].runeItem;
+                    config.SetRune(slotSelected, slotUIs[selected].runeItem);
                     //FindObjectOfType<Player>().inventory.runes.Remove(slotUIs[selected].runeItem);
                     UpdateRunes();
                 }
                 else if(slotSelected == 2) // Dust
                 {
-                    config.dust = slotUIs[selected].dustItem;
-                    //item.dust = slotUIs[selected].dustItem;
+                    config.SetDust(slotUIs[selected].dustItem);
+                }
+                else if(slotSelected == 3) // gems
+                {
+                    config.SetGem(slotUIs[selected].gemItem);
                 }
 
                 UpdateContents();
                 //UpdateRunes();
             }
-
-            // PERCHE CAZZO ITEM.RUNES.SLOTS VIENE SOVRASCRITTO SE NON HA RIFERIMENTI???
-            // succede solo con le rune ._.
 
         }
         else
@@ -210,21 +234,90 @@ public class EnchantingUI : MonoBehaviour
                 EntireScrollview.SetActive(true);
                 UpdateContents();
             }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if(config.hasGem())
+                {
+                    Player.i.inventory.gems.Remove(config.Gem);
+                    config.Upload(item);
+                }
+            }
         }
     }
 
 }
 
-public class ItemConfig
+public class AnchestralConfiguration
 {
-    public List<Rune> runes;
+    Rune _rune0;
+    Rune _rune1;
 
-    public Dust dust;
+    Dust _dust;
 
-    public void Setup(ItemBase item)
+    ItemBase gem;
+
+    public Dust dust => _dust;
+    public Rune rune0 => _rune0;
+    public Rune rune1 => _rune1;
+    public ItemBase Gem => gem;
+
+    public void setup(ItemBase item)
     {
-        Debug.Log($"item rune.0: {item.runes.slots[0]}");
-        runes = item.runes.slots;
-        dust = item.dust;
+        _rune0 = item.runes.slots[0];
+        _rune0 = item.runes.slots[1];
+        _dust = item.dust;
+        Debug.Log($"setted up, rune0 is {item.runes.slots[0]}"); // FIXME, this is never reached, dont know y :/
     }
+
+    public AnchestralConfiguration()
+    {
+        _rune0 = null;
+        _rune1 = null;
+        _dust = null;
+        gem = null;
+    }
+
+    public void SetRune(int index, Rune rune)
+    {
+        if (index == 0)
+            _rune0 = rune;
+
+        else if (index == 1)
+            _rune1 = rune;
+    }
+
+    public void SetDust(Dust newdust)
+    {
+        _dust = newdust;
+    }
+
+    public void SetGem(ItemBase gem)
+    {
+        this.gem = gem;
+    }
+
+    public Sprite gemSprite()
+    {
+        if (hasGem())
+            return gem.icon;
+        else
+            return null;
+    }
+
+    public bool hasGem()
+    {
+        if (gem == null)
+            return false;
+        else
+            return true;
+    }
+
+    public void Upload(ItemBase item)
+    {
+        item.runes.slots[0] = rune0;
+        item.runes.slots[1] = rune1;
+        item.dust = dust;
+    }
+
 }

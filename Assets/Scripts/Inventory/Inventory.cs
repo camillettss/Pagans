@@ -282,12 +282,15 @@ public class Inventory : MonoBehaviour
             {
                 if (item.category == 2) // 2 are runes
                 {
-                    print("Adding a rune");
                     runes.Add((Rune)item);
                 }
                 else if (item.category == 3) // 3 are dusts
                 {
                     dusts.Add((Dust)item);
+                }
+                else if(item.category == 5) // 5 are gems
+                {
+                    gems.Add(item);
                 }
 
                 else if (item.category == 4) // 4 ar books
