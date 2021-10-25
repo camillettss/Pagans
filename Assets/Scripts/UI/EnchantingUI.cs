@@ -32,12 +32,15 @@ public class EnchantingUI : MonoBehaviour
     private void Awake()
     {
         print("EnchUI awakening");
-        config = new AnchestralConfiguration();
-        config.setup(item);
-        print($"config original rune0 before calling UpdateContents: {config.rune0}");
-        UpdateContents();
+        config = new AnchestralConfiguration(item);
+        //config.setup(item); // finisce con successo, esce senza modifiche 0_0
+        print($"config original rune0 before calling UpdateContents: {config.rune0}"); // is Rune
+        UpdateContents(); // becomes null :/ idk y
+        print($"config original rune0 after calling UpdateContents: {config.rune0}, now updating circles."); // is Rune
         UpdateCirclesSelection();
+        print($"config original rune0 after calling UpdateCirclesSelection and before runes update: {config.rune0}"); // is Rune
         UpdateRunes();
+        print($"config original rune0 after calling UpdateRunes: {config.rune0}"); // is Rune
         slotSelected = 0;
         EntireScrollview.SetActive(false);
     }
@@ -266,19 +269,21 @@ public class AnchestralConfiguration
 
     public void setup(ItemBase item)
     {
-        Debug.Log($"setting up with r0:{item.runes.slots[0]}, r1:{item.runes.slots[1]}, dust:{item.dust}");
+        Debug.Log($"setting up, r0:{item.runes.slots[0]} goes in _r0:{_rune0}");
         _rune0 = item.runes.slots[0];
         _rune0 = item.runes.slots[1];
         _dust = item.dust;
-        Debug.Log($"setted up, rune0 is {item.runes.slots[0]}"); 
+        Debug.Log($"setted up, rune0 is {_rune0}"); 
     }
 
-    public AnchestralConfiguration()
+    public AnchestralConfiguration(ItemBase item)
     {
+        Debug.Log("resetting config");
         _rune0 = null;
         _rune1 = null;
         _dust = null;
         gem = null;
+        setup(item);
     }
 
     public void SetRune(int index, Rune rune)
