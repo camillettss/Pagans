@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool canShowMinimap = true;
     public Key keyToUse = null;
     [HideInInspector] public Door closeDoor = null;
+    [HideInInspector] public Horse activeHorse;
 
     [HideInInspector] public int defense; // quando attaccano il danno subito è danno-defense 
 
@@ -222,6 +223,14 @@ public class Player : MonoBehaviour
             inventory.secondaryWeapon = temp;
             GameController.Instance.hotbar.UpdateItems();
         }
+    }
+
+    public void Ride(Horse horse)
+    {
+        animator.SetBool("isRiding", true);
+        horse.gameObject.SetActive(false);
+        activeHorse = horse;
+        speed = 8; // hardcode, create ridingSpeed!!!
     }
 
     void useWeapon()
