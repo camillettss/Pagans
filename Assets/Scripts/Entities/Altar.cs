@@ -45,7 +45,8 @@ public class Altar : MonoBehaviour
     public void ChooseWeapon()
     {
         // show a list, return quella su cui preme Z
-        GameController.Instance.OpenState(GameState.ChoosingItem);
+        GameController.Instance.ShowInfo("a causa del bug B#04 questa funzione è stata disabilità. sarà nuovamente disponibile nel nuovo aggiornamento (1.5+).", ()=> { }, 2.5f);
+        //GameController.Instance.OpenState(GameState.ChoosingItem); // Remmed for B04. reactivate when fixed!
 
     }
 }
