@@ -54,6 +54,10 @@ public class Player : MonoBehaviour
     public bool SnapToGridMovments = false;
     public int kents = 0;
 
+    float ridingSpeed = 12f;
+    float runningSpeed = 8f;
+    float holdingShieldSpeed = 2.5f;
+
     #region saving stuffs
     public bool isFirstLaunch = false;
     public int storyProgressValue = 0;
@@ -81,15 +85,6 @@ public class Player : MonoBehaviour
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
-        if (animator.GetBool("holdingShield"))
-            speed = 2.5f;
-        else if (Input.GetKey(KeyCode.LeftShift))
-            speed = 7.5f;
-        else
-            speed = walkingSpeedDefault;
-
-
-
         if(moveInput != Vector2.zero)
         {
             animator.SetFloat("FacingHorizontal", moveInput.x);
@@ -113,8 +108,8 @@ public class Player : MonoBehaviour
             animator.SetFloat("Vertical", moveInput.y);
             animator.SetFloat("Speed", moveInput.sqrMagnitude);
 
-            rb.velocity = moveInput * speed;
-            rb.MovePosition(rb.position + moveInput * speed * Time.fixedDeltaTime);
+            rb.velocity = moveInput * getSpeed();
+            rb.MovePosition(rb.position + moveInput * getSpeed() * Time.fixedDeltaTime);
         }
 
         attackPoint.position = new Vector3(transform.position.x+animator.GetFloat("FacingHorizontal"), transform.position.y+animator.GetFloat("FacingVertical"), transform.position.z);
@@ -230,7 +225,6 @@ public class Player : MonoBehaviour
         animator.SetBool("isRiding", true);
         horse.gameObject.SetActive(false);
         activeHorse = horse;
-        speed = 8; // hardcode, create ridingSpeed!!!
     }
 
     void useWeapon()
@@ -297,6 +291,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    float getSpeed()
+    {
+        if (animator.GetBool("isRiding"))
+            return ridingSpeed;
+        else if (Input.GetKey(KeyCode.LeftShift))
+            return runningSpeed;
+        else if (animator.GetBool("holdingShield"))
+            return holdingShieldSpeed;
+        else
+            return walkingSpeedDefault;
+    }
 
     private void OnDrawGizmosSelected()
     {

@@ -123365,8 +123365,8 @@ GameObject:
   - component: {fileID: 4599671838889438966}
   - component: {fileID: 4599671838889438987}
   - component: {fileID: 4599671838889438964}
-  - component: {fileID: 4599671838889438985}
   - component: {fileID: 4599671838889438968}
+  - component: {fileID: 4599671838889438969}
   m_Layer: 11
   m_Name: Horse
   m_TagString: Untagged
@@ -123386,7 +123386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df1ac428fb052845bd7c630c60dcb31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &4599671838889438985
+--- !u!95 &4599671838889438969
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -123396,7 +123396,7 @@ Animator:
   m_GameObject: {fileID: 4599671838889438967}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4bbdc32142db1134dbc786e16711d741, type: 2}
+  m_Controller: {fileID: 9100000, guid: cf4bacfc2bf3a5d428c264bff423f400, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

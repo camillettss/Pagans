@@ -29,6 +29,8 @@ public class newInventory : MonoBehaviour
 
     public const int weapons_category = 0;
     public const int tools_category = 1;
+    public const int shields_category = 2;
+    public const int rings_category = 3;
 
     public const int runes_category = 0;
     public const int dusts_category = 1;

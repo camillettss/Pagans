@@ -85,7 +85,7 @@ public class Inventory : MonoBehaviour
     public static int BookmarkSize(int bookmark)
     {
         if (bookmark == 0)
-            return 2; // weapons and tools
+            return 4; // weapons, tools, shields, rings
         else if (bookmark == 1)
             return 3; // runes, dusts and gems
         else if (bookmark == 2)
@@ -103,8 +103,15 @@ public class Inventory : MonoBehaviour
         {
             res.Add(new List<InventorySlot>());
             res[newInventory.weapons_category].AddRange(Weapons);
+
             res.Add(new List<InventorySlot>());
             res[newInventory.tools_category].AddRange(Tools);
+
+            res.Add(new List<InventorySlot>());
+            res[newInventory.shields_category].AddRange(Shields);
+
+            res.Add(new List<InventorySlot>());
+            res[newInventory.rings_category].AddRange(Rings);
         }
         else if(bookmark == 1) // magic stuffs
         {
