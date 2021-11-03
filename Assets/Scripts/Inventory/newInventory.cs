@@ -146,6 +146,7 @@ public class newInventory : MonoBehaviour
         {
             gameObject.SetActive(false);
             GameController.Instance.state = GameState.FreeRoam;
+            ExtraItemUI.i.HandleUpdate();
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -178,21 +179,28 @@ public class newInventory : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            if(slotUIs.Count > 0 && bookmark == 0) // solo nel primo si può quipaggiare
+            if (slotUIs.Count <= 0)
+                return;
+
+            if(bookmark == 0) // armi, scudi, strumenti e anelli
             {
                 Player.i.inventory.Equip(category, selected);
                 slotUIs[selected].item.onEquip();
                 GameController.Instance.hotbar.UpdateItems();
                 UpdateView(false);
             }
-            else if(slotUIs.Count > 0 && bookmark == 3 && category == 1) // libri
+            else if(bookmark == 3 && category == 1) // libri
             {
                 slotUIs[selected].item.Use(Player.i); // usa il libro
                 GameController.Instance.StartCoroutine(learn_book());
             }
-            else if(slotUIs.Count > 0 && bookmark == 1 && category == 0) // runes
+            else if(bookmark == 1 && category == 0) // runes
             {
                 slotUIs[selected].item.Use(Player.i);
+            }
+            else if(bookmark == 2 && category == 0) // consumabili
+            {
+                Player.i.inventory.extraSlot = Player.i.inventory.findItem(slotUIs[selected].item);
             }
         }
     }

@@ -35,6 +35,8 @@ public class Inventory : MonoBehaviour
     public List<Skill> Skills;
     public List<Book> Books;
 
+    public InventorySlot extraSlot; // for consumables
+
     private void Awake()
     {
         //                                            0           1
@@ -317,11 +319,17 @@ public class Inventory : MonoBehaviour
             if (fitem.count > 1)
                 fitem.count -= 1;
             else
+            {
                 GetSlots(item.category).Remove(fitem);
+
+                if (item == extraSlot.item)
+                    extraSlot = null;
+            }
+            ExtraItemUI.i.HandleUpdate();
         }
         else
         {
-            print("bruh tf");
+            print("bruh tf"); // questo succede quando si lascia attivo un riferimento ad un oggetto dopo la rimozione
         }
 
         updateEquipsList();
@@ -359,7 +367,7 @@ public class Inventory : MonoBehaviour
 public class InventorySlot
 {
     public ItemBase item;
-    public int count;
+    public int count = 1;
 
     public InventorySlot(ItemBase item, int count = 1)
     {

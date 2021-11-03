@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     public bool SnapToGridMovments = false;
     public int kents = 0;
 
-    float ridingSpeed = 12f;
+    float ridingSpeed = 10f;
     float runningSpeed = 8f;
     float holdingShieldSpeed = 2.5f;
 
@@ -146,7 +146,7 @@ public class Player : MonoBehaviour
 
         // HANDLE INPUTS
 
-        // BINDS: E: use, Z: interact, X: shield
+        // BINDS: E: use, R: use weapon, Z: interact, F: use xtra, X: shield, Q: minimap, LShift: run
 
         // minimap show
         if (Input.GetKeyDown(KeyCode.Q) && canShowMinimap && !GameController.Instance.MinimapCanvas.activeSelf)
@@ -217,6 +217,12 @@ public class Player : MonoBehaviour
             inventory.equipedWeapon = inventory.secondaryWeapon;
             inventory.secondaryWeapon = temp;
             GameController.Instance.hotbar.UpdateItems();
+        }
+
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            if (inventory.extraSlot != null && inventory.extraSlot.item != null)
+                inventory.extraSlot.item.Use(this);
         }
     }
 

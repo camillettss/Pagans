@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Horse : MonoBehaviour, IEntity
+public class Horse : Animal
 {
-    public void Interact(Player player)
-    {
-        player.animator.SetFloat("FacingHorizontal", GetComponent<Animator>().GetFloat("FaceX"));
-        player.animator.SetFloat("FacingVertical", GetComponent<Animator>().GetFloat("FaceY"));
-        player.Ride(this);
-    }
-
-    public void takeDamage(int dmg)
+    public override void nonTamedAction()
     {
 
     }
 
-    public void ShowSignal()
+    public override void TamedAction()
     {
-        // actually empty
+        Player.i.animator.SetFloat("FacingHorizontal", GetComponent<Animator>().GetFloat("FaceX"));
+        Player.i.animator.SetFloat("FacingVertical", GetComponent<Animator>().GetFloat("FaceY"));
+        Player.i.Ride(this);
     }
 }
