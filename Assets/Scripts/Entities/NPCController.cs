@@ -240,7 +240,8 @@ public class NPCController : MonoBehaviour, IEntity
 
     public void Attack()
     {
-        print("attack");
+        // enemies will be added in 1.5.1
+        animator.SetTrigger("Attack");
     }
 
     // Animation event

@@ -51,7 +51,7 @@ public class SceneDetails : MonoBehaviour
         foreach (var scene in connectedScenes)
             scene.LoadScene();
 
-        AstarPath.active.Scan();
+        //AstarPath.active.Scan();
     }
 
     public void LoadScene()
@@ -65,7 +65,7 @@ public class SceneDetails : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        AstarPath.active.Scan();
+        //AstarPath.active.Scan();
     }
 
     public void UnloadScene()

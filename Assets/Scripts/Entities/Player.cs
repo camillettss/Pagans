@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         // questo viene dopo l'awake
-        AstarPath.active.Scan();
+        //AstarPath.active.Scan(); // AI things are disabled now
     }
 
     public void HandleUpdate()
@@ -163,6 +163,12 @@ public class Player : MonoBehaviour
                 interact();
         }
 
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            if (activeHorse != null)
+                Dismount();
+        }
+
         /*if (Input.GetKeyDown(KeyCode.Space) && inventory.torch != null && !currentScene.outdoor) // Toggle torch
             inventory.torch.Use(this);*/
 
@@ -231,6 +237,14 @@ public class Player : MonoBehaviour
         animator.SetBool("isRiding", true);
         horse.gameObject.SetActive(false);
         activeHorse = horse;
+    }
+
+    public void Dismount()
+    {
+        animator.SetBool("isRiding", false);
+        activeHorse.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        activeHorse.gameObject.SetActive(true);
+        activeHorse = null;
     }
 
     void useWeapon()
