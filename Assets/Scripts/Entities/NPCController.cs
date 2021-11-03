@@ -35,7 +35,7 @@ public class NPCController : MonoBehaviour, IEntity
 
     Animator animator;
 
-    bool done = false;
+    public bool done = false;
     bool showingSignal = false;
     int i = 0;
 
@@ -88,24 +88,7 @@ public class NPCController : MonoBehaviour, IEntity
                     
                 }
 
-                if (Name == "Asbjorn" && !done && GameController.Instance.storyController.firstLaunch)
-                {
-                    GameController.Instance.storyController.talkedWithAsbjorn = true;
-                    StartCoroutine(GameController.Instance.storyController.AsbjornDialogueDone());
-                }
-
-                else if (Name == "Ulfr" && !done && GameController.Instance.storyController.talkedWithAsbjorn && GameController.Instance.storyController.firstLaunch)
-                    StartCoroutine(GameController.Instance.storyController.UlfrDialogueDone());
-
-                GameController.Instance.state = GameState.FreeRoam;
-
-                if(Player.i.quest.goal != null)
-                    Player.i.quest.goal[0].NPCTalked(this);
-
-                done = true;
-
-                if (Name == "Ulfr" && !GameController.Instance.storyController.talkedWithAsbjorn && GameController.Instance.storyController.firstLaunch)
-                    done = false;
+                GameController.Instance.storyController.NPCTalked(this);
             });
         }
         else

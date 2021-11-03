@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class StoryController : MonoBehaviour
 {
     public bool firstLaunch;
+    public bool isRunningStory;
     public Quest activeQuest;
 
     [SerializeField] SceneDetails TutorialScene;
@@ -29,6 +30,38 @@ public class StoryController : MonoBehaviour
     private void Awake()
     {
         allScenes = new List<SceneDetails>() { Midgardr, Alfheimr, Svartalfheimr, Niflheimr, Muspellheimr, Vanheimr, Jotunheimr, Helheimr, Asgardr };
+    }
+
+    public void NPCTalked(NPCController npc)
+    {
+        if(firstLaunch)
+        {
+            if (npc.Name == "Asbjorn" && !npc.done)
+            {
+                talkedWithAsbjorn = true;
+                StartCoroutine(AsbjornDialogueDone());
+            }
+
+            else if (npc.Name == "Ulfr" && !npc.done && talkedWithAsbjorn)
+                StartCoroutine(UlfrDialogueDone());
+
+            GameController.Instance.state = GameState.FreeRoam;
+
+            if (Player.i.quest.goal != null)
+                Player.i.quest.goal[0].NPCTalked(npc);
+
+            npc.done = true;
+
+            if (npc.Name == "Ulfr" && !talkedWithAsbjorn)
+                npc.done = false;
+        }
+        else if(isRunningStory)
+        {
+            if(npc.Name == "Harbardr")
+            {
+                // ha parlato con harbard (ovviamente dopo il tutorial)
+            }
+        }
     }
 
     public void Launch()
