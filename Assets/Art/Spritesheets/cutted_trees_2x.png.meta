@@ -4,7 +4,7 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 7371594663454349633
-    second: trees_2x_0
+    second: trees_2x_0-USETHIS
   - first:
       213: -1042658333318046209
     second: trees_2x_1
@@ -453,7 +453,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: trees_2x_0
+      name: trees_2x_0-USETHIS
       rect:
         serializedVersion: 2
         x: 106
@@ -461,8 +461,8 @@ TextureImporter:
         width: 70
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 4, z: 0, w: 74}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -482,7 +482,7 @@ TextureImporter:
         width: 80
         height: 104
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
