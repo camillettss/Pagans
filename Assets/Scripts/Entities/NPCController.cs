@@ -63,7 +63,7 @@ public class NPCController : MonoBehaviour, IEntity
     public void Interact(Player player)
     {
         GameController.Instance.ActiveNPC = this;
-        if (type == NPCType.Talking || type == NPCType.ComplexQuestGiver || type == NPCType.QuestGiver || type == NPCType.TalkAndGive)
+        if (type != NPCType.Enemy)
             TriggerDialogue();
     }
 
@@ -88,7 +88,9 @@ public class NPCController : MonoBehaviour, IEntity
                     
                 }
 
+                done = true;
                 GameController.Instance.storyController.NPCTalked(this);
+                GameController.Instance.state = GameState.FreeRoam;
             });
         }
         else

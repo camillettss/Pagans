@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3888,7 +3888,7 @@ Transform:
   - {fileID: 665508875}
   - {fileID: 1618083047}
   - {fileID: 292706276}
-  - {fileID: 8099367535371847764}
+  - {fileID: 2855574554489401652}
   - {fileID: 1816068650}
   m_Father: {fileID: 0}
   m_RootOrder: 21
@@ -122611,8 +122611,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: TallTree
       objectReference: {fileID: 0}
+    - target: {fileID: 7685225713063737016, guid: 4ac0ac16e066bb9499033928cf70a0ac,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685225713063737016, guid: 4ac0ac16e066bb9499033928cf70a0ac,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685225713063737016, guid: 4ac0ac16e066bb9499033928cf70a0ac,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.drawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835915224224030969, guid: 4ac0ac16e066bb9499033928cf70a0ac,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835915224224030969, guid: 4ac0ac16e066bb9499033928cf70a0ac,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835915224224030969, guid: 4ac0ac16e066bb9499033928cf70a0ac,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0322579
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ac0ac16e066bb9499033928cf70a0ac, type: 3}
+--- !u!224 &2855574554489401652 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8835915224224030969, guid: 4ac0ac16e066bb9499033928cf70a0ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 2855574554489401651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3248248784529077512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123059,7 +123095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &4599671838889438968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123073,6 +123109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountToEat: 1
+  tameskill: {fileID: 11400000, guid: 7703cd3f24774934bb60410f1c49cc6a, type: 2}
 --- !u!95 &4599671838889438969
 Animator:
   serializedVersion: 3
@@ -123277,12 +123314,6 @@ Transform:
   m_Father: {fileID: 3248248784529077517}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &8099367535371847764 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6325220129329625447, guid: 4ac0ac16e066bb9499033928cf70a0ac,
-    type: 3}
-  m_PrefabInstance: {fileID: 2855574554489401651}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8400233887626920490
 GameObject:
   m_ObjectHideFlags: 0

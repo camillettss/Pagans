@@ -6,7 +6,10 @@ public class Horse : Animal
 {
     public override void nonTamedAction()
     {
-
+        if(Player.i.inventory.Skills.Contains(tameskill))
+        {
+            tamed = true;
+        }
     }
 
     public override void TamedAction()

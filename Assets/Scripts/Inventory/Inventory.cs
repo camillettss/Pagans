@@ -302,7 +302,7 @@ public class Inventory : MonoBehaviour
                     gems.Add(item);
                 }
 
-                else if (item.category == 4) // 4 ar books
+                else if (item.category == 4) // 4 ar books 
                     Books.Add((Book)item);
 
             }

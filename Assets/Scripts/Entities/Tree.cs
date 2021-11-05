@@ -83,6 +83,7 @@ public class Tree : MonoBehaviour, IEntity
             Player.i.inventory.Add(item);
 
         cutted = true;
+        GetComponent<CircleCollider2D>().enabled = false;
     }
 
     public void takeDamage(int dmg)

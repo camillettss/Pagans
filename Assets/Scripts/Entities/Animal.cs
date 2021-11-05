@@ -7,6 +7,7 @@ public abstract class Animal : MonoBehaviour, IEntity
     protected bool tamed = false;
     [SerializeField] int amountToEat; // this will be randomized with a nearly number
     int ate = 0;
+    [SerializeField] protected Skill tameskill;
 
     public void Interact(Player player)
     {
@@ -39,8 +40,40 @@ public abstract class Animal : MonoBehaviour, IEntity
         // drops meat on die.
     }
 
+    private void FixedUpdate()
+    {
+        if(Player.i.isInRange(this))
+        {
+            if (transform.childCount == 0)
+                ShowSignal();
+        }
+        else
+        {
+            if(transform.childCount > 0)
+                unShowSignal();
+        }
+    }
+
+    public void unShowSignal()
+    {
+        foreach(Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     public void ShowSignal()
     {
-        // actually empty
+        if(!tamed) // tame signal 
+        {
+            if(Player.i.inventory.Skills.Contains(tameskill) || (Player.i.inventory.extraSlot != null && Player.i.inventory.extraSlot.item != null))
+            {
+                Instantiate(GameController.Instance.keytip_E, transform);
+            }
+        }
+        else // ride signal
+        {
+            Instantiate(GameController.Instance.keytip_Z, transform);
+        }
     }
 }

@@ -68,13 +68,7 @@ public class GameController : MonoBehaviour
         MinimapCanvas.SetActive(false);
         ppv = gameObject.GetComponent<Volume>();
         player.Load();
-        storyController.Midgardr.LoadSceneAsMain();
-        /*if (LaunchStory)
-        {
-            StartCoroutine(launchStory());
-        }
-        else
-            storyController.Midgardr.LoadSceneAsMain();*/
+        storyController.Launch();
     }
 
     IEnumerator launchStory()
@@ -224,6 +218,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        print(state);
         if (state != GameState.FreeRoam)
         {
             player.animator.SetFloat("Speed", 0.0f);
