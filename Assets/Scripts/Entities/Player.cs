@@ -156,11 +156,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z)) // Interact
         {
-            // use altar, else interact.
-            if (activeAltar != null)
-                StartCoroutine(activeAltar.Use());
-            else
-                interact();
+            // passes through Event Handler.
+            GameController.Instance.EvH.Interact();
         }
 
         if(Input.GetKeyDown(KeyCode.X))
@@ -280,26 +277,6 @@ public class Player : MonoBehaviour
             inventory.Tools[inventory.equipedTool].item.Use(this);
     }
 
-    void interact()
-    {
-        var front = GetFrontalCollider();
-
-        if (front == null)
-            return;
-
-        if (front.TryGetComponent(out NPCController npc))
-        {
-            if (npc.type == NPCType.Enemy)
-                throw new System.NullReferenceException();
-
-            npc.Interact(this);
-        }
-        else if (front.TryGetComponent(out IEntity entity))
-        {
-            entity.Interact(this);
-        }
-    }
-
     public void Cut()
     {
         var tree = GetFrontalCollider(farmingLayer);
@@ -384,8 +361,8 @@ public class Player : MonoBehaviour
 
     public void AcceptQuest(Quest qst)
     {
-        if (qst.title == "L'origine del mondo")
-            StartCoroutine(GameController.Instance.storyController.AsbjornQuestAccepted());
+        //if (qst.title == "L'origine del mondo")
+        //    StartCoroutine(GameController.Instance.storyController.AsbjornQuestAccepted());
         qst.isActive = true;
         quest = qst;
         UpdateQuestUI();

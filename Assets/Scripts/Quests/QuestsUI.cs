@@ -18,7 +18,7 @@ public class QuestsUI : MonoBehaviour
     private void Awake()
     {
         player = FindObjectOfType<Player>();
-        UpdateContents();
+        //UpdateContents();
     }
 
     public void UpdateContents()
@@ -35,7 +35,7 @@ public class QuestsUI : MonoBehaviour
         slotUIs = new List<QuestSlotUI>();
         foreach(var quest in player.QuestsContainer.GetQuestsByType(Type))
         {
-            print($"Quest: {quest}");
+            //print($"Quest: {quest.description}");
             var slot = Instantiate(questSlotPrefab, contents.transform);
             slot.SetData(quest);
 

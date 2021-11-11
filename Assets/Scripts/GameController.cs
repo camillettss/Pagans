@@ -35,6 +35,8 @@ public class GameController : MonoBehaviour
     public QuestController questWindow;
     public NewItemUI newItemUI;
 
+    public StoryEventHandler EvH;
+
     public GameObject keytip_E;
     public GameObject keytip_Z;
 
@@ -67,14 +69,8 @@ public class GameController : MonoBehaviour
         //hotbar.UpdateItems();
         MinimapCanvas.SetActive(false);
         ppv = gameObject.GetComponent<Volume>();
+        EvH = FindObjectOfType<StoryEventHandler>();
         player.Load();
-        storyController.Launch();
-    }
-
-    IEnumerator launchStory()
-    {
-        yield return new WaitForSeconds(.5f);
-        storyController.Launch();
     }
 
     private void OnDestroy()
@@ -218,7 +214,6 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        print(state);
         if (state != GameState.FreeRoam)
         {
             player.animator.SetFloat("Speed", 0.0f);

@@ -58,6 +58,8 @@ public class NPCController : MonoBehaviour, IEntity
     {
         if (type == NPCType.Enemy)
             canBeDamaged = true;
+
+        dialogue.Teller = Name;
     }
 
     public void Interact(Player player)
@@ -89,7 +91,6 @@ public class NPCController : MonoBehaviour, IEntity
                 }
 
                 done = true;
-                GameController.Instance.storyController.NPCTalked(this);
                 GameController.Instance.state = GameState.FreeRoam;
             });
         }
