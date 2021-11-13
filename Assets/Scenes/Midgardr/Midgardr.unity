@@ -4718,6 +4718,11 @@ PrefabInstance:
       propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.data[0]
       value: "passa pi\xF9 tardi!"
       objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100733, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
       propertyPath: m_Name
@@ -5034,6 +5039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Asbjorn
   dialogue:
+    Teller: 
     sentences:
     - "Benvenuto a Breidr. questa piccola citt\xE0 \xE8 situata a mannheimr."
     - "esistono nove mondi e questo \xE8 quello degli uomini, ma non siamo gli unici
@@ -5047,8 +5053,8 @@ MonoBehaviour:
     description: trova ulfr e fatti raccontare come la terra nacque.
     experienceReward: 30
     goldReward: 15
-    successReaction: Hai completato la missione. ottimo!
     giver: {fileID: 226866622756505783}
+    successReaction: Hai completato la missione. ottimo!
     goal:
     - goal: Entra nella casa
       goalType: 3
@@ -5074,7 +5080,8 @@ MonoBehaviour:
   drop: {fileID: 0}
   repeatOperation: 0
   dialoguesAfterWork:
-  - sentences:
+  - Teller: 
+    sentences:
     - "questo posto \xE8 davvero bello."
   expDrop: 0
   done: 0
@@ -122662,6 +122669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
+    Teller: 
     sentences:
     - Asbjarnar heimr
   signal: {fileID: 5116772420227342650}
@@ -122900,6 +122908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
+    Teller: 
     sentences:
     - '-> East
 
@@ -123420,6 +123429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
+    Teller: 
     sentences:
     - Bratthalidr
   signal: {fileID: 1383194084615564904}

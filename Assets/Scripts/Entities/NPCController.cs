@@ -101,7 +101,7 @@ public class NPCController : MonoBehaviour, IEntity
                 GameController.Instance.dialogueBox.StartDialogue(new Dialogue(dialoguesQueue[0]), () =>
                 {
                     GameController.Instance.state = GameState.FreeRoam;
-                    if(Player.i.quest.goal != null)
+                    if(Player.i.quest != null)
                         Player.i.quest.goal[0].NPCTalked(this);
                 });
                 dialoguesQueue.RemoveAt(0);
@@ -111,8 +111,6 @@ public class NPCController : MonoBehaviour, IEntity
                 GameController.Instance.dialogueBox.StartDialogue(dialoguesAfterWork[i], () =>
                 {
                     GameController.Instance.state = GameState.FreeRoam;
-                    if(Player.i.quest.goal != null)
-                        Player.i.quest.goal[0].NPCTalked(this);
                 });
                 i++;
                 if (i >= dialoguesAfterWork.Count)

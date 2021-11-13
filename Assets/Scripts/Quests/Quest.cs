@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 [System.Serializable]
 public class Quest
@@ -13,24 +14,10 @@ public class Quest
     public int experienceReward;
     public int goldReward;
 
-    public string successReaction;
     public NPCController giver;
+    [ConditionalField(nameof(giver))] public string successReaction;
 
     public List<QuestGoal> goal;
-    
-    /*public Quest(string title, string description, int expReward, int goldReward, List<QuestGoal> goals, string successReaction = "ottimo!", NPCController giver = null)
-    {
-        this.title = title;
-        this.description = description;
-
-        experienceReward = expReward;
-        this.goldReward = goldReward;
-        this.successReaction = successReaction;
-
-        this.giver = giver;
-
-        this.goal = goals;
-    }*/
 
     public void Complete()
     {

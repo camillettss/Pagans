@@ -593,6 +593,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
+      propertyPath: dialoguesAfterWork.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
       propertyPath: Name
       value: Ormr
       objectReference: {fileID: 0}
@@ -600,6 +610,16 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
       value: Il 14 Novembre si sta avvicinando, preparati per lo Alfablot!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: dialoguesAfterWork.Array.data[0].Teller
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.data[0]
+      value: non so che di
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100733, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
@@ -726,6 +746,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
+      propertyPath: dialoguesAfterWork.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
       propertyPath: Name
       value: Ulfr
       objectReference: {fileID: 0}
@@ -763,6 +793,16 @@ PrefabInstance:
         type: 3}
       propertyPath: quest.goal.Array.data[0].talkTo
       value: Ormr
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: quest.successReaction
+      value: appost
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.data[0]
+      value: manco io ao
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100733, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
