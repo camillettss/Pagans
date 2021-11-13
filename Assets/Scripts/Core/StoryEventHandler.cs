@@ -25,7 +25,7 @@ public class StoryEventHandler : MonoBehaviour
 
     int refreshQuest()
     {
-        if (Player.i.quest.goal.Count > 0) // Doesn't work, it always update cuz count is always >0.
+        if (Player.i.quest != null) // Doesn't work, it always update cuz count is always >0.
         {
             print("aggiornamo tutto frate");
         }
