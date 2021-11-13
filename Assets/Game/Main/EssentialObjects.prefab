@@ -338,7 +338,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 36.907642}
+  m_SizeDelta: {x: 0, y: 39.252457}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &494754467987496158
 MonoBehaviour:
@@ -7995,6 +7995,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 5379045465510515555}
   questWindow: {fileID: 5379045465577444028}
   newItemUI: {fileID: 690622882139412556}
+  EvH: {fileID: 0}
   keytip_E: {fileID: 8300183228322714914, guid: 33d80a03bc609144ba455acd4dadd689,
     type: 3}
   keytip_Z: {fileID: 8300183228322714914, guid: da38c68a603c69c4da6a0d57442bf9bb,
@@ -8333,7 +8334,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5379045465332533998}
   - component: {fileID: 5379045465332533999}
-  - component: {fileID: 5379045465332533992}
   - component: {fileID: 2437979475115816296}
   m_Layer: 10
   m_Name: Camera
@@ -8399,14 +8399,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &5379045465332533992
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5379045465332533993}
-  m_Enabled: 1
 --- !u!114 &2437979475115816296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8625,7 +8617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -200.00003}
+  m_AnchoredPosition: {x: 0, y: -200}
   m_SizeDelta: {x: -80, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5379045465510515564
@@ -13343,7 +13335,7 @@ PrefabInstance:
     - target: {fileID: 9059272968958786830, guid: c75189d0bd8d0524c87164031f8758fd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -18.453821
+      value: -19.626228
       objectReference: {fileID: 0}
     - target: {fileID: 9059272968958786830, guid: c75189d0bd8d0524c87164031f8758fd,
         type: 3}
@@ -13353,7 +13345,7 @@ PrefabInstance:
     - target: {fileID: 9059272968958786830, guid: c75189d0bd8d0524c87164031f8758fd,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 36.907642
+      value: 39.252457
       objectReference: {fileID: 0}
     - target: {fileID: 9059272968958786830, guid: c75189d0bd8d0524c87164031f8758fd,
         type: 3}

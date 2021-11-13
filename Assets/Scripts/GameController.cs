@@ -2,7 +2,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.Rendering;
-
+using UnityEngine.SceneManagement;
 public enum GameState { FreeRoam, Menu, Settings, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Battle, ChoosingItem };
 public class GameController : MonoBehaviour
 {
