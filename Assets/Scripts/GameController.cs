@@ -71,6 +71,10 @@ public class GameController : MonoBehaviour
         ppv = gameObject.GetComponent<Volume>();
         EvH = FindObjectOfType<StoryEventHandler>();
         player.Load();
+        if(storyController.firstLaunch)
+        {
+            ShowMessage("benvenuto.");
+        }
     }
 
     private void OnDestroy()
