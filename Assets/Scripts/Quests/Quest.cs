@@ -7,6 +7,7 @@ using MyBox;
 public class Quest
 {
     public bool isActive;
+    public bool activeOnGet = false;
 
     public string title;
     public string description;

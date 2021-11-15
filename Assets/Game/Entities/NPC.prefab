@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: NPCName
   dialogue:
+    Teller: 
     sentences:
     - Heil esploratore, io sono ormr.
   type: 0
@@ -157,13 +158,14 @@ MonoBehaviour:
       is going to read this.
     experienceReward: 30
     goldReward: 780
-    successReaction: 
     giver: {fileID: 0}
+    successReaction: 
     goal:
     - goal: 
       goalType: 0
       requiredAmount: 0
       currentAmount: 0
+      enemyName: 
       talkTo: 
       sellerName: 
       itemName: 
@@ -172,6 +174,7 @@ MonoBehaviour:
       goalType: 0
       requiredAmount: 0
       currentAmount: 0
+      enemyName: 
       talkTo: 
       sellerName: 
       itemName: 
@@ -180,6 +183,7 @@ MonoBehaviour:
       goalType: 0
       requiredAmount: 0
       currentAmount: 0
+      enemyName: 
       talkTo: 
       sellerName: 
       itemName: 
@@ -188,6 +192,7 @@ MonoBehaviour:
       goalType: 0
       requiredAmount: 0
       currentAmount: 0
+      enemyName: 
       talkTo: 
       sellerName: 
       itemName: 
@@ -196,6 +201,7 @@ MonoBehaviour:
       goalType: 0
       requiredAmount: 0
       currentAmount: 0
+      enemyName: 
       talkTo: 
       sellerName: 
       itemName: 
@@ -206,6 +212,9 @@ MonoBehaviour:
   drop: {fileID: 0}
   repeatOperation: 0
   dialoguesAfterWork: []
+  storyEntity: 0
+  expDrop: 0
+  done: 0
 --- !u!95 &2576448740519100611
 Animator:
   serializedVersion: 3

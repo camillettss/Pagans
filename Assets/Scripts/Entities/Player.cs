@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
         }
 
         // Update quest goals
-        if(quest != null && (quest.goal != null || quest.goal.Count > 0))
+        if(quest != null)
         {
             if(quest.goal[0].isReached())
             {

@@ -11,6 +11,8 @@ public class QuestInventory : MonoBehaviour
     {
         NotificationsUI.i.AddNotification("got new quest.");
         quests.Add(quest);
+        if (quest.activeOnGet)
+            Player.i.AcceptQuest(quest);
     }
 
     public void OnComplete(Quest quest)

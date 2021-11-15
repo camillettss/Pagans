@@ -31,6 +31,10 @@ public class NPCController : MonoBehaviour, IEntity
     [SerializeField] bool repeatOperation;
     [ConditionalField(nameof(repeatOperation), true)] [SerializeField] List<Dialogue> dialoguesAfterWork;
 
+    [SerializeField] bool storyEntity=false;
+    [ConditionalField(nameof(storyEntity))][SerializeField] List<ParticleDialogue> particleDialogues;
+    bool storyGizmosDone = false;
+
     [SerializeField] int expDrop = 0;
 
     Animator animator;
@@ -52,6 +56,7 @@ public class NPCController : MonoBehaviour, IEntity
         animator = GetComponent<Animator>();
         quest.giver = this;
         done = false;
+        storyGizmosDone = false;
     }
 
     private void Awake()
@@ -71,7 +76,21 @@ public class NPCController : MonoBehaviour, IEntity
 
     public void TriggerDialogue()
     {
-        if(repeatOperation || !done)
+        if (!storyGizmosDone) {
+            foreach (var pdialogue in particleDialogues)
+            {
+                if (pdialogue.questName == Player.i.quest.title)
+                {
+                    GameController.Instance.dialogueBox.StartDialogue(pdialogue.differentDialogue, () =>
+                    {
+                        GameController.Instance.state = GameState.FreeRoam;
+                    });
+                    storyGizmosDone = true;
+                    return;
+                }
+            }
+        }
+        if (repeatOperation || !done)
         {
             GameController.Instance.dialogueBox.StartDialogue(dialogue, () =>
             {
@@ -87,7 +106,7 @@ public class NPCController : MonoBehaviour, IEntity
 
                 if (type == NPCType.Enemy)
                 {
-                    
+
                 }
 
                 done = true;
@@ -96,12 +115,12 @@ public class NPCController : MonoBehaviour, IEntity
         }
         else
         {
-            if(dialoguesQueue.Count>0)
+            if (dialoguesQueue.Count > 0)
             {
                 GameController.Instance.dialogueBox.StartDialogue(new Dialogue(dialoguesQueue[0]), () =>
                 {
                     GameController.Instance.state = GameState.FreeRoam;
-                    if(Player.i.quest != null)
+                    if (Player.i.quest != null)
                         Player.i.quest.goal[0].NPCTalked(this);
                 });
                 dialoguesQueue.RemoveAt(0);
@@ -318,4 +337,11 @@ public class NPCController : MonoBehaviour, IEntity
         onDie();
         Destroy(gameObject);
     }
+}
+
+[System.Serializable]
+internal class ParticleDialogue
+{
+    public string questName;
+    public Dialogue differentDialogue;
 }
