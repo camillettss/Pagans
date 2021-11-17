@@ -7398,6 +7398,7 @@ MonoBehaviour:
   hp: 10
   quest:
     isActive: 0
+    activeOnGet: 0
     title: 
     description: 
     experienceReward: 0
@@ -7468,6 +7469,73 @@ MonoBehaviour:
       sellerName: 
       itemName: 
       PortalName: 
+    introduceNext:
+      dialogue:
+        Teller: 
+        sentences: []
+      quest:
+        isActive: 0
+        activeOnGet: 0
+        title: 
+        description: 
+        experienceReward: 0
+        goldReward: 0
+        giver: {fileID: 0}
+        successReaction: 
+        goal: []
+        introduceNext:
+          dialogue:
+            Teller: 
+            sentences: []
+          quest:
+            isActive: 0
+            activeOnGet: 0
+            title: 
+            description: 
+            experienceReward: 0
+            goldReward: 0
+            giver: {fileID: 0}
+            successReaction: 
+            goal: []
+            introduceNext:
+              dialogue:
+                Teller: 
+                sentences: []
+              quest:
+                isActive: 0
+                activeOnGet: 0
+                title: 
+                description: 
+                experienceReward: 0
+                goldReward: 0
+                giver: {fileID: 0}
+                successReaction: 
+                goal: []
+                introduceNext:
+                  dialogue:
+                    Teller: 
+                    sentences: []
+                  quest:
+                    isActive: 0
+                    activeOnGet: 0
+                    title: 
+                    description: 
+                    experienceReward: 0
+                    goldReward: 0
+                    giver: {fileID: 0}
+                    successReaction: 
+                    goal: []
+                    introduceNext:
+                      dialogue:
+                        Teller: 
+                      quest:
+                        isActive: 0
+                        activeOnGet: 0
+                        title: 
+                        description: 
+                        experienceReward: 0
+                        goldReward: 0
+                        successReaction: 
   inventory: {fileID: 0}
   equipedItem:
     item: {fileID: 0}
@@ -8010,6 +8078,105 @@ MonoBehaviour:
   state: 0
   ActiveNPC: {fileID: 0}
   storyController: {fileID: 0}
+  talkToHarbardQuest:
+    isActive: 0
+    activeOnGet: 1
+    title: Harbardskey
+    description: "harbardr \xE8 uno strano viandante appena sbarcato al porto, pare
+      abbia qualcosa da dirti."
+    experienceReward: 5
+    goldReward: 0
+    giver: {fileID: 0}
+    successReaction: 
+    goal:
+    - goal: parla con harbard
+      goalType: 2
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: Harbardr
+      sellerName: 
+      itemName: 
+      PortalName: 
+    introduceNext:
+      dialogue:
+        Teller: 
+        sentences:
+        - non so proprio a cosa possa servire questa chiave, magari la biblioteca
+          ne sa qualcosa.
+      quest:
+        isActive: 0
+        activeOnGet: 1
+        title: bokheimr
+        description: "forse in biblioteca c'\xE8 qualche libro riguardo questa strana
+          chiave. io darei un'occhiata."
+        experienceReward: 0
+        goldReward: 0
+        giver: {fileID: 0}
+        successReaction: 
+        goal:
+        - goal: vai in biblioteca
+          goalType: 0
+          requiredAmount: 0
+          currentAmount: 0
+          enemyName: 
+          talkTo: 
+          sellerName: 
+          itemName: 
+          PortalName: 
+        introduceNext:
+          dialogue:
+            Teller: 
+            sentences: []
+          quest:
+            isActive: 0
+            activeOnGet: 0
+            title: 
+            description: 
+            experienceReward: 0
+            goldReward: 0
+            giver: {fileID: 0}
+            successReaction: 
+            goal: []
+            introduceNext:
+              dialogue:
+                Teller: 
+                sentences: []
+              quest:
+                isActive: 0
+                activeOnGet: 0
+                title: 
+                description: 
+                experienceReward: 0
+                goldReward: 0
+                giver: {fileID: 0}
+                successReaction: 
+                goal: []
+                introduceNext:
+                  dialogue:
+                    Teller: 
+                    sentences: []
+                  quest:
+                    isActive: 0
+                    activeOnGet: 0
+                    title: 
+                    description: 
+                    experienceReward: 0
+                    goldReward: 0
+                    giver: {fileID: 0}
+                    successReaction: 
+                    goal: []
+                    introduceNext:
+                      dialogue:
+                        Teller: 
+                      quest:
+                        isActive: 0
+                        activeOnGet: 0
+                        title: 
+                        description: 
+                        experienceReward: 0
+                        goldReward: 0
+                        successReaction: 
 --- !u!114 &7942474048947313888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8043,6 +8210,7 @@ MonoBehaviour:
   isRunningStory: 0
   activeQuest:
     isActive: 0
+    activeOnGet: 0
     title: 
     description: 
     experienceReward: 0
@@ -8113,6 +8281,73 @@ MonoBehaviour:
       sellerName: 
       itemName: 
       PortalName: 
+    introduceNext:
+      dialogue:
+        Teller: 
+        sentences: []
+      quest:
+        isActive: 0
+        activeOnGet: 0
+        title: 
+        description: 
+        experienceReward: 0
+        goldReward: 0
+        giver: {fileID: 0}
+        successReaction: 
+        goal: []
+        introduceNext:
+          dialogue:
+            Teller: 
+            sentences: []
+          quest:
+            isActive: 0
+            activeOnGet: 0
+            title: 
+            description: 
+            experienceReward: 0
+            goldReward: 0
+            giver: {fileID: 0}
+            successReaction: 
+            goal: []
+            introduceNext:
+              dialogue:
+                Teller: 
+                sentences: []
+              quest:
+                isActive: 0
+                activeOnGet: 0
+                title: 
+                description: 
+                experienceReward: 0
+                goldReward: 0
+                giver: {fileID: 0}
+                successReaction: 
+                goal: []
+                introduceNext:
+                  dialogue:
+                    Teller: 
+                    sentences: []
+                  quest:
+                    isActive: 0
+                    activeOnGet: 0
+                    title: 
+                    description: 
+                    experienceReward: 0
+                    goldReward: 0
+                    giver: {fileID: 0}
+                    successReaction: 
+                    goal: []
+                    introduceNext:
+                      dialogue:
+                        Teller: 
+                      quest:
+                        isActive: 0
+                        activeOnGet: 0
+                        title: 
+                        description: 
+                        experienceReward: 0
+                        goldReward: 0
+                        successReaction: 
   TutorialScene: {fileID: 0}
   Midgardr: {fileID: 0}
   Alfheimr: {fileID: 0}
@@ -8125,6 +8360,7 @@ MonoBehaviour:
   Asgardr: {fileID: 0}
   CaveQuest:
     isActive: 0
+    activeOnGet: 0
     title: La Caverna
     description: trova la caverna usando la minimappa. tieni premuto Q mentre esplori
       per usarla!
@@ -8151,6 +8387,73 @@ MonoBehaviour:
       sellerName: 
       itemName: 
       PortalName: CaveIngress
+    introduceNext:
+      dialogue:
+        Teller: 
+        sentences: []
+      quest:
+        isActive: 0
+        activeOnGet: 0
+        title: 
+        description: 
+        experienceReward: 0
+        goldReward: 0
+        giver: {fileID: 0}
+        successReaction: 
+        goal: []
+        introduceNext:
+          dialogue:
+            Teller: 
+            sentences: []
+          quest:
+            isActive: 0
+            activeOnGet: 0
+            title: 
+            description: 
+            experienceReward: 0
+            goldReward: 0
+            giver: {fileID: 0}
+            successReaction: 
+            goal: []
+            introduceNext:
+              dialogue:
+                Teller: 
+                sentences: []
+              quest:
+                isActive: 0
+                activeOnGet: 0
+                title: 
+                description: 
+                experienceReward: 0
+                goldReward: 0
+                giver: {fileID: 0}
+                successReaction: 
+                goal: []
+                introduceNext:
+                  dialogue:
+                    Teller: 
+                    sentences: []
+                  quest:
+                    isActive: 0
+                    activeOnGet: 0
+                    title: 
+                    description: 
+                    experienceReward: 0
+                    goldReward: 0
+                    giver: {fileID: 0}
+                    successReaction: 
+                    goal: []
+                    introduceNext:
+                      dialogue:
+                        Teller: 
+                      quest:
+                        isActive: 0
+                        activeOnGet: 0
+                        title: 
+                        description: 
+                        experienceReward: 0
+                        goldReward: 0
+                        successReaction: 
   FirstTime_inventory: 1
   talkedWithAsbjorn: 0
   firstTimeInCave: 1
@@ -8617,7 +8920,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -200}
+  m_AnchoredPosition: {x: 0, y: -200.00003}
   m_SizeDelta: {x: -80, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5379045465510515564

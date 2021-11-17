@@ -20,6 +20,8 @@ public class Quest
 
     public List<QuestGoal> goal;
 
+    public DiaQuest introduceNext;
+
     public void Complete()
     {
         GameController.Instance.player.experience += experienceReward;
@@ -35,4 +37,11 @@ public class Quest
             giver.dialoguesQueue.Add(new string[] {successReaction});
         }
     }
+}
+
+[System.Serializable]
+public class DiaQuest
+{
+    public Dialogue dialogue;
+    public Quest quest;
 }

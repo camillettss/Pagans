@@ -44,6 +44,19 @@ public class StoryEventHandler : MonoBehaviour
         }
     }
 
+    public void CompleteQuest(Quest quest)
+    {
+        quest.Complete();
+        if(quest.introduceNext != null)
+        {
+            GameController.Instance.dialogueBox.StartDialogue(quest.introduceNext.dialogue, () =>
+            {
+                Player.i.QuestsContainer.Add(quest.introduceNext.quest);
+                GameController.Instance.state = GameState.FreeRoam;
+            });
+        }
+    }
+
     IEnumerator waitForState(Del callback, IEntity entity=null, InteractionType type=InteractionType.talkTo, GameState state = GameState.FreeRoam)
     {
         while(true)

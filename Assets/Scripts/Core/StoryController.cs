@@ -42,7 +42,6 @@ public class StoryController : MonoBehaviour
 
     public void endDialogueWith(NPCController npc)
     {
-        if (npc.Name == "Ormr" && talkedWithMan == false)
-            talkedWithMan = true;
+        
     }
 }

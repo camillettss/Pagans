@@ -121,168 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &173627592
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1110182014}
-    m_Modifications:
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.goal.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialoguesAfterWork.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[0]
-      value: fammi il favore di parlare con Orm.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.title
-      value: Ormsmal
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.goal.Array.data[0].goal
-      value: Parla con orm
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.goal.Array.data[0].goalType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.goal.Array.data[0].talkTo
-      value: Ormr
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: Name
-      value: Ulfr
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.giver
-      value: 
-      objectReference: {fileID: 173627594}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.successReaction
-      value: grazie mille!
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialoguesAfterWork.Array.data[0].Teller
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.data[0]
-      value: si sta facendo buio.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.activeOnGet
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100733, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_Name
-      value: Ulfr-giver
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 12.716206
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.1909107
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 38.344814
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 061bce73c1ae6b843bec7d0da2e4ea49, type: 3}
---- !u!4 &173627593 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-    type: 3}
-  m_PrefabInstance: {fileID: 173627592}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &173627594 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-    type: 3}
-  m_PrefabInstance: {fileID: 173627592}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f7c7eb0b98415442b85667e9d23954a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &792054881
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +375,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5379045465088737371, guid: 8f267ce035dcbc146a50a5715e515f90,
+        type: 3}
+      propertyPath: talkToHarbardQuest.goal.Array.data[0].goalType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379045465088737371, guid: 8f267ce035dcbc146a50a5715e515f90,
+        type: 3}
+      propertyPath: talkToHarbardQuest.introduceNext.quest.goal.Array.data[0].goalType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379045465088737371, guid: 8f267ce035dcbc146a50a5715e515f90,
+        type: 3}
+      propertyPath: talkToHarbardQuest.introduceNext.quest.goal.Array.data[0].PortalName
+      value: library-door
+      objectReference: {fileID: 0}
     - target: {fileID: 5379045465510515566, guid: 8f267ce035dcbc146a50a5715e515f90,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -550,7 +403,7 @@ PrefabInstance:
     - target: {fileID: 8833947585575132196, guid: 8f267ce035dcbc146a50a5715e515f90,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -74.5
+      value: -74.50003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f267ce035dcbc146a50a5715e515f90, type: 3}
@@ -581,10 +434,7 @@ Transform:
   m_LocalPosition: {x: -3.8176303, y: 1.9480177, z: -37.344814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1228067651}
-  - {fileID: 2097327481}
   - {fileID: 1561473844}
-  - {fileID: 173627593}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -748,13 +598,23 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &1228067650
+--- !u!1001 &1561473843
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 1110182014}
     m_Modifications:
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: particleDialogues.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: particleDialogues.Array.data[0].differentDialogue.sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
       propertyPath: dialoguesAfterWork.Array.size
@@ -767,148 +627,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
-      propertyPath: particleDialogues.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: particleDialogues.Array.data[0].differentDialogue.sentences.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: Name
-      value: Ormr
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[0]
-      value: Il 14 Novembre si sta avvicinando, preparati per lo Alfablot!
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialoguesAfterWork.Array.data[0].Teller
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.data[0]
-      value: non so che di
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: storyEntity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: particleDialogues.Array.data[0].differentDialogue.Teller
-      value: Ormr
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: particleDialogues.Array.data[0].differentDialogue.sentences.Array.data[0]
-      value: questo lo dico solo se chai la quest xd
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: particleDialogues.Array.data[0].questName
-      value: First quest
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100733, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_Name
-      value: Ormr
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100733, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.4412346
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.8865103
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 38.344814
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 061bce73c1ae6b843bec7d0da2e4ea49, type: 3}
---- !u!4 &1228067651 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-    type: 3}
-  m_PrefabInstance: {fileID: 1228067650}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1561473843
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1110182014}
-    m_Modifications:
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: particleDialogues.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: particleDialogues.Array.data[0].differentDialogue.sentences.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
       propertyPath: repeatOperation
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
@@ -918,42 +638,58 @@ PrefabInstance:
     - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
       propertyPath: dialogue.Teller
-      value: 
+      value: Harbardr
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: "\xE8 stancante la vita di campagna.."
+      value: pia sta chiave
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
       propertyPath: particleDialogues.Array.data[0].questName
-      value: Ormsmal
+      value: Harbardskey
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
       propertyPath: particleDialogues.Array.data[0].differentDialogue.sentences.Array.data[0]
-      value: grazie, ora torna da ulf.
+      value: pia sta chiave
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
       propertyPath: Name
-      value: Ormr
+      value: Harbardr
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: drop
+      value: 
+      objectReference: {fileID: 11400000, guid: 852010e32bb98e6458a0d946c9cf2d46,
+        type: 2}
+    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
+        type: 3}
+      propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.data[0]
+      value: buttanella
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100733, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
       propertyPath: m_Name
-      value: Ormr.completer
+      value: Harbardr
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.856024
+      value: -8.4
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0912708
+      value: 4.41
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
@@ -983,7 +719,7 @@ PrefabInstance:
     - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
         type: 3}
@@ -1049,168 +785,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0535d660a90545c4981c158fb82e84b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &2097327480
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1110182014}
-    m_Modifications:
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.goal.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialoguesAfterWork.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: Name
-      value: Ulfr
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialogue.Teller
-      value: Ulfr
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[0]
-      value: beccate sta quest
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.giver
-      value: 
-      objectReference: {fileID: 2097327482}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.goal.Array.data[0].goalType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.goal.Array.data[0].goal
-      value: parla con ormr
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.goal.Array.data[0].talkTo
-      value: Ormr
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: quest.successReaction
-      value: appost
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: dialoguesAfterWork.Array.data[0].sentences.Array.data[0]
-      value: manco io ao
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: storyEntity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100733, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_Name
-      value: Ulfr
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100733, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10.627136
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.9025949
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 38.344814
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 061bce73c1ae6b843bec7d0da2e4ea49, type: 3}
---- !u!4 &2097327481 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2576448740519100735, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-    type: 3}
-  m_PrefabInstance: {fileID: 2097327480}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2097327482 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2576448740519100608, guid: 061bce73c1ae6b843bec7d0da2e4ea49,
-    type: 3}
-  m_PrefabInstance: {fileID: 2097327480}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f7c7eb0b98415442b85667e9d23954a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &4088158900240749029

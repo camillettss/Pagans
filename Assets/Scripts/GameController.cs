@@ -55,6 +55,8 @@ public class GameController : MonoBehaviour
     [HideInInspector] public NPCController ActiveNPC;
     [HideInInspector] public StoryController storyController;
 
+    [SerializeField] Quest talkToHarbardQuest;
+
     public static GameController Instance;
     public EnchantingUI EnchUI => enchantingUI;
 
@@ -73,7 +75,11 @@ public class GameController : MonoBehaviour
         player.Load();
         if(storyController.firstLaunch)
         {
-            ShowMessage("benvenuto.");
+            dialogueBox.StartDialogue(new Dialogue(new string[] { "ciao, tu devi essere Ulfr.", "un viandante è appena arrivato al porto. vai a trovarlo!" }), () => 
+            {
+                player.QuestsContainer.Add(talkToHarbardQuest);
+                state = GameState.FreeRoam;
+            });
         }
     }
 

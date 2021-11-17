@@ -10,17 +10,17 @@ public class QuestGoal
 
     bool done = false;
 
-    [ConditionalField(nameof(goalType), false, GoalType.KillTot)] public int requiredAmount;
-    [ConditionalField(nameof(goalType), false, GoalType.KillTot)] public int currentAmount;
+    [ConditionalField(nameof(goalType), false, new object[] { GoalType.KillTot, 0 })] public int requiredAmount;
+    [ConditionalField(nameof(goalType), false, new object[] { GoalType.KillTot, 0 })] public int currentAmount;
 
-    [ConditionalField(nameof(goalType), false, GoalType.KillSomeone)] public string enemyName;
+    [ConditionalField(nameof(goalType), false, new object[] { GoalType.KillSomeone, 1 })] public string enemyName;
 
-    [ConditionalField(nameof(goalType), false, GoalType.Talk)] public string talkTo;
+    [ConditionalField(nameof(goalType), false, new object[]{GoalType.Talk, 2})] public string talkTo;
 
-    [ConditionalField(nameof(goalType), false, GoalType.Buy)] [SerializeField] string sellerName;
-    [ConditionalField(nameof(goalType), false, GoalType.Buy)] [SerializeField] string itemName;
+    [ConditionalField(nameof(goalType), false, new object[] { GoalType.Buy, 3 })] [SerializeField] string sellerName;
+    [ConditionalField(nameof(goalType), false, new object[] { GoalType.Buy, 3 })] [SerializeField] string itemName;
 
-    [ConditionalField(nameof(goalType), false, GoalType.EnterADoor)] [SerializeField] string PortalName;
+    [ConditionalField(nameof(goalType), false, new object[] { GoalType.EnterADoor, 4 })] [SerializeField] string PortalName;
 
     public bool isReached()
     {
