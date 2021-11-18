@@ -7,7 +7,6 @@ public class EnchantingUI : MonoBehaviour
 {
     [SerializeField] GameObject content;
     [SerializeField] EnchSlotUI slotPrefab;
-    [SerializeField] LineAnimator lineAnimator;
 
     [SerializeField] Image DustIcon;
     [SerializeField] Text RuneSlot1;
