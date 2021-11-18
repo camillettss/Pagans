@@ -3,7 +3,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-public enum GameState { FreeRoam, Menu, Settings, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Battle, ChoosingItem };
+public enum GameState { FreeRoam, Menu, Settings, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Battle, ChoosingItem, Library };
 public class GameController : MonoBehaviour
 {
     public GameObject EssentialObjectsPrefab;
@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public doorKeyUI keyUI;
     [SerializeField] public GameObject sparksParticle;
     [SerializeField] newInventory inventory2;
+    [SerializeField] LibUI libUI;
 
     [SerializeField] bool ResetOnEnd = false;
 
@@ -199,6 +200,11 @@ public class GameController : MonoBehaviour
             menu.gameObject.SetActive(false);
             settingsUI.UpdateSelection();
         }
+        else if(state == GameState.Library)
+        {
+            libUI.gameObject.SetActive(true);
+            libUI.UpdateContents();
+        }
         #endregion
 
         this.state = state;
@@ -313,13 +319,17 @@ public class GameController : MonoBehaviour
             };
             settingsUI.HandleUpdate(onBack);
         }
+
+        else if(state == GameState.Library)
+        {
+            libUI.HandleUpdate();
+        }
         #endregion
     }
 
     public void ShowMessage(string msg)
     {
-        var prevState = state;
-        dialogueBox.StartDialogue(new Dialogue(new string[] { msg }), () => { state = prevState; });
+        ShowMessage(new string[] { msg });
     }
 
     public void ShowMessage(string[] msgs)

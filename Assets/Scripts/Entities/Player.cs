@@ -148,6 +148,11 @@ public class Player : MonoBehaviour
 
         // BINDS: E: use, R: use weapon, Z: interact, F: use xtra, X: shield, Q: minimap, LShift: run
 
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            GameController.Instance.OpenState(GameState.Library);
+        }
+
         // minimap show
         if (Input.GetKeyDown(KeyCode.Q) && canShowMinimap && !GameController.Instance.MinimapCanvas.activeSelf)
             GameController.Instance.MinimapCanvas.SetActive(true);
