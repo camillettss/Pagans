@@ -1,14 +1,14 @@
 # Pagans
 ## Viking Kingdom
-Norvegia, IX secolo dopo Cristo. può un semplice uomo dei ghiacci raggiungere il regno degli dèi? 
+Norvegia, XIII secolo dopo Cristo. può un semplice uomo dei ghiacci raggiungere il regno degli dèi? 
 nei panni di Ulfr, un semplice allevatore della costa Ovest, esplorerai tutti i nove
 mondi della mitologia norrena. vivrai le grandi storie che gli skaldr raccontavano
 davanti al fuoco nelle notti più fredde, in ogni minimo dettaglio. 
 
 ## Story
-Ulfr è un allevatore nella costa Ovest della Norvegia che vive a Breiðr. un giorno arrivò un viandante nero dal nord,
-disse di chiamarsi Harbarðr e di giungere da Bratthaliðr. ti regalò un sigillo prima di sparire nel nulla, senza neanchè 
-dirti cosa fosse. 
+Ulfr è un allevatore nella costa Ovest della Norvegia che vive a Breiðr, dove un giorno arrivò un viandante nero dal nord.
+Disse di chiamarsi Harbarðr e di giungere da Bratthaliðr. ti regalò un sigillo prima di sparire nel nulla, senza neanchè 
+dirti cosa fosse.
 
 ## Gameplay
 ### comandi
