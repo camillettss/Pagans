@@ -7349,6 +7349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5379045464681559696}
+  - component: {fileID: 6437658146683798280}
   m_Layer: 0
   m_Name: EssentialObjects
   m_TagString: Untagged
@@ -7374,6 +7375,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6437658146683798280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379045464681559697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12e4b13f0e1d90a42891b24f39d66e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5379045464697664934
 GameObject:
   m_ObjectHideFlags: 0
@@ -8497,6 +8510,7 @@ GameObject:
   - component: {fileID: 7942474048947313888}
   - component: {fileID: 5767523851788211469}
   - component: {fileID: 4078044413593226633}
+  - component: {fileID: 6071810885518519179}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -8849,105 +8863,6 @@ MonoBehaviour:
   Jotunheimr: {fileID: 0}
   Helheimr: {fileID: 0}
   Asgardr: {fileID: 0}
-  CaveQuest:
-    isActive: 0
-    activeOnGet: 0
-    title: La Caverna
-    description: trova la caverna usando la minimappa. tieni premuto Q mentre esplori
-      per usarla!
-    experienceReward: 0
-    goldReward: 0
-    giver: {fileID: 0}
-    successReaction: ottimo!
-    goal:
-    - goal: Entra nelle grotta
-      goalType: 3
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: CaveIngress
-    - goal: Uccidi l'ent
-      goalType: 1
-      requiredAmount: 1
-      currentAmount: 0
-      enemyName: Ent1
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: CaveIngress
-    introduceNext:
-      dialogue:
-        Teller: 
-        sentences: []
-      quest:
-        isActive: 0
-        activeOnGet: 0
-        title: 
-        description: 
-        experienceReward: 0
-        goldReward: 0
-        giver: {fileID: 0}
-        successReaction: 
-        goal: []
-        introduceNext:
-          dialogue:
-            Teller: 
-            sentences: []
-          quest:
-            isActive: 0
-            activeOnGet: 0
-            title: 
-            description: 
-            experienceReward: 0
-            goldReward: 0
-            giver: {fileID: 0}
-            successReaction: 
-            goal: []
-            introduceNext:
-              dialogue:
-                Teller: 
-                sentences: []
-              quest:
-                isActive: 0
-                activeOnGet: 0
-                title: 
-                description: 
-                experienceReward: 0
-                goldReward: 0
-                giver: {fileID: 0}
-                successReaction: 
-                goal: []
-                introduceNext:
-                  dialogue:
-                    Teller: 
-                    sentences: []
-                  quest:
-                    isActive: 0
-                    activeOnGet: 0
-                    title: 
-                    description: 
-                    experienceReward: 0
-                    goldReward: 0
-                    giver: {fileID: 0}
-                    successReaction: 
-                    goal: []
-                    introduceNext:
-                      dialogue:
-                        Teller: 
-                      quest:
-                        isActive: 0
-                        activeOnGet: 0
-                        title: 
-                        description: 
-                        experienceReward: 0
-                        goldReward: 0
-                        successReaction: 
-  FirstTime_inventory: 1
-  talkedWithAsbjorn: 0
-  firstTimeInCave: 1
 --- !u!114 &4078044413593226633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8958,6 +8873,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57178accd8a58fc45beff80ad6f990e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6071810885518519179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379045465088737349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0535d660a90545c4981c158fb82e84b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5379045465181957405
@@ -9274,6 +9201,7 @@ RectTransform:
   - {fileID: 5379045465510515566}
   - {fileID: 8947780212547300104}
   - {fileID: 5099138464400888388}
+  - {fileID: 744785982348304222}
   m_Father: {fileID: 5379045464681559696}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10845,6 +10773,94 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: F
+--- !u!1 &6256392063035480967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 744785982348304222}
+  - component: {fileID: 7550382197900437415}
+  - component: {fileID: 4806048284871004436}
+  - component: {fileID: 1766518161784077412}
+  m_Layer: 0
+  m_Name: Fader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &744785982348304222
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256392063035480967}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5379045465341387913}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7550382197900437415
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256392063035480967}
+  m_CullTransparentMesh: 1
+--- !u!114 &4806048284871004436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256392063035480967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1766518161784077412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256392063035480967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775183465286e5241ac53a984b1d228e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6297684912334484479
 GameObject:
   m_ObjectHideFlags: 0

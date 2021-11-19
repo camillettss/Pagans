@@ -21,7 +21,6 @@ public class PlayerData
         position[2] = player.transform.position.z;
 
         firstLaunch = GameController.Instance.storyController.firstLaunch;
-        firstinventory = GameController.Instance.storyController.FirstTime_inventory;
     }
 
     public PlayerData() // empty

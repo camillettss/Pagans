@@ -44,6 +44,26 @@ public class StoryEventHandler : MonoBehaviour
         }
     }
 
+    public IEnumerator changeScene(Portal destPortal)
+    {
+        yield return Fader.i.FadeIn(.5f);
+
+        Player.i.transform.position = destPortal.spawnPoint.position;
+
+        if (destPortal.destination == Locations.Library && !destPortal.goingIn) // è invertito perchè fa riferimento al portale trovato, non al triggered.
+        {
+            GameController.Instance.OpenState(GameState.Library);
+            GameController.Instance.libUI.setExitPortal(destPortal);
+        }
+
+        if (Player.i.quest != null && Player.i.quest.goal != null)
+        {
+            Player.i.quest.goal[0].DoorEntered(destPortal);
+        }
+
+        yield return Fader.i.FadeOut(.5f);
+    }
+
     public void CompleteQuest(Quest quest)
     {
         quest.Complete();

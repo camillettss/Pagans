@@ -18,7 +18,6 @@ public class SceneDetails : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.tag);
         if(collision.tag == "Player")
         {
             print($"entered {gameObject.name}");

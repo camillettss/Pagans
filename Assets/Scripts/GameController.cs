@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public doorKeyUI keyUI;
     [SerializeField] public GameObject sparksParticle;
     [SerializeField] newInventory inventory2;
-    [SerializeField] LibUI libUI;
+    [SerializeField] public LibUI libUI;
 
     [SerializeField] bool ResetOnEnd = false;
 

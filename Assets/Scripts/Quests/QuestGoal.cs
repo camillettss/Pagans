@@ -55,7 +55,7 @@ public class QuestGoal
         }
     }
 
-    public void DoorEntered(Portal door)
+    public void DoorEntered(Portal door) // viene passata la destinazione
     {
         if (door.name == PortalName)
             done = true;
