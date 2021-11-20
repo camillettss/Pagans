@@ -22,13 +22,6 @@ public class SceneDetails : MonoBehaviour
         {
             print($"entered {gameObject.name}");
 
-            /*LoadScene();
-
-            foreach(var scene in connectedScenes)
-            {
-                scene.LoadScene();
-            }*/
-
             light.color = lightColor;
             light.intensity = lightBrightness;
 

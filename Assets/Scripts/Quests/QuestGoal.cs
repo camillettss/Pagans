@@ -39,9 +39,6 @@ public class QuestGoal
         {
             if (enemy.Name == enemyName)
                 done = true;
-
-            //if (enemy.Name == "Ent1")
-            //    GameController.Instance.StartCoroutine(GameController.Instance.storyController.FinalDialogue());
         }
     }
 

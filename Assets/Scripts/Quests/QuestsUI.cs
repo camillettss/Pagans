@@ -51,11 +51,11 @@ public class QuestsUI : MonoBehaviour
         {
             if (i == selected)
             {
-                slotUIs[i].NameTxt.color = Color.cyan;
+                slotUIs[i].NameTxt.color = GameController.Instance.selectedOnBookColor;
             }
             else
             {
-                slotUIs[i].NameTxt.color = Color.black;
+                slotUIs[i].NameTxt.color = GameController.Instance.unselectedDefaultColor;
             }
         }
 
@@ -74,6 +74,7 @@ public class QuestsUI : MonoBehaviour
         {
             if(slotUIs != null && slotUIs.Count > 0)
             {
+                // MISSING: start and pause quest
                 player.AcceptQuest(slotUIs[selected].quest);
                 gameObject.SetActive(false);
                 GameController.Instance.state = GameState.FreeRoam;

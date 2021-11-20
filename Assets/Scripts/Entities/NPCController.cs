@@ -10,7 +10,8 @@ public enum NPCType
     QuestGiver,
     Enemy,
     TalkAndGive,
-    ComplexQuestGiver
+    ComplexQuestGiver,
+    Librarian
 }
 
 public class NPCController : MonoBehaviour, IEntity
@@ -38,11 +39,11 @@ public class NPCController : MonoBehaviour, IEntity
     [SerializeField] int expDrop = 0;
 
     Animator animator;
+    Rigidbody2D rb;
 
     public bool done = false;
     bool showingSignal = false;
     int i = 0;
-
 
     [HideInInspector] public List<string[]> dialoguesQueue = new List<string[]>();
 
@@ -61,6 +62,8 @@ public class NPCController : MonoBehaviour, IEntity
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         if (type == NPCType.Enemy)
             canBeDamaged = true;
 
@@ -70,8 +73,39 @@ public class NPCController : MonoBehaviour, IEntity
     public void Interact(Player player)
     {
         GameController.Instance.ActiveNPC = this;
-        if (type != NPCType.Enemy)
+
+        if (type == NPCType.Librarian)
+            GameController.Instance.OpenState(GameState.Library);
+
+        else if (type != NPCType.Enemy)
             TriggerDialogue();
+    }
+
+    [System.Obsolete("contenuto in via di sviluppo.", true)]
+    public IEnumerator Move(Vector2 vec) // like (2, 4) moves first 2 steps right and then 4 steps up
+    {
+        var startPos = (Vector2)transform.position;
+        var targetPos = new Vector2(transform.position.x + vec.x, transform.position.y + vec.y); // no pathfinding to reach.
+
+        bool isMoving = false;
+
+        while(startPos - targetPos != Vector2.zero)
+        {
+            if (isMoving)
+                yield return 0;
+
+            else
+            {
+                // scegli se aggiustare X o Y
+                if((Mathf.Abs(transform.position.x)-Mathf.Abs(targetPos.x)) < (Mathf.Abs(transform.position.y) - Mathf.Abs(targetPos.y))) // se distanza fra le x maggiore distanza fra y
+                {
+                    // la distanza fra le x è minore
+
+                    //rb.velocity = moveInput * getSpeed();
+                    //rb.MovePosition(rb.position + moveInput * getSpeed() * Time.fixedDeltaTime);
+                }
+            }
+        }
     }
 
     public void TriggerDialogue()
