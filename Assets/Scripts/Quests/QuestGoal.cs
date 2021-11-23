@@ -1,26 +1,45 @@
 ﻿using UnityEngine;
 using MyBox;
 
+public enum GoalType
+{
+    KillTot,
+    KillSomeone,
+    Talk,
+    Buy,
+    Sell,
+    EnterADoor,
+    GetItem,
+    BuyWeapon
+}
+
 [System.Serializable]
 public class QuestGoal
 {
+    public float dialogueDelay = 1f;
+    public Dialogue introDialogue;
+
     public string goal;
 
     public GoalType goalType;
 
     bool done = false;
 
-    [ConditionalField(nameof(goalType), false, new object[] { GoalType.KillTot, 0 })] public int requiredAmount;
-    [ConditionalField(nameof(goalType), false, new object[] { GoalType.KillTot, 0 })] public int currentAmount;
+    [ConditionalField(nameof(goalType), false, GoalType.KillTot)] public int requiredAmount;
+    [ConditionalField(nameof(goalType), false, GoalType.KillTot)] public int currentAmount;
 
-    [ConditionalField(nameof(goalType), false, new object[] { GoalType.KillSomeone, 1 })] public string enemyName;
+    [ConditionalField(nameof(goalType), false, GoalType.KillSomeone)] public string enemyName;
 
-    [ConditionalField(nameof(goalType), false, new object[]{GoalType.Talk, 2})] public string talkTo;
+    [ConditionalField(nameof(goalType), false, GoalType.Talk)] public string talkTo;
 
-    [ConditionalField(nameof(goalType), false, new object[] { GoalType.Buy, 3 })] [SerializeField] string sellerName;
-    [ConditionalField(nameof(goalType), false, new object[] { GoalType.Buy, 3 })] [SerializeField] string itemName;
+    [ConditionalField(nameof(goalType), false, new object[] { GoalType.Buy, GoalType.Sell })] [SerializeField] string sellerName;
+    [ConditionalField(nameof(goalType), false, GoalType.Buy)] [SerializeField] string itemName;
 
-    [ConditionalField(nameof(goalType), false, new object[] { GoalType.EnterADoor, 4 })] [SerializeField] string PortalName;
+    [ConditionalField(nameof(goalType), false, GoalType.EnterADoor)] [SerializeField] string PortalName;
+
+    [ConditionalField(nameof(goalType), false, new object[] { GoalType.GetItem, GoalType.Sell })] [SerializeField] ItemBase GoalItem;
+
+    [ConditionalField(nameof(goalType), false, GoalType.BuyWeapon)] [SerializeField] ItemBase objForType;
 
     public bool isReached()
     {
@@ -64,14 +83,31 @@ public class QuestGoal
         {
             done = true;
         }
-    }
-}
 
-public enum GoalType
-{
-    KillTot,
-    KillSomeone,
-    Talk,
-    Buy,
-    EnterADoor
+        if(goalType == GoalType.BuyWeapon)
+        {
+            if (item is Weapon)
+                done = true;
+        }
+    }
+
+    public void SomethingSelled(TraderController buyer, ItemBase merch)
+    {
+        if(merch.Name == GoalItem.Name)
+        {
+            if (sellerName != null && sellerName != "") // seller in questo caso fa da buyer, sti cazzi del nome non mi va di fare troppe vars
+            {
+                if (sellerName == buyer.Name)
+                    done = true;
+            }
+            else
+                done = true;
+        }
+    }
+
+    public void SomethingAddedToInventory(ItemBase addedItem)
+    {
+        if (addedItem.Name == GoalItem.Name)
+            done = true;
+    }
 }

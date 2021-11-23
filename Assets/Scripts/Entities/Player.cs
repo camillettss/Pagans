@@ -136,11 +136,15 @@ public class Player : MonoBehaviour
             if(quest.goal[0].isReached())
             {
                 if (quest.goal.Count == 1)
-                    StartCoroutine(GameController.Instance.EvH.CompleteQuest(quest));
-                else
+                {
                     quest.goal.RemoveAt(0);
-
-                UpdateQuestUI();
+                    quest.Complete();
+                    UpdateQuestUI();
+                }
+                else if(quest.goal.Count >= 2)
+                {
+                    StartCoroutine(GameController.Instance.EvH.GoalCompleted(quest));
+                }
             }
         }
 
@@ -374,6 +378,19 @@ public class Player : MonoBehaviour
         qst.isActive = true;
         quest = qst;
         UpdateQuestUI();
+        StartCoroutine(startDialogueWithDelay());
+    }
+
+    IEnumerator startDialogueWithDelay()
+    {
+        if (quest.goal[0].introDialogue.sentences.Length > 0)
+        {
+            yield return new WaitForSeconds(quest.goal[0].dialogueDelay);
+            GameController.Instance.dialogueBox.StartDialogue(quest.goal[0].introDialogue, () =>
+            {
+                GameController.Instance.state = GameState.FreeRoam;
+            });
+        }
     }
 
     public void Attack(Weapon weapon)

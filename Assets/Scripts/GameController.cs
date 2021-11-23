@@ -76,11 +76,12 @@ public class GameController : MonoBehaviour
         player.Load();
         if(storyController.firstLaunch)
         {
-            dialogueBox.StartDialogue(new Dialogue(new string[] { "ciao, tu devi essere Ulfr.", "un viandante è appena arrivato al porto. vai a trovarlo!" }), () => 
+            player.QuestsContainer.Add(talkToHarbardQuest);
+            /*dialogueBox.StartDialogue(new Dialogue(new string[] { "ciao, tu devi essere Ulfr.", "un viandante è appena arrivato al porto. vai a trovarlo!" }), () => 
             {
                 player.QuestsContainer.Add(talkToHarbardQuest);
                 state = GameState.FreeRoam;
-            });
+            });*/
         }
     }
 

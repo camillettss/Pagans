@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public enum InteractionType
 {
@@ -10,6 +11,12 @@ public enum InteractionType
 
 public class StoryEventHandler : MonoBehaviour
 {
+    public static StoryEventHandler i;
+
+    private void Awake()
+    {
+        i = this;
+    }
 
     public delegate void Del(IEntity entity, InteractionType type); // crea un delegato che incapsula un metodo accettante un controller e restituente void
 
@@ -44,6 +51,32 @@ public class StoryEventHandler : MonoBehaviour
         }
     }
 
+    public IEnumerator GoalCompleted(Quest quest)
+    {
+        // prima di iniziare il prossimo goal chiama il dialogo
+        if (quest.goal[1].introDialogue.sentences.Length > 0)
+        {
+            yield return new WaitForSeconds(quest.goal[1].dialogueDelay);
+            GameController.Instance.dialogueBox.StartDialogue(quest.goal[1].introDialogue, () =>
+            {
+                GameController.Instance.state = GameState.FreeRoam;
+                quest.goal.RemoveAt(0);
+                Player.i.quest = quest;
+                Player.i.UpdateQuestUI();
+            });
+        }
+    }
+
+    public void AddToInventory(ItemBase item)
+    {
+        Player.i.inventory.Add(item);
+        try
+        {
+            Player.i.quest.goal[0].SomethingAddedToInventory(item);
+        }
+        catch { };
+    }
+
     public IEnumerator changeScene(Portal destPortal)
     {
         yield return Fader.i.FadeIn(.5f);
@@ -55,21 +88,8 @@ public class StoryEventHandler : MonoBehaviour
             Player.i.quest.goal[0].DoorEntered(destPortal);
         }
 
+        Player.i.GetComponent<SpriteRenderer>().DOFade(1f, .1f);
         yield return Fader.i.FadeOut(.5f);
-    }
-
-    public IEnumerator CompleteQuest(Quest quest)
-    {
-        quest.Complete();
-        if(quest.introduceNext != null)
-        {
-            yield return new WaitForSeconds(1f);
-            GameController.Instance.dialogueBox.StartDialogue(quest.introduceNext.dialogue, () =>
-            {
-                Player.i.QuestsContainer.Add(quest.introduceNext.quest);
-                GameController.Instance.state = GameState.FreeRoam;
-            });
-        }
     }
 
     IEnumerator waitForState(Del callback, IEntity entity=null, InteractionType type=InteractionType.talkTo, GameState state = GameState.FreeRoam)

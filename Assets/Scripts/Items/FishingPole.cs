@@ -13,7 +13,7 @@ public class FishingPole : ItemBase
         var collider = Physics2D.OverlapCircle(pos, 0.3f, player.seaLayer);
         GameController.Instance.ShowInfo("fishing", ()=>
         {
-            player.inventory.Add(foundables[Random.Range(0, foundables.Count - 1)]);
+            StoryEventHandler.i.AddToInventory(foundables[Random.Range(0, foundables.Count - 1)]);
         }, 1f);
     }
 

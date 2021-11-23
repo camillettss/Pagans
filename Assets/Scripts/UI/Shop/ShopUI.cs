@@ -159,9 +159,9 @@ public class ShopUI : MonoBehaviour
             {
                 if (player.kents*amount < shopUIs[selected].price)
                     return;
-                player.inventory.Add(shopUIs[selected].item);
+                StoryEventHandler.i.AddToInventory(shopUIs[selected].item);
 
-                if(Player.i.quest.goal != null)
+                if(Player.i.quest.goal.Count > 0)
                     player.quest.goal[0].SomethingBought(trader, shopUIs[selected].item);
 
                 player.kents -= shopUIs[selected].price * amount;
@@ -175,6 +175,9 @@ public class ShopUI : MonoBehaviour
 
                 for(int i=0; i<amount; i++)
                     player.inventory.Remove(shopUIs[selected].item);
+
+                if (player.quest.goal.Count > 0)
+                    player.quest.goal[0].SomethingSelled(trader, shopUIs[selected].item);
             }
 
             selected = 0;

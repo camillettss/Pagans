@@ -8064,136 +8064,111 @@ MonoBehaviour:
     giver: {fileID: 0}
     successReaction: 
     goal:
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    introduceNext:
-      dialogue:
+    - dialogueDelay: 1
+      introDialogue:
         Teller: 
         sentences: []
-      quest:
-        isActive: 0
-        activeOnGet: 0
-        title: 
-        description: 
-        experienceReward: 0
-        goldReward: 0
-        giver: {fileID: 0}
-        successReaction: 
-        goal: []
-        introduceNext:
-          dialogue:
-            Teller: 
-            sentences: []
-          quest:
-            isActive: 0
-            activeOnGet: 0
-            title: 
-            description: 
-            experienceReward: 0
-            goldReward: 0
-            giver: {fileID: 0}
-            successReaction: 
-            goal: []
-            introduceNext:
-              dialogue:
-                Teller: 
-                sentences: []
-              quest:
-                isActive: 0
-                activeOnGet: 0
-                title: 
-                description: 
-                experienceReward: 0
-                goldReward: 0
-                giver: {fileID: 0}
-                successReaction: 
-                goal: []
-                introduceNext:
-                  dialogue:
-                    Teller: 
-                    sentences: []
-                  quest:
-                    isActive: 0
-                    activeOnGet: 0
-                    title: 
-                    description: 
-                    experienceReward: 0
-                    goldReward: 0
-                    giver: {fileID: 0}
-                    successReaction: 
-                    goal: []
-                    introduceNext:
-                      dialogue:
-                        Teller: 
-                      quest:
-                        isActive: 0
-                        activeOnGet: 0
-                        title: 
-                        description: 
-                        experienceReward: 0
-                        goldReward: 0
-                        successReaction: 
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: 
+        sentences: []
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: 
+        sentences: []
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: 
+        sentences: []
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: 
+        sentences: []
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: 
+        sentences: []
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: 
+        sentences: []
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
   inventory: {fileID: 0}
   equipedItem:
     item: {fileID: 0}
@@ -8746,110 +8721,96 @@ MonoBehaviour:
   talkToHarbardQuest:
     isActive: 0
     activeOnGet: 1
-    title: Harbardskey
-    description: "harbardr \xE8 uno strano viandante appena sbarcato al porto, pare
-      abbia qualcosa da dirti."
+    title: forn bokheimr
+    description: "nella biblioteca si trovano alcuni dei libri pi\xF9 antichi, faresti
+      bene a dargli un'occhiata."
     experienceReward: 5
     goldReward: 0
     giver: {fileID: 0}
     successReaction: 
     goal:
-    - goal: parla con harbard
-      goalType: 2
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: corri scemo di un gelataro fallito.
+        sentences: []
+      goal: vai in biblioteca
+      goalType: 5
       requiredAmount: 0
       currentAmount: 0
       enemyName: 
       talkTo: Harbardr
       sellerName: 
       itemName: 
-      PortalName: 
-    introduceNext:
-      dialogue:
+      PortalName: library-door
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 0.2
+      introDialogue:
         Teller: 
         sentences:
-        - che tipo strano. dovresti cercare qualche infromazione su di lui.
-      quest:
-        isActive: 0
-        activeOnGet: 1
-        title: bokheimr
-        description: "forse in biblioteca c'\xE8 qualche libro riguardo questa strana
-          chiave. io darei un'occhiata."
-        experienceReward: 0
-        goldReward: 0
-        giver: {fileID: 0}
-        successReaction: 
-        goal:
-        - goal: vai in biblioteca
-          goalType: 4
-          requiredAmount: 0
-          currentAmount: 0
-          enemyName: 
-          talkTo: 
-          sellerName: 
-          itemName: 
-          PortalName: library-door
-        - goal: trova un librto su harbard.
-          goalType: 2
-          requiredAmount: 0
-          currentAmount: 0
-          enemyName: 
-          talkTo: librarian
-          sellerName: 
-          itemName: 
-          PortalName: library-door
-        introduceNext:
-          dialogue:
-            Teller: 
-            sentences: []
-          quest:
-            isActive: 0
-            activeOnGet: 0
-            title: 
-            description: 
-            experienceReward: 0
-            goldReward: 0
-            giver: {fileID: 0}
-            successReaction: 
-            goal: []
-            introduceNext:
-              dialogue:
-                Teller: 
-                sentences: []
-              quest:
-                isActive: 0
-                activeOnGet: 0
-                title: 
-                description: 
-                experienceReward: 0
-                goldReward: 0
-                giver: {fileID: 0}
-                successReaction: 
-                goal: []
-                introduceNext:
-                  dialogue:
-                    Teller: 
-                    sentences: []
-                  quest:
-                    isActive: 0
-                    activeOnGet: 0
-                    title: 
-                    description: 
-                    experienceReward: 0
-                    goldReward: 0
-                    giver: {fileID: 0}
-                    successReaction: 
-                    goal: []
-                    introduceNext:
-                      dialogue:
-                        Teller: 
-                      quest:
-                        isActive: 0
-                        activeOnGet: 0
-                        title: 
-                        description: 
-                        experienceReward: 0
-                        goldReward: 0
-                        successReaction: 
+        - parla con il bibliotecario per accedere ai libri
+        - usa Z per scegliere un libro, X per chiuderlo. puoi cambiare categoria
+          usando Tab e Control di sinistra.
+      goal: leggi qualcosa
+      goalType: 2
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: librarian
+      sellerName: 
+      itemName: 
+      PortalName: library-door
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 0.2
+      introDialogue:
+        Teller: 
+        sentences:
+        - adesso vai a tagliare la legna oer farti qualche soldo.
+      goal: taglia un albero
+      goalType: 6
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: librarian
+      sellerName: 
+      itemName: 
+      PortalName: library-door
+      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
+      objForType: {fileID: 0}
+    - dialogueDelay: 0.2
+      introDialogue:
+        Teller: 
+        sentences:
+        - ottimo, ora vai dal mercante a vendere la legna.
+      goal: vendi la legna
+      goalType: 4
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: librarian
+      sellerName: 
+      itemName: Wood
+      PortalName: library-door
+      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
+      objForType: {fileID: 0}
+    - dialogueDelay: 0.2
+      introDialogue:
+        Teller: 
+        sentences:
+        - "con questi soldi potresti comprarci un'arma, sar\xE0 molto utile per uccidere
+          l'ent."
+      goal: compra un'arma
+      goalType: 7
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: librarian
+      sellerName: 
+      itemName: Wood
+      PortalName: library-door
+      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
+      objForType: {fileID: 0}
 --- !u!114 &7942474048947313888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8891,136 +8852,111 @@ MonoBehaviour:
     giver: {fileID: 0}
     successReaction: 
     goal:
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    - goal: 
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
-      enemyName: 
-      talkTo: 
-      sellerName: 
-      itemName: 
-      PortalName: 
-    introduceNext:
-      dialogue:
+    - dialogueDelay: 1
+      introDialogue:
         Teller: 
         sentences: []
-      quest:
-        isActive: 0
-        activeOnGet: 0
-        title: 
-        description: 
-        experienceReward: 0
-        goldReward: 0
-        giver: {fileID: 0}
-        successReaction: 
-        goal: []
-        introduceNext:
-          dialogue:
-            Teller: 
-            sentences: []
-          quest:
-            isActive: 0
-            activeOnGet: 0
-            title: 
-            description: 
-            experienceReward: 0
-            goldReward: 0
-            giver: {fileID: 0}
-            successReaction: 
-            goal: []
-            introduceNext:
-              dialogue:
-                Teller: 
-                sentences: []
-              quest:
-                isActive: 0
-                activeOnGet: 0
-                title: 
-                description: 
-                experienceReward: 0
-                goldReward: 0
-                giver: {fileID: 0}
-                successReaction: 
-                goal: []
-                introduceNext:
-                  dialogue:
-                    Teller: 
-                    sentences: []
-                  quest:
-                    isActive: 0
-                    activeOnGet: 0
-                    title: 
-                    description: 
-                    experienceReward: 0
-                    goldReward: 0
-                    giver: {fileID: 0}
-                    successReaction: 
-                    goal: []
-                    introduceNext:
-                      dialogue:
-                        Teller: 
-                      quest:
-                        isActive: 0
-                        activeOnGet: 0
-                        title: 
-                        description: 
-                        experienceReward: 0
-                        goldReward: 0
-                        successReaction: 
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: 
+        sentences: []
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: 
+        sentences: []
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: 
+        sentences: []
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: 
+        sentences: []
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: 
+        sentences: []
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
+    - dialogueDelay: 1
+      introDialogue:
+        Teller: 
+        sentences: []
+      goal: 
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      itemName: 
+      PortalName: 
+      GoalItem: {fileID: 0}
+      objForType: {fileID: 0}
   TutorialScene: {fileID: 0}
   Midgardr: {fileID: 0}
   Alfheimr: {fileID: 0}

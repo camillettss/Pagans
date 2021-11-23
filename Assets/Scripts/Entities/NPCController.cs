@@ -131,7 +131,7 @@ public class NPCController : MonoBehaviour, IEntity
                 if (type == NPCType.ComplexQuestGiver || type == NPCType.TalkAndGive)
                 {
                     if (drop != null)
-                        Player.i.inventory.Add(drop);
+                        StoryEventHandler.i.AddToInventory(drop);
                 }
                 if (type == NPCType.ComplexQuestGiver || type == NPCType.QuestGiver)
                 {

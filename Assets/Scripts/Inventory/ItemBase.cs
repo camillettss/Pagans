@@ -18,6 +18,8 @@ public abstract class ItemBase : ScriptableObject
     public int longDamage;
     public int Defense;
 
+    public Dialogue presentationDialogue;
+
     public Dust dust;
 
     public RuneContainer runes = new RuneContainer();

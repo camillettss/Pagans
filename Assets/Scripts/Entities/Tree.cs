@@ -69,7 +69,7 @@ public class Tree : MonoBehaviour, IEntity
     {
         // Drop a fruit
         print("interagisce con un albero sto schizofrenico");
-        player.inventory.Add(dropfruit);
+        StoryEventHandler.i.AddToInventory(dropfruit);
     }
 
     public void Cut()
@@ -80,7 +80,7 @@ public class Tree : MonoBehaviour, IEntity
         GetComponent<SpriteRenderer>().sprite = CuttedSprite;
 
         foreach (var item in drop)
-            Player.i.inventory.Add(item);
+            StoryEventHandler.i.AddToInventory(item);
 
         cutted = true;
         GetComponent<CircleCollider2D>().enabled = false;

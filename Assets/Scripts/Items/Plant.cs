@@ -32,8 +32,8 @@ public class Plant : MonoBehaviour
 
     public void Take(Player player)
     {
-        if(growState == sprites.Count-1)
-            player.inventory.Add(plant);
+        if (growState == sprites.Count - 1)
+            StoryEventHandler.i.AddToInventory(plant);
         growState = 0;
         UpdateSprite();
     }

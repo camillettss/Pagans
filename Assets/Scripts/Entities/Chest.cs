@@ -27,7 +27,7 @@ public class Chest : MonoBehaviour, IEntity
 
         foreach(var item in drop)
         {
-            player.inventory.Add(item);
+            StoryEventHandler.i.AddToInventory(item);
         }
     }
 
