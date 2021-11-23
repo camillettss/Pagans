@@ -58,11 +58,12 @@ public class StoryEventHandler : MonoBehaviour
         yield return Fader.i.FadeOut(.5f);
     }
 
-    public void CompleteQuest(Quest quest)
+    public IEnumerator CompleteQuest(Quest quest)
     {
         quest.Complete();
         if(quest.introduceNext != null)
         {
+            yield return new WaitForSeconds(1f);
             GameController.Instance.dialogueBox.StartDialogue(quest.introduceNext.dialogue, () =>
             {
                 Player.i.QuestsContainer.Add(quest.introduceNext.quest);

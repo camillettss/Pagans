@@ -8767,8 +8767,7 @@ MonoBehaviour:
       dialogue:
         Teller: 
         sentences:
-        - non so proprio a cosa possa servire questa chiave, magari la biblioteca
-          ne sa qualcosa.
+        - che tipo strano. dovresti cercare qualche infromazione su di lui.
       quest:
         isActive: 0
         activeOnGet: 1
@@ -8786,6 +8785,15 @@ MonoBehaviour:
           currentAmount: 0
           enemyName: 
           talkTo: 
+          sellerName: 
+          itemName: 
+          PortalName: library-door
+        - goal: trova un librto su harbard.
+          goalType: 2
+          requiredAmount: 0
+          currentAmount: 0
+          enemyName: 
+          talkTo: librarian
           sellerName: 
           itemName: 
           PortalName: library-door

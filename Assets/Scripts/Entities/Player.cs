@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
             if(quest.goal[0].isReached())
             {
                 if (quest.goal.Count == 1)
-                    GameController.Instance.EvH.CompleteQuest(quest);
+                    StartCoroutine(GameController.Instance.EvH.CompleteQuest(quest));
                 else
                     quest.goal.RemoveAt(0);
 
