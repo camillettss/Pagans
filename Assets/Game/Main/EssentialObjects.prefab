@@ -8811,6 +8811,23 @@ MonoBehaviour:
       PortalName: library-door
       GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
       objForType: {fileID: 0}
+    - dialogueDelay: 0.2
+      introDialogue:
+        Teller: 
+        sentences:
+        - benissimo! ora premi Enter per aprire l'inventario, poi seleziona Bag ed
+          equipaggia l'arma che hai appena comprato con Z.
+      goal: Equipaggia l'arma
+      goalType: 7
+      requiredAmount: 0
+      currentAmount: 0
+      enemyName: 
+      talkTo: librarian
+      sellerName: 
+      itemName: Wood
+      PortalName: library-door
+      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
+      objForType: {fileID: 0}
 --- !u!114 &7942474048947313888
 MonoBehaviour:
   m_ObjectHideFlags: 0

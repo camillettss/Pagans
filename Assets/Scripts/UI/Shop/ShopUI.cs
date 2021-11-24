@@ -30,6 +30,7 @@ public class ShopUI : MonoBehaviour
     private void Awake()
     {
         sellMode = false;
+        selected = 0;
         UpdateView();
     }
 
@@ -42,6 +43,7 @@ public class ShopUI : MonoBehaviour
     void switchToSell()
     {
         sellMode = !sellMode;
+        selected = 0;
         UpdateView();
     }
 
@@ -53,6 +55,8 @@ public class ShopUI : MonoBehaviour
 
             foreach (Transform child in scrollviewContent.transform)
                 Destroy(child.gameObject);
+
+            shopUIs = new List<ShopItemUI>();
 
             foreach (var item in trader.inventory.GetShopSlots())
             {
@@ -68,6 +72,8 @@ public class ShopUI : MonoBehaviour
 
             foreach (Transform child in scrollviewContent.transform)
                 Destroy(child.gameObject);
+
+            shopUIs = new List<ShopItemUI>();
 
             shopUIs = new List<ShopItemUI>();
             foreach (var item in Player.i.inventory.GetShopSlots())
