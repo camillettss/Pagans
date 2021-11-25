@@ -138,69 +138,83 @@ public class newInventory : MonoBehaviour
 
     public void HandleUpdate()
     {
-        int prev_sel = selected;
-        int prev_cat = category;
-        int prev_bok = bookmark;
-
-        if(Input.GetKeyDown(KeyCode.X))
+        if(GameController.Instance.sacrificeUI.gameObject.activeSelf)
         {
-            gameObject.SetActive(false);
-            GameController.Instance.state = GameState.FreeRoam;
-            ExtraItemUI.i.HandleUpdate();
+            GameController.Instance.sacrificeUI.HandleUpdate();
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            ++selected;
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            --selected;
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            --category;
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            ++category;
-
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-            ++bookmark;
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-            --bookmark;
-
-        bookmark = Mathf.Clamp(bookmark, 0, tags_container.transform.childCount - 1); // 0, 3 tecnicamente.
-        category = Mathf.Clamp(category, 0, Inventory.BookmarkSize(bookmark) - 1);
-        selected = Mathf.Clamp(selected, 0, slotUIs.Count - 1);
-
-        if (prev_bok != bookmark)
-            UpdateView();
-
-        if (prev_cat != category)
-            UpdateView(false);
-
-        if (selected != prev_sel)
-            UpdateSelection();
-
-        if(Input.GetKeyDown(KeyCode.Z))
+        else
         {
-            if (slotUIs.Count <= 0)
-                return;
+            int prev_sel = selected;
+            int prev_cat = category;
+            int prev_bok = bookmark;
 
-            if(bookmark == 0) // armi, scudi, strumenti e anelli
+            if (Input.GetKeyDown(KeyCode.X))
             {
-                Player.i.inventory.Equip(category, selected);
-                slotUIs[selected].item.onEquip();
-                GameController.Instance.hotbar.UpdateItems();
+                gameObject.SetActive(false);
+                GameController.Instance.state = GameState.FreeRoam;
+                ExtraItemUI.i.HandleUpdate();
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                ++selected;
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                --selected;
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+                --category;
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+                ++category;
+
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+                ++bookmark;
+            if (Input.GetKeyDown(KeyCode.LeftAlt))
+                --bookmark;
+
+            bookmark = Mathf.Clamp(bookmark, 0, tags_container.transform.childCount - 1); // 0, 3 tecnicamente.
+            category = Mathf.Clamp(category, 0, Inventory.BookmarkSize(bookmark) - 1);
+            selected = Mathf.Clamp(selected, 0, slotUIs.Count - 1);
+
+            if (prev_bok != bookmark)
+                UpdateView();
+
+            if (prev_cat != category)
                 UpdateView(false);
-            }
-            else if(bookmark == 3 && category == 1) // libri
+
+            if (selected != prev_sel)
+                UpdateSelection();
+
+            if (Input.GetKeyDown(KeyCode.S))
             {
-                slotUIs[selected].item.Use(Player.i); // usa il libro
-                GameController.Instance.StartCoroutine(learn_book());
+                GameController.Instance.sacrificeUI.Open(slotUIs[selected].item);
             }
-            else if(bookmark == 1 && category == 0) // runes
+
+            if (Input.GetKeyDown(KeyCode.Z))
             {
-                slotUIs[selected].item.Use(Player.i);
-            }
-            else if(bookmark == 2 && category == 0) // consumabili
-            {
-                Player.i.inventory.extraSlot = Player.i.inventory.findItem(slotUIs[selected].item);
+                if (slotUIs.Count <= 0)
+                    return;
+
+                if (bookmark == 0) // armi, scudi, strumenti e anelli
+                {
+                    Player.i.inventory.Equip(category, selected);
+                    slotUIs[selected].item.onEquip();
+                    GameController.Instance.EvH.OnEquip(slotUIs[selected].item);
+                    GameController.Instance.hotbar.UpdateItems();
+                    UpdateView(false);
+                }
+                else if (bookmark == 3 && category == 1) // libri
+                {
+                    slotUIs[selected].item.Use(Player.i); // usa il libro
+                    GameController.Instance.StartCoroutine(learn_book());
+                }
+                else if (bookmark == 1 && category == 0) // runes
+                {
+                    slotUIs[selected].item.Use(Player.i);
+                }
+                else if (bookmark == 2 && category == 0) // consumabili
+                {
+                    Player.i.inventory.extraSlot = Player.i.inventory.findItem(slotUIs[selected].item);
+                }
             }
         }
     }

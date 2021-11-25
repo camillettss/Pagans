@@ -51,6 +51,11 @@ public class StoryEventHandler : MonoBehaviour
         }
     }
 
+    public void OnEquip(ItemBase item)
+    {
+        Player.i.quest.goal[0].SomethingEquiped(item);
+    }
+
     public IEnumerator GoalCompleted(Quest quest)
     {
         // prima di iniziare il prossimo goal chiama il dialogo

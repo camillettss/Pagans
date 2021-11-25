@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour
     public Player player;
     [SerializeField] public MenuController menu;
     [SerializeField] InventoryUI inventoryUI;
-    [SerializeField] public EquipmentUI equipmentUI;
     [SerializeField] ShopUI shopUI;
     [SerializeField] QuestsUI questsUI;
     [SerializeField] EnchantingUI enchantingUI;
@@ -24,7 +23,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public bool LaunchStory;
     [SerializeField] public doorKeyUI keyUI;
     [SerializeField] public GameObject sparksParticle;
-    [SerializeField] newInventory inventory2;
+    [SerializeField] public newInventory inventory2;
     [SerializeField] public LibUI libUI;
 
     [SerializeField] bool ResetOnEnd = false;
@@ -35,6 +34,7 @@ public class GameController : MonoBehaviour
     public DialogueManager dialogueBox;
     public QuestController questWindow;
     public NewItemUI newItemUI;
+    public SacrificeUI sacrificeUI;
 
     public StoryEventHandler EvH;
 
@@ -174,11 +174,6 @@ public class GameController : MonoBehaviour
             inventoryUI.UpdateContents();
             StartCoroutine(storyController.FirstInventoryOpen());*/
         }
-        else if(state == GameState.Equipment)
-        {
-            equipmentUI.gameObject.SetActive(true);
-            equipmentUI.UpdateContents();
-        }
         else if(state == GameState.Shop && trader != null)
         {
             shopUI.SetTrader(trader); // Questo deve essere chiamato prima del setActive visto che quest'ultima funzione chiama anche Awake().
@@ -274,17 +269,6 @@ public class GameController : MonoBehaviour
                 OpenState(GameState.Equipment);
             }*/
             inventory2.HandleUpdate();
-        }
-
-        else if (state == GameState.Equipment)
-        {
-            equipmentUI.HandleUpdate();
-
-            if (Input.GetKeyDown(KeyCode.Tab) || Input.GetButtonDown("RShoulder"))
-            {
-                equipmentUI.gameObject.SetActive(false);
-                OpenState(GameState.Quests);
-            }
         }
 
         else if (state == GameState.Shop)

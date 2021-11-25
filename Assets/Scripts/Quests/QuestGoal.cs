@@ -10,7 +10,8 @@ public enum GoalType
     Sell,
     EnterADoor,
     GetItem,
-    BuyWeapon
+    BuyWeapon,
+    EquipItem
 }
 
 [System.Serializable]
@@ -39,7 +40,7 @@ public class QuestGoal
 
     [ConditionalField(nameof(goalType), false, new object[] { GoalType.GetItem, GoalType.Sell })] [SerializeField] ItemBase GoalItem;
 
-    [ConditionalField(nameof(goalType), false, GoalType.BuyWeapon)] [SerializeField] ItemBase objForType;
+    [ConditionalField(nameof(goalType), false, GoalType.EquipItem)] [SerializeField] ItemBase itemToEquip;
 
     public bool isReached()
     {
@@ -109,5 +110,16 @@ public class QuestGoal
     {
         if (addedItem.Name == GoalItem.Name)
             done = true;
+    }
+
+    public void SomethingEquiped(ItemBase item)
+    {
+        if(goalType == GoalType.EquipItem)
+        {
+            if (item.Name == itemToEquip.Name)
+            {
+                done = true;
+            }
+        }
     }
 }
