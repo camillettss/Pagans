@@ -79,7 +79,7 @@ public class LibUI : MonoBehaviour
             selected_book = Mathf.Clamp(selected_book, 0, booksContainer.childCount - 1);
 
             if (selected_category != prev_cat)
-                UpdateContents();
+                UpdateCategorySelection();
 
             else if (selected_book != prev_sel)
                 UpdateBookSelection();
@@ -117,25 +117,36 @@ public class LibUI : MonoBehaviour
             return new List<StoryBook>();
     }
 
-    public void UpdateContents()
+    void UpdateContents()
     {
+        selected_book = 0;
+
         foreach (Transform child in booksContainer.transform)
             Destroy(child.gameObject);
 
         slotUIs = new List<LibBookUI>();
 
-        foreach(var book in getByCategory())
+        var iter = getByCategory();
+        if(iter.Count > 0)
         {
-            var ibook = Instantiate(bookPrefab, booksContainer);
-            ibook.SetData(book);
+            foreach (var book in iter)
+            {
+                var ibook = Instantiate(bookPrefab, booksContainer);
+                ibook.SetData(book);
 
-            slotUIs.Add(ibook);
+                slotUIs.Add(ibook);
+            }
+        }
+        else
+        {
+            // actually does nothing
         }
 
-        UpdateCategorySelection();
+        selected_book = 0;
+        UpdateBookSelection();
     }
 
-    void UpdateCategorySelection()
+    public void UpdateCategorySelection()
     {
         for(int i=0; i<categoriesContainer.childCount; i++)
         {
@@ -145,7 +156,7 @@ public class LibUI : MonoBehaviour
                 categoriesContainer.GetChild(i).GetComponent<Text>().color = GameController.Instance.unselectedDefaultColor;
         }
 
-        UpdateBookSelection();
+        UpdateContents();
     }
 
     void UpdateBookSelection()
@@ -153,7 +164,7 @@ public class LibUI : MonoBehaviour
         if (booksContainer.childCount < 1)
             return;
 
-        for(int i=0; i<booksContainer.childCount; i++)
+        for(int i=0; i<slotUIs.Count; i++)
         {
             print($"actual i:{i} max iterations:{booksContainer.childCount}");
             if (i == selected_book)

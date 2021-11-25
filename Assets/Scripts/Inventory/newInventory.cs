@@ -21,6 +21,10 @@ public class newInventory : MonoBehaviour
     [SerializeField] Image selectedIcon;
     [SerializeField] Text actualLPS;
 
+    // tips
+    [SerializeField] Text leftTip;
+    [SerializeField] Text rightTip;
+
     int bookmark = 0;
     int category = 0;
     int selected = 0;
@@ -67,6 +71,33 @@ public class newInventory : MonoBehaviour
         }
         else
             actualLPS.gameObject.SetActive(false);
+
+        if(bookmark == 0)
+        {
+            leftTip.text = "(Z) Equipaggia";
+            rightTip.text = "";
+        }
+        else if(bookmark == 1)
+        {
+            leftTip.text = "(Z) Usa";
+            rightTip.text = "";
+        }
+        else if(bookmark == 2)
+        {
+            leftTip.text = "(Z) Equipaggia";
+            rightTip.text = "(S) Sacrifica";
+        }
+        else if(bookmark == 3)
+        {
+            leftTip.text = "(Z) Usa";
+            rightTip.text = "";
+        }
+
+        if(slotUIs.Count == 0)
+        {
+            leftTip.text = "";
+            rightTip.text = "";
+        }
 
         categoryText.text = Inventory.GetCategoryName(bookmark, category);
         UpdateSelection();
@@ -186,7 +217,8 @@ public class newInventory : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.S))
             {
-                GameController.Instance.sacrificeUI.Open(slotUIs[selected].item);
+                if(bookmark==2 && category == 0) // puoi sacrificare solo i consumabili
+                    GameController.Instance.sacrificeUI.Open(slotUIs[selected].item);
             }
 
             if (Input.GetKeyDown(KeyCode.Z))

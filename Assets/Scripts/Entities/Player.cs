@@ -119,35 +119,6 @@ public class Player : MonoBehaviour
         else
             animator.SetBool("hasShield", false);
 
-        if(animator.GetBool("Attacking")) // shoot on animation ends
-        {
-            rb.velocity = Vector2.zero;
-            attackCounter -= Time.deltaTime;
-            if(attackCounter <= 0)
-            {
-                animator.SetBool("Attacking", false);
-                Shoot();
-            }
-        }
-
-        // Update quest goals
-        if(quest != null)
-        {
-            if(quest.goal[0].isReached())
-            {
-                if (quest.goal.Count == 1)
-                {
-                    quest.goal.RemoveAt(0);
-                    quest.Complete();
-                    UpdateQuestUI();
-                }
-                else if(quest.goal.Count >= 2)
-                {
-                    StartCoroutine(GameController.Instance.EvH.GoalCompleted(quest));
-                }
-            }
-        }
-
         // HANDLE INPUTS
 
         // BINDS: E: use, R: use weapon, Z: interact, F: use xtra, X: shield, Q: minimap, LShift: run
@@ -188,7 +159,7 @@ public class Player : MonoBehaviour
                 if (inventory.Weapons[inventory.equipedWeapon].item.longDamage == 0) // arma da vicino (spada)
                     useWeapon();
                 else
-                    useBow();
+                    StartCoroutine(useBow());
             }
         }
 
@@ -261,15 +232,28 @@ public class Player : MonoBehaviour
             inventory.Weapons[inventory.equipedWeapon].item.Use(this); // trova l'arma e usala
     }
 
-    void useBow()
+    IEnumerator useBow()
     {
-        rb.velocity = Vector2.zero;
+        /*rb.velocity = Vector2.zero;
         if (!animator.GetBool("Attacking"))
         {
             // this only start animation cuz this HandleUpdate() wait for animation to complete for shooting a bullet.
             attackCounter = attackTime;
             animator.SetBool("Attacking", true);
         }
+        if (animator.GetBool("Attacking")) // shoot on animation ends
+        {
+            rb.velocity = Vector2.zero;
+            attackCounter -= Time.deltaTime;
+            if (attackCounter <= 0)
+            {
+                animator.SetBool("Attacking", false);
+                Shoot();
+            }
+        }*/
+        animator.SetTrigger("Shoot");
+        yield return new WaitForSeconds(0.5f);
+        Shoot();
     }
 
     void useShield()

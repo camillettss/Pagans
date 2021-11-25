@@ -62,9 +62,10 @@ public class StoryEventHandler : MonoBehaviour
         if (quest.goal[1].introDialogue.sentences.Length > 0)
         {
             yield return new WaitForSeconds(quest.goal[1].dialogueDelay);
+            var actualState = GameController.Instance.state;
             GameController.Instance.dialogueBox.StartDialogue(quest.goal[1].introDialogue, () =>
             {
-                GameController.Instance.state = GameState.FreeRoam;
+                GameController.Instance.state = actualState;
                 quest.goal.RemoveAt(0);
                 Player.i.quest = quest;
                 Player.i.UpdateQuestUI();

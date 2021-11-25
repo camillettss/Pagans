@@ -199,7 +199,7 @@ public class GameController : MonoBehaviour
         else if(state == GameState.Library)
         {
             libUI.gameObject.SetActive(true);
-            libUI.UpdateContents();
+            libUI.UpdateCategorySelection();
         }
         #endregion
 

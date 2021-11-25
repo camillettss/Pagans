@@ -20,6 +20,8 @@ public class Quest
 
     public List<QuestGoal> goal;
 
+    public Dialogue onEndDialogue;
+
     public void Complete()
     {
         GameController.Instance.player.experience += experienceReward;
@@ -33,6 +35,15 @@ public class Quest
         if(successReaction != null && giver != null)
         {
             giver.dialoguesQueue.Add(new string[] {successReaction});
+        }
+
+        if (onEndDialogue.sentences.Length > 0)
+        {
+            var actualState = GameController.Instance.state;
+            GameController.Instance.dialogueBox.StartDialogue(onEndDialogue, () =>
+            {
+                GameController.Instance.state = actualState;
+            });
         }
     }
 }

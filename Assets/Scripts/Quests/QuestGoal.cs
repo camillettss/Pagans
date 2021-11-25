@@ -24,8 +24,6 @@ public class QuestGoal
 
     public GoalType goalType;
 
-    bool done = false;
-
     [ConditionalField(nameof(goalType), false, GoalType.KillTot)] public int requiredAmount;
     [ConditionalField(nameof(goalType), false, GoalType.KillTot)] public int currentAmount;
 
@@ -42,13 +40,19 @@ public class QuestGoal
 
     [ConditionalField(nameof(goalType), false, GoalType.EquipItem)] [SerializeField] ItemBase itemToEquip;
 
-    public bool isReached()
+    void Complete()
     {
-        if (goalType == GoalType.KillTot)
-            return (currentAmount >= requiredAmount && requiredAmount != 0);
-
-        else
-            return done;
+        var quest = Player.i.quest;
+        if (quest.goal.Count == 1)
+        {
+            quest.goal.RemoveAt(0);
+            quest.Complete();
+            Player.i.UpdateQuestUI();
+        }
+        else if (quest.goal.Count >= 2)
+        {
+            Player.i.StartCoroutine(GameController.Instance.EvH.GoalCompleted(quest));
+        }
     }
 
     public void EnemyKilled(NPCController enemy)
@@ -58,7 +62,7 @@ public class QuestGoal
         else if(goalType == GoalType.KillSomeone)
         {
             if (enemy.Name == enemyName)
-                done = true;
+                Complete();
         }
     }
 
@@ -67,49 +71,48 @@ public class QuestGoal
         if(goalType == GoalType.Talk)
         {
             if (npc.Name == talkTo)
-                done = true;
-            
+                Complete();
         }
     }
 
     public void DoorEntered(Portal door) // viene passata la destinazione
     {
-        if (door.name == PortalName)
-            done = true;
+        if (door.name == PortalName && goalType==GoalType.EnterADoor)
+            Complete();
     }
 
     public void SomethingBought(TraderController seller, ItemBase item)
     {
-        if(seller.Name == sellerName && item.Name == itemName)
+        if(seller.Name == sellerName && item.Name == itemName && goalType == GoalType.Buy)
         {
-            done = true;
+            Complete();
         }
 
         if(goalType == GoalType.BuyWeapon)
         {
             if (item is Weapon)
-                done = true;
+                Complete();
         }
     }
 
     public void SomethingSelled(TraderController buyer, ItemBase merch)
     {
-        if(merch.Name == GoalItem.Name)
+        if(merch.Name == GoalItem.Name && goalType == GoalType.Sell)
         {
             if (sellerName != null && sellerName != "") // seller in questo caso fa da buyer, sti cazzi del nome non mi va di fare troppe vars
             {
                 if (sellerName == buyer.Name)
-                    done = true;
+                    Complete();
             }
             else
-                done = true;
+                Complete();
         }
     }
 
     public void SomethingAddedToInventory(ItemBase addedItem)
     {
-        if (addedItem.Name == GoalItem.Name)
-            done = true;
+        if (addedItem.Name == GoalItem.Name && goalType == GoalType.GetItem)
+            Complete();
     }
 
     public void SomethingEquiped(ItemBase item)
@@ -118,7 +121,7 @@ public class QuestGoal
         {
             if (item.Name == itemToEquip.Name)
             {
-                done = true;
+                Complete();
             }
         }
     }

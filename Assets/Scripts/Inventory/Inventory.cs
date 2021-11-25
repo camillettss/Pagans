@@ -135,7 +135,7 @@ public class Inventory : MonoBehaviour
             res[0].AddRange(consumableSlots);
             res[0].AddRange(itemSlots); // tutti insieme, in hardcode <3
         }
-        else if(bookmark == 3)
+        else if(bookmark == 3) // skills and skillbooks
         {
             res.Add(new List<InventorySlot>());
             foreach (var skill in Skills)
