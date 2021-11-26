@@ -68,8 +68,8 @@ public class Tree : MonoBehaviour, IEntity
     public void Interact(Player player)
     {
         // Drop a fruit
-        print("interagisce con un albero sto schizofrenico");
-        StoryEventHandler.i.AddToInventory(dropfruit);
+        if(!cutted)
+            StoryEventHandler.i.AddToInventory(dropfruit);
     }
 
     public void Cut()

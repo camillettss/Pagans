@@ -53,7 +53,8 @@ public class StoryEventHandler : MonoBehaviour
 
     public void OnEquip(ItemBase item)
     {
-        Player.i.quest.goal[0].SomethingEquiped(item);
+        if(Player.i.quest.goal.Count>0)
+            Player.i.quest.goal[0].SomethingEquiped(item);
     }
 
     public IEnumerator GoalCompleted(Quest quest)

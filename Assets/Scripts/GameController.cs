@@ -40,6 +40,7 @@ public class GameController : MonoBehaviour
 
     public GameObject keytip_E;
     public GameObject keytip_Z;
+    public GameObject keytip_F;
 
     // basic
     public Color selectedDefaultColor;

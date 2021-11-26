@@ -180,7 +180,10 @@ public class ShopUI : MonoBehaviour
                 player.kents += shopUIs[selected].price * amount;
 
                 for(int i=0; i<amount; i++)
+                {
                     player.inventory.Remove(shopUIs[selected].item);
+                    trader.inventory.Add(shopUIs[selected].item);
+                }
 
                 if (player.quest.goal.Count > 0)
                     player.quest.goal[0].SomethingSelled(trader, shopUIs[selected].item);

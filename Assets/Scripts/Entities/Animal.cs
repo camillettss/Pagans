@@ -45,7 +45,7 @@ public abstract class Animal : MonoBehaviour, IEntity
         if(Player.i.isInRange(this))
         {
             if (transform.childCount == 0)
-                ShowSignal();
+                ShowSignal(); // tf y is not updating?
         }
         else
         {
@@ -68,7 +68,7 @@ public abstract class Animal : MonoBehaviour, IEntity
         {
             if(Player.i.inventory.Skills.Contains(tameskill) || (Player.i.inventory.extraSlot != null && Player.i.inventory.extraSlot.item != null))
             {
-                Instantiate(GameController.Instance.keytip_E, transform);
+                Instantiate(GameController.Instance.keytip_F, transform);
             }
         }
         else // ride signal
