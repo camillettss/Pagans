@@ -40,9 +40,16 @@ public class ShopUI : MonoBehaviour
         this.trader = trader;
     }
 
-    void switchToSell()
+    public void switchToSell()
     {
         sellMode = !sellMode;
+        selected = 0;
+        UpdateView();
+    }
+
+    public void switchToSell(bool sellmode)
+    {
+        sellMode = sellmode;
         selected = 0;
         UpdateView();
     }

@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum DialogueTypes
+{
+    Std,
+    Question
+}
+
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] Text content;
@@ -10,14 +16,41 @@ public class DialogueManager : MonoBehaviour
 
     System.Action afterDialogue;
 
+    System.Action onOption1;
+    System.Action onOption2;
+
     Queue<string> sentences;
+
+    [SerializeField] Text option1;
+    [SerializeField] Text option2;
+
+    bool dialogueState = true;
+
+    int selected;
+
     void Awake()
     {
         sentences = new Queue<string>();
     }
 
+    DialogueTypes actualType = DialogueTypes.Std;
+
+    void resetUIElements()
+    {
+        option1.gameObject.SetActive(false);
+        option2.gameObject.SetActive(false);
+        content.gameObject.SetActive(true);
+
+        dialogueState = true;
+        selected = 0;
+    }
+
     public void StartDialogue(Dialogue dialogue, System.Action onEndDialogue)
     {
+        resetUIElements();
+
+        actualType = DialogueTypes.Std;
+
         animator.SetBool("isOpen", true);
         // appena esegue la riga sopra esce dalla funzione ._. FIXME // ORA FUNZIONA E NON HO CAMBIATO NULLA UNITY ERA BUGGATO PORCODDIO
 
@@ -38,6 +71,7 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator InfoDialogue(Dialogue dialogue, float duration, System.Action onEnd)
     {
+        resetUIElements();
         afterDialogue = onEnd;
         animator.SetBool("isOpen", true);
         GameController.Instance.dialogueBox.gameObject.SetActive(true);
@@ -58,7 +92,12 @@ public class DialogueManager : MonoBehaviour
     {
         if(sentences.Count == 0)
         {
-            EndDialogue();
+            if (actualType == DialogueTypes.Std)
+                EndDialogue();
+
+            else if (actualType == DialogueTypes.Question)
+                EndQuestion();
+
             return;
         }
 
@@ -66,20 +105,104 @@ public class DialogueManager : MonoBehaviour
         content.text = sentence;
     }
 
+    public void StartQuestionDialogue(Dialogue dialogue, string op1, string op2, System.Action onOp1, System.Action onOp2)
+    {
+        resetUIElements();
+
+        actualType = DialogueTypes.Question;
+
+        option1.text = op1;
+        option2.text = op2;
+
+        onOption1 = onOp1;
+        onOption2 = onOp2;
+
+        animator.SetBool("isOpen", true);
+        // appena esegue la riga sopra esce dalla funzione ._. FIXME // ORA FUNZIONA E NON HO CAMBIATO NULLA UNITY ERA BUGGATO PORCODDIO
+
+        GameController.Instance.state = GameState.Dialogue;
+        GameController.Instance.dialogueBox.gameObject.SetActive(true);
+
+        sentences.Clear();
+
+        foreach (string sentence in dialogue.sentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+
+        DisplayNextSentence();
+    }
+
+    void EndQuestion()
+    {
+        // mostra le opzioni
+        option1.gameObject.SetActive(true);
+        option2.gameObject.SetActive(true);
+        content.gameObject.SetActive(false);
+
+        dialogueState = false;
+        UpdateSelection();
+    }
+
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
         afterDialogue?.Invoke();
-        if(GameController.Instance.ActiveNPC != null)
+        if (GameController.Instance.ActiveNPC != null)
             GameController.Instance.ActiveNPC.onTalk();
         GameController.Instance.ActiveNPC = null;
     }
 
-    public void HandleUpdate()
+    void handleDialogue()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             DisplayNextSentence();
         }
+    }
+
+    void handleQuestion()
+    {
+        var prev = selected;
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            --selected;
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            ++selected;
+
+        if (selected > 1)
+            selected = 0;
+        else if (selected < 0)
+            selected = 1;
+
+        if (prev != selected)
+            UpdateSelection();
+
+        if(Input.GetKeyDown(KeyCode.Z))
+            Perform();
+    }
+
+    void UpdateSelection()
+    {
+        option1.color = selected == 0 ? GameController.Instance.selectedDefaultColor : GameController.Instance.unselectedDefaultColor;
+        option2.color = selected == 1 ? GameController.Instance.selectedDefaultColor : GameController.Instance.unselectedDefaultColor;
+    }
+
+    void Perform()
+    {
+        if (selected == 0)
+            onOption1?.Invoke();
+        else
+            onOption2?.Invoke();
+
+        EndDialogue();
+    }
+
+    public void HandleUpdate()
+    {
+        if (dialogueState)
+            handleDialogue();
+        else
+            handleQuestion();
     }
 }

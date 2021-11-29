@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4936455239050081228}
   - component: {fileID: 7685225713063737016}
   - component: {fileID: 2981103726805109170}
+  - component: {fileID: 6114862344652822732}
   m_Layer: 14
   m_Name: miniTree
   m_TagString: Untagged
@@ -167,3 +168,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21f33660a8056446bd481ffc984ad20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6114862344652822732
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7220226715860062217}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15fb0c6302ac3914fa7039fb28a4fd3e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

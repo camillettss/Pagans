@@ -16,7 +16,22 @@ public class TraderController : MonoBehaviour, IEntity
 
     public void Interact(Player player)
     {
-        GameController.Instance.OpenState(GameState.Shop, this);
+        GameController.Instance.dialogueBox.StartQuestionDialogue(
+                new Dialogue(
+                    new string[] { }
+                    ),
+                "vendi",
+                "compra",
+                () =>
+                {
+                    GameController.Instance.OpenState(GameState.Shop, this);
+                    GameController.Instance.shopUI.switchToSell(true);
+                },
+                () =>
+                {
+                    GameController.Instance.OpenState(GameState.Shop, this);
+                    GameController.Instance.shopUI.switchToSell(false);
+                });
     }
 
     public void takeDamage(int dmg)

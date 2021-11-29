@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     public Player player;
     [SerializeField] public MenuController menu;
     [SerializeField] InventoryUI inventoryUI;
-    [SerializeField] ShopUI shopUI;
+    [SerializeField] public ShopUI shopUI;
     [SerializeField] QuestsUI questsUI;
     [SerializeField] EnchantingUI enchantingUI;
     [SerializeField] public Hotbar hotbar;
