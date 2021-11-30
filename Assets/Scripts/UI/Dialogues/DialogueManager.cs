@@ -27,6 +27,8 @@ public class DialogueManager : MonoBehaviour
     bool dialogueState = true;
     bool isWriting = false;
 
+    bool skip = false;
+
     int selected;
 
     void Awake()
@@ -107,6 +109,12 @@ public class DialogueManager : MonoBehaviour
             isWriting = true;
             while(i < sentence.Length - 1)
             {
+                if(skip)
+                {
+                    content.text = sentence;
+                    skip = false;
+                    break;
+                }
                 content.text += sentence[i];
                 i++;
                 yield return new WaitForSeconds(.05f);
@@ -165,9 +173,12 @@ public class DialogueManager : MonoBehaviour
 
     void handleDialogue()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && !isWriting)
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            StartCoroutine(DisplayNextSentence());
+            if (!isWriting)
+                StartCoroutine(DisplayNextSentence());
+            else
+                skip = true;
         }
     }
 
