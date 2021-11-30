@@ -117,7 +117,7 @@ public class DialogueManager : MonoBehaviour
                 }
                 content.text += sentence[i];
                 i++;
-                yield return new WaitForSeconds(.05f);
+                yield return new WaitForSeconds(.025f);
             }
             isWriting = false;
         }
