@@ -25,6 +25,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Text option2;
 
     bool dialogueState = true;
+    bool isWriting = false;
 
     int selected;
 
@@ -66,7 +67,7 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
-        DisplayNextSentence();
+        StartCoroutine(DisplayNextSentence());
     }
 
     public IEnumerator InfoDialogue(Dialogue dialogue, float duration, System.Action onEnd)
@@ -83,26 +84,35 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
-        DisplayNextSentence();
+        yield return StartCoroutine(DisplayNextSentence());
         yield return new WaitForSeconds(duration);
         EndDialogue();
     }
 
-    public void DisplayNextSentence()
+    public IEnumerator DisplayNextSentence()
     {
-        if(sentences.Count == 0)
+        if (sentences.Count == 0)
         {
             if (actualType == DialogueTypes.Std)
                 EndDialogue();
 
             else if (actualType == DialogueTypes.Question)
                 EndQuestion();
-
-            return;
         }
-
-        var sentence = sentences.Dequeue();
-        content.text = sentence;
+        else
+        {
+            content.text = "";
+            var sentence = sentences.Dequeue();
+            int i = 0;
+            isWriting = true;
+            while(i < sentence.Length - 1)
+            {
+                content.text += sentence[i];
+                i++;
+                yield return new WaitForSeconds(.05f);
+            }
+            isWriting = false;
+        }
     }
 
     public void StartQuestionDialogue(Dialogue dialogue, string op1, string op2, System.Action onOp1, System.Action onOp2)
@@ -130,7 +140,7 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
-        DisplayNextSentence();
+        StartCoroutine(DisplayNextSentence());
     }
 
     void EndQuestion()
@@ -155,9 +165,9 @@ public class DialogueManager : MonoBehaviour
 
     void handleDialogue()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && !isWriting)
         {
-            DisplayNextSentence();
+            StartCoroutine(DisplayNextSentence());
         }
     }
 
