@@ -77,13 +77,13 @@ public class QuestGoal
 
     public void DoorEntered(Portal door) // viene passata la destinazione
     {
-        if (door.name == PortalName && goalType==GoalType.EnterADoor)
+        if (goalType == GoalType.EnterADoor && door.name == PortalName)
             Complete();
     }
 
     public void SomethingBought(TraderController seller, ItemBase item)
     {
-        if(seller.Name == sellerName && item.Name == itemName && goalType == GoalType.Buy)
+        if(goalType == GoalType.Buy && seller.Name == sellerName && item.Name == itemName)
         {
             Complete();
         }
@@ -97,7 +97,8 @@ public class QuestGoal
 
     public void SomethingSelled(TraderController buyer, ItemBase merch)
     {
-        if(merch.Name == GoalItem.Name && goalType == GoalType.Sell)
+        Debug.Log($"something selled, passed: {buyer}, {merch}");
+        if(goalType == GoalType.Sell && merch.Name == GoalItem.Name)
         {
             if (sellerName != null && sellerName != "") // seller in questo caso fa da buyer, sti cazzi del nome non mi va di fare troppe vars
             {
@@ -111,7 +112,7 @@ public class QuestGoal
 
     public void SomethingAddedToInventory(ItemBase addedItem)
     {
-        if (addedItem.Name == GoalItem.Name && goalType == GoalType.GetItem)
+        if (goalType == GoalType.GetItem && addedItem.Name == GoalItem.Name)
             Complete();
     }
 
