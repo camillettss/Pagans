@@ -27,6 +27,7 @@ public class TraderController : MonoBehaviour, IEntity
                     print("vendi");
                     GameController.Instance.OpenState(GameState.Shop, this);
                     GameController.Instance.shopUI.switchToSell(true);
+                    print("operation successfully completed. now state should be Shop.");
                 },
                 () =>
                 {

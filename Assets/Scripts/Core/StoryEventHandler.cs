@@ -23,13 +23,8 @@ public class StoryEventHandler : MonoBehaviour
     public static void DelegateMethod(IEntity entity, InteractionType type) // crea un metodo con gli stessi parametri del delegato
     {
         if(type == InteractionType.talkTo)
-        {
-            try
-            {
+            if(Player.i.quest != null && Player.i.quest.goal.Count > 0)
                 Player.i.quest.goal[0].NPCTalked((NPCController)entity);
-            }
-            catch { };
-        }
     }
 
     public void Interact()

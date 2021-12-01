@@ -53,6 +53,7 @@ public class QuestGoal
         {
             Player.i.StartCoroutine(GameController.Instance.EvH.GoalCompleted(quest));
         }
+        Debug.Log("a goal were completed.");
     }
 
     public void EnemyKilled(NPCController enemy)
