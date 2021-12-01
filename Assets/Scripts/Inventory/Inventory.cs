@@ -356,7 +356,7 @@ public class Inventory : MonoBehaviour
     {
         foreach(var obj in GetSlots(item.category))
         {
-            if (obj.item == item)
+            if (obj.item.Name == item.Name)
                 return obj;
         }
         return null;

@@ -29,7 +29,6 @@ public class ShopUI : MonoBehaviour
 
     private void Awake()
     {
-        sellMode = false;
         selected = 0;
         UpdateView();
     }
@@ -132,6 +131,7 @@ public class ShopUI : MonoBehaviour
         }
     }
 
+
     public void HandleUpdate()
     {
         int prev = selected;
@@ -154,7 +154,7 @@ public class ShopUI : MonoBehaviour
             ++amount;
 
         //category = Mathf.Clamp(category, 0, 1); // Hardcoded, fix!
-        if (sellMode && shopUIs.Count > 0)
+        if (sellMode && shopUIs.Count > 0 && pamount != amount)
             amount = Mathf.Clamp(amount, 1, Player.i.inventory.findItem(shopUIs[selected].item).count);
         /*else if (!sellMode && shopUIs.Count > 0)
             amount = Mathf.Clamp(amount, 1, trader.inventory.findItem(shopUIs[selected].item).count); //FIX
@@ -186,14 +186,15 @@ public class ShopUI : MonoBehaviour
             {
                 player.kents += shopUIs[selected].price * amount;
 
-                for(int i=0; i<amount; i++)
+                if (player.quest.goal.Count > 0)
+                    player.quest.goal[0].SomethingSelled(trader, shopUIs[selected].item);
+
+                for (int i=0; i<amount; i++)
                 {
                     player.inventory.Remove(shopUIs[selected].item);
                     trader.inventory.Add(shopUIs[selected].item);
                 }
 
-                if (player.quest.goal.Count > 0)
-                    player.quest.goal[0].SomethingSelled(trader, shopUIs[selected].item);
             }
 
             selected = 0;

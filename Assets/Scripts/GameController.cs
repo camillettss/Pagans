@@ -227,6 +227,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        print(state);
         if (state != GameState.FreeRoam)
         {
             player.animator.SetFloat("Speed", 0.0f);

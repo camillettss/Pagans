@@ -24,6 +24,7 @@ public class TraderController : MonoBehaviour, IEntity
                 "compra",
                 () =>
                 {
+                    print("vendi");
                     GameController.Instance.OpenState(GameState.Shop, this);
                     GameController.Instance.shopUI.switchToSell(true);
                 },
