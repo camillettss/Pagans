@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.P))
         {
-            
+            //growObjectsTilemap.GetTile(new Vector3Int((int)transform.position.x, (int)transform.position.y, 0));
         }
 
         // minimap show
