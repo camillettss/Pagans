@@ -135,6 +135,8 @@ public class DialogueManager : MonoBehaviour
         onOption1 = onOp1;
         onOption2 = onOp2;
 
+        afterDialogue = () => { };
+
         animator.SetBool("isOpen", true);
         // appena esegue la riga sopra esce dalla funzione ._. FIXME // ORA FUNZIONA E NON HO CAMBIATO NULLA UNITY ERA BUGGATO PORCODDIO
 
@@ -166,9 +168,6 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("isOpen", false);
         afterDialogue?.Invoke();
-        if (GameController.Instance.ActiveNPC != null)
-            GameController.Instance.ActiveNPC.onTalk();
-        GameController.Instance.ActiveNPC = null;
     }
 
     void handleDialogue()

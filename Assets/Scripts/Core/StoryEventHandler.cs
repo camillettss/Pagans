@@ -18,13 +18,13 @@ public class StoryEventHandler : MonoBehaviour
         i = this;
     }
 
-    public delegate void Del(IEntity entity, InteractionType type); // crea un delegato che incapsula un metodo accettante un controller e restituente void
+    public delegate void Del(NPCController entity, InteractionType type); // crea un delegato che incapsula un metodo accettante un controller e restituente void
 
-    public static void DelegateMethod(IEntity entity, InteractionType type) // crea un metodo con gli stessi parametri del delegato
+    public static void DelegateMethod(NPCController entity, InteractionType type) // crea un metodo con gli stessi parametri del delegato
     {
         if(type == InteractionType.talkTo)
             if(Player.i.quest != null && Player.i.quest.goal.Count > 0)
-                Player.i.quest.goal[0].NPCTalked((NPCController)entity);
+                Player.i.quest.goal[0].NPCTalked(entity);
     }
 
     public void Interact()
@@ -38,10 +38,18 @@ public class StoryEventHandler : MonoBehaviour
             if (front == null)
                 return;
 
-            if(front.TryGetComponent(out IEntity entity))
+            if(front.TryGetComponent(out TraderController trader))
             {
-                entity.Interact(Player.i);
-                StartCoroutine(waitForState(handler, entity)); // passa a waitForState il delegato istanziato e i parametri per chiamarlo
+                trader.Interact(Player.i); // coroutine solo per le entità con dialogo.
+            }
+            else if(front.TryGetComponent(out NPCController npc))
+            {
+                npc.Interact(Player.i); // chiama npcTalked per gli npc
+                StartCoroutine(waitForState(handler, npc)); // passa a waitForState il delegato istanziato e i parametri per chiamarlo
+            }
+            else if(front.TryGetComponent(out IEntity entity))
+            {
+                entity.Interact(Player.i); // interazione per le entità generiche.
             }
         }
     }
@@ -55,6 +63,7 @@ public class StoryEventHandler : MonoBehaviour
     public IEnumerator GoalCompleted(Quest quest)
     {
         // prima di iniziare il prossimo goal chiama il dialogo
+        print($"started GoalCompleted. first goal: {quest.goal[0].goal}");
         if (quest.goal[1].introDialogue.sentences.Length > 0)
         {
             yield return new WaitForSeconds(quest.goal[1].dialogueDelay);
@@ -94,7 +103,7 @@ public class StoryEventHandler : MonoBehaviour
         yield return Fader.i.FadeOut(.5f);
     }
 
-    IEnumerator waitForState(Del callback, IEntity entity=null, InteractionType type=InteractionType.talkTo, GameState state = GameState.FreeRoam)
+    IEnumerator waitForState(Del callback, NPCController entity=null, InteractionType type=InteractionType.talkTo, GameState state = GameState.FreeRoam)
     {
         while(true)
         {
