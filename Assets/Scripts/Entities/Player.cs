@@ -351,9 +351,16 @@ public class Player : MonoBehaviour
 
             // if is a totType goal, enable fraction
             if(quest.goal[0].goalType == GoalType.BuyTot || quest.goal[0].goalType == GoalType.SellTot || quest.goal[0].goalType == GoalType.GetTot)
+            {
+                questUI.alignment = TextAnchor.MiddleLeft;
+                questUIfraction.gameObject.SetActive(true);
                 questUIfraction.text = $"{quest.goal[0].CurrentAmount}/{quest.goal[0].RequiredAmount}";
+            }
             else
+            {
                 questUIfraction.gameObject.SetActive(false); // this doesn't work :/
+                questUI.alignment = TextAnchor.MiddleCenter;
+            }
 
         }
         else
