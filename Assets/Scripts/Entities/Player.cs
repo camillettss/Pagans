@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] public LayerMask farmingLayer;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Text questUI;
+    [SerializeField] Text questUIfraction;
     [SerializeField] Image ActiveQuestBG;
     [SerializeField] public Light2D torchLight;
     [SerializeField] public Transform attackPoint;
@@ -339,14 +340,21 @@ public class Player : MonoBehaviour
     {
         if(quest!=null && quest.goal != null)
         {
+            if (quest.goal[0].goal == "")
+                return;
+
             // enable quests on hud cuz instead of removing text now i'll turn off the container gameobj.
             ActiveQuestBG.gameObject.SetActive(true);
 
             // now set text
             questUI.text = quest.goal[0].goal;
 
-            if(quest.goal[0].goal == "")
-                ActiveQuestBG.gameObject.SetActive(false);
+            // if is a totType goal, enable fraction
+            if(quest.goal[0].goalType == GoalType.BuyTot || quest.goal[0].goalType == GoalType.SellTot || quest.goal[0].goalType == GoalType.GetTot)
+                questUIfraction.text = $"{quest.goal[0].CurrentAmount}/{quest.goal[0].RequiredAmount}";
+            else
+                questUIfraction.gameObject.SetActive(false); // this doesn't work :/
+
         }
         else
         {

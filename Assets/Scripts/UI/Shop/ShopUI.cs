@@ -154,8 +154,20 @@ public class ShopUI : MonoBehaviour
             ++amount;
 
         //category = Mathf.Clamp(category, 0, 1); // Hardcoded, fix!
-        if (sellMode && shopUIs.Count > 0 && pamount != amount)
-            amount = Mathf.Clamp(amount, 1, Player.i.inventory.findItem(shopUIs[selected].item).count);
+        /*if (sellMode && shopUIs.Count > 0 && pamount != amount)
+            amount = Mathf.Clamp(amount, 1, Player.i.inventory.findItem(shopUIs[selected].item).count);*/
+
+        if(pamount != amount)
+        {
+            if(sellMode) // lo trovi nell'inv del player
+            {
+                amount = Mathf.Clamp(amount, 1, Player.i.inventory.findItem(shopUIs[selected].item).count);
+            }
+            else
+            {
+                amount = Mathf.Clamp(amount, 1, trader.inventory.findItem(shopUIs[selected].item).count);
+            }
+        }
         /*else if (!sellMode && shopUIs.Count > 0)
             amount = Mathf.Clamp(amount, 1, trader.inventory.findItem(shopUIs[selected].item).count); //FIX
         */
@@ -170,12 +182,12 @@ public class ShopUI : MonoBehaviour
             var player = Player.i;
             if(!sellMode)
             {
-                if (player.kents*amount < shopUIs[selected].price)
+                if (player.kents < shopUIs[selected].price*amount)
                     return;
                 StoryEventHandler.i.AddToInventory(shopUIs[selected].item);
 
                 if(Player.i.quest.goal.Count > 0)
-                    player.quest.goal[0].SomethingBought(trader, shopUIs[selected].item);
+                    player.quest.goal[0].SomethingBought(trader, shopUIs[selected].item, amount);
 
                 player.kents -= shopUIs[selected].price * amount;
 
@@ -187,7 +199,7 @@ public class ShopUI : MonoBehaviour
                 player.kents += shopUIs[selected].price * amount;
 
                 if (player.quest.goal.Count > 0)
-                    player.quest.goal[0].SomethingSelled(trader, shopUIs[selected].item);
+                    player.quest.goal[0].SomethingSelled(trader, shopUIs[selected].item, amount);
 
                 for (int i=0; i<amount; i++)
                 {
