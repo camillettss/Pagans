@@ -162,8 +162,9 @@ public class GameController : MonoBehaviour
 
     public void OpenState(GameState state, TraderController trader = null)
     {
+        print($"target state:{state}, trader passed:{trader}.");
         #region state control
-        if(state == GameState.Menu)
+        if (state == GameState.Menu)
         {
             menu.gameObject.SetActive(true);
         }
@@ -175,33 +176,35 @@ public class GameController : MonoBehaviour
             inventoryUI.UpdateContents();
             StartCoroutine(storyController.FirstInventoryOpen());*/
         }
-        else if(state == GameState.Shop && trader != null)
+        else if (state == GameState.Shop && trader != null)
         {
             shopUI.SetTrader(trader); // Questo deve essere chiamato prima del setActive visto che quest'ultima funzione chiama anche Awake().
             shopUI.gameObject.SetActive(true);
         }
-        else if(state == GameState.Quests)
+        else if (state == GameState.Quests)
         {
             questsUI.gameObject.SetActive(true);
             questsUI.UpdateContents();
         }
-        else if(state == GameState.ChoosingItem)
+        else if (state == GameState.ChoosingItem)
         {
             choosingUI.gameObject.SetActive(true);
             choosingUI.UpdateItems();
             choosingUI.GetComponent<Animator>().SetTrigger("Anim");
         }
-        else if(state == GameState.Settings)
+        else if (state == GameState.Settings)
         {
             settingsUI.gameObject.SetActive(true);
             menu.gameObject.SetActive(false);
             settingsUI.UpdateSelection();
         }
-        else if(state == GameState.Library)
+        else if (state == GameState.Library)
         {
             libUI.gameObject.SetActive(true);
             libUI.UpdateCategorySelection();
         }
+        else
+            print("[!!] No state specified or unhandled option.");
         #endregion
 
         this.state = state;
@@ -227,7 +230,6 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        print($"[*] state: {state}");
         if (state != GameState.FreeRoam)
         {
             player.animator.SetFloat("Speed", 0.0f);

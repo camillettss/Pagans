@@ -1133,6 +1133,85 @@ MonoBehaviour:
   m_Spacing: {x: 75, y: 90}
   m_Constraint: 1
   m_ConstraintCount: 3
+--- !u!1 &601011290954583663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6320420282920118107}
+  - component: {fileID: 1405879592347512739}
+  - component: {fileID: 47859053171831487}
+  m_Layer: 0
+  m_Name: amount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6320420282920118107
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601011290954583663}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3066616848111530012}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -80, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1405879592347512739
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601011290954583663}
+  m_CullTransparentMesh: 1
+--- !u!114 &47859053171831487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601011290954583663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1b6801f3556e03540a31b7401ad8ff42, type: 3}
+    m_FontSize: 32
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 0/2
 --- !u!1 &622545502051225394
 GameObject:
   m_ObjectHideFlags: 0
@@ -5781,6 +5860,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5379045463908920400}
+  - {fileID: 6320420282920118107}
   m_Father: {fileID: 5379045465181957404}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6868,8 +6948,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 90}
+  m_AnchoredPosition: {x: 7.5, y: 0}
+  m_SizeDelta: {x: 285, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5379045463908920406
 CanvasRenderer:
@@ -6906,7 +6986,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -7782,6 +7862,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 308484125812446974, guid: 5fccbe7e22e0f0142ae16dbda1608ddf,
     type: 3}
   questUI: {fileID: 5379045463908920407}
+  questUIfraction: {fileID: 47859053171831487}
   ActiveQuestBG: {fileID: 3320820370872271814}
   torchLight: {fileID: 1729070854198298205}
   attackPoint: {fileID: 1199283401050169798}
@@ -7808,105 +7889,91 @@ MonoBehaviour:
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     onEndDialogue:
       Teller: 
       sentences: []
@@ -8003,15 +8070,13 @@ MonoBehaviour:
         sentences: []
       goal: parla con mammt ca t fe bucchin soccl
       goalType: 2
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: cazzo culo
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     onEndDialogue:
       Teller: 
       sentences: []
@@ -8120,15 +8185,13 @@ MonoBehaviour:
         sentences: []
       goal: vai in biblioteca
       goalType: 5
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: Harbardr
-      sellerName: 
-      itemName: 
-      PortalName: library-door
+      sellerName: fish
       GoalItem: {fileID: 0}
+      PortalName: library-door
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -8137,82 +8200,79 @@ MonoBehaviour:
           vai a dargli un'occhiata.
       goal: leggi qualcosa
       goalType: 2
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: librarian
       sellerName: 
-      itemName: 
-      PortalName: library-door
       GoalItem: {fileID: 0}
+      PortalName: library-door
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
         sentences:
-        - bene, ora adesso vai a comprare una spada...
-        - per farlo avrai ovviamente bisogno di soldi, quindi prima taglia della
-          legna per venderla.
+        - "bene, ora ti insegner\xF2 a combattere. hai gi\xE0 l'ascia equipaggiata
+          perci\xF2 vai a tagliare della legna."
+        - "la legna \xE8 utile per fare il fuoco, costruire strumenti provvisori
+          o per farsi qualche soldo. venderla potrebbe darti abbastanza soldi per
+          una spada."
       goal: taglia un albero
-      goalType: 6
-      requiredAmount: 0
-      currentAmount: 0
+      goalType: 11
       enemyName: 
       talkTo: librarian
       sellerName: 
-      itemName: 
-      PortalName: library-door
       GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
+      PortalName: library-door
       itemToEquip: {fileID: 0}
+      reqAmount: 2
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
         sentences:
-        - ottimo, ora vai dal mercante e vendi la legna. dovrebbe bastare.
+        - "ottimo. c'\xE8 un venditore non lontano da qui, \xE8 un mercante di armi
+          ma sono sicuro che accetter\xE0 la legna. "
       goal: vendi la legna
-      goalType: 4
-      requiredAmount: 0
-      currentAmount: 0
+      goalType: 10
       enemyName: 
       talkTo: librarian
       sellerName: 
-      itemName: Wood
-      PortalName: library-door
       GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
+      PortalName: library-door
       itemToEquip: {fileID: 0}
+      reqAmount: 2
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
         sentences:
-        - perfetto! ora passa a cliente premendo Tab e compra la spada.
+        - ecco fatto, ora hai abbastanza kent per una spada.
+        - "premi tab per vedere cosa pu\xF2 venderci, avr\xE0 sicuramente ci\xF2
+          che cerchiamo."
       goal: compra un'arma
       goalType: 7
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: librarian
       sellerName: 
-      itemName: Wood
-      PortalName: library-door
       GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
+      PortalName: library-door
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
         sentences:
-        - benissimo! ora premi Enter per aprire l'inventario, poi seleziona Bag ed
-          equipaggia l'arma che hai appena comprato con Z.
+        - hai comprato la tua prima arma! esci dalla schermata del mercante, poi
+          entra nell'inventario premendo enter e selezionanbdo Bag
+        - "troverai tutti gli oggetti ordinati in categorie. la spada sar\xE0 proprio
+          nella prima quindi selezionala ed equipaggiala con Z."
       goal: Equipaggia l'arma
       goalType: 8
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: librarian
       sellerName: 
-      itemName: Wood
-      PortalName: library-door
       GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
+      PortalName: library-door
       itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
+      reqAmount: 0
     onEndDialogue:
       Teller: 
       sentences:
@@ -8264,105 +8324,91 @@ MonoBehaviour:
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
         sentences: []
       goal: 
       goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
       enemyName: 
       talkTo: 
       sellerName: 
-      itemName: 
-      PortalName: 
       GoalItem: {fileID: 0}
+      PortalName: 
       itemToEquip: {fileID: 0}
+      reqAmount: 0
     onEndDialogue:
       Teller: 
       sentences: []
