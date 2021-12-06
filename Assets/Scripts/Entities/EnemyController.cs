@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyBox;
 
 public enum EnemyState
 {
@@ -8,15 +9,23 @@ public enum EnemyState
     awake
 }
 
-public class EnemyController : MonoBehaviour
+public enum EnemyType
+{
+    Archer,
+    Swordman
+}
+
+public class EnemyController : MonoBehaviour, IEntity
 {
     float speed = 3.5f;
     Animator m_anim;
     Transform target;
     float awakeRange = 5f;
-    float attackRange = 3f;
+    float attackRange = 1f;
+    bool canAttack = true;
 
-    EnemyState state;
+    EnemyState state = EnemyState.sleeping;
+    [SerializeField] EnemyType type;
 
     private void Awake()
     {
@@ -24,10 +33,13 @@ public class EnemyController : MonoBehaviour
         target = Player.i.transform;
     }
 
-    private void Update()
+    private void FixedUpdate() // this should become HandleUpdate and being called only if gobj is in fov
     {
         if (state == EnemyState.sleeping)
         {
+            if (m_anim.GetFloat("speed") > 0)
+                m_anim.SetFloat("speed", 0);
+
             if (Vector3.Distance(target.position, transform.position) <= awakeRange) // awake
                 state = EnemyState.awake;
         }
@@ -35,10 +47,20 @@ public class EnemyController : MonoBehaviour
         {
             if (Vector3.Distance(target.position, transform.position) <= attackRange)
             {
-                StartCoroutine(Attack());
+                if (m_anim.GetFloat("speed") > 0)
+                    m_anim.SetFloat("speed", 0);
+
+                if(canAttack)
+                    StartCoroutine(Attack());
             }
             else
-                FollowTarget();
+            {
+                if (Vector3.Distance(target.position, transform.position) <= awakeRange)
+                    FollowTarget();
+                else
+                    state = EnemyState.sleeping;
+            }
+
         }
     }
 
@@ -48,12 +70,45 @@ public class EnemyController : MonoBehaviour
         m_anim.SetFloat("FaceX", (target.position.x - transform.position.x));
         m_anim.SetFloat("FaceY", (target.position.y - transform.position.y));
 
-        transform.position = Vector3.MoveTowards(transform.position, Player.i.transform.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, Player.i.transform.position, speed * Time.fixedDeltaTime);
     }
 
     IEnumerator Attack()
     {
-        print("attacking");
-        yield return new WaitForSeconds(.5f);
+        canAttack = false;
+        if(type == EnemyType.Archer)
+        {
+            Shoot();
+            yield return new WaitForSeconds(1f);
+        }
+        else if(type == EnemyType.Swordman)
+        {
+            yield return StartCoroutine(SwordAttack());
+            yield return new WaitForSeconds(1f); // anti spam
+        }
+        canAttack = true;
+    }
+
+    void Shoot()
+    {
+
+    }
+
+    IEnumerator SwordAttack()
+    {
+        m_anim.SetTrigger("sword-atk");
+        yield return new WaitForSeconds(1f); // fine animazione
+    }
+
+    public void Interact(Player player)
+    {
+    }
+
+    public void takeDamage(int dmg)
+    {
+    }
+
+    public void ShowSignal()
+    {
     }
 }
