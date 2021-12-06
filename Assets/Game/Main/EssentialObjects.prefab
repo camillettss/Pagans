@@ -6013,6 +6013,10 @@ MonoBehaviour:
   page2text: {fileID: 5214466988471306097}
   bookPrefab: {fileID: 9046724673310224684, guid: 72693947992e1a04da6740869b1c0e3a,
     type: 3}
+  keyTips_toFade:
+  - {fileID: 7883591468579627149}
+  - {fileID: 6313094235833585033}
+  - {fileID: 3251805417716441213}
 --- !u!1 &4634829829076915129
 GameObject:
   m_ObjectHideFlags: 0
@@ -8172,7 +8176,7 @@ MonoBehaviour:
   talkToHarbardQuest:
     isActive: 0
     activeOnGet: 1
-    title: efniligr leikr
+    title: Tutorial
     description: impara le basi di Pagans.
     experienceReward: 5
     goldReward: 0
@@ -8568,7 +8572,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

@@ -335,19 +335,13 @@ public class NPCController : MonoBehaviour, IEntity
         if(canBeDamaged)
             HP -= dmg;
 
-        animator.SetTrigger("Hurt");
-        /*if(type != NPCType.Enemy)
-            animator.SetTrigger("Hurt");
-        else
-        {
-            isAttacking = true;
-        }*/
-        /*var miniNum = Instantiate(numPrefab, transform);
-        miniNum.GetComponent<UnityEngine.UI.Text>().text = dmg.ToString();*/
-
         if(type == NPCType.Enemy)
         {
-            getKnockBack();
+            //getKnockBack();
+        }
+        else
+        {
+            animator.SetTrigger("Hurt");
         }
 
         if (HP <= 0)

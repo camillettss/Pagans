@@ -77,19 +77,18 @@ public class GameController : MonoBehaviour
         player.Load();
         if(storyController.firstLaunch)
         {
-            player.QuestsContainer.Add(talkToHarbardQuest);
-            /*dialogueBox.StartDialogue(new Dialogue(new string[] { "ciao, tu devi essere Ulfr.", "un viandante è appena arrivato al porto. vai a trovarlo!" }), () => 
+            dialogueBox.StartDialogue(new Dialogue(new string[] { "ciao, tu devi essere Ulfr.", "ti guiderò alla scoperta di pagans, diventa familiare con i comandi arrivando in biblioteca." }), () => 
             {
                 player.QuestsContainer.Add(talkToHarbardQuest);
                 state = GameState.FreeRoam;
-            });*/
+            });
         }
     }
 
     private void OnDestroy()
     {
         print("destroying");
-        player.Save();
+        SaveSystem.Reset();
         /*if (ResetOnEnd)
             SaveSystem.Reset();
         else

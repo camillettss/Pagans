@@ -15,11 +15,13 @@ public class FadingSprite : InstanceTracker<FadingSprite>
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        targetAlpha = .5f;
+        if(collision.tag == "Player")
+            targetAlpha = .5f;
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        targetAlpha = 1f;
+        if (collision.tag == "Player")
+            targetAlpha = 1f;
     }
 }

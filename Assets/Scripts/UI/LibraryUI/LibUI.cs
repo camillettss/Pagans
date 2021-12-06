@@ -22,17 +22,12 @@ public class LibUI : MonoBehaviour
 
     List<LibBookUI> slotUIs;
 
-    Portal portal;
+    [SerializeField] List<GameObject> keyTips_toFade; // struct: image(inner)text so fade children too
 
     private void Awake()
     {
         selected_category = 0;
         selected_book = 0;
-    }
-
-    public void setExitPortal(Portal portal)
-    {
-        this.portal = portal;
     }
 
     public void HandleUpdate()
@@ -46,9 +41,14 @@ public class LibUI : MonoBehaviour
             {
                 readingBook.SetActive(false);
                 categoriesContainer.GetComponent<Image>().DOFade(1f, 0.1f);
+
                 foreach (Transform child in categoriesContainer)
+                    child.GetComponent<Text>().DOFade(1f, 0.5f); // fade categories
+
+                foreach (var child in keyTips_toFade)
                 {
-                    child.GetComponent<Text>().DOFade(1f, 0.1f);
+                    child.GetComponent<Image>().DOFade(1f, 0.5f); // fade tips
+                    child.transform.GetChild(0).GetComponent<Text>().DOFade(1f, 0.6f); // fade tips
                 }
             }
             else
@@ -96,9 +96,14 @@ public class LibUI : MonoBehaviour
         slotUIs[selected_book].choose();
 
         categoriesContainer.GetComponent<Image>().DOFade(0f, 0.5f);
+
         foreach (Transform child in categoriesContainer)
+            child.GetComponent<Text>().DOFade(0f, 0.5f); // fade categories
+
+        foreach (var child in keyTips_toFade)
         {
-            child.GetComponent<Text>().DOFade(0f, 0.5f);
+            child.GetComponent<Image>().DOFade(0f, 0.5f); // fade tips
+            child.transform.GetChild(0).GetComponent<Text>().DOFade(0f, 0.6f); // fade tips
         }
 
         yield return new WaitForSeconds(.8f);
