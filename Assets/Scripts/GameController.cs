@@ -162,6 +162,7 @@ public class GameController : MonoBehaviour
     public void OpenState(GameState state, TraderController trader = null)
     {
         print($"target state:{state}, trader passed:{trader}.");
+        IdleAllEnemies();
         #region state control
         if (state == GameState.Menu)
         {
@@ -244,6 +245,7 @@ public class GameController : MonoBehaviour
             if (!player.canShowMinimap)
                 player.canShowMinimap = true;
 
+            UpdateEnemiesInViewport();
             player.HandleUpdate();
         }
 
@@ -313,6 +315,26 @@ public class GameController : MonoBehaviour
             libUI.HandleUpdate();
         }
         #endregion
+    }
+
+    void UpdateEnemiesInViewport()
+    {
+        foreach(EnemyController npc in FindObjectsOfType<EnemyController>())
+        {
+            Vector3 viewPos = UnityEngine.Camera.main.WorldToViewportPoint(npc.transform.position);
+            if (viewPos.x >= 0 && viewPos.x <= 1 && viewPos.y >= 0 && viewPos.y <= 1 && viewPos.z > 0)
+            {
+                npc.HandleUpdate(); // update only if is visible.
+            }
+        }
+    }
+
+    void IdleAllEnemies() // this is heavy
+    {
+        foreach(EnemyController enemy in FindObjectsOfType<EnemyController>())
+        {
+            enemy.GetComponent<Animator>().SetFloat("speed", 0f);
+        }
     }
 
     public void ShowMessage(string msg)

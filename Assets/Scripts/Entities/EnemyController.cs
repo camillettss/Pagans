@@ -26,6 +26,9 @@ public class EnemyController : MonoBehaviour, IEntity
 
     EnemyState state = EnemyState.sleeping;
     [SerializeField] EnemyType type;
+    [SerializeField] LayerMask PlayerLayer;
+    [SerializeField] Transform AtkPoint;
+    [SerializeField] int damage = 2;
 
     private void Awake()
     {
@@ -33,7 +36,7 @@ public class EnemyController : MonoBehaviour, IEntity
         target = Player.i.transform;
     }
 
-    private void FixedUpdate() // this should become HandleUpdate and being called only if gobj is in fov
+    public void HandleUpdate() // this should become HandleUpdate and being called only if gobj is in fov
     {
         if (state == EnemyState.sleeping)
         {
@@ -47,6 +50,8 @@ public class EnemyController : MonoBehaviour, IEntity
         {
             if (Vector3.Distance(target.position, transform.position) <= attackRange)
             {
+                AtkPoint.position = new Vector3(transform.position.x + m_anim.GetFloat("FacingHorizontal"), transform.position.y + m_anim.GetFloat("FacingVertical"), transform.position.z);
+
                 if (m_anim.GetFloat("speed") > 0)
                     m_anim.SetFloat("speed", 0);
 
@@ -70,7 +75,7 @@ public class EnemyController : MonoBehaviour, IEntity
         m_anim.SetFloat("FaceX", (target.position.x - transform.position.x));
         m_anim.SetFloat("FaceY", (target.position.y - transform.position.y));
 
-        transform.position = Vector3.MoveTowards(transform.position, Player.i.transform.position, speed * Time.fixedDeltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, Player.i.transform.position, speed * Time.deltaTime);
     }
 
     IEnumerator Attack()
@@ -97,6 +102,15 @@ public class EnemyController : MonoBehaviour, IEntity
     IEnumerator SwordAttack()
     {
         m_anim.SetTrigger("sword-atk");
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AtkPoint.position, attackRange, PlayerLayer);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Player>().hp -= damage;
+            print($"player hitted, now life is:{Player.i.hp}");
+        }
+
         yield return new WaitForSeconds(1f); // fine animazione
     }
 
