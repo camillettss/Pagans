@@ -71,6 +71,17 @@ public class QuestGoal
         }
     }
 
+    public void EnemyKilled(EnemyController enemy)
+    {
+        if (goalType == GoalType.KillTot)
+            currentAmount++;
+        else if (goalType == GoalType.KillSomeone)
+        {
+            if (enemy.Name == enemyName)
+                Complete();
+        }
+    }
+
     public void NPCTalked(NPCController npc)
     {
         if(goalType == GoalType.Talk)

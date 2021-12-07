@@ -8745,10 +8745,42 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
       reqAmount: 0
+    - dialogueDelay: 0.2
+      introDialogue:
+        Teller: 
+        sentences:
+        - ecco fatto. ora sei pronto per il tuo primo combattimento.
+        - vai nella caverna per incontrare il nemico.
+      goal: entra nella caverna
+      goalType: 5
+      enemyName: 
+      talkTo: librarian
+      sellerName: 
+      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
+      PortalName: CaveExit
+      itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
+      reqAmount: 0
+    - dialogueDelay: 0.2
+      introDialogue:
+        Teller: 
+        sentences:
+        - "ecco il nemico, questo \xE8 un goblin e lo troverai anche nel bestiario
+          in bibioteca."
+        - "ti attaccher\xE0 con la sua spada se ti avvicini troppo perci\xF2 fa'
+          attenzione."
+      goal: uccidi il goblin
+      goalType: 1
+      enemyName: Spider
+      talkTo: librarian
+      sellerName: 
+      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
+      PortalName: library-door
+      itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
+      reqAmount: 0
     onEndDialogue:
       Teller: 
       sentences:
-      - ora sei pronto per combattere il nemico. lo troverai in una caverna.
+      - hai completato il tutorial, ottimo!
 --- !u!114 &7942474048947313888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9040,7 +9072,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 6
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

@@ -23,12 +23,16 @@ public class EnemyController : MonoBehaviour, IEntity
     float awakeRange = 5f;
     float attackRange = 1f;
     bool canAttack = true;
+    int hp = 10;
 
     EnemyState state = EnemyState.sleeping;
-    [SerializeField] EnemyType type;
+    [SerializeField] EnemyType type = EnemyType.Swordman;
     [SerializeField] LayerMask PlayerLayer;
     [SerializeField] Transform AtkPoint;
     [SerializeField] int damage = 2;
+    [SerializeField] int expDrop = 10;
+
+    public string Name;
 
     private void Awake()
     {
@@ -96,7 +100,7 @@ public class EnemyController : MonoBehaviour, IEntity
 
     void Shoot()
     {
-
+        // gli arceri verranno aggiunti nella 1.5.1
     }
 
     IEnumerator SwordAttack()
@@ -120,6 +124,16 @@ public class EnemyController : MonoBehaviour, IEntity
 
     public void takeDamage(int dmg)
     {
+        hp -= dmg;
+        if(hp <= 0)
+        {
+            if (Player.i.quest != null && Player.i.quest.goal != null)
+            {
+                Player.i.quest.goal[0].EnemyKilled(this);
+            }
+            Player.i.experience += expDrop;
+            Destroy(gameObject);
+        }
     }
 
     public void ShowSignal()
