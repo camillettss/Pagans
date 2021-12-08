@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     float attackCounter;
     float arrowSpeed = 15f;
     bool toggleHotbar = false;
-    float walkingSpeedDefault = 3f;
+    float walkingSpeedDefault = 3.9f;
 
     [HideInInspector] public int maxHp = 30;
 
