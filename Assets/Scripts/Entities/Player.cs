@@ -83,6 +83,11 @@ public class Player : MonoBehaviour
 
     public void HandleUpdate()
     {
+        if(hp <= 0)
+        {
+            Die();
+        }
+
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
@@ -210,6 +215,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Die()
+    {
+        GameController.Instance.OpenState(GameState.GameOver);
+    }
     public void Ride(Horse horse)
     {
         animator.SetBool("isRiding", true);
@@ -235,23 +244,6 @@ public class Player : MonoBehaviour
 
     IEnumerator useBow()
     {
-        /*rb.velocity = Vector2.zero;
-        if (!animator.GetBool("Attacking"))
-        {
-            // this only start animation cuz this HandleUpdate() wait for animation to complete for shooting a bullet.
-            attackCounter = attackTime;
-            animator.SetBool("Attacking", true);
-        }
-        if (animator.GetBool("Attacking")) // shoot on animation ends
-        {
-            rb.velocity = Vector2.zero;
-            attackCounter -= Time.deltaTime;
-            if (attackCounter <= 0)
-            {
-                animator.SetBool("Attacking", false);
-                Shoot();
-            }
-        }*/
         animator.SetTrigger("Shoot");
         yield return new WaitForSeconds(0.5f);
         Shoot();

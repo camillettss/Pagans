@@ -110,6 +110,18 @@ TextureImporter:
   - first:
       213: 4248242832131995978
     second: ui_original_35
+  - first:
+      213: 6515440446943533990
+    second: ui_cross_selected
+  - first:
+      213: -7677554531694270923
+    second: ui-cross-not-selected
+  - first:
+      213: 7608184095100603400
+    second: ui-circle-selected
+  - first:
+      213: 7072777773252427397
+    second: ui-circle-not-selected
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -940,13 +952,13 @@ TextureImporter:
       name: ui_original_34
       rect:
         serializedVersion: 2
-        x: 1677
-        y: 631
-        width: 26
-        height: 26
+        x: 1682
+        y: 636
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 5, y: 5, z: 5, w: 5}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -974,6 +986,90 @@ TextureImporter:
       bones: []
       spriteID: a49b3d0095ac4fa30800000000000000
       internalID: 4248242832131995978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_cross_selected
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 135
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ab1843f09e7b6a50800000000000000
+      internalID: 6515440446943533990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui-cross-not-selected
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 123
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5362ca2b4d8d37590800000000000000
+      internalID: -7677554531694270923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui-circle-selected
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 175
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80c8f36ef13b59960800000000000000
+      internalID: 7608184095100603400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui-circle-not-selected
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 35
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58e3dfd59ed872260800000000000000
+      internalID: 7072777773252427397
       vertices: []
       indices: 
       edges: []

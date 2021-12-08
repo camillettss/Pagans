@@ -9,7 +9,7 @@ public abstract class Animal : MonoBehaviour, IEntity
     int ate = 0;
     [SerializeField] protected Skill tameskill;
 
-    public void Interact(Player player)
+    public virtual void Interact(Player player)
     {
         if (!tamed)
             nonTamedAction();
@@ -17,7 +17,7 @@ public abstract class Animal : MonoBehaviour, IEntity
             TamedAction();
     }
 
-    public void Eat(ItemBase food)
+    public virtual void Eat(ItemBase food)
     {
         if(food is Curative)
         {

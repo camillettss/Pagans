@@ -3,7 +3,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-public enum GameState { FreeRoam, Menu, Settings, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Battle, ChoosingItem, Library };
+public enum GameState { FreeRoam, Menu, Settings, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Battle, ChoosingItem, Library, GameOver };
 public class GameController : MonoBehaviour
 {
     public GameObject EssentialObjectsPrefab;
@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public GameObject sparksParticle;
     [SerializeField] public newInventory inventory2;
     [SerializeField] public LibUI libUI;
+    [SerializeField] GameOverUI gameOverUI;
 
     [SerializeField] bool ResetOnEnd = false;
 
@@ -203,6 +204,10 @@ public class GameController : MonoBehaviour
             libUI.gameObject.SetActive(true);
             libUI.UpdateCategorySelection();
         }
+        else if(state == GameState.GameOver)
+        {
+            gameOverUI.gameObject.SetActive(true);
+        }
         else
             print("[!!] No state specified or unhandled option.");
         #endregion
@@ -247,6 +252,11 @@ public class GameController : MonoBehaviour
 
             UpdateEnemiesInViewport();
             player.HandleUpdate();
+        }
+
+        else if(state == GameState.GameOver)
+        {
+            gameOverUI.HandleUpdate();
         }
 
         else if (state == GameState.Menu)

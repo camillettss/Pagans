@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(TilemapCollider2D))]
 public class WalkableSea : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
