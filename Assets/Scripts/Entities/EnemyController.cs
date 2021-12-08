@@ -105,7 +105,7 @@ public class EnemyController : MonoBehaviour, IEntity
 
     IEnumerator SwordAttack()
     {
-        m_anim.SetTrigger("sword-atk");
+        m_anim.SetTrigger("attack");
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AtkPoint.position, attackRange, PlayerLayer);
 
