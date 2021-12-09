@@ -7,8 +7,27 @@ public class StoryBook : ItemBase
 {
     public string story;
 
+    public List<Page> Pages;
+
     public override void Use(Player player)
     {
         
+    }
+
+    public void AddPage(string data)
+    {
+        Pages.Add(new Page(data));
+    }
+}
+
+[System.Serializable]
+public class Page
+{
+    // <summary> max 100 characters. </summary>
+    public string content;
+
+    public Page(string data)
+    {
+        content = data;
     }
 }

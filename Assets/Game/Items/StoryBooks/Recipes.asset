@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65fc3ca1511db04399c3a4ff747a884, type: 3}
+  m_Name: Recipes
+  m_EditorClassIdentifier: 
+  Name: Ricettario
+  description: qui sono contenute tutte le formule conosciute.
+  presentationDesc: how can u see this??
+  price: 300
+  icon: {fileID: 21300000, guid: 7c42db18205f5fc44a2417d4ee8ff2ca, type: 3}
+  discovered: 1
+  closeDamage: 0
+  longDamage: 0
+  Defense: 0
+  presentationDialogue:
+    Teller: 
+    sentences: []
+  dust: {fileID: 0}
+  runes:
+    slots:
+    - {fileID: 0}
+    - {fileID: 0}
+  Category: 0
+  story: 
+  Pages:
+  - content: "il formaggio \xE8 un prodotto immediatamente derivato dal latte. puoi
+      ottenerlo lasciando un secchio di latte nel calderone per una giornata."
+  - content: nullo

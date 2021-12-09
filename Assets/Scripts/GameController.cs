@@ -3,7 +3,24 @@ using UnityEngine;
 using System;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-public enum GameState { FreeRoam, Menu, Settings, Dialogue, Quest, Inventory, Equipment, Shop, Quests, Enchanting, Battle, ChoosingItem, Library, GameOver };
+public enum GameState {
+    FreeRoam,
+    Menu, 
+    Settings,
+    Dialogue, 
+    Quest, 
+    Inventory,
+    Equipment, 
+    Shop, 
+    Quests, 
+    Enchanting,
+    Battle, 
+    ChoosingItem,
+    Library,
+    GameOver,
+    Cauldron
+};
+
 public class GameController : MonoBehaviour
 {
     public GameObject EssentialObjectsPrefab;
@@ -26,6 +43,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public newInventory inventory2;
     [SerializeField] public LibUI libUI;
     [SerializeField] GameOverUI gameOverUI;
+    [SerializeField] CauldronUI cauldronUI;
 
     [SerializeField] bool ResetOnEnd = false;
 
@@ -208,6 +226,11 @@ public class GameController : MonoBehaviour
         {
             gameOverUI.gameObject.SetActive(true);
         }
+        else if(state == GameState.Cauldron)
+        {
+            cauldronUI.UpdateContents();
+            cauldronUI.gameObject.SetActive(true);
+        }
         else
             print("[!!] No state specified or unhandled option.");
         #endregion
@@ -254,10 +277,13 @@ public class GameController : MonoBehaviour
             player.HandleUpdate();
         }
 
-        else if(state == GameState.GameOver)
+        else if (state == GameState.GameOver)
         {
             gameOverUI.HandleUpdate();
         }
+
+        else if (state == GameState.Cauldron)
+            cauldronUI.HandleUpdate();
 
         else if (state == GameState.Menu)
         {
@@ -300,17 +326,17 @@ public class GameController : MonoBehaviour
             }
         }
 
-        else if(state == GameState.ChoosingItem)
+        else if (state == GameState.ChoosingItem)
         {
             choosingUI.HandleUpdate();
         }
 
-        else if(state == GameState.Enchanting)
+        else if (state == GameState.Enchanting)
         {
             enchantingUI.HandleUpdate();
         }
 
-        else if(state == GameState.Settings)
+        else if (state == GameState.Settings)
         {
             Action onBack = () =>
             {
@@ -320,7 +346,7 @@ public class GameController : MonoBehaviour
             settingsUI.HandleUpdate(onBack);
         }
 
-        else if(state == GameState.Library)
+        else if (state == GameState.Library)
         {
             libUI.HandleUpdate();
         }

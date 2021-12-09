@@ -19,6 +19,9 @@ public class LibUI : MonoBehaviour
 
     int selected_category = 0;
     int selected_book = 0;
+    int selected_page = 0;
+
+    float change_direction = 0f;
 
     List<LibBookUI> slotUIs;
 
@@ -28,6 +31,7 @@ public class LibUI : MonoBehaviour
     {
         selected_category = 0;
         selected_book = 0;
+        selected_page = 0;
     }
 
     public void HandleUpdate()
@@ -89,6 +93,47 @@ public class LibUI : MonoBehaviour
                 StartCoroutine(openBook());
             }
         }
+        else if(slotUIs[selected_book].book.Pages.Count > 2)
+        {
+            var prev_page = selected_page;
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                selected_page -= 2;
+                change_direction = 1f;
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                selected_page += 2;
+                change_direction = 0f;
+            }
+
+            selected_page = Mathf.Clamp(selected_page, 0, slotUIs[selected_book].book.Pages.Count - 3);
+
+            if(selected_page != prev_page)
+            {
+                StartCoroutine(changePage());
+            } 
+
+        }
+    }
+
+    IEnumerator changePage()
+    {
+        // start anim
+        page1text.DOFade(0f, 0.2f);
+        page2text.DOFade(0f, 0.2f);
+
+        readingBook.GetComponent<Animator>().SetFloat("direction", change_direction);
+        readingBook.GetComponent<Animator>().SetTrigger("change");
+
+        yield return new WaitForSeconds(.3f);
+
+        page1text.DOFade(1f, .2f);
+        page2text.DOFade(1f, .2f);
+
+        page1text.text = slotUIs[selected_book].book.Pages[selected_page].content;
+        page2text.text = slotUIs[selected_book].book.Pages[selected_page + 1].content;
     }
 
     IEnumerator openBook()
@@ -109,14 +154,14 @@ public class LibUI : MonoBehaviour
         yield return new WaitForSeconds(.8f);
         readingBook.SetActive(true);
 
-        page1text.text = slotUIs[selected_book].story;
-        page2text.text = "";
+        page1text.text = slotUIs[selected_book].book.Pages[selected_page].content;
+        page2text.text = slotUIs[selected_book].book.Pages[selected_page+1].content;
     }
 
     List<StoryBook> getByCategory()
     {
         if (selected_category == 0)
-            return heroesBooks;
+            return Player.i.Recipes;
 
         else
             return new List<StoryBook>();
@@ -132,6 +177,7 @@ public class LibUI : MonoBehaviour
         slotUIs = new List<LibBookUI>();
 
         var iter = getByCategory();
+
         if(iter.Count > 0)
         {
             foreach (var book in iter)
@@ -145,6 +191,7 @@ public class LibUI : MonoBehaviour
         else
         {
             // actually does nothing
+            // 1.5.1: write ur own book.
         }
 
         selected_book = 0;

@@ -8,13 +8,13 @@ public class LibBookUI : MonoBehaviour
 {
     public Image icon;
     public Text nameText;
-    public string story;
+    public StoryBook book;
 
     public void SetData(StoryBook book)
     {
         icon.sprite = book.icon;
         nameText.text = book.Name;
-        story = book.story;
+        this.book = book;
     }
 
     public void choose()

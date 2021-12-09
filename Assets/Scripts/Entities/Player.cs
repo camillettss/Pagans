@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     [SerializeField] public float attackRange;
     public float plantRange;
 
+    public List<StoryBook> Recipes;
+
     float moveLimiter = 0.7f;
     Rigidbody2D rb;
     public Vector2 moveInput;
@@ -55,8 +57,8 @@ public class Player : MonoBehaviour
     public bool SnapToGridMovments = false;
     public int kents = 0;
 
-    float ridingSpeed = 10f;
-    float runningSpeed = 8f;
+    float ridingSpeed = 8.2f;
+    float runningSpeed = 6.5f;
     float holdingShieldSpeed = 2.5f;
 
     #region saving stuffs
@@ -85,7 +87,7 @@ public class Player : MonoBehaviour
     {
         if(hp <= 0)
         {
-            Die();
+            StartCoroutine(Die());
         }
 
         moveInput.x = Input.GetAxisRaw("Horizontal");
@@ -132,6 +134,7 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P))
         {
             //growObjectsTilemap.GetTile(new Vector3Int((int)transform.position.x, (int)transform.position.y, 0));
+            GameController.Instance.OpenState(GameState.Cauldron);
         }
 
         // minimap show
@@ -215,8 +218,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Die()
+    public IEnumerator Die()
     {
+        yield return new WaitForSeconds(.75f);
         GameController.Instance.OpenState(GameState.GameOver);
     }
     public void Ride(Horse horse)

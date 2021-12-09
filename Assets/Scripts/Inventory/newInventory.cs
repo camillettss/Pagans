@@ -25,6 +25,9 @@ public class newInventory : MonoBehaviour
     [SerializeField] Text leftTip;
     [SerializeField] Text rightTip;
 
+    [SerializeField] Image stats;
+    [SerializeField] Text innerStatsText;
+
     int bookmark = 0;
     int category = 0;
     int selected = 0;
@@ -161,6 +164,14 @@ public class newInventory : MonoBehaviour
                     slotUIs[i].nameTxt.color = GameController.Instance.unselectedDefaultColor;
             }
         }
+
+        if (bookmark == 0)
+        {
+            stats.gameObject.SetActive(true);
+            innerStatsText.text = $"Damage: {slotUIs[selected].item.closeDamage}";
+        }
+        else
+            stats.gameObject.SetActive(false);
 
         selectedName.text = slotUIs[selected].item.Name;
         selectedDescription.text = slotUIs[selected].item.description;
