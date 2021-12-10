@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SwordAttackDown
+  m_Name: newItem-standing
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,18 +20,12 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 915eb81ff88f3044d97b9afd2fb9d8bb, type: 3}
-    - time: 0.125
-      value: {fileID: 21300000, guid: 0d6de8189faade742b10e3601d19195b, type: 3}
-    - time: 0.25
-      value: {fileID: 21300000, guid: 1d6ec6314a4817d4396f1172abef3d75, type: 3}
-    - time: 0.375
-      value: {fileID: 21300000, guid: 43fa40c379ad24d458543e7611b9c89a, type: 3}
+      value: {fileID: 21300000, guid: fbd9002e5faa8934f99046234f3cf44f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 8
+  m_SampleRate: 1
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -46,16 +40,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 915eb81ff88f3044d97b9afd2fb9d8bb, type: 3}
-    - {fileID: 21300000, guid: 0d6de8189faade742b10e3601d19195b, type: 3}
-    - {fileID: 21300000, guid: 1d6ec6314a4817d4396f1172abef3d75, type: 3}
-    - {fileID: 21300000, guid: 43fa40c379ad24d458543e7611b9c89a, type: 3}
+    - {fileID: 21300000, guid: fbd9002e5faa8934f99046234f3cf44f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

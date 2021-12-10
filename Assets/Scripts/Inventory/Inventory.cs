@@ -257,6 +257,7 @@ public class Inventory : MonoBehaviour
         print($"gettin:{item.category}");
         if(!item.discovered && !GameController.Instance.newItemUI.isActiveAndEnabled) // altrimenti se prende due oggetti fa un casino della madonna
         {
+            StartCoroutine(Player.i.DiscoveredNewItem());
             GameController.Instance.newItemUI.Open(item);
             item.discovered = true;
         }

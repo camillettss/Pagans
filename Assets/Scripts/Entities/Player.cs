@@ -166,7 +166,7 @@ public class Player : MonoBehaviour
             if(inventory.equipedWeapon != -1)
             {
                 if (inventory.Weapons[inventory.equipedWeapon].item.longDamage == 0) // arma da vicino (spada)
-                    useWeapon();
+                    StartCoroutine(useWeapon());
                 else
                     StartCoroutine(useBow());
             }
@@ -185,7 +185,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.X)) // Shield
+        if (Input.GetKeyDown(KeyCode.Space)) // Shield
         {
             if(inventory.equipedShield != -1)
             {
@@ -194,7 +194,7 @@ public class Player : MonoBehaviour
             }
             
         }
-        if (Input.GetKeyUp(KeyCode.X)) // off
+        if (Input.GetKeyUp(KeyCode.Space)) // off
         {
             if(inventory.equipedShield != -1)
             {
@@ -218,6 +218,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void GetDamage(int dmg)
+    {
+        if (animator.GetBool("holdingShield"))
+        {
+            if (inventory.Shields[inventory.equipedShield].item.Defense < dmg)
+            {
+                hp -= inventory.Shields[inventory.equipedShield].item.Defense - dmg;
+            }
+        }
+        else
+            hp -= dmg;
+    }
+
     public IEnumerator Die()
     {
         yield return new WaitForSeconds(.75f);
@@ -238,18 +251,23 @@ public class Player : MonoBehaviour
         activeHorse = null;
     }
 
-    void useWeapon()
+    IEnumerator useWeapon()
     {
         rb.velocity = Vector2.zero;
+        canMove = false;
         print(inventory.equipedWeapon);
         if (inventory.equipedWeapon != -1)
             inventory.Weapons[inventory.equipedWeapon].item.Use(this); // trova l'arma e usala
+        yield return new WaitForSeconds(.5f);
+        canMove = true;
     }
 
     IEnumerator useBow()
     {
         animator.SetTrigger("Shoot");
+        canMove = false;
         yield return new WaitForSeconds(0.5f);
+        canMove = true;
         Shoot();
     }
 
@@ -265,6 +283,14 @@ public class Player : MonoBehaviour
         print("equiped:" + inventory.equipedTool);
         if (inventory.equipedTool != -1)
             inventory.Tools[inventory.equipedTool].item.Use(this);
+    }
+
+    public IEnumerator DiscoveredNewItem()
+    {
+        animator.SetTrigger("newItemEmote");
+        canMove = false;
+        yield return new WaitForSeconds(1.5f);
+        canMove = true;
     }
 
     public void Cut()
@@ -470,14 +496,3 @@ public class Player : MonoBehaviour
         hp -= damageAmount;
     }
 }
-
-/*namespace Pagans
-{
-    public static class PlayerThings
-    {
-        public static Player GetPlayerInstance()
-        {
-            return Player.i;
-        }
-    }
-}*/

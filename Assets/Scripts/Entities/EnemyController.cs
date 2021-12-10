@@ -111,7 +111,7 @@ public class EnemyController : MonoBehaviour, IEntity
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Player>().hp -= damage;
+            enemy.GetComponent<Player>().GetDamage(damage);
             print($"player hitted, now life is:{Player.i.hp}");
         }
 

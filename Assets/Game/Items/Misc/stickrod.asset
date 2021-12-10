@@ -21,7 +21,14 @@ MonoBehaviour:
   closeDamage: 0
   longDamage: 0
   Defense: 0
+  presentationDialogue:
+    Teller: 
+    sentences: []
   dust: {fileID: 0}
+  runes:
+    slots:
+    - {fileID: 0}
+    - {fileID: 0}
   Category: -2
   foundables:
   - {fileID: 11400000, guid: 4d20530b3289eb6459bb94a5cba40867, type: 2}
