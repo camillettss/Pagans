@@ -1579,6 +1579,7 @@ GameObject:
   - component: {fileID: 5596857246100158103}
   - component: {fileID: 5695204955608936273}
   - component: {fileID: 2584083778256056867}
+  - component: {fileID: 2217213057346334999}
   m_Layer: 0
   m_Name: cauldron
   m_TagString: Untagged
@@ -1645,6 +1646,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &2217213057346334999
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682679806382275910}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9146df9f54347314f99a41f5b975fc9b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &757016353246112501
 GameObject:
   m_ObjectHideFlags: 0
@@ -11125,6 +11145,8 @@ MonoBehaviour:
   itemIcon: {fileID: 6642470748124631053}
   TextPrefab: {fileID: 3789278667839736019, guid: d621f6ec6453ff84f85596814a5d9bd0,
     type: 3}
+  fireUI: {fileID: 4798219525067309230}
+  scrollView: {fileID: 4155745966306040703}
 --- !u!1 &6008606236543277508
 GameObject:
   m_ObjectHideFlags: 0
@@ -14334,7 +14356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 56.5}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1277119730509908055
@@ -16085,7 +16107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000022888184, y: 17.899998}
+  m_AnchoredPosition: {x: 0, y: 80}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6914167323827455610

@@ -24,6 +24,9 @@ public abstract class ItemBase : ScriptableObject
 
     public RuneContainer runes = new RuneContainer();
 
+    public ItemBase cookedResult = null;
+    public int cookTime;
+
     // categories: 0 -> item, 1 -> consumable, -1 -> magic item, -2 -> equipment/weapon, -3 equipment/arrow
 
     [SerializeField] protected int Category;

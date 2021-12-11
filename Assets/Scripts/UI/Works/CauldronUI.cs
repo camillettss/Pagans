@@ -2,19 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class CauldronUI : MonoBehaviour
 {
     [SerializeField] GameObject content; // scrollview
     [SerializeField] Image itemIcon;
     [SerializeField] GameObject TextPrefab;
+    [SerializeField] GameObject fireUI;
+    [SerializeField] Image scrollView;
 
     int selected = 0;
     List<Text> slotUIs;
 
+    Cauldron cauldron;
+
+    bool done = false;
+
+    public void SetSource(Cauldron cauldron)
+    {
+        this.cauldron = cauldron;
+    }
+
     private void Awake()
     {
-        UpdateContents();
+        fireUI.SetActive(false);
     }
 
     public void HandleUpdate()
@@ -46,17 +58,29 @@ public class CauldronUI : MonoBehaviour
 
     public void UpdateContents()
     {
-        foreach (Transform child in content.transform)
-            Destroy(child.gameObject);
-
-        slotUIs = new List<Text>();
-
-        foreach(var consumable in Player.i.inventory.GetByBookmark(2)[0])
+        if(!cauldron.isCooking)
         {
-            var t = Instantiate(TextPrefab, content.transform);
-            t.GetComponent<Text>().text = consumable.item.Name;
+            itemIcon.rectTransform.localPosition = new Vector3(0, 80, 0);
 
-            slotUIs.Add(t.GetComponent<Text>());
+            foreach (Transform child in content.transform)
+                Destroy(child.gameObject);
+
+            slotUIs = new List<Text>();
+
+            foreach (var consumable in Player.i.inventory.GetByBookmark(2)[0])
+            {
+                var t = Instantiate(TextPrefab, content.transform);
+                t.GetComponent<Text>().text = consumable.item.Name;
+
+                slotUIs.Add(t.GetComponent<Text>());
+            }
+
+            UpdateSelection();
+        }
+        else // sta(va) cucinando qualcosa //(o aveva finito ma non era ritirato)
+        {
+            itemIcon.rectTransform.localPosition = Vector3.zero;
+            itemIcon.sprite = cauldron.ingredient.icon;
         }
     }
 
@@ -69,11 +93,38 @@ public class CauldronUI : MonoBehaviour
             else
                 slotUIs[i].color = GameController.Instance.unselectedDefaultColor;
         }
+
+        itemIcon.sprite = Player.i.inventory.GetByBookmark(2)[0][selected].item.icon;
     }
 
     void Perform()
     {
         print($"using: {slotUIs[selected].text}.");
+        StartCoroutine(Fall());
+    }
+
+    IEnumerator Fall()
+    {
+        while(itemIcon.transform.localPosition.y > 0)
+        {
+            itemIcon.rectTransform.localPosition = new Vector3(
+                itemIcon.transform.localPosition.x,
+                itemIcon.transform.localPosition.y - 4,
+                0
+            );
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(.1f);
+
+        fireUI.SetActive(true);
+
+        StartCoroutine(cauldron.Cook(Player.i.inventory.GetByBookmark(2)[0][selected].item));
+        scrollView.DOFade(0f, .4f);
+
+        foreach (Transform child in content.transform)
+            Destroy(child.gameObject);
     }
 
 }

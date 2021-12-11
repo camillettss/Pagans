@@ -146,7 +146,6 @@ public class Inventory : MonoBehaviour
                 res[1].Add(new InventorySlot(book));
         }
 
-        print(res.Count);
         return res;
     }
 

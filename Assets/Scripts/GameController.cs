@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public newInventory inventory2;
     [SerializeField] public LibUI libUI;
     [SerializeField] GameOverUI gameOverUI;
-    [SerializeField] CauldronUI cauldronUI;
+    [SerializeField] public CauldronUI cauldronUI;
 
     [SerializeField] bool ResetOnEnd = false;
 
@@ -178,7 +178,7 @@ public class GameController : MonoBehaviour
     }
     #endregion
 
-    public void OpenState(GameState state, TraderController trader = null)
+    public void OpenState(GameState state, TraderController trader = null, Cauldron c=null)
     {
         print($"target state:{state}, trader passed:{trader}.");
         IdleAllEnemies();
@@ -228,6 +228,7 @@ public class GameController : MonoBehaviour
         }
         else if(state == GameState.Cauldron)
         {
+            cauldronUI.SetSource(c);
             cauldronUI.UpdateContents();
             cauldronUI.gameObject.SetActive(true);
         }
