@@ -38,6 +38,12 @@ TextureImporter:
   - first:
       213: -5200203403441330976
     second: ui_apothecary_11
+  - first:
+      213: -8903984187815528009
+    second: ui_apothecary_12
+  - first:
+      213: -6724901213443174818
+    second: ui_apothecary_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -390,7 +396,7 @@ TextureImporter:
         width: 90
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -398,6 +404,48 @@ TextureImporter:
       bones: []
       spriteID: 0e42a127e8a25d7b0800000000000000
       internalID: -5200203403441330976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_apothecary_12
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 115
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b97f877e81be6480800000000000000
+      internalID: -8903984187815528009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_apothecary_13
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 158
+        width: 74
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5e4027f9f95ca2a0800000000000000
+      internalID: -6724901213443174818
       vertices: []
       indices: 
       edges: []

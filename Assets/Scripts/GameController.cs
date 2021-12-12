@@ -18,7 +18,8 @@ public enum GameState {
     ChoosingItem,
     Library,
     GameOver,
-    Cauldron
+    Cauldron,
+    Workbench
 };
 
 public class GameController : MonoBehaviour
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public LibUI libUI;
     [SerializeField] GameOverUI gameOverUI;
     [SerializeField] public CauldronUI cauldronUI;
+    public WorkbenchUI workbenchUI;
 
     [SerializeField] bool ResetOnEnd = false;
 
@@ -231,6 +233,11 @@ public class GameController : MonoBehaviour
             cauldronUI.SetSource(c);
             cauldronUI.UpdateContents();
             cauldronUI.gameObject.SetActive(true);
+        }
+        else if(state == GameState.Workbench)
+        {
+            workbenchUI.gameObject.SetActive(true);
+            workbenchUI.UpdateContents();
         }
         else
             print("[!!] No state specified or unhandled option.");
