@@ -311,13 +311,13 @@ public class Inventory : MonoBehaviour
         updateEquipsList();
     }
 
-    public void Remove(ItemBase item)
+    public void Remove(ItemBase item, int quantity = 1)
     {
         if (alreadyInStock(item))
         {
             var fitem = findItem(item); // per non chiamare troppo spesso questa funzione che potrebbe diventare troppo pesante.
             if (fitem.count > 1)
-                fitem.count -= 1;
+                fitem.count -= quantity;
             else
             {
                 GetSlots(item.category).Remove(fitem);
@@ -329,7 +329,8 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            print("bruh tf"); // questo succede quando si lascia attivo un riferimento ad un oggetto dopo la rimozione
+            // questo succede quando si lascia attivo un riferimento ad un oggetto dopo la rimozione
+            throw new System.Exception("il codice sta tentando di rimuovere un oggetto non presente. controlla i riferimenti.");
         }
 
         updateEquipsList();

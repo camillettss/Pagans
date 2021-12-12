@@ -15,9 +15,15 @@ public class WorkbenchUI : MonoBehaviour
     [SerializeField] GameObject content;
     [SerializeField] RecipeTextUI textPrefab;
 
+    [SerializeField] Text cost1;
+    [SerializeField] Text cost2;
+
     List<RecipeTextUI> slotUIs;
 
     int selected = 0;
+
+    bool cost1Affordable = true;
+    bool cost2Affordable = true;
 
     public void HandleUpdate()
     {
@@ -38,6 +44,15 @@ public class WorkbenchUI : MonoBehaviour
 
         if (prev != selected)
             UpdateSelection();
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            if (cost1Affordable && cost2Affordable)
+            {
+                Workbench.i.Craft(slotUIs[selected].recipe);
+                UpdateSelection();
+            }
+        }
     }
 
     public void UpdateContents()
@@ -45,10 +60,13 @@ public class WorkbenchUI : MonoBehaviour
         foreach (Transform child in content.transform)
             Destroy(child.gameObject);
 
+        slotUIs = new List<RecipeTextUI>();
+
         foreach(var recipe in Workbench.i.recipes)
         {
             var rUI = Instantiate(textPrefab, content.transform);
-            rUI.text.text = recipe.GetData[2].Name; // result name
+            rUI.recipe = recipe;
+            rUI.text.text = recipe.result.Name; // result name
 
             slotUIs.Add(rUI);
         }
@@ -66,11 +84,45 @@ public class WorkbenchUI : MonoBehaviour
                 slotUIs[i].text.color = GameController.Instance.unselectedDefaultColor;
         }
 
-        // update triangle
-        slot1.sprite = slotUIs[selected].recipe.GetData[0].icon;
-        slot2.sprite = slotUIs[selected].recipe.GetData[1].icon;
+        if(slotUIs.Count > 0)
+        {
+            // update triangle
+            slot1.sprite = slotUIs[selected].recipe.slot1.icon;
+            slot2.sprite = slotUIs[selected].recipe.slot2.icon;
 
-        // never update cost (idk the final design)
-        result.sprite = slotUIs[selected].recipe.GetData[2].icon;
+            // never update cost (idk the final design)
+            result.sprite = slotUIs[selected].recipe.result.icon;
+
+            checkCost();
+
+            cost1.text = $"1 {slotUIs[selected].recipe.slot1.Name}";
+            cost2.text = $"1 {slotUIs[selected].recipe.slot2.Name}";
+
+            if (cost1Affordable)
+                cost1.color = GameController.Instance.AffordableGreenColor;
+            else
+                cost1.color = GameController.Instance.UnaffordableRedColor;
+
+            if (cost2Affordable)
+                cost2.color = GameController.Instance.AffordableGreenColor;
+            else
+                cost2.color = GameController.Instance.UnaffordableRedColor;
+        }
+
+    }
+
+    void checkCost()
+    {
+        if (Player.i.inventory.alreadyInStock(slotUIs[selected].recipe.slot1))
+        {
+            cost1Affordable = true;
+        }
+        else cost1Affordable = false;
+        if (Player.i.inventory.alreadyInStock(slotUIs[selected].recipe.slot2))
+        {
+            cost2Affordable = true;
+        }
+        else
+            cost2Affordable = false;
     }
 }

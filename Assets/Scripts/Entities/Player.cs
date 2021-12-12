@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Door closeDoor = null;
     [HideInInspector] public Horse activeHorse;
 
-    [HideInInspector] public int defense; // quando attaccano il danno subito è danno-defense 
+    [HideInInspector] public int defense; // quando attaccano il danno subito è danno-defense
 
     public SceneDetails currentScene;
     public bool SnapToGridMovments = false;
@@ -133,7 +133,6 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.P))
         {
-            GameController.Instance.OpenState(GameState.Workbench);
         }
 
         // minimap show

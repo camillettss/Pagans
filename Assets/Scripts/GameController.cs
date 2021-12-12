@@ -73,6 +73,9 @@ public class GameController : MonoBehaviour
     // secondaries
     public Color secondaryDefaultColor;
     public Color secondarySelectedColor;
+    // UI
+    public Color AffordableGreenColor;
+    public Color UnaffordableRedColor;
 
     [HideInInspector] public GameState state = GameState.FreeRoam;
     [HideInInspector] public NPCController ActiveNPC;
@@ -292,6 +295,9 @@ public class GameController : MonoBehaviour
 
         else if (state == GameState.Cauldron)
             cauldronUI.HandleUpdate();
+
+        else if (state == GameState.Workbench)
+            workbenchUI.HandleUpdate();
 
         else if (state == GameState.Menu)
         {

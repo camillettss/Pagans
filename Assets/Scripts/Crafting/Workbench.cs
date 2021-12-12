@@ -5,24 +5,29 @@ using UnityEngine;
 public class Workbench : MonoBehaviour
 {
     public static Workbench i;
-    public List<Recipe> recipes;
+    public List<Recipe> recipes = new List<Recipe>();
 
     private void Awake()
     {
         i = this;
     }
 
+    public void Craft(Recipe recipe)
+    {
+        // suppose that is affordable from the UI
+        Player.i.inventory.Remove(recipe.slot1);
+        Player.i.inventory.Remove(recipe.slot2);
+
+        Player.i.inventory.Add(recipe.result);
+    }
 
 }
 
+[System.Serializable]
 public class Recipe
 {
-    ItemBase slot1;
-    ItemBase slot2;
-    ItemBase result;
+    public ItemBase slot1, slot2, result;
     public int cost;
-
-    public List<ItemBase> GetData => new List<ItemBase>() { slot1, slot2, result };
 
     public Recipe(ItemBase ingredient1, ItemBase ingredient2, ItemBase result)
     {
