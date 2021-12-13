@@ -27,6 +27,11 @@ public abstract class ItemBase : ScriptableObject
     public ItemBase cookedResult = null;
     public int cookTime;
 
+    public ItemBase handcraftDerivatedItem;
+    public ItemBase craftCost;
+    public int craftCostCount;
+    public int craftExperienceReward;
+
     // categories: 0 -> item, 1 -> consumable, -1 -> magic item, -2 -> equipment/weapon, -3 equipment/arrow
 
     [SerializeField] protected int Category;

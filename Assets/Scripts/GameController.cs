@@ -19,6 +19,7 @@ public enum GameState {
     Library,
     GameOver,
     Cauldron,
+    CraftUI,
     Workbench
 };
 
@@ -45,6 +46,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public LibUI libUI;
     [SerializeField] GameOverUI gameOverUI;
     [SerializeField] public CauldronUI cauldronUI;
+    public CraftUI craftUI;
     public WorkbenchUI workbenchUI;
 
     [SerializeField] bool ResetOnEnd = false;
@@ -183,7 +185,7 @@ public class GameController : MonoBehaviour
     }
     #endregion
 
-    public void OpenState(GameState state, TraderController trader = null, Cauldron c=null)
+    public void OpenState(GameState state, TraderController trader = null, Cauldron c=null, ItemBase craftItem=null)
     {
         print($"target state:{state}, trader passed:{trader}.");
         IdleAllEnemies();
@@ -236,6 +238,11 @@ public class GameController : MonoBehaviour
             cauldronUI.SetSource(c);
             cauldronUI.UpdateContents();
             cauldronUI.gameObject.SetActive(true);
+        }
+        else if(state == GameState.CraftUI)
+        {
+            craftUI.UpdateContents(craftItem);
+            craftUI.gameObject.SetActive(true);
         }
         else if(state == GameState.Workbench)
         {
@@ -298,6 +305,9 @@ public class GameController : MonoBehaviour
 
         else if (state == GameState.Workbench)
             workbenchUI.HandleUpdate();
+
+        else if (state == GameState.CraftUI)
+            craftUI.HandleUpdate();
 
         else if (state == GameState.Menu)
         {

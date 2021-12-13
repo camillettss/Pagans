@@ -232,6 +232,12 @@ public class newInventory : MonoBehaviour
                     GameController.Instance.sacrificeUI.Open(slotUIs[selected].item);
             }
 
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                // lavora un oggetto
+                GameController.Instance.OpenState(GameState.CraftUI, craftItem:slotUIs[selected].item);
+            }
+
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 if (slotUIs.Count <= 0)
