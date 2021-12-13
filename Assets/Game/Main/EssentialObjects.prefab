@@ -4339,7 +4339,7 @@ GameObject:
   - component: {fileID: 7062177027902340998}
   - component: {fileID: 5092764394160462973}
   m_Layer: 0
-  m_Name: resultName
+  m_Name: StartItemName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11062,6 +11062,7 @@ MonoBehaviour:
   currentScene: {fileID: 0}
   SnapToGridMovments: 1
   kents: 10
+  activeBench: {fileID: 0}
   isFirstLaunch: 0
   storyProgressValue: 0
 --- !u!114 &5379045464971056017
@@ -11565,11 +11566,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f636d1539ad6cfc438b858b4d525dd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipes:
-  - slot1: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
-    slot2: {fileID: 11400000, guid: 4d20530b3289eb6459bb94a5cba40867, type: 2}
-    result: {fileID: 11400000, guid: f06f4d53d8a2a784a98ee480ed4e757e, type: 2}
+  TableRecipes:
+  - slot1: {fileID: 11400000, guid: edbea4fb02bc7b145bbf4253b3bdbb71, type: 2}
+    slot2: {fileID: 11400000, guid: 04716ccd0a2bee744a9cba32a040e01a, type: 2}
+    result: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
     cost: 0
+  NavalRecipes: []
 --- !u!1 &5379045465181957405
 GameObject:
   m_ObjectHideFlags: 0
@@ -16487,7 +16489,7 @@ MonoBehaviour:
   startItemIcon: {fileID: 3548846201454306832}
   resultIcon: {fileID: 764566604011253878}
   methodIcon: {fileID: 509455205716806489}
-  resultItemText: {fileID: 5092764394160462973}
+  itemNameText: {fileID: 5092764394160462973}
   workDescription: {fileID: 5342148992686129808}
   experienceReward: {fileID: 1487326232575053739}
   doText: {fileID: 2425112647587824115}

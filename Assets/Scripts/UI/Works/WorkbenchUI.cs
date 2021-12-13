@@ -49,7 +49,11 @@ public class WorkbenchUI : MonoBehaviour
         {
             if (cost1Affordable && cost2Affordable)
             {
-                Workbench.i.Craft(slotUIs[selected].recipe);
+                if (Player.i.activeBench.craftingType == CraftingType.Table)
+                    Workbench.i.Craft(slotUIs[selected].recipe);
+                else // naval
+                    Workbench.i.Spawn(slotUIs[selected].recipe.result);
+
                 UpdateSelection();
             }
         }
@@ -62,7 +66,7 @@ public class WorkbenchUI : MonoBehaviour
 
         slotUIs = new List<RecipeTextUI>();
 
-        foreach(var recipe in Workbench.i.recipes)
+        foreach(var recipe in Workbench.i.GetRecipes(Player.i.activeBench.craftingType))
         {
             var rUI = Instantiate(textPrefab, content.transform);
             rUI.recipe = recipe;

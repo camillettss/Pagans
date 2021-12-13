@@ -29,7 +29,11 @@ public class StoryEventHandler : MonoBehaviour
 
     public void Interact()
     {
-        if (Player.i.activeAltar != null)
+        if(Player.i.targetBoat != null)
+        {
+            Player.i.targetBoat.Mount();
+        }
+        else if (Player.i.activeAltar != null)
             StartCoroutine(Player.i.activeAltar.Use());
         else
         {

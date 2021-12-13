@@ -9,7 +9,7 @@ public class CraftUI : MonoBehaviour
     [SerializeField] Image resultIcon;
     [SerializeField] Image methodIcon;
 
-    [SerializeField] Text resultItemText;
+    [SerializeField] Text itemNameText;
     [SerializeField] Text workDescription;
     [SerializeField] Text experienceReward;
     [SerializeField] Text doText;
@@ -31,7 +31,9 @@ public class CraftUI : MonoBehaviour
             // Do
             if(isAffordable)
             {
-                Player.i.inventory.Remove(item.craftCost, item.craftCostCount);
+                if(item.hasItemCost)
+                    Player.i.inventory.Remove(item.craftCost, item.craftCostCount);
+
                 Player.i.experience += item.craftExperienceReward;
                 Player.i.inventory.Add(item.handcraftDerivatedItem);
             }
@@ -46,8 +48,8 @@ public class CraftUI : MonoBehaviour
 
         startItemIcon.sprite = item.icon;
         resultIcon.sprite = item.handcraftDerivatedItem.icon;
-        // non cambiare methodIcon per ora
-        resultItemText.text = item.handcraftDerivatedItem.Name;
+        methodIcon.sprite = item.craftMethodIcon;
+        itemNameText.text = item.Name;
         workDescription.text = $"questo lavoro ti darà 1 {item.handcraftDerivatedItem.Name}, ma ti costerà {item.craftCostCount} {item.craftCost.Name}. otterrai anche {item.craftExperienceReward} punti esperienza";
         // TODO: add levels
         experienceReward.text = $"{item.craftExperienceReward} XP";
@@ -62,7 +64,12 @@ public class CraftUI : MonoBehaviour
 
     void checkPrice()
     {
-        if(Player.i.inventory.alreadyInStock(item.craftCost))
+        if (!item.hasItemCost)
+        {
+            isAffordable = true;
+            return;
+        }
+        else if(Player.i.inventory.alreadyInStock(item.craftCost))
         {
             if(Player.i.inventory.findItem(item.craftCost).count >= item.craftCostCount)
             {

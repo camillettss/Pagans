@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using MyBox;
 
 public abstract class ItemBase : ScriptableObject
 {
@@ -27,10 +28,14 @@ public abstract class ItemBase : ScriptableObject
     public ItemBase cookedResult = null;
     public int cookTime;
 
-    public ItemBase handcraftDerivatedItem;
-    public ItemBase craftCost;
-    public int craftCostCount;
-    public int craftExperienceReward;
+    public bool HasDerivated = false;
+
+    [ConditionalField(nameof(HasDerivated))] public bool hasItemCost = false;
+    [ConditionalField(nameof(HasDerivated))] public ItemBase handcraftDerivatedItem;
+    [ConditionalField(nameof(HasDerivated))] public ItemBase craftCost;
+    [ConditionalField(nameof(HasDerivated))] public int craftCostCount;
+    [ConditionalField(nameof(HasDerivated))] public int craftExperienceReward;
+    [ConditionalField(nameof(HasDerivated))] public Sprite craftMethodIcon;
 
     // categories: 0 -> item, 1 -> consumable, -1 -> magic item, -2 -> equipment/weapon, -3 equipment/arrow
 

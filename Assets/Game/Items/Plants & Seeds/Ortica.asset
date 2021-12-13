@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384587703e20b964291ae04e15cabb36, type: 3}
+  m_Name: Ortica
+  m_EditorClassIdentifier: 
+  Name: Ortica
+  description: ottima per fare una corda.
+  presentationDesc: "non capisco perch\xE8 raccogliere tutto ci\xF2 che si trova
+    sotto tiro..."
+  price: 1
+  icon: {fileID: 21300000, guid: 9b93b28672c3b5648a8e4701a14a1945, type: 3}
+  discovered: 0
+  closeDamage: 0
+  longDamage: 0
+  Defense: 0
+  presentationDialogue:
+    Teller: 
+    sentences: []
+  dust: {fileID: 0}
+  runes:
+    slots:
+    - {fileID: 0}
+    - {fileID: 0}
+  cookedResult: {fileID: 0}
+  cookTime: 0
+  HasDerivated: 1
+  hasItemCost: 0
+  handcraftDerivatedItem: {fileID: 0}
+  craftCost: {fileID: 0}
+  craftCostCount: 0
+  craftExperienceReward: 0
+  craftMethodIcon: {fileID: 0}
+  Category: 0

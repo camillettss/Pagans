@@ -57,6 +57,10 @@ public class Player : MonoBehaviour
     public bool SnapToGridMovments = false;
     public int kents = 0;
 
+    public InteractableObject activeBench;
+    public Boat activeBoat = null;
+    public Boat targetBoat = null;
+
     float ridingSpeed = 8.2f;
     float runningSpeed = 6.5f;
     float holdingShieldSpeed = 2.5f;
@@ -90,6 +94,11 @@ public class Player : MonoBehaviour
             StartCoroutine(Die());
         }
 
+        if(activeBoat != null)
+        {
+            activeBoat.transform.position = new Vector3(transform.position.x-1, transform.position.y, 0);
+        }
+
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
@@ -99,16 +108,17 @@ public class Player : MonoBehaviour
             animator.SetFloat("FacingVertical", moveInput.y);
         }
 
-        /*if(moveInput.x != 0 && moveInput.y != 0)
+        if(moveInput.x != 0 && moveInput.y != 0)
         {
             moveInput.x *= moveLimiter;
             moveInput.y *= moveLimiter;
-        }*/
+        }
 
-        if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
+        /*if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
             moveInput.y = 0;
         else
             moveInput.x = 0;
+        */
 
         if(canMove)
         {
@@ -151,6 +161,8 @@ public class Player : MonoBehaviour
         {
             if (activeHorse != null)
                 Dismount();
+            else if (activeBoat != null)
+                activeBoat.Dismount();
         }
 
         /*if (Input.GetKeyDown(KeyCode.Space) && inventory.torch != null && !currentScene.outdoor) // Toggle torch

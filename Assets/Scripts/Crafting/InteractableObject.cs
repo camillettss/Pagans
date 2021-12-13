@@ -8,13 +8,22 @@ public enum InteractableObjectTypes
     Cauldron
 }
 
+public enum CraftingType
+{
+    Table,
+    Naval
+}
+
 public class InteractableObject : MonoBehaviour, IEntity
 {
     [SerializeField] InteractableObjectTypes type;
+    [MyBox.ConditionalField(nameof(type), false, InteractableObjectTypes.Crafting)] public CraftingType craftingType;
 
     public void Interact(Player player)
     {
-        if(type == InteractableObjectTypes.Crafting)
+        player.activeBench = this;
+
+        if (type == InteractableObjectTypes.Crafting)
         {
             GameController.Instance.OpenState(GameState.Workbench);
         }
