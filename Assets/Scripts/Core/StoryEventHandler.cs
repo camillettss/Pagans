@@ -29,9 +29,9 @@ public class StoryEventHandler : MonoBehaviour
 
     public void Interact()
     {
-        if(Player.i.targetBoat != null)
+        if(Player.i.activePort != null)
         {
-            Player.i.targetBoat.Mount();
+            Player.i.activePort.Choose();
         }
         else if (Player.i.activeAltar != null)
             StartCoroutine(Player.i.activeAltar.Use());

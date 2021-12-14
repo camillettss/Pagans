@@ -18,6 +18,7 @@ public class InteractableObject : MonoBehaviour, IEntity
 {
     [SerializeField] InteractableObjectTypes type;
     [MyBox.ConditionalField(nameof(type), false, InteractableObjectTypes.Crafting)] public CraftingType craftingType;
+    public Transform objectSpawner;
 
     public void Interact(Player player)
     {

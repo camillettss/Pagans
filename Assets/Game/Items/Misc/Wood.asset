@@ -12,14 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9546bee0cccbc564fa3fb5a82850e4c1, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  Name: wood
+  Name: Legna
   description: legna di un albero
   presentationDesc: a new item.
   price: 5
   icon: {fileID: 21300000, guid: efe2ac1e04c61d1429e370eb4e493aa0, type: 3}
-  discovered: 0
+  discovered: 1
   closeDamage: 0
   longDamage: 0
   Defense: 0
+  presentationDialogue:
+    Teller: 
+    sentences: []
   dust: {fileID: 0}
-  category: 0
+  runes:
+    slots:
+    - {fileID: 0}
+    - {fileID: 0}
+  cookedResult: {fileID: 0}
+  cookTime: 0
+  HasDerivated: 0
+  hasItemCost: 0
+  handcraftDerivatedItem: {fileID: 0}
+  craftCost: {fileID: 0}
+  craftCostCount: 0
+  craftExperienceReward: 0
+  craftMethodIcon: {fileID: 0}
+  Category: 1

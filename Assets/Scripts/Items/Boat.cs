@@ -6,6 +6,8 @@ using System.Linq;
 
 public class Boat : MonoBehaviour
 {
+    public string Name = "Boat";
+    public Sprite icon;
 
     public void Mount()
     {
@@ -56,21 +58,5 @@ public class Boat : MonoBehaviour
 
         Player.i.transform.position = new Vector3(transform.position.x + Player.i.animator.GetFloat("FacingHorizontal"), transform.position.y + Player.i.animator.GetFloat("FacingVertical"));
         Player.i.animator.SetBool("onBoat", false);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Player")
-        {
-            Player.i.targetBoat = this;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            Player.i.targetBoat = null;
-        }
     }
 }

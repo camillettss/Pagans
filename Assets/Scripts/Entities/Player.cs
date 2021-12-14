@@ -57,9 +57,13 @@ public class Player : MonoBehaviour
     public bool SnapToGridMovments = false;
     public int kents = 0;
 
+    public Port activePort;
+
     public InteractableObject activeBench;
     public Boat activeBoat = null;
     public Boat targetBoat = null;
+
+    public Camera cam;
 
     float ridingSpeed = 8.2f;
     float runningSpeed = 6.5f;

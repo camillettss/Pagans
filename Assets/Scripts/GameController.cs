@@ -20,7 +20,8 @@ public enum GameState {
     GameOver,
     Cauldron,
     CraftUI,
-    Workbench
+    Workbench,
+    Port
 };
 
 public class GameController : MonoBehaviour
@@ -48,6 +49,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public CauldronUI cauldronUI;
     public CraftUI craftUI;
     public WorkbenchUI workbenchUI;
+    public PortUI portUI;
 
     [SerializeField] bool ResetOnEnd = false;
 
@@ -249,6 +251,11 @@ public class GameController : MonoBehaviour
             workbenchUI.gameObject.SetActive(true);
             workbenchUI.UpdateContents();
         }
+        else if(state == GameState.Port)
+        {
+            portUI.gameObject.SetActive(true);
+            portUI.UpdateContents();
+        }
         else
             print("[!!] No state specified or unhandled option.");
         #endregion
@@ -308,6 +315,9 @@ public class GameController : MonoBehaviour
 
         else if (state == GameState.CraftUI)
             craftUI.HandleUpdate();
+
+        else if (state == GameState.Port)
+            portUI.HandleUpdate();
 
         else if (state == GameState.Menu)
         {

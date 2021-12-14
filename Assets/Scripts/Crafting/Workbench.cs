@@ -32,9 +32,10 @@ public class Workbench : MonoBehaviour
         Player.i.inventory.Add(recipe.result);
     }
 
-    public void Spawn(ItemBase prefab) // trova un modo di adattare e mettere Boat
+    public void Spawn(Boat prefab, Transform boatSpawner) // trova un modo di adattare e mettere Boat
     {
-
+        var boat = Instantiate(prefab);
+        boat.transform.position = boatSpawner.position;
     }
 
 }
@@ -43,6 +44,7 @@ public class Workbench : MonoBehaviour
 public class Recipe
 {
     public ItemBase slot1, slot2, result;
+    public Boat boat_result;
     public int cost;
 
     public Recipe(ItemBase ingredient1, ItemBase ingredient2, ItemBase result)

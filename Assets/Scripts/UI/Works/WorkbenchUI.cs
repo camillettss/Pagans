@@ -25,6 +25,8 @@ public class WorkbenchUI : MonoBehaviour
     bool cost1Affordable = true;
     bool cost2Affordable = true;
 
+    CraftingType actualType;
+
     public void HandleUpdate()
     {
         if(Input.GetKeyDown(KeyCode.X))
@@ -51,8 +53,9 @@ public class WorkbenchUI : MonoBehaviour
             {
                 if (Player.i.activeBench.craftingType == CraftingType.Table)
                     Workbench.i.Craft(slotUIs[selected].recipe);
-                else // naval
-                    Workbench.i.Spawn(slotUIs[selected].recipe.result);
+
+                else if(Player.i.activeBench.craftingType == CraftingType.Naval)
+                    Workbench.i.Spawn(slotUIs[selected].recipe.boat_result, Player.i.activeBench.objectSpawner);
 
                 UpdateSelection();
             }
@@ -61,6 +64,8 @@ public class WorkbenchUI : MonoBehaviour
 
     public void UpdateContents()
     {
+        actualType = Player.i.activeBench.craftingType;
+
         foreach (Transform child in content.transform)
             Destroy(child.gameObject);
 
@@ -70,7 +75,11 @@ public class WorkbenchUI : MonoBehaviour
         {
             var rUI = Instantiate(textPrefab, content.transform);
             rUI.recipe = recipe;
-            rUI.text.text = recipe.result.Name; // result name
+
+            if(actualType == CraftingType.Table)
+                rUI.text.text = recipe.result.Name; // result name
+            else
+                rUI.text.text = recipe.boat_result.Name; // boat name
 
             slotUIs.Add(rUI);
         }
@@ -95,7 +104,10 @@ public class WorkbenchUI : MonoBehaviour
             slot2.sprite = slotUIs[selected].recipe.slot2.icon;
 
             // never update cost (idk the final design)
-            result.sprite = slotUIs[selected].recipe.result.icon;
+            if(actualType == CraftingType.Table)
+                result.sprite = slotUIs[selected].recipe.result.icon;
+            else
+                result.sprite = slotUIs[selected].recipe.boat_result.icon;
 
             checkCost();
 
