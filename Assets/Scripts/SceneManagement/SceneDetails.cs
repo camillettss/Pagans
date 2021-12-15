@@ -7,7 +7,7 @@ public class SceneDetails : MonoBehaviour
 {
     [SerializeField] List<SceneDetails> connectedScenes;
 
-    [SerializeField] UnityEngine.Experimental.Rendering.Universal.Light2D light;
+    [SerializeField] public UnityEngine.Experimental.Rendering.Universal.Light2D light;
     [SerializeField] float lightBrightness = 1f;
     [SerializeField] Color lightColor;
     public GameObject[] lights;

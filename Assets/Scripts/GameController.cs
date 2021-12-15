@@ -53,7 +53,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] bool ResetOnEnd = false;
 
-    float tick=60, seconds, mins, hours, days = 1;
+    float tick=60, seconds, mins, hours, day = 1, month, year;
+    [SerializeField, Range(0, 24)] float TimeOfDay;
     bool activateLights;
 
     public DialogueManager dialogueBox;
@@ -87,7 +88,13 @@ public class GameController : MonoBehaviour
 
     [SerializeField] Quest talkToHarbardQuest;
 
+    [SerializeField] Color eveningLightsColor;
+    [SerializeField] Gradient nightLightsColor;
+
     public static GameController Instance;
+
+    float timer = 10f;
+
     public EnchantingUI EnchUI => enchantingUI;
 
     private void Awake()
@@ -148,7 +155,7 @@ public class GameController : MonoBehaviour
         if (hours >= 24) //24 hr = 1 day
         {
             hours = 0;
-            days += 1;
+            day += 1;
         }
         ControlPPV(); // changes post processing volume after calculation
     }
@@ -283,6 +290,8 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        UpdateTime();
+        print($"day:{day}, h:m -> {hours}:{mins}.");
         if (state != GameState.FreeRoam)
         {
             player.animator.SetFloat("Speed", 0.0f);
@@ -385,6 +394,36 @@ public class GameController : MonoBehaviour
             libUI.HandleUpdate();
         }
         #endregion
+    }
+
+    void UpdateTime()
+    {
+        mins += 10*Time.deltaTime;
+        if(mins >= 60)
+        {
+            mins = 0;
+            hours++;
+            if (hours >= 24)
+                hours = 0;
+        }
+        player.currentScene.light.color = nightLightsColor.Evaluate(hours/24);
+
+        if (hours <= 12)
+            player.currentScene.light.intensity = hours / 12;
+        else
+            player.currentScene.light.intensity = (-2 * hours) + 13; // neither.
+
+        /*//player.currentScene.light.intensity = Mathf.Clamp(hours/10, 0.1f, 1);
+        // interpolate yellow
+        int targetHour = 18;
+        //60 * (targetHour - hours)
+        player.currentScene.light.color = Color.Lerp(player.currentScene.light.color, nightLightsColor, Time.deltaTime/timer);
+        timer -= Time.deltaTime;
+        TimeOfDay += Time.deltaTime;
+        TimeOfDay %= 24;
+        // update using time/24f as timePercent
+        player.currentScene.light.color = nightLightsColor.Evaluate(TimeOfDay / 24f);*/
+
     }
 
     void UpdateEnemiesInViewport()

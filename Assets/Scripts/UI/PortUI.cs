@@ -8,7 +8,7 @@ public class PortUI : MonoBehaviour
     [SerializeField] PortSlotUI slotPrefab;
 
     List<PortSlotUI> slotUIs;
-    int selected;
+    int selected = 0;
 
     public void HandleUpdate()
     {
@@ -27,6 +27,13 @@ public class PortUI : MonoBehaviour
 
         if (prev != selected)
             UpdateSelection();
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            slotUIs[selected].boat.Mount();
+            gameObject.SetActive(false);
+            GameController.Instance.state = GameState.FreeRoam;
+        }
     }
 
     public void UpdateContents()
@@ -52,7 +59,7 @@ public class PortUI : MonoBehaviour
         for(int i=0; i<slotUIs.Count; i++)
         {
             if (i == selected)
-                slotUIs[i].Text.color = GameController.Instance.unselectedDefaultColor;
+                slotUIs[i].Text.color = GameController.Instance.selectedDefaultColor;
             else
                 slotUIs[i].Text.color = GameController.Instance.unselectedDefaultColor;
         }

@@ -1411,9 +1411,9 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 81788103
-  m_SortingLayer: 6
-  m_SortingOrder: 0
+  m_SortingLayerID: 1170453627
+  m_SortingLayer: 5
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0.5, z: 0}
   m_MaxChunkCount: 16
@@ -2081,16 +2081,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 231, y: -2, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 12
-      m_TileSpriteIndex: 12
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 239, y: -2, z: 0}
     second:
       serializedVersion: 2
@@ -2137,8 +2127,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: f8062ef83b587a64e960cb83cbfcf98b, type: 2}
   - m_RefCount: 11
     m_Data: {fileID: 11400000, guid: dee4245db026e574a85e2ab72fa183c5, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: a8eb2ea606ed9b240b0b84f82dbc834f, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 11
     m_Data: {fileID: -7921436213568283441, guid: 451b3e4971f72be499d91e4cafaaa6bb,
@@ -2176,11 +2166,10 @@ Tilemap:
   - m_RefCount: 11
     m_Data: {fileID: 3143007116007965325, guid: 451b3e4971f72be499d91e4cafaaa6bb,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -8329592302003848350, guid: 451b3e4971f72be499d91e4cafaaa6bb,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 68
+  - m_RefCount: 67
     m_Data:
       e00: 1
       e01: 0
@@ -2199,7 +2188,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 68
+  - m_RefCount: 67
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -5731,7 +5720,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56afca5f849457840b21ed900ff59397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accessibleBoats: []
 --- !u!1001 &361807737048583644
 PrefabInstance:
   m_ObjectHideFlags: 0
