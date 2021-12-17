@@ -83,6 +83,10 @@ public class Player : MonoBehaviour
         UpdateQuestUI();
         i = this;
         experience = 9;
+
+        // set date
+        GameController.Instance.calendar.actualMonth = GameController.Instance.calendar.Months[0]; // primo mese
+        GameController.Instance.calendar.today = GameController.Instance.calendar.actualMonth.days[0]; // primo day del primo mese
     }
 
     private void Start()

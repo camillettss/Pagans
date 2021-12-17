@@ -83,6 +83,11 @@ public class GameController : MonoBehaviour
     // UI
     public Color AffordableGreenColor;
     public Color UnaffordableRedColor;
+    // calendar
+    public Color selectedDayDefaultColor;
+    public Color selectedActualDayColor;
+    public Color unselectedActualDayColor;
+    public Color unselectedDayDefaultColor;
 
     [HideInInspector] public GameState state = GameState.FreeRoam;
     [HideInInspector] public NPCController ActiveNPC;
