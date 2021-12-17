@@ -21,7 +21,8 @@ public enum GameState {
     Cauldron,
     CraftUI,
     Workbench,
-    Port
+    Port,
+    Calendar
 };
 
 public class GameController : MonoBehaviour
@@ -50,10 +51,11 @@ public class GameController : MonoBehaviour
     public CraftUI craftUI;
     public WorkbenchUI workbenchUI;
     public PortUI portUI;
+    public Calendar calendar;
 
     [SerializeField] bool ResetOnEnd = false;
 
-    float tick=60, seconds, mins, hours, day = 1, month, year;
+    float tick=60, seconds=0, mins=0, hours=11, day = 1, month=1, year=1248;
     [SerializeField, Range(0, 24)] float TimeOfDay;
     bool activateLights;
 
@@ -207,9 +209,6 @@ public class GameController : MonoBehaviour
         {
             inventory2.UpdateView();
             inventory2.gameObject.SetActive(true);
-            /*inventoryUI.gameObject.SetActive(true);
-            inventoryUI.UpdateContents();
-            StartCoroutine(storyController.FirstInventoryOpen());*/
         }
         else if (state == GameState.Shop && trader != null)
         {
@@ -263,6 +262,11 @@ public class GameController : MonoBehaviour
             portUI.gameObject.SetActive(true);
             portUI.UpdateContents();
         }
+        else if(state == GameState.Calendar)
+        {
+            calendar.gameObject.SetActive(true);
+            calendar.UpdateContents();
+        }
         else
             print("[!!] No state specified or unhandled option.");
         #endregion
@@ -291,7 +295,6 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         UpdateTime();
-        print($"day:{day}, h:m -> {hours}:{mins}.");
         if (state != GameState.FreeRoam)
         {
             player.animator.SetFloat("Speed", 0.0f);
@@ -318,6 +321,9 @@ public class GameController : MonoBehaviour
 
         else if (state == GameState.Cauldron)
             cauldronUI.HandleUpdate();
+
+        else if (state == GameState.Calendar)
+            calendar.HandleUpdate();
 
         else if (state == GameState.Workbench)
             workbenchUI.HandleUpdate();
@@ -404,14 +410,25 @@ public class GameController : MonoBehaviour
             mins = 0;
             hours++;
             if (hours >= 24)
+            {
                 hours = 0;
+                day++;
+                if(day >= 31)
+                {
+                    day = 1;
+                    month++;
+                }
+            }
         }
-        player.currentScene.light.color = nightLightsColor.Evaluate(hours/24);
 
-        if (hours <= 12)
-            player.currentScene.light.intensity = hours / 12;
-        else
-            player.currentScene.light.intensity = (-2 * hours) + 13; // neither.
+        var scaleTime = hours+(((10 * mins) / 6) / 100);
+
+        if (player.currentScene.outdoor)
+        {
+            player.currentScene.light.color = nightLightsColor.Evaluate(hours / 24);
+            // example: 22h 30m = 22.5f
+            player.currentScene.light.intensity = Mathf.Clamp((Mathf.Sin((scaleTime / 3.8f) - 1.58f) + 1.2f) / 2, 0.1f, 1);
+        }
 
         /*//player.currentScene.light.intensity = Mathf.Clamp(hours/10, 0.1f, 1);
         // interpolate yellow

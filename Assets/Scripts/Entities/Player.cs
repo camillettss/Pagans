@@ -147,6 +147,7 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.P))
         {
+            GameController.Instance.OpenState(GameState.Calendar);
         }
 
         // minimap show
