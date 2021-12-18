@@ -6,11 +6,13 @@ using System;
 public class SettingsUI : MonoBehaviour
 {
     int selected = 0;
+    [SerializeField] UnityEngine.UI.Text diagonalMovesText;
 
     private void Awake()
     {
         selected = 0;
         UpdateSelection();
+        diagonalMovesText.text = $"diagonal:{Player.i.enableDiagonalMovements}";
     }
 
     public void HandleUpdate(Action onBack)
@@ -56,9 +58,10 @@ public class SettingsUI : MonoBehaviour
             Player.i.Load();
         }
 
-        /*else if (choosen == 2) // Reset
+        else if(choosen == 2) // toggle diagonal movements
         {
-
-        }*/
+            Player.i.enableDiagonalMovements = !Player.i.enableDiagonalMovements;
+            diagonalMovesText.text = $"diagonal:{Player.i.enableDiagonalMovements}";
+        }
     }
 }

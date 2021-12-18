@@ -9,6 +9,8 @@ public class Calendar : MonoBehaviour
     [SerializeField] Transform daysContainer;
     [SerializeField] CalendarDayUI prefab;
     [SerializeField] Text dayDetails;
+    [SerializeField] Text notes;
+    [SerializeField] Transform notesContainer;
 
     [SerializeField] List<Month> months;
 
@@ -22,6 +24,11 @@ public class Calendar : MonoBehaviour
 
     List<CalendarDayUI> slotUIs;
 
+    private void Awake()
+    {
+        selected_month = months.IndexOf(actualMonth);
+    }
+
     public void HandleUpdate()
     {
         if(Input.GetKeyDown(KeyCode.X))
@@ -29,12 +36,13 @@ public class Calendar : MonoBehaviour
             if (!dayDetails.isActiveAndEnabled)
             {
                 gameObject.SetActive(false);
-                GameController.Instance.state = GameState.FreeRoam;
+                GameController.Instance.state = GameState.Inventory;
             }
             else
             {
                 dayDetails.gameObject.SetActive(false);
                 daysContainer.gameObject.SetActive(true);
+                notesContainer.gameObject.SetActive(true);
             }
         }
 
@@ -88,6 +96,7 @@ public class Calendar : MonoBehaviour
     {
         dayDetails.gameObject.SetActive(true);
         daysContainer.gameObject.SetActive(false);
+        notesContainer.gameObject.SetActive(false);
         if (selected_day != -1)
             dayDetails.text = daysOfMonth(selected_month)[selected_day].dayDescription;
         else
@@ -104,6 +113,8 @@ public class Calendar : MonoBehaviour
         foreach(var day in daysOfMonth(selected_month))
         {
             var slotUI = Instantiate(prefab, daysContainer);
+            if (day == today)
+                day.dayNote = "oggi.";
             slotUI.SetData(day);
 
             slotUIs.Add(slotUI);
@@ -118,46 +129,55 @@ public class Calendar : MonoBehaviour
     {
         for(int i=0; i<slotUIs.Count; i++)
         {
-            if(months[selected_month] == actualMonth)
+            if (i == selected_day)
             {
-                if (i == selected_day)
+                if (today.dayNo == i + 1 && actualMonth == months[selected_month])
                 {
-                    if(today.dayNo == i+1)
-                    {
-                        slotUIs[i].Border.color = GameController.Instance.selectedActualDayColor;
-                    }
-                    else
-                    {
-                        slotUIs[i].Border.color = GameController.Instance.selectedDayDefaultColor;
-                    }
+                    slotUIs[i].Border.color = GameController.Instance.selectedActualDayColor;
                 }
                 else
                 {
-                    if(today.dayNo == i + 1)
-                    {
-                        slotUIs[i].Border.color = GameController.Instance.unselectedActualDayColor;
-                    }
-                    else
-                    {
-                        slotUIs[i].Border.color = GameController.Instance.unselectedDayDefaultColor;
-                    }
+                    slotUIs[i].Border.color = GameController.Instance.selectedDayDefaultColor;
                 }
             }
             else
             {
-                slotUIs[i].Border.color = GameController.Instance.unselectedDefaultColor;
+                if (today.dayNo == i + 1 && actualMonth == months[selected_month])
+                {
+                    slotUIs[i].Border.color = GameController.Instance.unselectedActualDayColor;
+                }
+                else
+                {
+                    slotUIs[i].Border.color = GameController.Instance.unselectedDayDefaultColor;
+                }
             }
         }
 
         if (selected_day == -1)
             Title.color = GameController.Instance.selectedDefaultColor; // TODO: show arrows
         else
+        {
             Title.color = Color.black;
+            notes.text = slotUIs[selected_day].note;
+        }
     }
 
     List<Day> daysOfMonth(int monthNo)
     {
         return months[monthNo].days;
+    }
+
+    public void newDay()
+    {
+        if (today.dayNo < actualMonth.days.Count)
+        {
+            today = actualMonth.days[actualMonth.days.IndexOf(today) + 1];
+        }
+        else
+        {
+            actualMonth = months[months.IndexOf(actualMonth) + 1];
+            today = actualMonth.days[0];
+        }
     }
     
 }
@@ -176,6 +196,7 @@ public class Day
     public string name;
     public int dayNo;
     public string dayDescription = "un normalissimo giorno.";
+    public string dayNote = "questo non è un giorno particolare, seleziona una festività e leggi qui le sue note.";
 
     public bool isFest = false;
     public Sprite festivitySprite;

@@ -641,8 +641,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: -100, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7133159745432788951
 MonoBehaviour:
@@ -665,7 +665,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 64, y: 64}
-  m_Spacing: {x: 1, y: 1}
+  m_Spacing: {x: 1.2, y: 1.2}
   m_Constraint: 1
   m_ConstraintCount: 7
 --- !u!1 &207247516978083147
@@ -1761,7 +1761,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -150, y: 225}
+  m_AnchoredPosition: {x: -150, y: 175}
   m_SizeDelta: {x: 180, y: -550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5765196396412314523
@@ -2377,8 +2377,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -114.51749}
-  m_SizeDelta: {x: 200, y: 36.344982}
+  m_AnchoredPosition: {x: 90, y: -117.24335}
+  m_SizeDelta: {x: 180, y: 38.162228}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &317550749527165443
 CanvasRenderer:
@@ -2659,6 +2659,83 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!1 &843717491665705980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5984863428760838617}
+  - component: {fileID: 7851380622578653194}
+  - component: {fileID: 5335259341990517867}
+  m_Layer: 0
+  m_Name: shadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5984863428760838617
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843717491665705980}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1548458088991832031}
+  m_Father: {fileID: 8459755185865599979}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -322.68, y: 71.3}
+  m_SizeDelta: {x: 200, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7851380622578653194
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843717491665705980}
+  m_CullTransparentMesh: 1
+--- !u!114 &5335259341990517867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843717491665705980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 8352158820115956022, guid: d148b23ec3374304b8d21846318ab60a,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &883324015894814642
 GameObject:
   m_ObjectHideFlags: 0
@@ -5200,7 +5277,6 @@ GameObject:
   - component: {fileID: 8941034622170262635}
   - component: {fileID: 2609540297405315622}
   - component: {fileID: 5645912058764323982}
-  - component: {fileID: 3747061968375388589}
   - component: {fileID: 1808076492594122802}
   m_Layer: 0
   m_Name: Settings
@@ -5222,13 +5298,14 @@ RectTransform:
   m_Children:
   - {fileID: 690783645286789630}
   - {fileID: 4742906209384439768}
+  - {fileID: 721435773388113906}
   m_Father: {fileID: 5379045465341387913}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -150, y: 200}
-  m_SizeDelta: {x: 200, y: -500}
+  m_AnchoredPosition: {x: -150, y: 175}
+  m_SizeDelta: {x: 180, y: -550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8941034622170262635
 CanvasRenderer:
@@ -5295,18 +5372,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &3747061968375388589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2246441646996384636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c64c101dba3af98459d12fc6c4a56da5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1808076492594122802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5319,6 +5384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f62f0b4d0e264d43a0ae91998c26be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diagonalMovesText: {fileID: 98919262493677573}
 --- !u!1 &2311022213793879906
 GameObject:
   m_ObjectHideFlags: 0
@@ -6099,6 +6165,83 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1.5
+--- !u!1 &2816307678163496552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1548458088991832031}
+  - component: {fileID: 876430650545621579}
+  - component: {fileID: 25818687048198382}
+  m_Layer: 0
+  m_Name: notes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1548458088991832031
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2816307678163496552}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8209235207833734908}
+  m_Father: {fileID: 5984863428760838617}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 8}
+  m_SizeDelta: {x: 200, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &876430650545621579
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2816307678163496552}
+  m_CullTransparentMesh: 1
+--- !u!114 &25818687048198382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2816307678163496552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 8352158820115956022, guid: d148b23ec3374304b8d21846318ab60a,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2888082396596918576
 GameObject:
   m_ObjectHideFlags: 0
@@ -11646,6 +11789,7 @@ MonoBehaviour:
   activeBoat: {fileID: 0}
   targetBoat: {fileID: 0}
   cam: {fileID: 5379045465332533999}
+  enableDiagonalMovements: 0
   isFirstLaunch: 0
   storyProgressValue: 0
 --- !u!114 &5379045464971056017
@@ -11691,6 +11835,7 @@ MonoBehaviour:
   extraSlot:
     item: {fileID: 0}
     count: 0
+  calendarBook: {fileID: 11400000, guid: 55c308acf153b3545b766513ad9c9f95, type: 2}
 --- !u!114 &7491206670159689328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15802,6 +15947,85 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &6952038892240656403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 721435773388113906}
+  - component: {fileID: 5554262739133536761}
+  - component: {fileID: 98919262493677573}
+  m_Layer: 0
+  m_Name: diagMoves
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &721435773388113906
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952038892240656403}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8695284053885498112}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 90, y: -165.40558}
+  m_SizeDelta: {x: 180, y: 38.162228}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5554262739133536761
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952038892240656403}
+  m_CullTransparentMesh: 0
+--- !u!114 &98919262493677573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952038892240656403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1b6801f3556e03540a31b7401ad8ff42, type: 3}
+    m_FontSize: 32
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 41
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'diagonal: true'
 --- !u!1 &6986525949071198899
 GameObject:
   m_ObjectHideFlags: 0
@@ -16347,6 +16571,86 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7181822618334902172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8209235207833734908}
+  - component: {fileID: 7835496399396280106}
+  - component: {fileID: 2113844344217647043}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8209235207833734908
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7181822618334902172}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1548458088991832031}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -5, y: 0}
+  m_SizeDelta: {x: 150, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7835496399396280106
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7181822618334902172}
+  m_CullTransparentMesh: 1
+--- !u!114 &2113844344217647043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7181822618334902172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1b6801f3556e03540a31b7401ad8ff42, type: 3}
+    m_FontSize: 22
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "qui scriver\xF2 le note di giorni particolari.\npremi z su un giorno specifico
+    per leggerne i dettagli."
 --- !u!1 &7195256448830094326
 GameObject:
   m_ObjectHideFlags: 0
@@ -18473,8 +18777,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -68.172485}
-  m_SizeDelta: {x: 200, y: 36.344982}
+  m_AnchoredPosition: {x: 90, y: -69.081116}
+  m_SizeDelta: {x: 180, y: 38.162228}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6937200927102741442
 CanvasRenderer:
@@ -19479,6 +19783,7 @@ RectTransform:
   - {fileID: 8306462401319125644}
   - {fileID: 18789963681457549}
   - {fileID: 7268697346908353307}
+  - {fileID: 5984863428760838617}
   m_Father: {fileID: 5379045465341387913}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19541,311 +19846,436 @@ MonoBehaviour:
   daysContainer: {fileID: 8306462401319125644}
   prefab: {fileID: 2351310780228471331, guid: 1ee0d85f30b361546a7b69a8b9180e85, type: 3}
   dayDetails: {fileID: 7552900483276586962}
+  notes: {fileID: 2113844344217647043}
+  notesContainer: {fileID: 5984863428760838617}
   months:
   - name: "Gorm\xE1nu\xF0r"
-    description: mese congelato.
+    description: primo mese dello skammdegi, il suo nome significa "mese congelato".
     days:
     - name: 
       dayNo: 1
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 2
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 3
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 4
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 5
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 6
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 7
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 8
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 9
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 10
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 11
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 12
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 13
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 14
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 15
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 16
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 17
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 18
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 19
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 20
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 21
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 22
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 23
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 24
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 25
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 26
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 27
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 28
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 29
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
-    - name: 
+    - name: "\xC1lfabl\xF3t"
       dayNo: 30
-      dayDescription: un normalissimo giorno.
-      isFest: 0
-      festivitySprite: {fileID: 0}
+      dayDescription: "eccetto che in Islanda, lo \xC1lfabl\xF3t viene compiuto da
+        tutti ma in modo molto confidenziale. questo sacrificio va dedicato agli
+        elfi per la protezione dei propri defunti. solo chi appartiene alla tua \xE6tt
+        pu\xF2 partecipare."
+      dayNote: "\xC1lfabl\xF3t."
+      isFest: 1
+      festivitySprite: {fileID: 21300000, guid: eab87f10d2afa594c92ed3d29451b618,
+        type: 3}
   - name: "Frerm\xE1nu\xF0r"
     description: mese di freyr
     days:
     - name: 
       dayNo: 1
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 2
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 3
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 4
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 5
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 6
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 7
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 8
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 9
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 10
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 11
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 12
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 13
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 14
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 15
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 16
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 17
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 18
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 19
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 20
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 21
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 22
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 23
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 24
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 25
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 26
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 27
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 28
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 29
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 30
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
   - name: "M\u01EBrsugr "
@@ -19854,146 +20284,204 @@ MonoBehaviour:
     - name: 
       dayNo: 1
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 2
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 3
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 4
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 5
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 6
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 7
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 8
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 9
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 10
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 11
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 12
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 13
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 14
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 15
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 16
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 17
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 18
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 19
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 20
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 21
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 22
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 23
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 24
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 25
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 26
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 27
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 28
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 29
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
   - name: "\xDEorri "
@@ -20002,156 +20490,218 @@ MonoBehaviour:
     - name: 
       dayNo: 1
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 2
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 3
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 4
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 5
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 6
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 7
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 8
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 9
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 10
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 11
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 12
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 13
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 14
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 15
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 16
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 17
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 18
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 19
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 20
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 21
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 22
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 23
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 24
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 25
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 26
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 27
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 28
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 29
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 30
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 30
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
   - name: "G\xF3i "
@@ -20160,151 +20710,211 @@ MonoBehaviour:
     - name: 
       dayNo: 1
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 2
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 3
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 4
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 5
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 6
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 7
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 8
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 9
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 10
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 11
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 12
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 13
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 14
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 15
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 16
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 17
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 18
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 19
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 20
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 21
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 22
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 23
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 24
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 25
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 26
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 27
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 28
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 29
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 30
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
   - name: "Einm\xE1nu\xF0r "
@@ -20313,151 +20923,211 @@ MonoBehaviour:
     - name: 
       dayNo: 1
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 2
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 3
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 4
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 5
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 6
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 7
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 8
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 9
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 10
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 11
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 12
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 13
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 14
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 15
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 16
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 17
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 18
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 19
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 20
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 21
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 22
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 23
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 24
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 25
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 26
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 27
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 28
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 29
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 30
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
   - name: 'Harpa '
@@ -20466,151 +21136,211 @@ MonoBehaviour:
     - name: 
       dayNo: 1
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 2
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 3
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 4
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 5
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 6
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 7
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 8
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 9
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 10
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 11
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 12
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 13
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 14
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 15
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 16
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 17
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 18
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 19
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 20
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 21
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 22
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 23
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 24
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 25
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 26
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 27
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 28
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 29
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 30
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
   - name: 'Skerpla '
@@ -20619,151 +21349,211 @@ MonoBehaviour:
     - name: 
       dayNo: 1
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 2
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 3
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 4
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 5
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 6
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 7
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 8
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 9
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 10
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 11
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 12
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 13
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 14
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 15
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 16
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 17
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 18
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 19
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 20
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 21
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 22
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 23
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 24
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 25
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 26
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 27
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 28
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 29
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 30
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
   - name: "S\xF3lm\xE1nu\xF0r "
@@ -20772,151 +21562,211 @@ MonoBehaviour:
     - name: 
       dayNo: 1
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 2
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 3
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 4
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 5
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 6
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 7
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 8
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 9
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 10
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 11
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 12
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 13
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 14
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 15
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 16
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 17
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 18
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 19
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 20
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 21
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 22
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 23
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 24
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 25
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 26
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 27
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 28
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 29
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 30
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
   - name: 'Heyannir '
@@ -20925,151 +21775,211 @@ MonoBehaviour:
     - name: 
       dayNo: 1
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 2
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 3
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 4
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 5
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 6
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 7
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 8
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 9
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 10
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 11
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 12
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 13
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 14
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 15
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 16
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 17
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 18
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 19
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 20
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 21
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 22
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 23
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 24
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 25
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 26
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 27
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 28
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 29
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 30
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
   - name: "Tv\xEDm\xE1nu\xF0r "
@@ -21078,151 +21988,211 @@ MonoBehaviour:
     - name: 
       dayNo: 1
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 2
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 3
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 4
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 5
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 6
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 7
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 8
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 9
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 10
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 11
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 12
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 13
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 14
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 15
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 16
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 17
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 18
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 19
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 20
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 21
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 22
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 23
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 24
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 25
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 26
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 27
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 28
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 29
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 30
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
   - name: "Haustm\xE1nu\xF0r "
@@ -21231,151 +22201,211 @@ MonoBehaviour:
     - name: 
       dayNo: 1
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 2
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 3
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 4
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 5
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 6
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 7
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 8
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 9
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 10
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 11
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 12
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 13
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 14
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 15
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 16
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 17
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 18
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 19
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 20
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 21
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 22
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 23
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 24
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 25
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 26
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 27
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 28
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 29
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
     - name: 
       dayNo: 30
       dayDescription: un normalissimo giorno.
+      dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0
+        e leggi qui le sue note."
       isFest: 0
       festivitySprite: {fileID: 0}
   actualMonth:
@@ -21386,6 +22416,8 @@ MonoBehaviour:
     name: 
     dayNo: 0
     dayDescription: un normalissimo giorno.
+    dayNote: "questo non \xE8 un giorno particolare, seleziona una festivit\xE0 e
+      leggi qui le sue note."
     isFest: 0
     festivitySprite: {fileID: 0}
 --- !u!1 &8957302836191832022
@@ -21887,12 +22919,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 463.24457
+      value: 413.24457
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -162
+      value: -162.4
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -22027,12 +23059,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 593.24457
+      value: 543.64453
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -97
+      value: -97.2
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -22167,12 +23199,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 463.24457
+      value: 413.24457
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -97
+      value: -97.2
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -22307,12 +23339,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 398.24457
+      value: 348.04456
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -227
+      value: -227.6
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -22447,12 +23479,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 333.24457
+      value: 282.84454
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -162
+      value: -162.4
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -22587,12 +23619,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 593.24457
+      value: 543.64453
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -227
+      value: -227.6
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -22727,12 +23759,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 528.24457
+      value: 478.44455
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -227
+      value: -227.6
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -22867,12 +23899,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 398.24457
+      value: 348.04456
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -97
+      value: -97.2
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -23007,12 +24039,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 333.24457
+      value: 282.84454
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -292
+      value: -292.8
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -23147,7 +24179,7 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 463.24457
+      value: 413.24457
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -23537,12 +24569,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 593.24457
+      value: 543.64453
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -162
+      value: -162.4
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -23677,7 +24709,7 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 528.24457
+      value: 478.44455
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -23817,12 +24849,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 528.24457
+      value: 478.44455
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -97
+      value: -97.2
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -23957,7 +24989,7 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 268.24457
+      value: 217.64456
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -24082,12 +25114,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 333.24457
+      value: 282.84454
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -97
+      value: -97.2
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -24347,12 +25379,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 658.24457
+      value: 608.84454
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -227
+      value: -227.6
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -24612,12 +25644,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 398.24457
+      value: 348.04456
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -162
+      value: -162.4
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -24877,12 +25909,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 333.24457
+      value: 282.84454
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -227
+      value: -227.6
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -25017,12 +26049,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 268.24457
+      value: 217.64456
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -97
+      value: -97.2
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -25157,12 +26189,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 268.24457
+      value: 217.64456
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -292
+      value: -292.8
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -25297,12 +26329,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 268.24457
+      value: 217.64456
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -227
+      value: -227.6
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -25437,7 +26469,7 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 398.24457
+      value: 348.04456
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -25577,12 +26609,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 658.24457
+      value: 608.84454
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -97
+      value: -97.2
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -25717,12 +26749,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 268.24457
+      value: 217.64456
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -162
+      value: -162.4
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -25857,7 +26889,7 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 593.24457
+      value: 543.64453
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -25997,12 +27029,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 528.24457
+      value: 478.44455
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -162
+      value: -162.4
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -26137,12 +27169,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 658.24457
+      value: 608.84454
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -162
+      value: -162.4
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -26277,12 +27309,12 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 463.24457
+      value: 413.24457
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -227
+      value: -227.6
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -26542,7 +27574,7 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 333.24457
+      value: 282.84454
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
@@ -26682,7 +27714,7 @@ PrefabInstance:
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 658.24457
+      value: 608.84454
       objectReference: {fileID: 0}
     - target: {fileID: 642193132844998920, guid: 1ee0d85f30b361546a7b69a8b9180e85,
         type: 3}

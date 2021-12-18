@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] bool ResetOnEnd = false;
 
-    float tick=60, seconds=0, mins=0, hours=11, day = 1, month=1, year=1248;
+    float tick=60, seconds=0, mins=0, hours=12, day = 1, month=1, year=1248;
     [SerializeField, Range(0, 24)] float TimeOfDay;
     bool activateLights;
 
@@ -130,76 +130,13 @@ public class GameController : MonoBehaviour
     private void OnDestroy()
     {
         print("destroying");
-        SaveSystem.Reset();
+        player.Save();
+        //SaveSystem.Reset();
         /*if (ResetOnEnd)
             SaveSystem.Reset();
         else
             player.Save();*/
     }
-
-    private void FixedUpdate()
-    {
-        //CalcTime(); // unrem for day night [Bugged] cycle.
-    }
-
-    #region daynight
-    void CalcTime() // Used to calculate sec, min and hours
-    {
-        seconds += Time.fixedDeltaTime * tick; // multiply time between fixed update by tick
-
-        if (seconds >= 60) // 60 sec = 1 min
-        {
-            seconds = 0;
-            mins += 1;
-        }
-
-        if (mins >= 60) //60 min = 1 hr
-        {
-            mins = 0;
-            hours += 1;
-        }
-
-        if (hours >= 24) //24 hr = 1 day
-        {
-            hours = 0;
-            day += 1;
-        }
-        ControlPPV(); // changes post processing volume after calculation
-    }
-
-    void ControlPPV()
-    {
-        ppv.weight = (float)mins / 60; // since dusk is 1 hr, we just divide the mins by 60 which will slowly increase from 0 - 1
-
-        if (activateLights == false) // if lights havent been turned on
-        {
-            if (mins > 45) // wait until pretty dark
-            {
-                for (int i = 0; i < player.currentScene.lights.Length; i++)
-                {
-                    player.currentScene.lights[i].SetActive(true); // turn them all on
-                }
-                activateLights = true;
-            }
-        }
-
-        if (hours >= 6 && hours < 7) // Dawn at 6:00 / 6am    -   until 7:00 / 7am
-        {
-            ppv.weight = 1 - (float)mins / 60; // we minus 1 because we want it to go from 1 - 0
-            if (activateLights == true) // if lights are on
-            {
-                if (mins > 45) // wait until pretty bright
-                {
-                    for (int i = 0; i < player.currentScene.lights.Length; i++)
-                    {
-                        player.currentScene.lights[i].SetActive(false); // shut them off
-                    }
-                    activateLights = false;
-                }
-            }
-        }
-    }
-    #endregion
 
     public void OpenState(GameState state, TraderController trader = null, Cauldron c=null, ItemBase craftItem=null)
     {
@@ -407,6 +344,7 @@ public class GameController : MonoBehaviour
         #endregion
     }
 
+    // day/night cycle
     void UpdateTime()
     {
         mins += 10*Time.deltaTime;
@@ -417,12 +355,7 @@ public class GameController : MonoBehaviour
             if (hours >= 24)
             {
                 hours = 0;
-                day++;
-                if(day >= 31)
-                {
-                    day = 1;
-                    month++;
-                }
+                calendar.newDay();
             }
         }
 

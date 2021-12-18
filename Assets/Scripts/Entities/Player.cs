@@ -69,6 +69,8 @@ public class Player : MonoBehaviour
     float runningSpeed = 6.5f;
     float holdingShieldSpeed = 2.5f;
 
+    public bool enableDiagonalMovements = false;
+
     #region saving stuffs
     public bool isFirstLaunch = false;
     public int storyProgressValue = 0;
@@ -86,7 +88,7 @@ public class Player : MonoBehaviour
 
         // set date
         GameController.Instance.calendar.actualMonth = GameController.Instance.calendar.Months[0]; // primo mese
-        GameController.Instance.calendar.today = GameController.Instance.calendar.actualMonth.days[0]; // primo day del primo mese
+        GameController.Instance.calendar.today = GameController.Instance.calendar.actualMonth.days[29]; // primo day del primo mese
     }
 
     private void Start()
@@ -116,17 +118,21 @@ public class Player : MonoBehaviour
             animator.SetFloat("FacingVertical", moveInput.y);
         }
 
-        if(moveInput.x != 0 && moveInput.y != 0)
+        if(enableDiagonalMovements)
         {
-            moveInput.x *= moveLimiter;
-            moveInput.y *= moveLimiter;
+            if (moveInput.x != 0 && moveInput.y != 0)
+            {
+                moveInput.x *= moveLimiter;
+                moveInput.y *= moveLimiter;
+            }
         }
-
-        /*if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
-            moveInput.y = 0;
         else
-            moveInput.x = 0;
-        */
+        {
+            if (Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y))
+                moveInput.y = 0;
+            else
+                moveInput.x = 0;
+        }
 
         if(canMove)
         {
@@ -151,7 +157,6 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.P))
         {
-            GameController.Instance.OpenState(GameState.Calendar);
         }
 
         // minimap show
@@ -365,6 +370,8 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(235, 0, 0);
         }
+        enableDiagonalMovements = data.enableDiagonalMoves;
+        kents = data.kents;
     }
 
     public bool isInRange(IEntity entity, float radius=1.5f)

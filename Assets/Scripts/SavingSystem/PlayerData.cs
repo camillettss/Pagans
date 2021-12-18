@@ -8,8 +8,15 @@ public class PlayerData
     public int health;
     public float[] position;
     public bool firstLaunch;
-    // public int storyProgress;
-    public bool firstinventory;
+
+    // preferences
+    public bool enableDiagonalMoves;
+
+    // story
+
+    // inventory
+    public int kents;
+
 
     public PlayerData(Player player)
     {
@@ -21,6 +28,9 @@ public class PlayerData
         position[2] = player.transform.position.z;
 
         firstLaunch = GameController.Instance.storyController.firstLaunch;
+        enableDiagonalMoves = player.enableDiagonalMovements;
+
+        kents = player.kents;
     }
 
     public PlayerData() // empty
@@ -32,7 +42,8 @@ public class PlayerData
         position[2] = 0;
 
         firstLaunch = true;
-        firstinventory = true;
+        enableDiagonalMoves = false;
+        kents = 0;
     }
 
     public static PlayerData emtpy => new PlayerData();

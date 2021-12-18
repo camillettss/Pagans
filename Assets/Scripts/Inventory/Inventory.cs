@@ -37,6 +37,8 @@ public class Inventory : MonoBehaviour
 
     public InventorySlot extraSlot; // for consumables
 
+    [SerializeField] CalendarBook calendarBook;
+
     private void Awake()
     {
         //                                            0           1
@@ -45,6 +47,7 @@ public class Inventory : MonoBehaviour
         Equipment = new List<List<InventorySlot>>() {Weapons, Tools, Shields, Rings };
         updateEquipsList(); // dovrebbe essere una lista di puntatori..
         // wp, tool, shield, ring, secondary
+        Books.Add(calendarBook);
     }
 
     public static List<string> Categories = new List<string>
