@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] Image ActiveQuestBG;
     [SerializeField] public Light2D torchLight;
     [SerializeField] public Transform attackPoint;
+    [SerializeField] Transform transportPoint;
     [SerializeField] public float attackRange;
     public float plantRange;
 
@@ -59,6 +60,8 @@ public class Player : MonoBehaviour
 
     public Port activePort;
 
+    public Animal transportingAnimal = null;
+
     public InteractableObject activeBench;
     public Boat activeBoat = null;
     public Boat targetBoat = null;
@@ -86,6 +89,9 @@ public class Player : MonoBehaviour
         i = this;
         experience = 9;
 
+        if (quest == null || quest.title == "")
+            ActiveQuestBG.gameObject.SetActive(false);
+
         // set date
         GameController.Instance.calendar.actualMonth = GameController.Instance.calendar.Months[0]; // primo mese
         GameController.Instance.calendar.today = GameController.Instance.calendar.actualMonth.days[29]; // primo day del primo mese
@@ -94,7 +100,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         // questo viene dopo l'awake
-        //AstarPath.active.Scan(); // AI things are disabled now
+        //AstarPath.active.Scan(); // AI are disabled for this version
     }
 
     public void HandleUpdate()
@@ -107,6 +113,10 @@ public class Player : MonoBehaviour
         if(activeBoat != null)
         {
             activeBoat.transform.position = new Vector3(transform.position.x-1, transform.position.y, 0);
+        }
+        if (transportingAnimal != null)
+        {
+            transportingAnimal.transform.position = transportPoint.position;
         }
 
         moveInput.x = Input.GetAxisRaw("Horizontal");
@@ -144,7 +154,8 @@ public class Player : MonoBehaviour
             rb.MovePosition(rb.position + moveInput * getSpeed() * Time.fixedDeltaTime);
         }
 
-        attackPoint.position = new Vector3(transform.position.x+animator.GetFloat("FacingHorizontal"), transform.position.y+animator.GetFloat("FacingVertical"), transform.position.z);
+        attackPoint.position = new Vector3(transform.position.x + animator.GetFloat("FacingHorizontal"), transform.position.y+animator.GetFloat("FacingVertical"), transform.position.z);
+        transportPoint.localPosition = new Vector3(-1*animator.GetFloat("FacingHorizontal"), -1*animator.GetFloat("FacingVertical"), transform.position.z);
 
         if (inventory.equipedShield != -1)
             animator.SetBool("hasShield", true);
@@ -157,6 +168,8 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.P))
         {
+            if (GetFrontalCollider().TryGetComponent(out Animal animal) && animal.hp <= 0)
+                animal.Transport();
         }
 
         // minimap show
@@ -177,6 +190,11 @@ public class Player : MonoBehaviour
                 Dismount();
             else if (activeBoat != null)
                 activeBoat.Dismount();
+            else if(transportingAnimal != null)
+            {
+                transportingAnimal = null;
+                animator.SetBool("carrying", false);
+            }
         }
 
         /*if (Input.GetKeyDown(KeyCode.Space) && inventory.torch != null && !currentScene.outdoor) // Toggle torch

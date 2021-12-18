@@ -7,6 +7,7 @@ public abstract class Animal : MonoBehaviour, IEntity
     protected bool tamed = false;
     [SerializeField] int amountToEat; // this will be randomized with a nearly number
     int ate = 0;
+    public int hp = 10;
     [SerializeField] protected Skill tameskill;
 
     public virtual void Interact(Player player)
@@ -32,12 +33,30 @@ public abstract class Animal : MonoBehaviour, IEntity
         }
     }
 
+    public void Plund()
+    {
+        
+    }
+
+    public void Transport()
+    {
+        Player.i.transportingAnimal = this;
+        Player.i.animator.SetBool("carrying", true);
+    }
+
     public abstract void nonTamedAction();
     public abstract void TamedAction();
 
     public void takeDamage(int dmg)
     {
-        // drops meat on die.
+        hp -= dmg;
+        if (hp <= 0)
+            Die();
+    }
+
+    void Die()
+    {
+        GetComponent<Animator>().SetBool("dead", true);
     }
 
     private void FixedUpdate()

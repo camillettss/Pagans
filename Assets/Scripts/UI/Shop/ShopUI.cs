@@ -203,10 +203,9 @@ public class ShopUI : MonoBehaviour
 
                 for (int i=0; i<amount; i++)
                 {
-                    player.inventory.Remove(shopUIs[selected].item);
                     trader.inventory.Add(shopUIs[selected].item);
+                    player.inventory.Remove(shopUIs[selected].item);
                 }
-
             }
 
             selected = 0;

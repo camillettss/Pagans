@@ -503,6 +503,36 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "questo lavoro ti dar\xE0 1 freccia di ferro, ma ti coster\xE0 2 fiamme
     naniche. otterrai anche 3 punti esperienza che ti porteranno a livello 3."
+--- !u!1 &179991776262563738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8617811945645052794}
+  m_Layer: 10
+  m_Name: TransportPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8617811945645052794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179991776262563738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5379045464971056030}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &191662005642314280
 GameObject:
   m_ObjectHideFlags: 0
@@ -11509,12 +11539,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5379045464971056024}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 1.374, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5379045465332533998}
   - {fileID: 6468654483085293701}
   - {fileID: 1199283401050169798}
+  - {fileID: 8617811945645052794}
   - {fileID: 2158524525164191655}
   m_Father: {fileID: 5379045464681559696}
   m_RootOrder: 0
@@ -11583,9 +11614,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0021349788, y: -0.4183184}
+  m_Offset: {x: -0.00399971, y: -0.31762934}
   serializedVersion: 2
-  m_Radius: 0.38086426
+  m_Radius: 0.32679057
 --- !u!50 &5379045464971056029
 Rigidbody2D:
   serializedVersion: 4
@@ -11656,6 +11687,7 @@ MonoBehaviour:
   ActiveQuestBG: {fileID: 3320820370872271814}
   torchLight: {fileID: 1729070854198298205}
   attackPoint: {fileID: 1199283401050169798}
+  transportPoint: {fileID: 8617811945645052794}
   attackRange: 0.5
   plantRange: 0.25
   Recipes:
@@ -11785,6 +11817,7 @@ MonoBehaviour:
   SnapToGridMovments: 1
   kents: 10
   activePort: {fileID: 0}
+  transportingAnimal: {fileID: 0}
   activeBench: {fileID: 0}
   activeBoat: {fileID: 0}
   targetBoat: {fileID: 0}
@@ -11811,7 +11844,9 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
     count: 2
   Rings: []
-  Weapons: []
+  Weapons:
+  - item: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
+    count: 1
   Shields:
   - item: {fileID: 11400000, guid: fd64f7706a1177044b8c21c515c74dae, type: 2}
     count: 1
@@ -17452,7 +17487,7 @@ Transform:
   m_Children:
   - {fileID: 937674014445484054}
   m_Father: {fileID: 5379045464971056030}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &7992330227511560627
 Camera:
