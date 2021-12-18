@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] bool ResetOnEnd = false;
 
-    float tick=60, seconds=0, mins=0, hours=12, day = 1, month=1, year=1248;
+    float tick=60, seconds=0, mins=0, hours=8, day = 1, month=1, year=1248;
     [SerializeField, Range(0, 24)] float TimeOfDay;
     bool activateLights;
 
@@ -119,7 +119,7 @@ public class GameController : MonoBehaviour
         player.Load();
         if(storyController.firstLaunch)
         {
-            dialogueBox.StartDialogue(new Dialogue(new string[] { "ciao, tu devi essere Ulfr.", "ti guiderò alla scoperta di pagans, diventa familiare con i comandi arrivando in biblioteca." }), () => 
+            dialogueBox.StartDialogue(new Dialogue(new string[] { "Ciao, tu devi essere Njal.", "Io sono Ulf, lo sviluppatore del gioco, ti guiderò alla scoperta di Pagans.", "Inizia entrando nella Biblioteca." }), () => 
             {
                 player.QuestsContainer.Add(talkToHarbardQuest);
                 state = GameState.FreeRoam;
@@ -130,8 +130,8 @@ public class GameController : MonoBehaviour
     private void OnDestroy()
     {
         print("destroying");
-        player.Save();
-        //SaveSystem.Reset();
+        //player.Save();
+        SaveSystem.Reset();
         /*if (ResetOnEnd)
             SaveSystem.Reset();
         else

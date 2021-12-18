@@ -273,6 +273,29 @@ public class Player : MonoBehaviour
             hp -= dmg;
     }
 
+    public IEnumerator Reach(Transform target)
+    {
+        canMove = false;
+        while (Vector3.Distance(transform.position, target.position) > 1)
+        {
+            animator.SetFloat("speed", speed);
+            animator.SetFloat("FaceX", (target.position.x - transform.position.x));
+            animator.SetFloat("FaceY", (target.position.y - transform.position.y));
+
+            transform.position = Vector3.MoveTowards(transform.position, transform.position, speed * Time.deltaTime);
+
+            yield return new WaitForEndOfFrame();
+        }
+        LookAt(target.position);
+        canMove = true;
+    }
+
+    public void LookAt(Vector3 pos)
+    {
+        animator.SetFloat("FaceX", (pos.x - transform.position.x));
+        animator.SetFloat("FaceY", (pos.y - transform.position.y));
+    }
+
     public IEnumerator Die()
     {
         yield return new WaitForSeconds(.75f);

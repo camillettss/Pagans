@@ -41,6 +41,8 @@ public abstract class Animal : MonoBehaviour, IEntity
     public void Transport()
     {
         Player.i.transportingAnimal = this;
+        Player.i.animator.SetFloat("FacingHorizontal", -Player.i.animator.GetFloat("FacingHorizontal"));
+        Player.i.animator.SetFloat("FacingVertical", -Player.i.animator.GetFloat("FacingVertical"));
         Player.i.animator.SetBool("carrying", true);
     }
 
