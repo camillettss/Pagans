@@ -140,7 +140,7 @@ public class QuestGoal
             Debug.Log($"curr:{currentAmount}, req:{reqAmount}");
             currentAmount+=howMuch;
             Player.i.UpdateQuestUI();
-            if (currentAmount == reqAmount)
+            if (currentAmount >= reqAmount)
                 Complete();
         }
     }

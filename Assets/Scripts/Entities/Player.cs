@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Altar activeAltar = null;
     //[HideInInspector] public Plant activePlant = null;
     [HideInInspector] public bool canMove = true;
+    public bool isFishing = false;
     [HideInInspector] public bool canShowMinimap = true;
     public Key keyToUse = null;
     [HideInInspector] public Door closeDoor = null;
@@ -144,7 +145,7 @@ public class Player : MonoBehaviour
                 moveInput.x = 0;
         }
 
-        if(canMove)
+        if(canMove || !isFishing)
         {
             animator.SetFloat("Horizontal", moveInput.x);
             animator.SetFloat("Vertical", moveInput.y);
