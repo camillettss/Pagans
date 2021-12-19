@@ -47,10 +47,10 @@ public class NPCController : MonoBehaviour, IEntity
 
     [HideInInspector] public List<string[]> dialoguesQueue = new List<string[]>();
 
-    // IA variables
-    bool isDistanceCheck = false;
-    float timeLeft = 0.3f;
-    bool isAttacking = false;
+    [SerializeField] bool WalkingCharacter = false;
+    [ConditionalField(nameof(WalkingCharacter))] [SerializeField] List<WalkStep> steps;
+    int actualStep = 0;
+    bool isWalking = false;
 
     private void Start()
     {
@@ -219,8 +219,11 @@ public class NPCController : MonoBehaviour, IEntity
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        if (type == NPCType.Enemy)
+            return;
+
         if (GameController.Instance.state != GameState.FreeRoam)
         {
             unshowSignal();
@@ -230,42 +233,28 @@ public class NPCController : MonoBehaviour, IEntity
         if (HP <= 0)
             onDie();
 
-        if(type==NPCType.Enemy)
-        {
-            EnemyUpdate();
-        }
-
         if (Player.i.isInRange(this) && type != NPCType.Enemy && !done)
             ShowSignal();
         else
             unshowSignal();
 
-        /*if(isAttacking)
+        if(WalkingCharacter)
         {
-            if(DistanceFromPlayer() < 3.0f)
-            {
-                if(!isDistanceCheck)
-                {
-                    //GameController.Instance.ShowMessage("non puoi stare qui.");
-                    isDistanceCheck = true;
-                }
-                else
-                {
-                    timeLeft -= Time.deltaTime;
-                }
+            // MOVIMENTI
+        }
+    }
 
-                if(timeLeft <= 0.0f)
-                {
-                    // Attack
-                    Attack();
-                }
-            }
-            else
-            {
-                isDistanceCheck = false;
-                timeLeft = 3.0f;
-            }
-        }*/
+    //<summary>chiama ad ogni update questa funzione per raggiungere un target.</summary>
+    public void Reach(Transform target)
+    {
+        if (Vector3.Distance(transform.position, target.position) > 0)
+        {
+            animator.SetFloat("speed", 1);
+            animator.SetFloat("FaceX", (target.position.x - transform.position.x));
+            animator.SetFloat("FaceY", (target.position.y - transform.position.y));
+
+            transform.position = Vector3.MoveTowards(transform.position, transform.position, 5f * Time.deltaTime);
+        }
     }
 
     // Enemy update, called by Unity's Update if is an enemy.
@@ -372,4 +361,11 @@ internal class ParticleDialogue
 {
     public string questName;
     public Dialogue differentDialogue;
+}
+
+[System.Serializable]
+internal class WalkStep
+{
+    public Vector2 step;
+    public float pause;
 }
