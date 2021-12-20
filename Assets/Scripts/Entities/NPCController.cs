@@ -1,7 +1,7 @@
 ﻿using MyBox;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+using System;
 using UnityEngine;
 
 public enum NPCType
@@ -52,7 +52,13 @@ public class NPCController : MonoBehaviour, IEntity
     int actualStep = 0;
     bool isWalking = false;
     public bool canMove = true;
+    public bool isTalking = false;
+    NPCController talkingWith=null;
+    public int socialityLevel = 5;
     float speed = 2.5f;
+    float checkTimer = 0f;
+
+    List<NPCController> alreadyCheckedNPCs;
 
     private void Start()
     {
@@ -252,11 +258,11 @@ public class NPCController : MonoBehaviour, IEntity
     }
 
     //<summary>chiama ad ogni update questa funzione per raggiungere un target.</summary>
-    IEnumerator MoveBy(WalkStep step)
+    IEnumerator MoveBy(WalkStep step, int tolerance = 0)
     {
         Vector3 target = new Vector3(transform.position.x+step.step.x, transform.position.y+step.step.y);
         isWalking = true;
-        while (Vector3.Distance(transform.position, target) > 0)
+        while (Vector3.Distance(transform.position, target) > tolerance)
         {
             if (canMove)
             {
@@ -275,23 +281,96 @@ public class NPCController : MonoBehaviour, IEntity
                     animator.SetFloat("speed", 0);
             }
 
-            if (Vector3.Distance(Player.i.transform.position, transform.position) < 3.5f)
+            if (Vector3.Distance(Player.i.transform.position, transform.position) < 2.8f)
             {
                 speed = 1.5f;
                 lookAt(Player.i.transform.position);
             }
-            else if (speed < 2.1f) speed = 2.5f;
+            else if (speed < 2) speed = 2.5f;
+
+            if(checkTimer >= 1f)
+            {
+                foreach (var collider in Physics2D.OverlapCircleAll(transform.position, .5f))
+                {
+                    if (collider.TryGetComponent(out NPCController npc) && npc != this && npc.WalkingCharacter && !npc.isTalking)
+                    {
+                        if (UnityEngine.Random.Range(0, socialityLevel + 1) == 2)
+                        {
+                            print($"go talk with:{npc.name}");
+                            TalkWith(npc);
+                        }
+                    }
+                }
+                checkTimer = 0f;
+            }
+            else
+            {
+                checkTimer += Time.deltaTime;
+            }
 
             yield return new WaitForFixedUpdate();
         }
         animator.SetFloat("speed", 0);
         yield return new WaitForSeconds(step.pause);
 
-        actualStep++;
+        actualStep++; // next waypoint
         if (actualStep >= steps.Count)
             actualStep = 0;
 
         isWalking = false;
+    }
+
+    public IEnumerator MoveTo(Vector3 pos, Action onEnd, int tolerance = 1)
+    {
+        canMove = false;
+        while(Vector3.Distance(transform.position, pos) > tolerance)
+        {
+            animator.SetFloat("speed", 1);
+            animator.SetFloat("FaceX", (pos.x - transform.position.x));
+            animator.SetFloat("FaceY", (pos.y - transform.position.y));
+
+            transform.position = Vector3.MoveTowards(transform.position, pos, speed * Time.deltaTime);
+
+            yield return new WaitForEndOfFrame();
+        }
+        onEnd?.Invoke();
+    }
+
+    void TalkWith(NPCController npc)
+    {
+        // set bool
+        isTalking = true;
+        npc.isTalking = true;
+        npc.canMove = false;
+        // set person
+        talkingWith = npc;
+        npc.talkingWith = this;
+
+        StartCoroutine(MoveTo(npc.transform.position, () =>
+        {
+            npc.canMove = false;
+            canMove = false;
+
+            npc.lookAt(transform.position);
+            lookAt(npc.transform.position);
+
+            StartCoroutine(stopTalkingTimer(socialityLevel));
+        }));
+    }
+
+    IEnumerator stopTalkingTimer(int time)
+    {
+        yield return new WaitForSeconds(time);
+
+        // reset other npc
+        talkingWith.canMove = true;
+        talkingWith.isTalking = false;
+        talkingWith.talkingWith = null;
+
+        // reset urself
+        isTalking = false;
+        talkingWith = null;
+        canMove = true;
     }
 
     void lookAt(Vector3 pos)
