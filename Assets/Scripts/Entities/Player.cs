@@ -408,10 +408,6 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
         print("[*] is first launch: " + data.firstLaunch);
         GameController.Instance.storyController.firstLaunch = data.firstLaunch;
-        if(data.firstLaunch)
-        {
-            transform.position = new Vector3(235, 0, 0);
-        }
         enableDiagonalMovements = data.enableDiagonalMoves;
         kents = data.kents;
     }

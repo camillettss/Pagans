@@ -17,8 +17,17 @@ public class Portal : MonoBehaviour
     {
         var destPortal = FindObjectsOfType<Portal>().First(x => x != this && x.destination == this.destination);
 
-        Player.i.GetComponent<SpriteRenderer>().DOFade(0f, .3f);
-
-        StartCoroutine(GameController.Instance.EvH.changeScene(destPortal));
+        if(collision.tag == "Player")
+        {
+            Player.i.GetComponent<SpriteRenderer>().DOFade(0f, .3f);
+            StartCoroutine(GameController.Instance.EvH.changeScene(destPortal));
+        }
+        else
+        {
+            if(collision.TryGetComponent(out NPCController npc))
+            {
+                npc.transform.position = destPortal.spawnPoint.position;
+            }
+        }
     }
 }

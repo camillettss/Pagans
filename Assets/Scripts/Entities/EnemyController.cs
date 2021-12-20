@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MyBox;
+using UnityEngine.AI;
 
 public enum EnemyState
 {
@@ -32,11 +32,18 @@ public class EnemyController : MonoBehaviour, IEntity
     [SerializeField] int damage = 2;
     [SerializeField] int expDrop = 10;
 
+    NavMeshAgent agent;
+
     public string Name;
 
     private void Awake()
     {
         m_anim = GetComponent<Animator>();
+
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
         target = Player.i.transform;
     }
 
@@ -65,9 +72,12 @@ public class EnemyController : MonoBehaviour, IEntity
             else
             {
                 if (Vector3.Distance(target.position, transform.position) <= awakeRange)
-                    FollowTarget();
+                    agent.SetDestination(Player.i.transform.position);
                 else
+                {
                     state = EnemyState.sleeping;
+                    agent.SetDestination(transform.position); // so stop.
+                }
             }
 
         }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.Tilemap.Extras", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{647A8514-CB37-1F32-FD65-DC3005D41746}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponents", "NavMeshComponents.csproj", "{9DECD692-06B7-5D9D-2FFA-31B3EF16D638}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.Tilemap.Extras.Editor", "Unity.2D.Tilemap.Extras.Editor.csproj", "{A9A3B4A3-7083-D74D-15F7-A084C63BF22F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstarPathfindingProjectEditor", "AstarPathfindingProjectEditor.csproj", "{5B67BB71-DB4C-1A8C-734A-E3DCD402D9DD}"
@@ -14,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageToolsEditor", "PackageToolsEditor.csproj", "{AFCCABBF-C3A0-805C-7C00-67E98015A867}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.Tilemap.Extras.Placeholder.EditorTests", "Unity.2D.Tilemap.Extras.Placeholder.EditorTests.csproj", "{A444CAE5-E7CC-D7B3-2C64-BDC7D359AAD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponentsEditor", "NavMeshComponentsEditor.csproj", "{C341843F-DF8E-C6CD-4769-1E966DF85D50}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AAD18AF4-F46F-4EA2-AF40-F1F8D3FBE710}"
 	ProjectSection(SolutionItems) = preProject
@@ -38,6 +42,10 @@ Global
 		{647A8514-CB37-1F32-FD65-DC3005D41746}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{647A8514-CB37-1F32-FD65-DC3005D41746}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{647A8514-CB37-1F32-FD65-DC3005D41746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DECD692-06B7-5D9D-2FFA-31B3EF16D638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DECD692-06B7-5D9D-2FFA-31B3EF16D638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DECD692-06B7-5D9D-2FFA-31B3EF16D638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DECD692-06B7-5D9D-2FFA-31B3EF16D638}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A9A3B4A3-7083-D74D-15F7-A084C63BF22F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A9A3B4A3-7083-D74D-15F7-A084C63BF22F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9A3B4A3-7083-D74D-15F7-A084C63BF22F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,6 +62,10 @@ Global
 		{A444CAE5-E7CC-D7B3-2C64-BDC7D359AAD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A444CAE5-E7CC-D7B3-2C64-BDC7D359AAD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A444CAE5-E7CC-D7B3-2C64-BDC7D359AAD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C341843F-DF8E-C6CD-4769-1E966DF85D50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C341843F-DF8E-C6CD-4769-1E966DF85D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C341843F-DF8E-C6CD-4769-1E966DF85D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C341843F-DF8E-C6CD-4769-1E966DF85D50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
