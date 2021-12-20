@@ -293,8 +293,8 @@ public class Player : MonoBehaviour
 
     public void LookAt(Vector3 pos)
     {
-        animator.SetFloat("FaceX", (pos.x - transform.position.x));
-        animator.SetFloat("FaceY", (pos.y - transform.position.y));
+        animator.SetFloat("FacingHorizontal", (pos.x - transform.position.x));
+        animator.SetFloat("FacingVertical", (pos.y - transform.position.y));
     }
 
     public IEnumerator Die()

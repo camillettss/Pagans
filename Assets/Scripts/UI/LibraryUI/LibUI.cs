@@ -59,6 +59,11 @@ public class LibUI : MonoBehaviour
             {
                 GameController.Instance.state = GameState.FreeRoam;
                 gameObject.SetActive(false);
+                if (GameController.Instance.ActiveNPC != null)
+                {
+                    GameController.Instance.ActiveNPC.canMove = true;
+                    GameController.Instance.ActiveNPC = null;
+                }
                 //Player.i.transform.position = portal.transform.position; // make them collide so player will go back
             }
         }

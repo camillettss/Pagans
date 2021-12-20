@@ -168,6 +168,12 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("isOpen", false);
         afterDialogue?.Invoke();
+        if(GameController.Instance.ActiveNPC != null)
+        {
+            GameController.Instance.ActiveNPC.canMove = true;
+            GameController.Instance.ActiveNPC = null;
+        }
+        
     }
 
     void handleDialogue()

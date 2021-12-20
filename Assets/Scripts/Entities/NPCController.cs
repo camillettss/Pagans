@@ -48,9 +48,11 @@ public class NPCController : MonoBehaviour, IEntity
     [HideInInspector] public List<string[]> dialoguesQueue = new List<string[]>();
 
     [SerializeField] bool WalkingCharacter = false;
-    [ConditionalField(nameof(WalkingCharacter))] [SerializeField] List<WalkStep> steps;
+    [ConditionalField(nameof(WalkingCharacter))] [SerializeField] List<WalkStep> steps = new List<WalkStep>();
     int actualStep = 0;
     bool isWalking = false;
+    public bool canMove = true;
+    float speed = 2.5f;
 
     private void Start()
     {
@@ -58,6 +60,7 @@ public class NPCController : MonoBehaviour, IEntity
         quest.giver = this;
         done = false;
         storyGizmosDone = false;
+        canMove = true;
     }
 
     private void Awake()
@@ -72,6 +75,7 @@ public class NPCController : MonoBehaviour, IEntity
 
     public void Interact(Player player)
     {
+        canMove = false;
         GameController.Instance.ActiveNPC = this;
 
         if (type == NPCType.Librarian)
@@ -238,23 +242,62 @@ public class NPCController : MonoBehaviour, IEntity
         else
             unshowSignal();
 
-        if(WalkingCharacter)
+        if (WalkingCharacter)
         {
-            // MOVIMENTI
+            if (!isWalking)
+            {
+                StartCoroutine(MoveBy(steps[actualStep])); // se non cammina, fallo camminare
+            }
         }
     }
 
     //<summary>chiama ad ogni update questa funzione per raggiungere un target.</summary>
-    public void Reach(Transform target)
+    IEnumerator MoveBy(WalkStep step)
     {
-        if (Vector3.Distance(transform.position, target.position) > 0)
+        Vector3 target = new Vector3(transform.position.x+step.step.x, transform.position.y+step.step.y);
+        isWalking = true;
+        while (Vector3.Distance(transform.position, target) > 0)
         {
-            animator.SetFloat("speed", 1);
-            animator.SetFloat("FaceX", (target.position.x - transform.position.x));
-            animator.SetFloat("FaceY", (target.position.y - transform.position.y));
+            if (canMove)
+            {
+                if (animator != null)
+                {
+                    animator.SetFloat("speed", 1);
+                    animator.SetFloat("FaceX", (target.x - transform.position.x));
+                    animator.SetFloat("FaceY", (target.y - transform.position.y));
+                }
 
-            transform.position = Vector3.MoveTowards(transform.position, transform.position, 5f * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                if (animator.GetFloat("speed") > 0)
+                    animator.SetFloat("speed", 0);
+            }
+
+            if (Vector3.Distance(Player.i.transform.position, transform.position) < 3.5f)
+            {
+                speed = 1.5f;
+                lookAt(Player.i.transform.position);
+            }
+            else if (speed < 2.1f) speed = 2.5f;
+
+            yield return new WaitForFixedUpdate();
         }
+        animator.SetFloat("speed", 0);
+        yield return new WaitForSeconds(step.pause);
+
+        actualStep++;
+        if (actualStep >= steps.Count)
+            actualStep = 0;
+
+        isWalking = false;
+    }
+
+    void lookAt(Vector3 pos)
+    {
+        animator.SetFloat("FaceX", (pos.x - transform.position.x));
+        animator.SetFloat("FaceY", (pos.y - transform.position.y));
     }
 
     // Enemy update, called by Unity's Update if is an enemy.
