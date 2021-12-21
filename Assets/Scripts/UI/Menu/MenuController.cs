@@ -23,7 +23,7 @@ public class MenuController : MonoBehaviour
             ++selected;
         else if (Input.GetKeyDown(KeyCode.UpArrow))
             --selected;
-        selected = Mathf.Clamp(selected, 0, transform.childCount-1);
+        selected = Mathf.Clamp(selected, 0, 3);
 
         if (prev != selected)
             UpdateSelection();
@@ -34,10 +34,13 @@ public class MenuController : MonoBehaviour
 
     void UpdateSelection()
     {
-        foreach(Transform child in transform)
-            child.GetComponent<UnityEngine.UI.Text>().color = GameController.Instance.unselectedDefaultColor;
-        
-        transform.GetChild(selected).GetComponent<UnityEngine.UI.Text>().color = GameController.Instance.selectedDefaultColor;
+        for(int i=0; i<4; i++)
+        {
+            if(i==selected)
+                transform.GetChild(i).GetComponent<UnityEngine.UI.Text>().color = GameController.Instance.selectedDefaultColor;
+            else
+                transform.GetChild(i).GetComponent<UnityEngine.UI.Text>().color = GameController.Instance.unselectedDefaultColor;
+        }
     }
 
     void Perform(int choosen)

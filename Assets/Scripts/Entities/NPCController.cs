@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum NPCType
 {
@@ -40,6 +41,7 @@ public class NPCController : MonoBehaviour, IEntity
 
     Animator animator;
     Rigidbody2D rb;
+    NavMeshAgent agent;
 
     public bool done = false;
     bool showingSignal = false;
@@ -58,6 +60,8 @@ public class NPCController : MonoBehaviour, IEntity
     float speed = 2.5f;
     float checkTimer = 0f;
 
+    public CityDetails triggeredCity;
+
     List<NPCController> alreadyCheckedNPCs;
 
     private void Start()
@@ -72,6 +76,7 @@ public class NPCController : MonoBehaviour, IEntity
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        agent = GetComponent<NavMeshAgent>();
 
         if (type == NPCType.Enemy)
             canBeDamaged = true;
@@ -206,6 +211,21 @@ public class NPCController : MonoBehaviour, IEntity
             else
                 animator.SetFloat("FaceY", -1f);
         }*/
+    }
+
+    public void WakeUp() // this function is called at 8:00 am to fix insomnia
+    {
+        print($"{name} awaken.");
+        // dovrebbe essere in casa sua
+        // esci da casa (destination:door)
+        // entra nel pub(dest:pubdoor_external)
+        // cammina fino al bancone(dest:pub_internal:bancone)
+    }
+
+    Vector2 getActualDestination()
+    {
+        int hour = (int)GameController.Instance.hours;
+        return Vector2.zero;
     }
 
     void unshowSignal()

@@ -3,6 +3,8 @@ using UnityEngine;
 using System;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+
 public enum GameState {
     FreeRoam,
     Menu, 
@@ -24,6 +26,13 @@ public enum GameState {
     Port,
     Calendar
 };
+
+public enum ScanMode
+{
+    Viewport,
+    Every,
+    Scene
+}
 
 public class GameController : MonoBehaviour
 {
@@ -52,10 +61,11 @@ public class GameController : MonoBehaviour
     public WorkbenchUI workbenchUI;
     public PortUI portUI;
     public Calendar calendar;
+    public UnityEngine.UI.Text HourTextUI;
 
     [SerializeField] bool ResetOnEnd = false;
 
-    float tick=60, seconds=0, mins=0, hours=8, day = 1, month=1, year=1248;
+    public float mins = 40, hours = 7, day = 1, month = 1, year = 1248;
     [SerializeField, Range(0, 24)] float TimeOfDay;
     bool activateLights;
 
@@ -117,9 +127,9 @@ public class GameController : MonoBehaviour
         ppv = gameObject.GetComponent<Volume>();
         EvH = FindObjectOfType<StoryEventHandler>();
         player.Load();
-        if(storyController.firstLaunch)
+        if (storyController.firstLaunch)
         {
-            dialogueBox.StartDialogue(new Dialogue(new string[] { "Ciao, tu devi essere Njal.", "Io sono Ulf, lo sviluppatore del gioco, ti guiderò alla scoperta di Pagans.", "Inizia entrando nella Biblioteca." }), () => 
+            dialogueBox.StartDialogue(new Dialogue(new string[] { "Ciao, tu devi essere Njal.", "Io sono Ulf, lo sviluppatore del gioco, ti guiderò alla scoperta di Pagans.", "Inizia entrando nella Biblioteca." }), () =>
             {
                 player.QuestsContainer.Add(talkToHarbardQuest);
                 state = GameState.FreeRoam;
@@ -138,7 +148,7 @@ public class GameController : MonoBehaviour
             player.Save();*/
     }
 
-    public void OpenState(GameState state, TraderController trader = null, Cauldron c=null, ItemBase craftItem=null)
+    public void OpenState(GameState state, TraderController trader = null, Cauldron c = null, ItemBase craftItem = null)
     {
         print($"target state:{state}, trader passed:{trader}.");
         IdleAllEnemies();
@@ -179,32 +189,32 @@ public class GameController : MonoBehaviour
             libUI.gameObject.SetActive(true);
             libUI.UpdateCategorySelection();
         }
-        else if(state == GameState.GameOver)
+        else if (state == GameState.GameOver)
         {
             gameOverUI.gameObject.SetActive(true);
         }
-        else if(state == GameState.Cauldron)
+        else if (state == GameState.Cauldron)
         {
             cauldronUI.SetSource(c);
             cauldronUI.UpdateContents();
             cauldronUI.gameObject.SetActive(true);
         }
-        else if(state == GameState.CraftUI)
+        else if (state == GameState.CraftUI)
         {
             craftUI.UpdateContents(craftItem);
             craftUI.gameObject.SetActive(true);
         }
-        else if(state == GameState.Workbench)
+        else if (state == GameState.Workbench)
         {
             workbenchUI.gameObject.SetActive(true);
             workbenchUI.UpdateContents();
         }
-        else if(state == GameState.Port)
+        else if (state == GameState.Port)
         {
             portUI.gameObject.SetActive(true);
             portUI.UpdateContents();
         }
-        else if(state == GameState.Calendar)
+        else if (state == GameState.Calendar)
         {
             calendar.gameObject.SetActive(true);
             calendar.UpdateContents();
@@ -347,8 +357,8 @@ public class GameController : MonoBehaviour
     // day/night cycle
     void UpdateTime()
     {
-        mins += 10*Time.deltaTime;
-        if(mins >= 60)
+        mins += Time.deltaTime;
+        if (mins >= 60)
         {
             mins = 0;
             hours++;
@@ -359,7 +369,15 @@ public class GameController : MonoBehaviour
             }
         }
 
-        var scaleTime = hours+(((10 * mins) / 6) / 100);
+        if (hours == 8f && (int)mins == 5)
+        {
+            foreach(var npc in ScanNPCs(ScanMode.Scene))
+            {
+                npc.WakeUp();
+            }
+        }
+
+        var scaleTime = hours + (((10 * mins) / 6) / 100);
 
         if (player.currentScene.outdoor)
         {
@@ -368,17 +386,29 @@ public class GameController : MonoBehaviour
             player.currentScene.light.intensity = Mathf.Clamp((Mathf.Sin((scaleTime / 3.8f) - 1.58f) + 1.2f) / 2, 0.1f, 1);
         }
 
-        /*//player.currentScene.light.intensity = Mathf.Clamp(hours/10, 0.1f, 1);
-        // interpolate yellow
-        int targetHour = 18;
-        //60 * (targetHour - hours)
-        player.currentScene.light.color = Color.Lerp(player.currentScene.light.color, nightLightsColor, Time.deltaTime/timer);
-        timer -= Time.deltaTime;
-        TimeOfDay += Time.deltaTime;
-        TimeOfDay %= 24;
-        // update using time/24f as timePercent
-        player.currentScene.light.color = nightLightsColor.Evaluate(TimeOfDay / 24f);*/
+        HourTextUI.text = $"{hours}:{(int)mins}";
 
+    }
+
+    List<NPCController> ScanNPCs(ScanMode mode)
+    {
+        if (mode==ScanMode.Every)
+        {
+            throw new NotImplementedException("vaffanculo");
+        }
+        else if(mode == ScanMode.Scene)
+        {
+            List<NPCController> res = new List<NPCController>();
+            foreach (Transform child in player.triggeredCity.entitiesContainer.transform)
+                if (child.TryGetComponent(out NPCController npc))
+                    res.Add(npc);
+            return res;
+        }
+        else if(mode == ScanMode.Viewport)
+        {
+            throw new NotImplementedException("la scansione per viewport non è ancora stata programmata");
+        }
+        return new List<NPCController>();
     }
 
     void UpdateEnemiesInViewport()

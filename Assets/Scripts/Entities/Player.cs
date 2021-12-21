@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
     public SceneDetails currentScene;
     public bool SnapToGridMovments = false;
     public int kents = 0;
+    public CityDetails triggeredCity=null;
 
     public Port activePort;
 
