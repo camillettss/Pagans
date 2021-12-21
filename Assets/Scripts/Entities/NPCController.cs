@@ -41,7 +41,6 @@ public class NPCController : MonoBehaviour, IEntity
 
     Animator animator;
     Rigidbody2D rb;
-    NavMeshAgent agent;
 
     public bool done = false;
     bool showingSignal = false;
@@ -76,10 +75,6 @@ public class NPCController : MonoBehaviour, IEntity
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        agent = GetComponent<NavMeshAgent>();
-
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
 
         if (type == NPCType.Enemy)
             canBeDamaged = true;
@@ -219,17 +214,10 @@ public class NPCController : MonoBehaviour, IEntity
     public void WakeUp() // this function is called at 8:00 am to fix insomnia
     {
         print($"{name} awaken.");
-        agent.SetDestination(new Vector3(258, -30, 1));
         // dovrebbe essere in casa sua
         // esci da casa (destination:door)
         // entra nel pub(dest:pubdoor_external)
         // cammina fino al bancone(dest:pub_internal:bancone)
-    }
-
-    Vector2 getActualDestination()
-    {
-        int hour = (int)GameController.Instance.hours;
-        return Vector2.zero;
     }
 
     void unshowSignal()
@@ -272,16 +260,16 @@ public class NPCController : MonoBehaviour, IEntity
         else
             unshowSignal();
 
-        if (WalkingCharacter)
+        /*if (WalkingCharacter)
         {
             if (!isWalking)
             {
                 StartCoroutine(MoveBy(steps[actualStep])); // se non cammina, fallo camminare
             }
-        }
+        }*/
     }
 
-    //<summary>chiama ad ogni update questa funzione per raggiungere un target.</summary>
+    //<summary>crea un target a distanza "step" dalla posizione attuale e raggiungilo.</summary>
     IEnumerator MoveBy(WalkStep step, int tolerance = 0)
     {
         Vector3 target = new Vector3(transform.position.x+step.step.x, transform.position.y+step.step.y);
