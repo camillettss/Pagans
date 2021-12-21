@@ -78,6 +78,9 @@ public class NPCController : MonoBehaviour, IEntity
         rb = GetComponent<Rigidbody2D>();
         agent = GetComponent<NavMeshAgent>();
 
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
         if (type == NPCType.Enemy)
             canBeDamaged = true;
 
@@ -216,6 +219,7 @@ public class NPCController : MonoBehaviour, IEntity
     public void WakeUp() // this function is called at 8:00 am to fix insomnia
     {
         print($"{name} awaken.");
+        agent.SetDestination(new Vector3(258, -30, 1));
         // dovrebbe essere in casa sua
         // esci da casa (destination:door)
         // entra nel pub(dest:pubdoor_external)
