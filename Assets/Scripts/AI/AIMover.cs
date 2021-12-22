@@ -6,8 +6,11 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class AIMover : MonoBehaviour
 {
+    [SerializeField] List<TimedLocation> behaviourDescriptor;
+
     NavMeshAgent agent;
     Animator m_anim;
+    public CityDetails triggeredCity;
 
     private void Awake()
     {
@@ -17,11 +20,16 @@ public class AIMover : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = 2.5f;
+        agent.stoppingDistance = 4f;
+
+        behaviourDescriptor = new List<TimedLocation>()
+        {
+            new TimedLocation(new Vector2(248, -35), 8)
+        }; // definisco in code un comportamento statico.
     }
 
     private void Update()
     {
-        agent.SetDestination(getDestination());
         transform.position = new Vector3(transform.position.x, transform.position.y, 1);
 
         m_anim.SetFloat("speed", agent.velocity.magnitude);
@@ -31,12 +39,32 @@ public class AIMover : MonoBehaviour
 
     Vector3 getDestination()
     {
-        if (GameController.Instance.hours == 8)
+        foreach(var loc in behaviourDescriptor)
         {
-            // ADD BEHAVIOURS
+            if(loc.hour == GameController.Instance.hours)
+            {
+                return loc.destination;
+            }
         }
         return transform.position; // ultima condizione: non muoverti.
     }
 
+    public void WakeUp()
+    {
+        agent.SetDestination(behaviourDescriptor[0].destination);
+    }
     
+}
+
+[System.Serializable]
+internal class TimedLocation
+{
+    public Vector2 destination;
+    public int hour;
+
+    public TimedLocation(Vector2 dest, int hour)
+    {
+        destination = dest;
+        this.hour = hour;
+    }
 }

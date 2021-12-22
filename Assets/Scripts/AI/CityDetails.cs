@@ -15,5 +15,8 @@ public class CityDetails : MonoBehaviour
     {
         if (collision.tag == "Player")
             Player.i.triggeredCity = this;
+
+        else if (collision.TryGetComponent(out AIMover ai))
+            ai.triggeredCity = this;
     }
 }

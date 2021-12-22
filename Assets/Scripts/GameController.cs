@@ -371,9 +371,9 @@ public class GameController : MonoBehaviour
 
         if (hours == 8f && (int)mins == 5)
         {
-            foreach(var npc in ScanNPCs(ScanMode.Scene))
+            foreach(var ai in ScanNPCs(ScanMode.Scene))
             {
-                npc.WakeUp();
+                ai.WakeUp();
             }
         }
 
@@ -390,7 +390,7 @@ public class GameController : MonoBehaviour
 
     }
 
-    List<NPCController> ScanNPCs(ScanMode mode)
+    List<AIMover> ScanNPCs(ScanMode mode)
     {
         if (mode==ScanMode.Every)
         {
@@ -398,9 +398,9 @@ public class GameController : MonoBehaviour
         }
         else if(mode == ScanMode.Scene)
         {
-            List<NPCController> res = new List<NPCController>();
+            List<AIMover> res = new List<AIMover>();
             foreach (Transform child in player.triggeredCity.entitiesContainer.transform)
-                if (child.TryGetComponent(out NPCController npc))
+                if (child.TryGetComponent(out AIMover npc))
                     res.Add(npc);
             return res;
         }
@@ -408,7 +408,7 @@ public class GameController : MonoBehaviour
         {
             throw new NotImplementedException("la scansione per viewport non è ancora stata programmata");
         }
-        return new List<NPCController>();
+        return new List<AIMover>();
     }
 
     void UpdateEnemiesInViewport()

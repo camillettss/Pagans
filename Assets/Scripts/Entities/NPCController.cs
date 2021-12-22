@@ -211,15 +211,6 @@ public class NPCController : MonoBehaviour, IEntity
         }*/
     }
 
-    public void WakeUp() // this function is called at 8:00 am to fix insomnia
-    {
-        print($"{name} awaken.");
-        // dovrebbe essere in casa sua
-        // esci da casa (destination:door)
-        // entra nel pub(dest:pubdoor_external)
-        // cammina fino al bancone(dest:pub_internal:bancone)
-    }
-
     void unshowSignal()
     {
         if(showingSignal)
@@ -243,6 +234,7 @@ public class NPCController : MonoBehaviour, IEntity
 
     private void FixedUpdate()
     {
+
         if (type == NPCType.Enemy)
             return;
 
