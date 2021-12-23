@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class EnemyGFX : MonoBehaviour
+public class AIEntityGFX : MonoBehaviour
 {
     public AIPath aiPath;
     public Animator animator;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (aiPath.desiredVelocity != Vector3.zero)
-            animator.SetFloat("speed", 1f);
-        else
-            animator.SetFloat("speed", 0f);
-
+        animator.SetFloat("speed", aiPath.velocity.magnitude);
 
         if(aiPath.desiredVelocity.x != 0)
         {

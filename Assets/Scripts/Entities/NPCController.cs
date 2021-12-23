@@ -15,6 +15,7 @@ public enum NPCType
     Librarian
 }
 
+[RequireComponent(typeof(Animator))]
 public class NPCController : MonoBehaviour, IEntity
 {
     public string Name;
