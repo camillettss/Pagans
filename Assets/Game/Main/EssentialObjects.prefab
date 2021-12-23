@@ -11974,6 +11974,7 @@ MonoBehaviour:
   currentScene: {fileID: 0}
   SnapToGridMovments: 1
   kents: 10
+  triggeredCity: {fileID: 0}
   activePort: {fileID: 0}
   transportingAnimal: {fileID: 0}
   activeBench: {fileID: 0}
@@ -12144,6 +12145,11 @@ MonoBehaviour:
   calendar: {fileID: 103869690192701106}
   HourTextUI: {fileID: 8664258425486615060}
   ResetOnEnd: 0
+  mins: 55
+  hours: 18
+  day: 1
+  month: 1
+  year: 1248
   TimeOfDay: 0
   dialogueBox: {fileID: 5379045465510515555}
   questWindow: {fileID: 5379045465577444028}

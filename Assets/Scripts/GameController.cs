@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] bool ResetOnEnd = false;
 
-    public float mins = 40, hours = 7, day = 1, month = 1, year = 1248;
+    public float mins = 55, hours = 18, day = 1, month = 1, year = 1248;
     [SerializeField, Range(0, 24)] float TimeOfDay;
     bool activateLights;
 
@@ -135,6 +135,8 @@ public class GameController : MonoBehaviour
                 state = GameState.FreeRoam;
             });
         }
+        hours = 18;
+        mins = 55;
     }
 
     private void OnDestroy()
@@ -369,13 +371,13 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if (hours == 8f && (int)mins == 5)
+        /*if (hours == 19f)
         {
             foreach(var ai in ScanNPCs(ScanMode.Scene))
             {
-                ai.WakeUp();
+                ai.GoHome();
             }
-        }
+        }*/
 
         var scaleTime = hours + (((10 * mins) / 6) / 100);
 

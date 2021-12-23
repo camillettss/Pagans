@@ -6,10 +6,13 @@ using MyBox;
 using DG.Tweening;
 
 public enum Locations { FadsHeimr, AsbjarnarHeimr, TutorialShop, FarmHouse, MagicianHouse, Cave1, Library };
+public enum PortalDetails { IN, OUT, NONE };
 
 public class Portal : MonoBehaviour
 {
     public Locations destination;
+    public PortalDetails details;
+
     public Transform spawnPoint;
     [ConditionalField(nameof(destination), false, Locations.Library)] public bool goingIn = true;
 

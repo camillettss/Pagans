@@ -94,33 +94,6 @@ public class NPCController : MonoBehaviour, IEntity
             TriggerDialogue();
     }
 
-    [System.Obsolete("contenuto in via di sviluppo.", true)]
-    public IEnumerator Move(Vector2 vec) // like (2, 4) moves first 2 steps right and then 4 steps up
-    {
-        var startPos = (Vector2)transform.position;
-        var targetPos = new Vector2(transform.position.x + vec.x, transform.position.y + vec.y); // no pathfinding to reach.
-
-        bool isMoving = false;
-
-        while(startPos - targetPos != Vector2.zero)
-        {
-            if (isMoving)
-                yield return 0;
-
-            else
-            {
-                // scegli se aggiustare X o Y
-                if((Mathf.Abs(transform.position.x)-Mathf.Abs(targetPos.x)) < (Mathf.Abs(transform.position.y) - Mathf.Abs(targetPos.y))) // se distanza fra le x maggiore distanza fra y
-                {
-                    // la distanza fra le x è minore
-
-                    //rb.velocity = moveInput * getSpeed();
-                    //rb.MovePosition(rb.position + moveInput * getSpeed() * Time.fixedDeltaTime);
-                }
-            }
-        }
-    }
-
     public void TriggerDialogue()
     {
         if (!storyGizmosDone) {
@@ -185,6 +158,7 @@ public class NPCController : MonoBehaviour, IEntity
         }
     }
 
+    [System.Obsolete("unmainteined function, use NPCController.LookAt() instead.", true)]
     void PointToPlayer() // nessuno ha capito perchè non cambia i float dell'animator ma okk
     {
         /*
@@ -251,17 +225,9 @@ public class NPCController : MonoBehaviour, IEntity
             ShowSignal();
         else
             unshowSignal();
-
-        /*if (WalkingCharacter)
-        {
-            if (!isWalking)
-            {
-                StartCoroutine(MoveBy(steps[actualStep])); // se non cammina, fallo camminare
-            }
-        }*/
     }
 
-    //<summary>crea un target a distanza "step" dalla posizione attuale e raggiungilo.</summary>
+    [System.Obsolete("algoritmo obsoleto, usa A* per spostarti.", false)]
     IEnumerator MoveBy(WalkStep step, int tolerance = 0)
     {
         Vector3 target = new Vector3(transform.position.x+step.step.x, transform.position.y+step.step.y);
@@ -292,7 +258,7 @@ public class NPCController : MonoBehaviour, IEntity
             }
             else if (speed < 2) speed = 2.5f;
 
-            if(checkTimer >= 1f)
+            /*if(checkTimer >= 1f)
             {
                 foreach (var collider in Physics2D.OverlapCircleAll(transform.position, .5f))
                 {
@@ -310,7 +276,7 @@ public class NPCController : MonoBehaviour, IEntity
             else
             {
                 checkTimer += Time.deltaTime;
-            }
+            }*/
 
             yield return new WaitForFixedUpdate();
         }

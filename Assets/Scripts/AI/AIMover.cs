@@ -20,17 +20,17 @@ public class AIMover : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = 2.5f;
-        agent.stoppingDistance = 4f;
+        agent.stoppingDistance = 0f;
 
         behaviourDescriptor = new List<TimedLocation>()
         {
             new TimedLocation(new Vector2(248, -35), 8)
-        }; // definisco in code un comportamento statico.
+        }; // definisco un comportamento statico.
     }
 
     private void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, 1);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 1); // set position restriction: z always 1.
 
         m_anim.SetFloat("speed", agent.velocity.magnitude);
         m_anim.SetFloat("FaceX", Mathf.Clamp(agent.velocity.x, -1, 1));
@@ -49,9 +49,17 @@ public class AIMover : MonoBehaviour
         return transform.position; // ultima condizione: non muoverti.
     }
 
-    public void WakeUp()
+    public void GoHome()
     {
-        agent.SetDestination(behaviourDescriptor[0].destination);
+        // primary ai find home's door position
+        // secondary ai (A*) reaches it
+        agent.SetDestination(triggeredCity.Houses[Random.Range(0, triggeredCity.Houses.Count)]); // va in una casa a caso.
+        // if scene.indoor go to scene.exit, then city.house.
+    }
+
+    public void Reach(Vector2 destination)
+    {
+        agent.SetDestination(destination);
     }
     
 }

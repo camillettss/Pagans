@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class CityDetails : MonoBehaviour
 {
-    public List<Vector2> Houses;
+    public List<Vector2> Houses; // portal INs
     public Vector2 Shop;
     public Vector2 pub;
 
