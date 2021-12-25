@@ -135,6 +135,7 @@ Received Import Request.
   artifactKey: Guid(6a43cb96476a1c046883dc045bfce86f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scripts/AI/CityDetails.cs using Guid(6a43cb96476a1c046883dc045bfce86f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12effff6fddb12e03336ed7477d55f51') in 0.434306 seconds 
   Import took 0.440103 seconds .
+<<<<<<< Updated upstream
 
 ========================================================================
 Received Prepare
@@ -2841,3 +2842,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+=======
+
+>>>>>>> Stashed changes
