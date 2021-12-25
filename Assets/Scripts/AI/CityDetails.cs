@@ -11,12 +11,14 @@ public class CityDetails : MonoBehaviour
 
     public GameObject entitiesContainer;
 
+    public Transform door;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
             Player.i.triggeredCity = this;
 
-        else if (collision.TryGetComponent(out AIMover ai))
+        else if (collision.TryGetComponent(out NoAIBehaviour ai))
             ai.triggeredCity = this;
     }
 }

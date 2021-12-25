@@ -135,7 +135,7 @@ public class GameController : MonoBehaviour
                 state = GameState.FreeRoam;
             });
         }
-        hours = 18;
+        hours = 7;
         mins = 55;
     }
 
@@ -364,6 +364,12 @@ public class GameController : MonoBehaviour
         {
             mins = 0;
             hours++;
+            
+            foreach(var ai in ScanNPCs(ScanMode.Every))
+            {
+                ai.AtHour((int)hours);
+            }
+
             if (hours >= 24)
             {
                 hours = 0;
@@ -392,17 +398,20 @@ public class GameController : MonoBehaviour
 
     }
 
-    List<AIMover> ScanNPCs(ScanMode mode)
+    List<NoAIBehaviour> ScanNPCs(ScanMode mode)
     {
         if (mode==ScanMode.Every)
         {
-            throw new NotImplementedException("vaffanculo");
+            List<NoAIBehaviour> res = new List<NoAIBehaviour>();
+            foreach (var obj in FindObjectsOfType<NoAIBehaviour>())
+                res.Add(obj);
+            return res; // hope this workls everywhere.
         }
         else if(mode == ScanMode.Scene)
         {
-            List<AIMover> res = new List<AIMover>();
+            List<NoAIBehaviour> res = new List<NoAIBehaviour>();
             foreach (Transform child in player.triggeredCity.entitiesContainer.transform)
-                if (child.TryGetComponent(out AIMover npc))
+                if (child.TryGetComponent(out NoAIBehaviour npc))
                     res.Add(npc);
             return res;
         }
@@ -410,7 +419,7 @@ public class GameController : MonoBehaviour
         {
             throw new NotImplementedException("la scansione per viewport non è ancora stata programmata");
         }
-        return new List<AIMover>();
+        return new List<NoAIBehaviour>();
     }
 
     void UpdateEnemiesInViewport()

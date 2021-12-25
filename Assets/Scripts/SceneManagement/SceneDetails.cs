@@ -13,6 +13,7 @@ public class SceneDetails : MonoBehaviour
     public GameObject[] lights;
 
     public bool outdoor = true;
+    public Vector2 door; // se è una scena chiusa specifica l'entrata.
 
     bool IsLoaded = false;
 
@@ -29,6 +30,13 @@ public class SceneDetails : MonoBehaviour
 
             if (gameObject.name != "Midgardr")
                 NotificationsUI.i.AddNotification("entered " + gameObject.name);
+        }
+        else if(collision.tag == "NPC")
+        {
+            if(collision.TryGetComponent(out NoAIBehaviour ai))
+            {
+                ai.triggeredScene = this;
+            }
         }
     }
 

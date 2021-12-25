@@ -164,6 +164,7 @@ MonoBehaviour:
   lightColor: {r: 1, g: 1, b: 1, a: 0}
   lights: []
   outdoor: 1
+  door: {x: 0, y: 0}
 --- !u!61 &357569127
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -273,6 +274,7 @@ MonoBehaviour:
   lightColor: {r: 1, g: 1, b: 1, a: 0}
   lights: []
   outdoor: 1
+  door: {x: 0, y: 0}
 --- !u!4 &637793941
 Transform:
   m_ObjectHideFlags: 0
@@ -3210,6 +3212,7 @@ MonoBehaviour:
   lightColor: {r: 1, g: 0.972549, b: 0.9098039, a: 0}
   lights: []
   outdoor: 0
+  door: {x: 313.5, y: 5.3}
 --- !u!1 &1266263857
 GameObject:
   m_ObjectHideFlags: 0
@@ -3247,6 +3250,7 @@ MonoBehaviour:
   lightColor: {r: 1, g: 1, b: 1, a: 0}
   lights: []
   outdoor: 0
+  door: {x: 0, y: 0}
 --- !u!61 &1266263859
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3323,6 +3327,7 @@ MonoBehaviour:
   lightColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
   lights: []
   outdoor: 0
+  door: {x: 0, y: 0}
 --- !u!61 &1369538998
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3399,6 +3404,7 @@ MonoBehaviour:
   lightColor: {r: 1, g: 1, b: 1, a: 0}
   lights: []
   outdoor: 0
+  door: {x: 0, y: 0}
 --- !u!61 &1378078051
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3547,6 +3553,7 @@ MonoBehaviour:
   lightColor: {r: 1, g: 1, b: 1, a: 0}
   lights: []
   outdoor: 0
+  door: {x: 0, y: 0}
 --- !u!61 &1426742512
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3663,6 +3670,7 @@ MonoBehaviour:
   lightColor: {r: 1, g: 0.972549, b: 0.9098039, a: 0}
   lights: []
   outdoor: 0
+  door: {x: 0, y: 0}
 --- !u!1 &1527218953
 GameObject:
   m_ObjectHideFlags: 0
@@ -3740,6 +3748,7 @@ MonoBehaviour:
   lightColor: {r: 1, g: 1, b: 1, a: 0}
   lights: []
   outdoor: 0
+  door: {x: 0, y: 0}
 --- !u!850595691 &2136341445
 LightingSettings:
   m_ObjectHideFlags: 0
