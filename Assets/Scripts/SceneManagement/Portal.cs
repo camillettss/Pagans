@@ -31,6 +31,10 @@ public class Portal : MonoBehaviour
             {
                 npc.transform.position = destPortal.spawnPoint.position;
             }
+            if(collision.TryGetComponent(out NoAIBehaviour ai))
+            {
+                ai.onEnterDoor(this);
+            }
         }
     }
 }

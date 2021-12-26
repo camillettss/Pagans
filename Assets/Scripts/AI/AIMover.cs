@@ -53,7 +53,7 @@ public class AIMover : MonoBehaviour
     {
         // primary ai find home's door position
         // secondary ai (A*) reaches it
-        agent.SetDestination(triggeredCity.Houses[Random.Range(0, triggeredCity.Houses.Count)]); // va in una casa a caso.
+        //agent.SetDestination(triggeredCity.Houses[Random.Range(0, triggeredCity.Houses.Count)]); // va in una casa a caso.
         // if scene.indoor go to scene.exit, then city.house.
     }
 

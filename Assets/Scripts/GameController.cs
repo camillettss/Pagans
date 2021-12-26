@@ -4,6 +4,7 @@ using System;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using Pathfinding;
 
 public enum GameState {
     FreeRoam,
@@ -118,6 +119,8 @@ public class GameController : MonoBehaviour
     {
         Instance = this;
         storyController = GetComponent<StoryController>();
+
+        //FindObjectOfType<AstarPath>().scanOnStartup = true;
     }
 
     private void Start()
@@ -135,7 +138,7 @@ public class GameController : MonoBehaviour
                 state = GameState.FreeRoam;
             });
         }
-        hours = 7;
+        hours = 18;
         mins = 55;
     }
 
@@ -359,7 +362,7 @@ public class GameController : MonoBehaviour
     // day/night cycle
     void UpdateTime()
     {
-        mins += Time.deltaTime;
+        mins += 30*Time.deltaTime;
         if (mins >= 60)
         {
             mins = 0;

@@ -800,6 +800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   morninghour: 8
   nighthour: 19
+  outdoorPosition: {x: 238.5, y: -32}
   triggeredCity: {fileID: 0}
   triggeredScene: {fileID: 0}
 --- !u!114 &342466859
@@ -3914,7 +3915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIezQ3ETyZQIAABgFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVEtz2jAQ/iuMzqVjzCPQW0sC6YHAhHRy8UXIa6xBljySzCvDf+9KlrFLubD+9tvdbx/2F+HSlMCs0kvN05VKgfzoEWeTb73W+Qpnuldyy6/QcD55anNHop7zTi1XiA9cmFEFWM3ZT7kXjhwhWEmeKV28pHuYK2MNwhkVBtCllXXREqGvHjnjX3/mQi5oxU/OuqI1i3o3NBlIC7qlxqNxoPaH40CtmZVkghYlpE52GzCaBv5w6mkSGwoMJ54pIbgJaoi9lL7bbZmDBtduyik25xVE313BHPg+t05JN3qdZQZs6F3TyzPXOKU6Lfml6tEV1BxqYUcqKq8gjqe1rDrt6j9Gf+DdmVbFa1N5ELkqNufs8E4vjBrbmW4Xfm7FD/yETlQc6E7AZw7yTS21qmSKTqsrF1oZiJ/bx3tz8xzYocVrqQ9gVbYjb5bZrNL1cPP9n+eCFzs/y1ENbIXyI/cXABqX8xsF+/swIQWiTsUfAx903z2k4FhwbSy6QpfSydupSjsqWaDhZs8qO1dagkeD5hIkFfaywSz2cYcPvk7VB8+Cujcm1A6+5kV4CPFwy4+iB9dGne67Mrk6rcDk68oKLqEV7RxvOKa5krI+se5ImrBtpTPKOmH7iqf/XhaJ2WgyHD7hbzalMUA/iibD2WgSD8e7WTSCMfGnxyX2ScWmFhrGg0uTbXKJZ9Z8SHpLTUt/7qmmpyW/Fqozci4ztWUaQK7rDHfhoLEIvpfpS8pxQFuwlku/bvKVEKHYAdLknijxnb6craZJmyUhJT8q65CEzP2XIyEOvp/yRsORw8kVb5LdyO0vUEsDBBQAAAgIAAAIIeyTv4X8bAAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrSSUbKJmbGxORBYWiQapabqGhiYGVuamBkZmyZZGpikmirFAtWXVBak+iXmpkL0BCSWZKRl5qVk5qXruRdlpriDjFaKrQUAUEsBAi0AFAAACAgAAAgh7NDcRPJlAgAAGAUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7JO/hfxsAAAAeAAAAAkAJAAAAAAAAAAAAAAAsgIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABpAwAAAAA=
+    dataString: UEsDBBQAAAgIAAAIIextOfeJZgIAABoFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMuS2jAQ/BVK55Ay5rGQW8Jrc2Chlk3txRchj7EKWXJJMq8t/j0j2caOwwW5p2empzX2F+HS5MCs0mvN442KgfzoEXcm33pN8BWu9Kjknt+h5nzy2KaORD3nnVquEB+4NKMysJqzn/IoHDlAsJA8UTpbxkeYK2MNwgkVBjCklXXZEqGvHrniX3/mUm54Cl/c6Y6nWdB74JGBtKAbajgaV9T+cFxRS2YhmaBZDrGT3SQMJnXtwbgkShyp4jj5TAnBTaWH2Fvu593nKWhwA8ec4nheQ/DdtUyBH1PrtLSzt0liwFbTa3pbcI0+lWXJL1Wal1FzKqWdqSi8gjCcTr2ssuzmP0Z/4MOJVtlr3XkQuC425ez0Tm+MGtvytw0vGvED79GFihM9CPhMQb6ptVaFjDFodeFSCwPhonl8DjdPgZ0avJTaAYu8Mb22vL5MN8PDz3+dC54dvJejEtgL5S33OwAaL+c3CvYbYqoSiDoVfwx80GN7larAimtjMVRNKZ28gyq0o5IVHpz3rLBzpSV4tNKcg6TC3nZYxXbvsBNrde1EVtS9M1XvKla/Cp0UDzf8IOiEduryvCuTqssGTLotrOASGtEu8IY2zZWU5Yq1LanT9oVOKGulHQse/7tZJGSjyXD4gr/ZlIYA/SCYDGejSTgcH2bBCMbErx6XOCcVu1JoZQ9emmyKS1yz+lPSW2ua+3WPNb2s+T1TLcu5TNSeaQC5LSs8hYPGJvhexsuYo0F7sJZLf93kKyJCsRPE0bNQ5CddXq2mUVMlIjk/K+uQiMz9tyMiDn6u8k7DmcPFNa+LPcjjL1BLAwQUAAAICAAACCHsk7+F/GwAAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0klGyiZmxsTkQWFokGqWm6hoYmBlbmpgZGZsmWRqYpJoqxQLVl1QWpPol5qZC9AQklmSkZealZOal67kXZaa4g4xWiq0FAFBLAQItABQAAAgIAAAIIextOfeJZgIAABoFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIeyTv4X8bAAAAHgAAAAJACQAAAAAAAAAAAAAALMCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAagMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -3946,7 +3947,7 @@ MonoBehaviour:
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
@@ -8856,6 +8857,11 @@ PrefabInstance:
       propertyPath: entitiesContainer
       value: 
       objectReference: {fileID: 1110182013}
+    - target: {fileID: 3311108653913208438, guid: 3f69bb063b3c2974990d1b2cf2dcac17,
+        type: 3}
+      propertyPath: Houses.Array.data[0]
+      value: 
+      objectReference: {fileID: 508556664}
     - target: {fileID: 3311108653913208439, guid: 3f69bb063b3c2974990d1b2cf2dcac17,
         type: 3}
       propertyPath: m_RootOrder

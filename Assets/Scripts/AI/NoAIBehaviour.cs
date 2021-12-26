@@ -7,6 +7,7 @@ public class NoAIBehaviour : MonoBehaviour
 {
     [SerializeField] int morninghour = 8;
     [SerializeField] int nighthour = 19;
+    [SerializeField] Vector2 outdoorPosition;
 
     public CityDetails triggeredCity;
     public SceneDetails triggeredScene;
@@ -16,6 +17,9 @@ public class NoAIBehaviour : MonoBehaviour
 
     float timer = 0;
     float actualTimeTarget = 5f;
+
+    bool isGoingSomewhere = false;
+    bool isGoingOutdoor = false;
 
     private void Awake()
     {
@@ -33,32 +37,92 @@ public class NoAIBehaviour : MonoBehaviour
     {
         if(hour == nighthour)
         {
-            //goHome();
+            isGoingSomewhere = true;
+            aipath.canMove = true;
+
+            aipath.destination = triggeredCity.Houses[Random.Range(0, triggeredCity.Houses.Count)].position; // choose random house
         }
         else if(hour == morninghour)
         {
-            //StartCoroutine(exitHome());
+            isGoingSomewhere = true;
+            aipath.canMove = true;
+
+            aipath.destination = triggeredCity.door.position;
+            isGoingOutdoor = true;
+        }
+    }
+
+    void noAIUpdate()
+    {
+        timer += Time.fixedDeltaTime;
+
+        if (aipath.canMove && aipath.reachedDestination)
+            aipath.canMove = false;
+
+        if (timer >= actualTimeTarget)
+        {
+            LookAt(getRandomDirection());
+            actualTimeTarget = Random.Range(5, 15);
+            timer = 0f;
+            if (Random.Range(0, 1) == 0) // 50%
+            {
+                aipath.canMove = true;
+                aipath.destination = new Vector3(transform.position.x + animator.GetFloat("FaceX"), transform.position.y + animator.GetFloat("FaceY"), transform.position.z);
+            }
+            else
+                aipath.canMove = false;
         }
     }
 
     private void FixedUpdate()
     {
-        timer += Time.fixedDeltaTime;
-
-        if(timer >= actualTimeTarget)
+        if(!isGoingSomewhere)
+            noAIUpdate();
+        else
         {
-            LookAt(getRandomDirection());
-            actualTimeTarget = Random.Range(5, 15);
-            timer = 0f;
+            if (aipath.reachedDestination)
+            {
+                isGoingSomewhere = false;
+                aipath.canMove = false;
+            }
         }
+    }
+
+    public void onEnterDoor(Portal door)
+    {
+        if(door.transform.position == aipath.destination)
+        {
+            if (!isGoingOutdoor)
+            {
+                aipath.canMove = false;
+                aipath.destination = transform.position;
+                isGoingSomewhere = false;
+            }
+            else
+            {
+                aipath.destination = outdoorPosition;
+                StartCoroutine(waitForReach(() =>
+                {
+                    aipath.canMove = false;
+                    aipath.destination = transform.position;
+                    isGoingSomewhere = false;
+                }));
+            }
+        }
+    }
+
+    IEnumerator waitForReach(System.Action onEndAction)
+    {
+        while (!aipath.reachedDestination)
+            yield return new WaitForFixedUpdate();
+
+        onEndAction?.Invoke();
     }
 
     void LookAt(Vector2 direction)
     {
         animator.SetFloat("FaceX", direction.x);
         animator.SetFloat("FaceY", direction.y);
-
-        print($"now looking at: {direction.x}, {direction.y}");
     }
 
     Vector2 getRandomDirection()
@@ -72,6 +136,7 @@ public class NoAIBehaviour : MonoBehaviour
         else
             res.y = 0;
 
+        print(res);
         return res;
     }
 
