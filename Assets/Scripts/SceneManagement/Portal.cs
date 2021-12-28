@@ -14,6 +14,8 @@ public class Portal : MonoBehaviour
     public PortalDetails details;
 
     public Transform spawnPoint;
+    public Transform AISpawnPoint;
+
     [ConditionalField(nameof(destination), false, Locations.Library)] public bool goingIn = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,9 +31,9 @@ public class Portal : MonoBehaviour
         {
             if(collision.TryGetComponent(out NPCController npc))
             {
-                npc.transform.position = destPortal.spawnPoint.position;
+                npc.transform.position = destPortal.AISpawnPoint.position;
             }
-            if(collision.TryGetComponent(out NoAIBehaviour ai))
+            if(collision.TryGetComponent(out NoAIBehaviour ai)) // if has NoAI component too
             {
                 ai.onEnterDoor(this);
             }

@@ -7,7 +7,7 @@ public class NoAIBehaviour : MonoBehaviour
 {
     [SerializeField] int morninghour = 8;
     [SerializeField] int nighthour = 19;
-    [SerializeField] Vector2 outdoorPosition;
+    [SerializeField] List<Vector2> outdoorPositions;
 
     public CityDetails triggeredCity;
     public SceneDetails triggeredScene;
@@ -29,7 +29,7 @@ public class NoAIBehaviour : MonoBehaviour
         aipath.canMove = false;
 
         // be sure this gameobject has no gfx controller attached.
-        if (TryGetComponent(out AIEntityGFX gfx))
+        if (TryGetComponent(out AIEntityGFX _))
             GetComponent<AIEntityGFX>().enabled = false;
     }
 
@@ -41,6 +41,7 @@ public class NoAIBehaviour : MonoBehaviour
             aipath.canMove = true;
 
             aipath.destination = triggeredCity.Houses[Random.Range(0, triggeredCity.Houses.Count)].position; // choose random house
+            isGoingOutdoor = false;
         }
         else if(hour == morninghour)
         {
@@ -80,10 +81,22 @@ public class NoAIBehaviour : MonoBehaviour
             noAIUpdate();
         else
         {
+            animator.SetFloat("speed", aipath.velocity.magnitude);
+
+            if (aipath.desiredVelocity.x != 0)
+            {
+                animator.SetFloat("FaceX", aipath.desiredVelocity.x);
+            }
+            if (aipath.desiredVelocity.y != 0)
+            {
+                animator.SetFloat("FaceY", aipath.desiredVelocity.y);
+            }
+
             if (aipath.reachedDestination)
             {
                 isGoingSomewhere = false;
                 aipath.canMove = false;
+                animator.SetFloat("speed", 0);
             }
         }
     }
@@ -100,7 +113,7 @@ public class NoAIBehaviour : MonoBehaviour
             }
             else
             {
-                aipath.destination = outdoorPosition;
+                aipath.destination = outdoorPositions[0]; // this will be random, not static.
                 StartCoroutine(waitForReach(() =>
                 {
                     aipath.canMove = false;
@@ -109,6 +122,7 @@ public class NoAIBehaviour : MonoBehaviour
                 }));
             }
         }
+        animator.SetFloat("speed", 0);
     }
 
     IEnumerator waitForReach(System.Action onEndAction)
@@ -138,24 +152,5 @@ public class NoAIBehaviour : MonoBehaviour
 
         print(res);
         return res;
-    }
-
-    void goHome()
-    {
-        
-    }
-
-    IEnumerator exitHome()
-    {
-        if (!triggeredScene.outdoor)
-        {
-            aipath.canMove = true;
-            aipath.destination = triggeredCity.door.position; // metto un oggetto city dentro alla casa
-            while (!aipath.reachedDestination)
-            {
-                yield return new WaitForFixedUpdate();
-            }
-            aipath.canMove = false;
-        }
     }
 }

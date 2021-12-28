@@ -800,7 +800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   morninghour: 8
   nighthour: 19
-  outdoorPosition: {x: 238.5, y: -32}
+  outdoorPositions: []
   triggeredCity: {fileID: 0}
   triggeredScene: {fileID: 0}
 --- !u!114 &342466859
@@ -1482,6 +1482,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865528079059193187, guid: 1cd44f368b749e0499eeeca71108dedf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.29
       objectReference: {fileID: 0}
     - target: {fileID: 4435751909203865343, guid: 1cd44f368b749e0499eeeca71108dedf,
         type: 3}

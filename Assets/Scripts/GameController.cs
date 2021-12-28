@@ -119,8 +119,6 @@ public class GameController : MonoBehaviour
     {
         Instance = this;
         storyController = GetComponent<StoryController>();
-
-        //FindObjectOfType<AstarPath>().scanOnStartup = true;
     }
 
     private void Start()
