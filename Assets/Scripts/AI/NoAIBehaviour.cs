@@ -113,9 +113,13 @@ public class NoAIBehaviour : MonoBehaviour
             }
             else
             {
+                print("setting outdoor position as destination");
+                isGoingSomewhere = true;
+                aipath.canMove = true;
                 aipath.destination = outdoorPositions[0]; // this will be random, not static.
                 StartCoroutine(waitForReach(() =>
                 {
+                    print("completed path in the subroutine's lambda.");
                     aipath.canMove = false;
                     aipath.destination = transform.position;
                     isGoingSomewhere = false;

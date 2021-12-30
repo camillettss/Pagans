@@ -67,6 +67,7 @@ public class GameController : MonoBehaviour
     [SerializeField] bool ResetOnEnd = false;
 
     public float mins = 55, hours = 18, day = 1, month = 1, year = 1248;
+    public float timeMultiplier = 2f;
     [SerializeField, Range(0, 24)] float TimeOfDay;
     bool activateLights;
 
@@ -110,8 +111,6 @@ public class GameController : MonoBehaviour
     [SerializeField] Gradient nightLightsColor;
 
     public static GameController Instance;
-
-    float timer = 10f;
 
     public EnchantingUI EnchUI => enchantingUI;
 
@@ -360,7 +359,7 @@ public class GameController : MonoBehaviour
     // day/night cycle
     void UpdateTime()
     {
-        mins += 30*Time.deltaTime;
+        mins += timeMultiplier*Time.deltaTime;
         if (mins >= 60)
         {
             mins = 0;
