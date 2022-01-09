@@ -84,4 +84,14 @@ public abstract class ItemBase : ScriptableObject
         return Defense;
     }
 
+    public virtual void OnEquip()
+    {
+
+    }
+
+    public virtual void OnUnequip()
+    {
+
+    }
+
 }

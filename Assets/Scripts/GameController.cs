@@ -4,7 +4,8 @@ using System;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-using Pathfinding;
+using UnityEngine.Audio;
+using UnityEngine.Tilemaps;
 
 public enum GameState {
     FreeRoam,
@@ -64,6 +65,9 @@ public class GameController : MonoBehaviour
     public Calendar calendar;
     public UnityEngine.UI.Text HourTextUI;
 
+    public AudioClip outdoorBackgroundTrack;
+    public AudioClip indoorBackgroundTrack;
+
     [SerializeField] bool ResetOnEnd = false;
 
     public float mins = 55, hours = 18, day = 1, month = 1, year = 1248;
@@ -112,20 +116,31 @@ public class GameController : MonoBehaviour
 
     public static GameController Instance;
 
+    public AudioSource audioSource;
+
     public EnchantingUI EnchUI => enchantingUI;
+
+    public Dictionary<string, int> Bindings = new Dictionary<string, int>()
+    {
+        {"attack", ((int)KeyCode.R) },
+        {"use", ((int)KeyCode.R) },
+    };
 
     private void Awake()
     {
         Instance = this;
         storyController = GetComponent<StoryController>();
+        ppv = gameObject.GetComponent<Volume>();
+        EvH = GetComponent<StoryEventHandler>();
+        audioSource = GetComponent<AudioSource>();
+
+        //Agrimap = FindObjectOfType<Agrimap>().GetComponent<Tilemap>();
     }
 
     private void Start()
     {
         //hotbar.UpdateItems();
         MinimapCanvas.SetActive(false);
-        ppv = gameObject.GetComponent<Volume>();
-        EvH = FindObjectOfType<StoryEventHandler>();
         player.Load();
         if (storyController.firstLaunch)
         {
@@ -135,7 +150,7 @@ public class GameController : MonoBehaviour
                 state = GameState.FreeRoam;
             });
         }
-        hours = 18;
+        hours = 5;
         mins = 55;
     }
 

@@ -38,6 +38,7 @@ public class Inventory : MonoBehaviour
     public InventorySlot extraSlot; // for consumables
 
     [SerializeField] CalendarBook calendarBook;
+    [SerializeField] List<Breed> knownBreeds;
 
     private void Awake()
     {
@@ -232,21 +233,110 @@ public class Inventory : MonoBehaviour
         Books.Remove(skillbook);
     }
 
+    void Unequip(int itype)
+    {
+        if(itype == 0)
+        {
+            Weapons[equipedWeapon].item.onUnequip();
+            equipedWeapon = -1;
+        }
+        else if(itype == 1)
+        {
+            Tools[equipedTool].item.onUnequip();
+            equipedTool = -1;
+        }
+        else if(itype == 2)
+        {
+            Shields[equipedShield].item.onUnequip();
+            equipedShield = -1;
+
+        }
+        else if(itype == 3)
+        {
+            Rings[equipedRing].item.onUnequip();
+            equipedRing = -1;
+
+        }
+        else if(itype == 4)
+        {
+            Weapons[secondaryWeapon].item.onUnequip();
+            equipedWeapon = -1;
+        }
+    }
+
     public void Equip(int itype, int val) // questo deve fare riferimento alla UI
     {
-        if (itype == 4)
-            print("lesgoo");
-
         if (itype == 0)
+        {
+            if (equipedWeapon == val)
+            {
+                Unequip(itype);
+                return;
+            }
+
+            if(equipedWeapon != -1)
+                Weapons[equipedWeapon].item.onUnequip(); // disequipaggia l'oggetto equipaggiato prima dell'attuale.
+            
             equipedWeapon = val;
+            Weapons[val].item.onEquip();
+        }
         else if (itype == 1)
+        {
+            if(equipedTool == val)
+            {
+                Unequip(itype);
+                return;
+            }
+
+            else if (equipedTool != -1)
+                Tools[equipedTool].item.onUnequip();
+
             equipedTool = val;
+            Tools[val].item.onEquip();
+        }
         else if (itype == 2)
+        {
+            if (equipedShield == val)
+            {
+                Unequip(itype);
+                return;
+            }
+
+            if (equipedShield != -1)
+                Shields[equipedShield].item.onUnequip();
+
             equipedShield = val;
+            Shields[val].item.onEquip();
+        }
         else if (itype == 3)
+        {
+            if (equipedRing == val)
+            {
+                Unequip(itype);
+                return;
+            }
+
+            if (equipedRing != -1)
+                Rings[equipedRing].item.onUnequip();
+
             equipedRing = val;
+            Rings[val].item.onEquip();
+        }
         else if (itype == 4)
+        {
+            if (secondaryWeapon == val)
+            {
+                Unequip(itype);
+                return;
+            }
+
+            if (secondaryWeapon != -1)
+            {
+                Weapons[secondaryWeapon].item.onUnequip();
+            }
             secondaryWeapon = val;
+            Weapons[val].item.onEquip();
+        }
         else
             return;
 
@@ -255,7 +345,7 @@ public class Inventory : MonoBehaviour
 
     public void Add(ItemBase item)
     {
-        if(!item.discovered && !GameController.Instance.newItemUI.isActiveAndEnabled) // altrimenti se prende due oggetti fa un casino della madonna
+        if(TryGetComponent(out Player _) && !item.discovered && !GameController.Instance.newItemUI.isActiveAndEnabled) // altrimenti se prende due oggetti fa un casino della madonna
         {
             StartCoroutine(Player.i.DiscoveredNewItem());
             GameController.Instance.newItemUI.Open(item);
@@ -308,7 +398,8 @@ public class Inventory : MonoBehaviour
 
             }
         }
-        NotificationsUI.i.AddNotification($"took {item.Name}");
+        if(TryGetComponent<Player>(out Player _))
+            NotificationsUI.i.AddNotification($"took {item.Name}");
         updateEquipsList();
     }
 
@@ -420,5 +511,18 @@ public class RuneContainer
                 res.Add(r);
         
         return res;
+    }
+}
+
+[System.Serializable]
+public class Breed
+{
+    public string Name;
+    public string Description;
+
+    public Breed(string name, string description)
+    {
+        Name = name;
+        Description = description;
     }
 }

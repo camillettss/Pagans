@@ -168,6 +168,18 @@ public class LibUI : MonoBehaviour
         if (selected_category == 0)
             return Player.i.Recipes;
 
+        else if (selected_category == 1)
+            return Player.i.GodsBooks;
+
+        else if (selected_category == 2)
+            return Player.i.ElvesBooks;
+
+        else if (selected_category == 3)
+            return Player.i.MonstersBooks;
+
+        else if (selected_category == 4)
+            return Player.i.StoriesBooks;
+
         else
             return new List<StoryBook>();
     }

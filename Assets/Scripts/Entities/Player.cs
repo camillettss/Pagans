@@ -23,6 +23,10 @@ public class Player : MonoBehaviour
     public float plantRange;
 
     public List<StoryBook> Recipes;
+    public List<StoryBook> GodsBooks;
+    public List<StoryBook> ElvesBooks;
+    public List<StoryBook> MonstersBooks;
+    public List<StoryBook> StoriesBooks;
 
     float moveLimiter = 0.7f;
     Rigidbody2D rb;
@@ -30,13 +34,12 @@ public class Player : MonoBehaviour
     float attackTime = 0.7f;
     float attackCounter;
     float arrowSpeed = 15f;
-    bool toggleHotbar = false;
     float walkingSpeedDefault = 3.9f;
 
     [HideInInspector] public int maxHp = 30;
 
     [HideInInspector] public int gold=1;
-    [HideInInspector] public int experience=9;
+    [HideInInspector] public int experience=0;
     [HideInInspector] public int hp = 10;
 
     [HideInInspector] public Quest quest = null;
@@ -61,6 +64,7 @@ public class Player : MonoBehaviour
     public CityDetails triggeredCity=null;
 
     public Port activePort;
+    public Agrimap activeAgrimap;
 
     public Animal transportingAnimal = null;
 
@@ -69,6 +73,8 @@ public class Player : MonoBehaviour
     public Boat targetBoat = null;
 
     public Camera cam;
+
+    public bool drawSelected_Agrimap = false;
 
     float ridingSpeed = 8.2f;
     float runningSpeed = 6.5f;
@@ -83,26 +89,21 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        i = this;
+
         inventory = GetComponent<Inventory>();
         QuestsContainer = GetComponent<QuestInventory>();
         rb = GetComponent<Rigidbody2D>();
-        attackCounter = attackTime;
-        UpdateQuestUI();
-        i = this;
-        experience = 9;
 
+        attackCounter = attackTime;
+
+        UpdateQuestUI();
         if (quest == null || quest.title == "")
             ActiveQuestBG.gameObject.SetActive(false);
 
         // set date
         GameController.Instance.calendar.actualMonth = GameController.Instance.calendar.Months[0]; // primo mese
         GameController.Instance.calendar.today = GameController.Instance.calendar.actualMonth.days[29]; // primo day del primo mese
-    }
-
-    private void Start()
-    {
-        // questo viene dopo l'awake
-        //AstarPath.active.Scan(); // AI are disabled for this version
     }
 
     public void HandleUpdate()
@@ -145,6 +146,8 @@ public class Player : MonoBehaviour
             else
                 moveInput.x = 0;
         }
+
+        
 
         if(canMove || !isFishing)
         {
@@ -303,6 +306,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(.75f);
         GameController.Instance.OpenState(GameState.GameOver);
     }
+
     public void Ride(Horse horse)
     {
         animator.SetBool("isRiding", true);
@@ -347,7 +351,6 @@ public class Player : MonoBehaviour
 
     void useItem()
     {
-        print("equiped:" + inventory.equipedTool);
         if (inventory.equipedTool != -1)
             inventory.Tools[inventory.equipedTool].item.Use(this);
     }
@@ -381,6 +384,16 @@ public class Player : MonoBehaviour
             return holdingShieldSpeed;
         else
             return walkingSpeedDefault;
+    }
+
+    public Vector3 GetPointedPosition()
+    {
+        return new Vector3(transform.position.x + animator.GetFloat("FacingHorizontal"), transform.position.y + animator.GetFloat("FacingVertical") - .3f, transform.position.z);
+    }
+
+    public Vector3Int GetPointedPosition_vec3int()
+    {
+        return new Vector3Int((int)(transform.position.x + animator.GetFloat("FacingHorizontal")), (int)(transform.position.y + animator.GetFloat("FacingVertical")), (int)transform.position.z);
     }
 
     private void OnDrawGizmosSelected()
@@ -533,11 +546,6 @@ public class Player : MonoBehaviour
 
         // apply the speed vector
         bullRb.velocity = vec;
-    }
-
-    public void GetLoot(ItemBase item)
-    {
-        inventory.GetSlots(item.category).Add(new InventorySlot(item));
     }
 
     public Collider2D GetFrontalCollider(LayerMask layer)

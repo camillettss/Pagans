@@ -5,7 +5,7 @@ using Pathfinding;
 
 public class NoAIBehaviour : MonoBehaviour
 {
-    [SerializeField] int morninghour = 8;
+    [SerializeField] int morninghour = 6;
     [SerializeField] int nighthour = 19;
     [SerializeField] List<Vector2> outdoorPositions;
 
@@ -94,6 +94,7 @@ public class NoAIBehaviour : MonoBehaviour
 
             if (aipath.reachedDestination)
             {
+                print("reached destination in the update.");
                 isGoingSomewhere = false;
                 aipath.canMove = false;
                 animator.SetFloat("speed", 0);
@@ -113,17 +114,8 @@ public class NoAIBehaviour : MonoBehaviour
             }
             else
             {
-                print("setting outdoor position as destination");
                 isGoingSomewhere = true;
-                aipath.canMove = true;
-                aipath.destination = outdoorPositions[0]; // this will be random, not static.
-                StartCoroutine(waitForReach(() =>
-                {
-                    print("completed path in the subroutine's lambda.");
-                    aipath.canMove = false;
-                    aipath.destination = transform.position;
-                    isGoingSomewhere = false;
-                }));
+                aipath.destination = outdoorPositions[0];
             }
         }
         animator.SetFloat("speed", 0);
@@ -153,8 +145,6 @@ public class NoAIBehaviour : MonoBehaviour
             res.y = new List<int>() { -1, 1 }[Random.Range(0, 2)];
         else
             res.y = 0;
-
-        print(res);
         return res;
     }
 }

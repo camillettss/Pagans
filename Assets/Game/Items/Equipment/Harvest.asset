@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630751a0ef362da45b3850db8321aac7, type: 3}
+  m_Name: Harvest
+  m_EditorClassIdentifier: 
+  Name: harvest
+  description: wow
+  presentationDesc: a new item.
+  price: 5
+  icon: {fileID: 1202984965197363600, guid: 0c316fac58e8e7e4a81c26f180d6f20a, type: 3}
+  discovered: 0
+  closeDamage: 0
+  longDamage: 0
+  Defense: 0
+  presentationDialogue:
+    Teller: 
+    sentences: []
+  dust: {fileID: 0}
+  runes:
+    slots:
+    - {fileID: 0}
+    - {fileID: 0}
+  cookedResult: {fileID: 0}
+  cookTime: 0
+  HasDerivated: 0
+  hasItemCost: 0
+  handcraftDerivatedItem: {fileID: 0}
+  craftCost: {fileID: 0}
+  craftCostCount: 0
+  craftExperienceReward: 0
+  craftMethodIcon: {fileID: 0}
+  Category: 0
+  type: 0

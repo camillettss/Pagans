@@ -122,7 +122,7 @@ public class newInventory : MonoBehaviour
         {
             selectedIcon.enabled = false;
             selectedName.text = "";
-            selectedDescription.text = "no items here, for now (i hope).";
+            selectedDescription.text = "no items here for now, i hope.";
             return;
         }
         else
@@ -246,7 +246,6 @@ public class newInventory : MonoBehaviour
                 if (bookmark == 0) // armi, scudi, strumenti e anelli
                 {
                     Player.i.inventory.Equip(category, selected);
-                    slotUIs[selected].item.onEquip();
                     GameController.Instance.EvH.OnEquip(slotUIs[selected].item);
                     GameController.Instance.hotbar.UpdateItems();
                     UpdateView(false);

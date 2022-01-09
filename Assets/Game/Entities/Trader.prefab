@@ -51,6 +51,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -72,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1328083513
+  m_SortingLayerID: 1170453627
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7152930139536384079, guid: edf27e9d873895b4f86a10c98de189e5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -196,3 +197,10 @@ MonoBehaviour:
   runes: []
   dusts: []
   gems: []
+  Skills: []
+  Books: []
+  extraSlot:
+    item: {fileID: 0}
+    count: 0
+  calendarBook: {fileID: 0}
+  knownBreeds: []

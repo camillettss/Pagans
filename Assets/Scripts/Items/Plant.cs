@@ -27,13 +27,14 @@ public class Plant : MonoBehaviour
     {
         growState = Mathf.Clamp(growState+1, 0, sprites.Count-1);
         print(growState);
-        UpdateSprite(); // non aggiorna
+        UpdateSprite();
     }
 
     public void Take(Player player)
     {
-        if (growState == sprites.Count - 1)
+        if (growState >= sprites.Count - 1)
             StoryEventHandler.i.AddToInventory(plant);
+
         growState = 0;
         UpdateSprite();
     }

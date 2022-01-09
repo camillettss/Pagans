@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class FarmAnimal : Animal
 {
@@ -11,14 +12,30 @@ public class FarmAnimal : Animal
     bool inLove = false;
 
     Animator m_anim;
+    AudioSource source;
+
     [SerializeField] ItemBase product = null;
     [SerializeField] Baby babySon;
 
-    public string recoID;
+    float timer=0;
+    float maxTimer = 3f;
 
     private void Awake()
     {
         m_anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (Vector2.Distance(transform.position, Player.i.transform.position) <= 20 && !source.isPlaying && timer >= maxTimer)
+        {
+            source.Play();
+            timer = 0f;
+            maxTimer = Random.Range(3, 5);
+        }
+        else
+            timer += Time.fixedDeltaTime;
     }
 
     public override void Interact(Player player)

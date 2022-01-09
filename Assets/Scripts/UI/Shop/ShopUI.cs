@@ -43,6 +43,7 @@ public class ShopUI : MonoBehaviour
     {
         sellMode = !sellMode;
         selected = 0;
+        amount = 1;
         UpdateView();
     }
 
@@ -131,6 +132,24 @@ public class ShopUI : MonoBehaviour
         }
     }
 
+    IEnumerator unaffordableTextAnimation()
+    {
+        var stoppedSelected = selected;
+
+        shopUIs[stoppedSelected].nameTxt.color = Color.red;
+        yield return new WaitForSeconds(.3f);
+        shopUIs[stoppedSelected].nameTxt.color = Color.black;
+        /*int i = 1;
+        while (i < 3)
+        {
+            shopUIs[stoppedSelected].nameTxt.color = Color.red;
+            yield return new WaitForSeconds(.15f);
+            shopUIs[stoppedSelected].nameTxt.color = Color.black;
+            yield return new WaitForSeconds(.1f);
+            i++;
+        }*/
+    }
+
 
     public void HandleUpdate()
     {
@@ -159,13 +178,20 @@ public class ShopUI : MonoBehaviour
 
         if(pamount != amount)
         {
-            if(sellMode) // lo trovi nell'inv del player
+            try
             {
-                amount = Mathf.Clamp(amount, 1, Player.i.inventory.findItem(shopUIs[selected].item).count);
+                if (sellMode) // lo trovi nell'inv del player
+                {
+                    amount = Mathf.Clamp(amount, 1, Player.i.inventory.findItem(shopUIs[selected].item).count);
+                }
+                else
+                {
+                    amount = Mathf.Clamp(amount, 1, trader.inventory.findItem(shopUIs[selected].item).count);
+                }
             }
-            else
+            catch (System.NullReferenceException)
             {
-                amount = Mathf.Clamp(amount, 1, trader.inventory.findItem(shopUIs[selected].item).count);
+                print("oggetto rimosso già dall'inventario ma sono stati lasciati dei riferimenti attivi nella UI.");
             }
         }
         /*else if (!sellMode && shopUIs.Count > 0)
@@ -183,7 +209,10 @@ public class ShopUI : MonoBehaviour
             if(!sellMode)
             {
                 if (player.kents < shopUIs[selected].price*amount)
+                {
+                    StartCoroutine(unaffordableTextAnimation());
                     return;
+                }
                 StoryEventHandler.i.AddToInventory(shopUIs[selected].item);
 
                 if(Player.i.quest.goal.Count > 0)

@@ -30,6 +30,16 @@ public class SceneDetails : MonoBehaviour
 
             if (gameObject.name != "Midgardr")
                 NotificationsUI.i.AddNotification("entered " + gameObject.name);
+
+            if (outdoor)
+            {
+                GameController.Instance.audioSource.clip = GameController.Instance.outdoorBackgroundTrack;
+                GameController.Instance.audioSource.volume = .1f;
+            }
+            else
+                GameController.Instance.audioSource.clip = GameController.Instance.indoorBackgroundTrack;
+
+            GameController.Instance.audioSource.Play();
         }
         else if(collision.tag == "NPC")
         {
