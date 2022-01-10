@@ -30,7 +30,7 @@ public class GridController : MonoBehaviour
         }
     }
 
-    TileBase GetTileBase(Vector2 pos)
+    public TileBase GetTileBase(Vector2 pos)
     {
         return plowableTilemap.GetTile(plowableTilemap.WorldToCell(pos));
     }
@@ -63,6 +63,7 @@ public class GridController : MonoBehaviour
         if (Player.i.drawSelected_Agrimap)
         {
             var pos = Player.i.GetPointedPosition_vec3int();
+            print($"pos:{Player.i.transform.position}, pointed:{pos}");
             if (oldpos != pos)
             {
                 hoverTilesTilemap.SetTile(oldpos, null);

@@ -9,9 +9,25 @@ public class TileData : ScriptableObject
     public List<TileBase> tiles;
     public bool plowable;
 
-    public void Interact()
+    [SerializeField] Dictionary<TileBase, PlantGrowStates> visualStateTiles = new Dictionary<TileBase, PlantGrowStates>();
+
+    public void Interact(TileBase found)
     {
-        Debug.Log("interact a mammt");
+        Debug.Log($"state:{GetState(found)}");
     }
 
+    public PlantGrowStates GetState(TileBase tile)
+    {
+        return PlantGrowStates.Dirt;
+    }
+
+}
+
+public enum PlantGrowStates
+{
+    Dirt,
+    PlowDirt,
+    Seeds,
+    Growing,
+    Grown
 }

@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
 
     public Camera cam;
 
-    public bool drawSelected_Agrimap = false;
+    public bool drawSelected_Agrimap = true;
 
     float ridingSpeed = 8.2f;
     float runningSpeed = 6.5f;
@@ -388,12 +388,18 @@ public class Player : MonoBehaviour
 
     public Vector3 GetPointedPosition()
     {
-        return new Vector3(transform.position.x + animator.GetFloat("FacingHorizontal"), transform.position.y + animator.GetFloat("FacingVertical") - .3f, transform.position.z);
+        var res = new Vector3(transform.position.x + animator.GetFloat("FacingHorizontal")/2, (transform.position.y + animator.GetFloat("FacingVertical")/2 -.3f) -1, transform.position.z);
+        if (animator.GetFloat("FacingVertical") == -1)
+        {
+            res = new Vector3(res.x, res.y + 1, res.y);
+        }
+        return res;
     }
 
     public Vector3Int GetPointedPosition_vec3int()
     {
-        return new Vector3Int((int)(transform.position.x + animator.GetFloat("FacingHorizontal")), (int)(transform.position.y + animator.GetFloat("FacingVertical")), (int)transform.position.z);
+        var res = new Vector3Int((int)(transform.position.x + animator.GetFloat("FacingHorizontal")/2), (int)(transform.position.y + animator.GetFloat("FacingVertical")/2 - .3f)-1, (int)transform.position.z);
+        return res;
     }
 
     private void OnDrawGizmosSelected()
@@ -404,6 +410,7 @@ public class Player : MonoBehaviour
     public void Save()
     {
         SaveSystem.SavePlayer(this);
+
     }
 
     public void Load()
