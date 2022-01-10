@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0427a2fcb1db3244aae4cf2ead028133, type: 3}
+  m_Name: Jumpabletile
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: a6aef7d7a9a7dd040813bc80561e09e8, type: 2}
+  plowable: 0
+  TilesForStateDictGeneration: []
+  StatesForStateDictGeneration: 
+  TilesForSeedsDictGeneration: []
+  SeedsForSeedsDictGeneration: []

@@ -914,6 +914,9 @@ TextureImporter:
   - first:
       213: -1480716396378431061
     second: grayscale_304
+  - first:
+      213: 7853746220886672654
+    second: grayscale_305-jump
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -7398,7 +7401,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -7406,6 +7409,27 @@ TextureImporter:
       bones: []
       spriteID: ba164cc5840737be0800000000000000
       internalID: -1480716396378431061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grayscale_305-jump
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 336
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e054404b39c1efc60800000000000000
+      internalID: 7853746220886672654
       vertices: []
       indices: 
       edges: []

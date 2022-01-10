@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 1170453627
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7371594663454349633, guid: 3a0b8576d54664b41a5533bd854f39c1,
+  m_Sprite: {fileID: -5861061714265851732, guid: 3a0b8576d54664b41a5533bd854f39c1,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -105,9 +105,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
-  TreeSprite: {fileID: 7371594663454349633, guid: 3a0b8576d54664b41a5533bd854f39c1,
+  TreeSprite: {fileID: -5861061714265851732, guid: 3a0b8576d54664b41a5533bd854f39c1,
     type: 3}
-  CuttedSprite: {fileID: -1042658333318046209, guid: 3a0b8576d54664b41a5533bd854f39c1,
+  CuttedSprite: {fileID: -5863932317813646769, guid: 3a0b8576d54664b41a5533bd854f39c1,
     type: 3}
   drop:
   - {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
@@ -126,9 +126,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.7518883}
+  m_Offset: {x: 0, y: 0.5705376}
   serializedVersion: 2
-  m_Radius: 2.1694736
+  m_Radius: 1.5217931
 --- !u!61 &7685225713063737016
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,18 +142,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000047683716, y: -2.1943483}
+  m_Offset: {x: 0.025180459, y: -1.5625516}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.375, y: 6.25}
+    oldSize: {x: 3.625, y: 4.8125}
     newSize: {x: 2, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.085496, y: 1.5166872}
+  m_Size: {x: 1.0687001, y: 1.1799161}
   m_EdgeRadius: 0
 --- !u!114 &2981103726805109170
 MonoBehaviour:

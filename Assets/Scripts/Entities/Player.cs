@@ -147,8 +147,6 @@ public class Player : MonoBehaviour
                 moveInput.x = 0;
         }
 
-        
-
         if(canMove || !isFishing)
         {
             animator.SetFloat("Horizontal", moveInput.x);
