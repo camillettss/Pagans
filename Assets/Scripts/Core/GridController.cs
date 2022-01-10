@@ -30,7 +30,7 @@ public class GridController : MonoBehaviour
         }
     }
 
-    public TileBase GetTileBase(Vector2 pos)
+    public TileBase GetTileBase(Vector3 pos)
     {
         return plowableTilemap.GetTile(plowableTilemap.WorldToCell(pos));
     }

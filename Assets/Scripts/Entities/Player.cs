@@ -49,8 +49,11 @@ public class Player : MonoBehaviour
     [HideInInspector] public QuestInventory QuestsContainer;
     [HideInInspector] public Altar activeAltar = null;
     //[HideInInspector] public Plant activePlant = null;
-    [HideInInspector] public bool canMove = true;
+
+    public bool canMove = true;
+    public bool canJump = false;
     public bool isFishing = false;
+
     [HideInInspector] public bool canShowMinimap = true;
     public Key keyToUse = null;
     [HideInInspector] public Door closeDoor = null;
@@ -382,16 +385,6 @@ public class Player : MonoBehaviour
             return holdingShieldSpeed;
         else
             return walkingSpeedDefault;
-    }
-
-    public Vector3 GetPointedPosition()
-    {
-        var res = new Vector3(transform.position.x + animator.GetFloat("FacingHorizontal")/2, (transform.position.y + animator.GetFloat("FacingVertical")/2 -.3f) -1, transform.position.z);
-        if (animator.GetFloat("FacingVertical") == -1)
-        {
-            res = new Vector3(res.x, res.y + 1, res.y);
-        }
-        return res;
     }
 
     public Vector3Int GetPointedPosition_vec3int()

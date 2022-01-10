@@ -14,7 +14,7 @@ public class jumpTilemap : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Player")
+        if (collision.collider.tag == "Player" && Player.i.canJump)
         {
             playerIn = true;
             StartCoroutine(StopAndWaitForLand());
@@ -24,7 +24,19 @@ public class jumpTilemap : MonoBehaviour
     IEnumerator StopAndWaitForLand()
     {
         Player.i.animator.SetTrigger("jumpDown");
-        yield return new WaitForSeconds(.3f);
-        Player.i.transform.position = new Vector3(Player.i.transform.position.x, Player.i.transform.position.y - 1, Player.i.transform.position.z);
+        Player.i.canMove = false;
+
+        var rb = Player.i.GetComponent<Rigidbody2D>();
+        var moveInput = new Vector2(0, -1);
+
+        while (playerIn)
+        {
+            rb.velocity = moveInput * 5;
+            rb.MovePosition(rb.position + moveInput * 2 * Time.fixedDeltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+
+        Player.i.canMove = true;
+
     }
 }

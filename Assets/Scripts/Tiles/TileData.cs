@@ -37,12 +37,26 @@ public class TileData : ScriptableObject
 
     public void Interact(TileBase tile)
     {
+        Debug.Log($"passed:{tile}");
+        Debug.Log("printing keys:");
+        foreach(var key in StateTiles.Keys)
+        {
+            Debug.Log(key);
+        }
+        Debug.Log("and values:");
+        foreach (var key in StateTiles.Values)
+        {
+            Debug.Log(key);
+        }
         // quando interagiamo viene passato il tile, tramite questo ricaviamo lo stato di crescita e i semi.
+
         var AgriTile = GetPlowable(tile);
-        if(AgriTile.state == PlantGrowStates.Grown)
+        if (AgriTile.state == PlantGrowStates.Grown)
         {
             Player.i.inventory.Add(AgriTile.seed.HarvestItemDrop);
         }
+        else
+            Debug.Log($"plant state: {AgriTile.state}");
     }
 
     PlowableTileData GetPlowable(TileBase source)
@@ -57,7 +71,14 @@ public class TileData : ScriptableObject
 
     Seeds GetSeeds(TileBase tile)
     {
-        return SeedTiles[tile];
+        try
+        {
+            return SeedTiles[tile];
+        }
+        catch (KeyNotFoundException)
+        {
+            return null;
+        }
     }
 
     // funzioni per elaborare i tile
@@ -65,7 +86,6 @@ public class TileData : ScriptableObject
     {
         return StateTiles[tile];
     }
-
 }
 
 public class PlowableTileData

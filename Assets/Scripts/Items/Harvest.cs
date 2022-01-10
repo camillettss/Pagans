@@ -25,7 +25,7 @@ public class Harvest : ItemBase
         if (type == HarvestingToolType.get)
         {
             var grid = FindObjectOfType<GridController>();
-            var ppos = player.GetPointedPosition();
+            var ppos = player.GetPointedPosition_vec3int();
 
             grid.TileAt(ppos).Interact(grid.GetTileBase(ppos));
         }
