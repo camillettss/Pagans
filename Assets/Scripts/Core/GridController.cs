@@ -63,7 +63,7 @@ public class GridController : MonoBehaviour
         if (Player.i.drawSelected_Agrimap)
         {
             var pos = Player.i.GetPointedPosition_vec3int();
-            print($"pos:{Player.i.transform.position}, pointed:{pos}");
+            //print($"pos:{Player.i.transform.position}, pointed:{pos}");
             if (oldpos != pos)
             {
                 hoverTilesTilemap.SetTile(oldpos, null);

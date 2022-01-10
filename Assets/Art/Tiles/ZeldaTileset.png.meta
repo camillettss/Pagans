@@ -3064,7 +3064,7 @@ TextureImporter:
     second: ZeldaTileset_1019
   - first:
       213: -3532442995275497743
-    second: ZeldaTileset_1020
+    second: ZeldaTileset_1020_terrain
   - first:
       213: -1200178578541756180
     second: ZeldaTileset_1021
@@ -3199,10 +3199,10 @@ TextureImporter:
     second: ZeldaTileset_1064
   - first:
       213: 6098956821194664052
-    second: ZeldaTileset_1065
+    second: ZeldaTileset_1065_potatoe_seeds
   - first:
       213: -5614626324758365740
-    second: ZeldaTileset_1066
+    second: ZeldaTileset_1066_potatoe_grown
   - first:
       213: 9124122714715258490
     second: ZeldaTileset_1067
@@ -3220,7 +3220,7 @@ TextureImporter:
     second: ZeldaTileset_1071
   - first:
       213: -2453489971708927415
-    second: ZeldaTileset_1072
+    second: ZeldaTileset_1072_plowTerrain
   - first:
       213: -7000878439287543869
     second: fontana1
@@ -24925,7 +24925,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ZeldaTileset_1020
+      name: ZeldaTileset_1020_terrain
       rect:
         serializedVersion: 2
         x: 32
@@ -25870,7 +25870,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ZeldaTileset_1065
+      name: ZeldaTileset_1065_potatoe_seeds
       rect:
         serializedVersion: 2
         x: 0
@@ -25891,7 +25891,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ZeldaTileset_1066
+      name: ZeldaTileset_1066_potatoe_grown
       rect:
         serializedVersion: 2
         x: 16
@@ -26017,7 +26017,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ZeldaTileset_1072
+      name: ZeldaTileset_1072_plowTerrain
       rect:
         serializedVersion: 2
         x: 16
@@ -26928,7 +26928,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -26949,7 +26949,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -26970,7 +26970,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -26991,7 +26991,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -27012,7 +27012,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -27033,7 +27033,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

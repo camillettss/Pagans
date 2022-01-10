@@ -14,5 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiles:
   - {fileID: 11400000, guid: 5957b25ea66f3d64a96a305c967727c4, type: 2}
-  - {fileID: 11400000, guid: b1a14f8aeebc81e4ba5f41743877a528, type: 2}
+  - {fileID: 11400000, guid: 11af7de62e6754342aad23733791c893, type: 2}
+  - {fileID: 11400000, guid: 453f0d62cac7ed14fbb7188e841d582c, type: 2}
+  - {fileID: 11400000, guid: 7abab5bbf3eb3ae4283d5f745a40d8fb, type: 2}
   plowable: 1
+  TilesForStateDictGeneration:
+  - {fileID: 11400000, guid: 11af7de62e6754342aad23733791c893, type: 2}
+  - {fileID: 11400000, guid: 453f0d62cac7ed14fbb7188e841d582c, type: 2}
+  - {fileID: 11400000, guid: 7abab5bbf3eb3ae4283d5f745a40d8fb, type: 2}
+  StatesForStateDictGeneration: 010000000200000004000000
+  TilesForSeedsDictGeneration:
+  - {fileID: 11400000, guid: 453f0d62cac7ed14fbb7188e841d582c, type: 2}
+  - {fileID: 11400000, guid: 7abab5bbf3eb3ae4283d5f745a40d8fb, type: 2}
+  SeedsForSeedsDictGeneration:
+  - {fileID: 11400000, guid: 7bca042ca133b964cb016e265d3da33f, type: 2}
+  - {fileID: 11400000, guid: 7bca042ca133b964cb016e265d3da33f, type: 2}
