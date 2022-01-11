@@ -32,7 +32,8 @@ public class Harvest : ItemBase
         else if(type == HarvestingToolType.put)
         {
             // plants
-            
+            var pos = player.GetPointedPosition_vec3int();
+            FindObjectOfType<GridController>().Plow(pos);
         }
     }
 }
