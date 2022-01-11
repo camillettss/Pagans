@@ -8,7 +8,7 @@ public class GridController : MonoBehaviour
 {
     Grid grid;
     [SerializeField] Tilemap hoverTilesTilemap = null;
-    [SerializeField] Tilemap plowableTilemap;
+    public Tilemap plowableTilemap;
     [SerializeField] Tile hoverTile = null;
     [SerializeField] List<TileData> tileDatas;
     Dictionary<TileBase, TileData> dataFromTiles;
@@ -28,6 +28,11 @@ public class GridController : MonoBehaviour
                 dataFromTiles.Add(tile, tileData);
             }
         }
+    }
+
+    public void Plow(Vector3Int pos)
+    {
+        plowableTilemap.SetTile(plowableTilemap.WorldToCell(pos), hoverTile);
     }
 
     public TileBase GetTileBase(Vector3 pos)

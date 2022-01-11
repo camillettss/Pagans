@@ -379,6 +379,8 @@ public class Player : MonoBehaviour
     {
         if (animator.GetBool("isRiding"))
             return ridingSpeed;
+        else if (animator.GetBool("isClimbing"))
+            return 2.5f;
         else if (Input.GetKey(KeyCode.LeftShift))
             return runningSpeed;
         else if (animator.GetBool("holdingShield"))
