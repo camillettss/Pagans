@@ -343,7 +343,7 @@ public class Inventory : MonoBehaviour
         updateEquipsList();
     }
 
-    public void Add(ItemBase item)
+    public void Add(ItemBase item, int quantity = 1)
     {
         if(TryGetComponent(out Player _) && !item.discovered && !GameController.Instance.newItemUI.isActiveAndEnabled) // altrimenti se prende due oggetti fa un casino della madonna
         {
@@ -352,33 +352,33 @@ public class Inventory : MonoBehaviour
             item.discovered = true;
         }
         if (alreadyInStock(item))
-            findItem(item).count += 1;
+            findItem(item).count += quantity;
         else
         {
             if(item.category == 0 || item.category == 1) // item or consumable
-                GetSlots(item.category).Add(new InventorySlot(item));
+                GetSlots(item.category).Add(new InventorySlot(item, quantity));
 
             else if(item.category < 0) // is an equipment item
             {
                 if(item.category == -1) // weapon
                 {
-                    Weapons.Add(new InventorySlot(item));
+                    Weapons.Add(new InventorySlot(item, quantity));
                 }
                 if (item.category == -2) // tool or consumableTool
                 {
-                    Tools.Add(new InventorySlot(item));
+                    Tools.Add(new InventorySlot(item, quantity));
                 }
                 if (item.category == -3) // shield
                 {
-                    Shields.Add(new InventorySlot(item));
+                    Shields.Add(new InventorySlot(item, quantity));
                 }
                 if (item.category == -4) // ring
                 {
-                    Rings.Add(new InventorySlot(item));
+                    Rings.Add(new InventorySlot(item, quantity));
                 }
             }
 
-            else
+            else // actually ignore quantity
             {
                 if (item.category == 2) // 2 are runes
                 {

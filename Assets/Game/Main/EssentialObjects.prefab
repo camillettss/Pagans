@@ -12347,6 +12347,7 @@ MonoBehaviour:
   QuestsContainer: {fileID: 0}
   activeAltar: {fileID: 0}
   canMove: 1
+  canJump: 0
   isFishing: 0
   canShowMinimap: 1
   keyToUse: {fileID: 0}
@@ -12397,6 +12398,8 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 957dc4adc587bf44e90e8aab6907954c, type: 2}
     count: 1
   - item: {fileID: 11400000, guid: 9652a1320e43eff44abd57f5bfa0e7e3, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: 1db297b7049f56d489518375d18c35d5, type: 2}
     count: 1
   torch: {fileID: 0}
   equipedWeapon: -1

@@ -10,6 +10,7 @@ public class GridController : MonoBehaviour
     [SerializeField] Tilemap hoverTilesTilemap = null;
     public Tilemap plowableTilemap;
     [SerializeField] Tile hoverTile = null;
+    public Tile plowTile;
     [SerializeField] List<TileData> tileDatas;
     Dictionary<TileBase, TileData> dataFromTiles;
 
@@ -32,7 +33,7 @@ public class GridController : MonoBehaviour
 
     public void Plow(Vector3Int pos)
     {
-        plowableTilemap.SetTile(plowableTilemap.WorldToCell(pos), hoverTile);
+        plowableTilemap.SetTile(plowableTilemap.WorldToCell(pos), plowTile);
     }
 
     public TileBase GetTileBase(Vector3 pos)
@@ -42,7 +43,15 @@ public class GridController : MonoBehaviour
 
     TileData GetTileData(TileBase tilebase)
     {
-        return dataFromTiles[tilebase];
+        if (tilebase != null)
+            return dataFromTiles[tilebase];
+        else
+            return null;
+    }
+
+    public void SetAt(TileBase tile, Vector3 pos)
+    {
+        plowableTilemap.SetTile(plowableTilemap.WorldToCell(pos), tile);
     }
 
     public TileData TileAt(Vector3 pos)
@@ -50,12 +59,23 @@ public class GridController : MonoBehaviour
         return GetTileData(GetTileBase(pos));
     }
 
+    public bool TryGetTileAt(Vector3 pos, out TileData data)
+    {
+        data = TileAt(pos);
+        if (data != null)
+            return true;
+        else return false;
+    }
+
     bool pointInTilemap(Vector3Int pos)
     {
         try
         {
-            TileAt(pos);
-            return true;
+            if (TileAt(pos).plowable)
+            {
+                return true;
+            }
+            return false;
         }
         catch
         {

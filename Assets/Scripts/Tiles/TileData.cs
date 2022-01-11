@@ -19,44 +19,36 @@ public class TileData : ScriptableObject
     Dictionary<TileBase, PlantGrowStates> StateTiles;
     Dictionary<TileBase, Seeds> SeedTiles;
 
-    private void OnEnable()
+    void OnEnable()
     {
-        StateTiles = new Dictionary<TileBase, PlantGrowStates>();
-        SeedTiles = new Dictionary<TileBase, Seeds>();
-
-        for (int i = 0; i < StatesForStateDictGeneration.Count; i++)
+        if(plowable)
         {
-            StateTiles.Add(TilesForStateDictGeneration[i], StatesForStateDictGeneration[i]);
-        }
+            StateTiles = new Dictionary<TileBase, PlantGrowStates>();
+            SeedTiles = new Dictionary<TileBase, Seeds>();
 
-        for(int i = 0; i<SeedsForSeedsDictGeneration.Count; i++)
-        {
-            SeedTiles.Add(TilesForSeedsDictGeneration[i], SeedsForSeedsDictGeneration[i]);
+            for (int i = 0; i < StatesForStateDictGeneration.Count; i++)
+            {
+                StateTiles.Add(TilesForStateDictGeneration[i], StatesForStateDictGeneration[i]);
+            }
+
+            for (int i = 0; i < SeedsForSeedsDictGeneration.Count; i++)
+            {
+                SeedTiles.Add(TilesForSeedsDictGeneration[i], SeedsForSeedsDictGeneration[i]);
+            }
         }
     }
 
     public void Interact(TileBase tile)
     {
-        Debug.Log($"passed:{tile}");
-        Debug.Log("printing keys:");
-        foreach(var key in StateTiles.Keys)
-        {
-            Debug.Log(key);
-        }
-        Debug.Log("and values:");
-        foreach (var key in StateTiles.Values)
-        {
-            Debug.Log(key);
-        }
-        // quando interagiamo viene passato il tile, tramite questo ricaviamo lo stato di crescita e i semi.
-
         var AgriTile = GetPlowable(tile);
         if (AgriTile.state == PlantGrowStates.Grown)
         {
             Player.i.inventory.Add(AgriTile.seed.HarvestItemDrop);
         }
-        else
-            Debug.Log($"plant state: {AgriTile.state}");
+        if(AgriTile.state != PlantGrowStates.Dirt || AgriTile.state != PlantGrowStates.PlowDirt)
+        {
+            Player.i.inventory.Add(AgriTile.seed, Random.Range(1, 3));
+        }
     }
 
     PlowableTileData GetPlowable(TileBase source)

@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 996d78ac724b8c049af00513b494e80b, type: 3}
-  m_Name: PotatoeSeeds
+  m_Script: {fileID: 11500000, guid: 630751a0ef362da45b3850db8321aac7, type: 3}
+  m_Name: forbici
   m_EditorClassIdentifier: 
-  Name: potatoe seeds
-  description: s
+  Name: cutter
+  description: a
   presentationDesc: a new item.
   price: 5
-  icon: {fileID: 21300000, guid: a402c3ecefb2ea44abb2dc8fef3e46d2, type: 3}
-  discovered: 1
+  icon: {fileID: 184950751378207249, guid: 0c316fac58e8e7e4a81c26f180d6f20a, type: 3}
+  discovered: 0
   closeDamage: 0
   longDamage: 0
   Defense: 0
@@ -38,7 +38,5 @@ MonoBehaviour:
   craftCostCount: 0
   craftExperienceReward: 0
   craftMethodIcon: {fileID: 0}
-  Category: 0
-  growLevels:
-  - {fileID: 11400000, guid: a777d12209a454548963244573080fec, type: 2}
-  HarvestItemDrop: {fileID: 11400000, guid: 852010e32bb98e6458a0d946c9cf2d46, type: 2}
+  Category: -2
+  type: 0

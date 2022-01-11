@@ -27,13 +27,19 @@ public class Harvest : ItemBase
             var grid = FindObjectOfType<GridController>();
             var ppos = player.GetPointedPosition_vec3int();
 
-            grid.TileAt(ppos).Interact(grid.GetTileBase(ppos));
+            if(grid.TryGetTileAt(ppos, out TileData data))
+            {
+                data.Interact(grid.GetTileBase(ppos));
+                grid.SetAt(grid.plowTile, ppos);
+            }
         }
         else if(type == HarvestingToolType.put)
         {
             // plants
             var pos = player.GetPointedPosition_vec3int();
-            FindObjectOfType<GridController>().Plow(pos);
+
+            if(FindObjectOfType<GridController>().TileAt(pos).plowable)
+                FindObjectOfType<GridController>().Plow(pos);
         }
     }
 }
