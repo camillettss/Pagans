@@ -180,6 +180,42 @@ public class Calendar : MonoBehaviour
         }
     }
     
+    public Date SumDays(int distance)
+    {
+        var date = new Date(today.dayNo, actualMonth);
+
+        for(int i=0; i<distance; i++)
+        {
+            date.nextDay();
+        }
+
+        return date;
+    }
+}
+
+[System.Serializable]
+public class Date
+{
+    public int hour;
+    public int day;
+    public Month month;
+
+    public Date(int day, Month month)
+    {
+        this.day = day;
+        this.month = month;
+    }
+
+    public void nextDay()
+    {
+        day++;
+        var months = GameController.Instance.calendar.Months;
+        if (day > months[months.IndexOf(month)].days.Count)
+        {
+            day = 1;
+            month = months[months.IndexOf(month) + 1];
+        }
+    }
 }
 
 [System.Serializable]

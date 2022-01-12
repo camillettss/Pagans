@@ -12,17 +12,11 @@ public class AgricultureHandler : MonoBehaviour
     {
         grid = GetComponent<GridController>();
         grid.plowableTilemap.CompressBounds();
-        StartCoroutine(SlowUpdate());
     }
 
-    IEnumerator SlowUpdate()
-        // called every 5 seconds
+    public void HandleUpdate() // called on hour change
     {
-        while (true)
-        {
-            UpdateTiles();
-            yield return new WaitForSeconds(5f);
-        }
+        UpdateTiles();
     }
 
     List<TileBase> GetTiles()
@@ -34,7 +28,14 @@ public class AgricultureHandler : MonoBehaviour
 
     void UpdateTiles()
     {
-        // aggiornale in base al tempo
+        // viene chiamata ad ogni ora del giorno
+
+    }
+
+    List<TileBase> RetrieveTiles() // only on startup
+    {
+        // calcola i tile nella griglia e applica i salvataggi
+        return GetTiles();
     }
     
 }

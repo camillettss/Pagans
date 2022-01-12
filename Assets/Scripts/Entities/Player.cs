@@ -174,9 +174,12 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.P))
         {
-            if (GetFrontalCollider().TryGetComponent(out Animal animal) && animal.hp <= 0)
-                animal.Transport();
+            /*if (GetFrontalCollider().TryGetComponent(out Animal animal) && animal.hp <= 0)
+                animal.Transport();*/
+            print(GameController.Instance.calendar.today.dayNo);
+            print(GameController.Instance.calendar.SumDays(45).day);
         }
+
 
         // minimap show
         if (Input.GetKeyDown(KeyCode.Q) && canShowMinimap && !GameController.Instance.MinimapCanvas.activeSelf)
