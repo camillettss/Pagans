@@ -5,13 +5,16 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Seeds : ItemBase
 {
-    public List<UnityEngine.Tilemaps.TileBase> growLevels;
+    public List<Sprite> growLevels;
     public ItemBase HarvestItemDrop;
 
     public override void Use(Player player)
     {
         // pianta, set growLevels[0] at pointed position
-        FindObjectOfType<GridController>().SetAt(growLevels[0], player.GetPointedPosition_vec3int());
+        if(player.TryGetSomething(out AgribleTile tile, player.GetPointedPosition_vec2int()))
+        {
+            tile.Plant(this);
+        }
         player.inventory.Remove(this);
     }
 

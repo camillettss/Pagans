@@ -176,8 +176,11 @@ public class Player : MonoBehaviour
         {
             /*if (GetFrontalCollider().TryGetComponent(out Animal animal) && animal.hp <= 0)
                 animal.Transport();*/
-            print(GameController.Instance.calendar.today.dayNo);
-            print(GameController.Instance.calendar.SumDays(45).day);
+            var collider = Physics2D.OverlapCircle(GetPointedPosition_vec2int(), 0.1f, farmingLayer);
+            if(collider.TryGetComponent(out AgribleTile tile))
+            {
+                tile.Grow();
+            }
         }
 
 
@@ -280,6 +283,23 @@ public class Player : MonoBehaviour
         }
         else
             hp -= dmg;
+    }
+
+    public bool TryGetSomething<T>(out T type, Vector2 pos, float radius = 0.1f, LayerMask? layer = null)
+    {
+        if (layer == null)
+            layer = farmingLayer;
+
+        var collider = Physics2D.OverlapCircle(pos, radius, (LayerMask)layer);
+
+        type = default(T);
+
+        if (collider != null && collider.TryGetComponent(out T t))
+        {
+            type = t;
+            return true;
+        }
+        return false;
     }
 
     public IEnumerator Reach(Transform target)
@@ -395,6 +415,12 @@ public class Player : MonoBehaviour
     public Vector3Int GetPointedPosition_vec3int()
     {
         var res = new Vector3Int((int)(transform.position.x + animator.GetFloat("FacingHorizontal")/2), (int)(transform.position.y + animator.GetFloat("FacingVertical")/2 - .3f)-1, (int)transform.position.z);
+        return res;
+    }
+
+    public Vector2Int GetPointedPosition_vec2int()
+    {
+        var res = new Vector2Int((int)(transform.position.x + animator.GetFloat("FacingHorizontal") / 2), (int)(transform.position.y + animator.GetFloat("FacingVertical") / 2 - .3f) - 1);
         return res;
     }
 

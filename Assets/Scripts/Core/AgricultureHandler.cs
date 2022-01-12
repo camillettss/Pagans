@@ -8,6 +8,8 @@ public class AgricultureHandler : MonoBehaviour
 {
     GridController grid;
 
+    List<AgriTile> Tiles;
+
     private void Awake()
     {
         grid = GetComponent<GridController>();
@@ -26,16 +28,48 @@ public class AgricultureHandler : MonoBehaviour
         return res;
     }
 
-    void UpdateTiles()
+    void UpdateTiles() // se c'è una data completata cambia sprite
     {
-        // viene chiamata ad ogni ora del giorno
-
+        foreach(var tile in Tiles)
+        {
+            var calc_tbase = tile.CalcTileBase();
+            if(calc_tbase != tile.tilebase) // cresciuto
+            {
+                grid.plowableTilemap.SetTile(tile.pos, calc_tbase); // update the tile
+                tile.tilebase = calc_tbase;
+            }
+        }
     }
 
-    List<TileBase> RetrieveTiles() // only on startup
+    void SetupTiles() // only on startup
     {
         // calcola i tile nella griglia e applica i salvataggi
-        return GetTiles();
+        foreach(var tile in GetTiles())
+        {
+            break;
+        }
     }
     
+}
+
+public class AgriTile // basically a tile data container
+{
+    public Vector3Int pos; // *in-grid* position
+    public Date date; // data di fine crescita
+
+    public TileBase tilebase;
+    public TileData tiledata; // tile type (sempre plowable, serve per il riferimento.
+
+    public AgriTile(Vector3Int pos, Date date, TileBase tbase, TileData tdata)
+    {
+        this.pos = pos;
+        this.date = date;
+        tilebase = tbase;
+        tiledata = tdata;
+    }
+
+    public TileBase CalcTileBase()
+    {
+        return null;
+    }
 }
