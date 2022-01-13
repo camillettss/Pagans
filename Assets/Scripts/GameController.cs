@@ -133,8 +133,6 @@ public class GameController : MonoBehaviour
         ppv = gameObject.GetComponent<Volume>();
         EvH = GetComponent<StoryEventHandler>();
         audioSource = GetComponent<AudioSource>();
-
-        //Agrimap = FindObjectOfType<Agrimap>().GetComponent<Tilemap>();
     }
 
     private void Start()
@@ -150,6 +148,7 @@ public class GameController : MonoBehaviour
                 state = GameState.FreeRoam;
             });
         }
+        Camera.main.transform.position = player.transform.position;
         hours = 5;
         mins = 55;
     }

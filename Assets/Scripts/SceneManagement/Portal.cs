@@ -24,6 +24,7 @@ public class Portal : MonoBehaviour
 
         if(collision.tag == "Player")
         {
+            Player.i.teleporting = true;
             Player.i.GetComponent<SpriteRenderer>().DOFade(0f, .3f);
             StartCoroutine(GameController.Instance.EvH.changeScene(destPortal));
         }

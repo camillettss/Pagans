@@ -103,8 +103,10 @@ public class StoryEventHandler : MonoBehaviour
             Player.i.quest.goal[0].DoorEntered(destPortal);
         }
 
+        CameraMover.i.transform.position = Player.i.transform.position;
         Player.i.GetComponent<SpriteRenderer>().DOFade(1f, .1f);
         yield return Fader.i.FadeOut(.5f);
+        Player.i.teleporting = false;
     }
 
     IEnumerator waitForState(Del callback, NPCController entity=null, InteractionType type=InteractionType.talkTo, GameState state = GameState.FreeRoam)

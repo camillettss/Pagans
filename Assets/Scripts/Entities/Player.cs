@@ -85,6 +85,8 @@ public class Player : MonoBehaviour
 
     public bool enableDiagonalMovements = false;
 
+    public bool teleporting = false;
+
     #region saving stuffs
     public bool isFirstLaunch = false;
     public int storyProgressValue = 0;
@@ -111,6 +113,9 @@ public class Player : MonoBehaviour
 
     public void HandleUpdate()
     {
+        if (!teleporting)
+            CameraMover.i.HandleUpdate();
+
         if(hp <= 0)
         {
             StartCoroutine(Die());

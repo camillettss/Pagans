@@ -24,22 +24,26 @@ public class Harvest : ItemBase
     {
         if (type == HarvestingToolType.get)
         {
-            var grid = FindObjectOfType<GridController>();
-            var ppos = player.GetPointedPosition_vec3int();
-
-            if(grid.TryGetTileAt(ppos, out TileData data))
+            if (player.TryGetSomething(out AgribleTile tile, player.GetPointedPosition_vec2int()))
             {
-                data.Interact(grid.GetTileBase(ppos));
-                grid.SetAt(grid.plowTile, ppos);
+                if(tile.seed != null)
+                {
+                    if (tile.isGrown)
+                    {
+                        Player.i.inventory.Add(tile.seed.HarvestItemDrop);
+                    }
+                    Player.i.inventory.Add(tile.seed, Random.Range(1, 3));
+                }
             }
         }
         else if(type == HarvestingToolType.put)
         {
-            // plants
-            var pos = player.GetPointedPosition_vec3int();
-
-            if(FindObjectOfType<GridController>().TileAt(pos).plowable)
-                FindObjectOfType<GridController>().Plow(pos);
+            // plows a tile
+            if(player.TryGetSomething(out AgribleTile tile, player.GetPointedPosition_vec2int()))
+            {
+                tile.Plow();
+            }
+            
         }
     }
 }

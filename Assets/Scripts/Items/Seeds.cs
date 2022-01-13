@@ -14,8 +14,8 @@ public class Seeds : ItemBase
         if(player.TryGetSomething(out AgribleTile tile, player.GetPointedPosition_vec2int()))
         {
             tile.Plant(this);
+            player.inventory.Remove(this);
         }
-        player.inventory.Remove(this);
     }
 
     public override void onEquip()
