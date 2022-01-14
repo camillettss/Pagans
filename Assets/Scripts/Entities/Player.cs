@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
 
     public Port activePort;
     public Agrimap activeAgrimap;
+    public AgribleTile activePlant;
 
     public Animal transportingAnimal = null;
 
@@ -199,6 +200,9 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.X))
         {
+            if (GameController.Instance.plantDetailsUI.gameObject.activeSelf)
+                GameController.Instance.plantDetailsUI.gameObject.SetActive(false);
+
             if (activeHorse != null)
                 Dismount();
             else if (activeBoat != null)
@@ -301,6 +305,11 @@ public class Player : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void ShowPlantDetails()
+    {
+        GameController.Instance.plantDetailsUI.gameObject.SetActive(true);
     }
 
     public IEnumerator Reach(Transform target)

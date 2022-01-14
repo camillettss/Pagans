@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour
     public WorkbenchUI workbenchUI;
     public PortUI portUI;
     public Calendar calendar;
+    public PlantDetails plantDetailsUI;
     public UnityEngine.UI.Text HourTextUI;
 
     public AudioClip outdoorBackgroundTrack;
@@ -384,12 +385,11 @@ public class GameController : MonoBehaviour
                 ai.AtHour((int)hours);
             }
 
-            AgricultureUpdate(); // aggiorna le piante
-
             if (hours >= 24)
             {
                 hours = 0;
                 calendar.newDay();
+                AgricultureUpdate(); // aggiorna le piante
             }
         }
 
@@ -454,7 +454,7 @@ public class GameController : MonoBehaviour
     {
         foreach(var plant in AgribleTile.Instances)
         {
-            print(plant.grownDate.day);
+            plant.NewDay();
         }
     }
 

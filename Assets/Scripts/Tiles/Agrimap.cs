@@ -8,10 +8,13 @@ public class Agrimap : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Player.i.activeAgrimap = this;
+        Player.i.drawSelected_Agrimap = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         Player.i.activeAgrimap = null;
+        Player.i.drawSelected_Agrimap = false;
+        FindObjectOfType<GridController>().FlooshHoverTiles();
     }
 }

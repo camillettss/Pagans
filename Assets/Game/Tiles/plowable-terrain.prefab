@@ -97,9 +97,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ba81f35bd3e0447bb82f1ca0837102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: {fileID: 0}
+  seed: {fileID: 11400000, guid: 7bca042ca133b964cb016e265d3da33f, type: 2}
   noSeedSprite: {fileID: -8938178713682101382, guid: 451b3e4971f72be499d91e4cafaaa6bb,
     type: 3}
+  grownDate:
+    hour: 0
+    day: 0
+    month:
+      name: 
+      description: 
+      days: []
+  isGrown: 0
+  daysToGrow: 2
+  daysPassed: 0
+  sub_variation: 0
+  up_variation: 0
 --- !u!61 &473559492397219612
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -11,7 +11,13 @@ public class AgribleTile : InstanceTracker<AgribleTile>
     public bool isGrown = false;
 
     int state = 0;
-    
+
+    public int daysToGrow;
+    public int daysPassed;
+
+    // per determinare il range
+    [SerializeField] int sub_variation;
+    [SerializeField] int up_variation;
 
     SpriteRenderer sp;
 
@@ -23,6 +29,8 @@ public class AgribleTile : InstanceTracker<AgribleTile>
             sp.sprite = seed.growLevels[state];
         else
             sp.sprite = noSeedSprite;
+
+        daysToGrow = Random.Range(daysToGrow - sub_variation, daysToGrow + up_variation);
     }
 
     public void Grow()
@@ -30,6 +38,8 @@ public class AgribleTile : InstanceTracker<AgribleTile>
         if(seed != null)
         {
             state++;
+            state = Mathf.Clamp(state, 0, seed.growLevels.Count - 1);
+
             if (state == seed.growLevels.Count-1)
             {
                 sp.sprite = seed.growLevels[state];
@@ -39,7 +49,29 @@ public class AgribleTile : InstanceTracker<AgribleTile>
             {
                 sp.sprite = seed.growLevels[state];
             }
+        }
+    }
 
+    void EvalState(int state)
+    {
+        state = Mathf.Clamp(state, 0, seed.growLevels.Count - 1);
+        if(state != this.state)
+        {
+            this.state = state;
+            sp.sprite = seed.growLevels[state];
+        }
+    }
+
+    public void NewDay()
+    {
+        if(seed != null)
+        {
+            daysPassed++;
+
+            if (daysPassed == daysToGrow / 2)
+                EvalState(1);
+            else if (daysPassed == daysToGrow)
+                EvalState(2); // attualmente hardcoded, servono 3 sprite totali.
         }
     }
 
@@ -58,5 +90,22 @@ public class AgribleTile : InstanceTracker<AgribleTile>
         sp.sprite = seed.growLevels[0];
         grownDate = GameController.Instance.calendar.GetDate(seed.daysToGrow); // add a random range to this
         print("will be grown at: " + grownDate.month+' '+grownDate.day);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            Player.i.activePlant = this;
+            GameController.Instance.plantDetailsUI.UpdateUI();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            Player.i.activePlant = null;
+        }
     }
 }
