@@ -415,6 +415,11 @@ public class Inventory : MonoBehaviour
             {
                 GetSlots(item.category).Remove(fitem);
 
+                if(item is Seeds)
+                {
+                    ((Seeds)item).onUnequip();
+                }
+
                 if (item == extraSlot.item)
                     extraSlot = null;
             }
