@@ -442,7 +442,7 @@ public class GameController : MonoBehaviour
     {
         foreach(EnemyController npc in FindObjectsOfType<EnemyController>())
         {
-            Vector3 viewPos = UnityEngine.Camera.main.WorldToViewportPoint(npc.transform.position);
+            Vector3 viewPos = Camera.main.WorldToViewportPoint(npc.transform.position);
             if (viewPos.x >= 0 && viewPos.x <= 1 && viewPos.y >= 0 && viewPos.y <= 1 && viewPos.z > 0)
             {
                 npc.HandleUpdate(); // update only if is visible.
@@ -450,7 +450,23 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void AgricultureUpdate()
+    public IEnumerator Sleep()
+    {
+        yield return Fader.i.FadeIn(1f);
+
+        if(hours >= 20)
+        {
+            calendar.newDay();
+            AgricultureUpdate();
+        }
+
+        hours = 7;
+        mins = 0;
+
+        yield return Fader.i.FadeOut(1f);
+    }
+
+    public void AgricultureUpdate()
     {
         foreach(var plant in AgribleTile.Instances)
         {

@@ -182,7 +182,6 @@ public class Player : MonoBehaviour
         {
             /*if (GetFrontalCollider().TryGetComponent(out Animal animal) && animal.hp <= 0)
                 animal.Transport();*/
-            
         }
 
 
@@ -310,6 +309,15 @@ public class Player : MonoBehaviour
     public void ShowPlantDetails()
     {
         GameController.Instance.plantDetailsUI.gameObject.SetActive(true);
+    }
+
+    public void Sleep()
+    {
+        if(GameController.Instance.hours >= 20 || GameController.Instance.hours <= 5)
+        {
+            animator.SetTrigger("sleep");
+            StartCoroutine(GameController.Instance.Sleep());
+        }
     }
 
     public IEnumerator Reach(Transform target)
