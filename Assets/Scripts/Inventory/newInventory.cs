@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class newInventory : MonoBehaviour
 {
@@ -261,7 +262,18 @@ public class newInventory : MonoBehaviour
                 }
                 else if (bookmark == 2 && category == 0) // consumabili
                 {
-                    Player.i.inventory.extraSlot = Player.i.inventory.findItem(slotUIs[selected].item);
+                    if (Player.i.inventory.extraSlot != null && Player.i.inventory.extraSlot.item != null && Player.i.inventory.extraSlot.item.GetType() == typeof(Seeds))
+                        ((Seeds)Player.i.inventory.extraSlot.item).onUnequip();
+
+                    var invslot = Player.i.inventory.findItem(slotUIs[selected].item);
+
+                    if(invslot.item.GetType() == typeof(Seeds))
+                    {
+                        ((Seeds)invslot.item).onEquip();
+                    }
+
+
+                    Player.i.inventory.extraSlot = invslot;
                 }
             }
         }

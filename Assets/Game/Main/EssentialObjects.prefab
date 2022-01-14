@@ -12367,6 +12367,7 @@ MonoBehaviour:
   cam: {fileID: 5379045465332533999}
   drawSelected_Agrimap: 0
   enableDiagonalMovements: 0
+  teleporting: 0
   isFirstLaunch: 0
   storyProgressValue: 0
 --- !u!114 &5379045464971056017
@@ -12387,6 +12388,8 @@ MonoBehaviour:
     count: 2
   - item: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
     count: 2
+  - item: {fileID: 11400000, guid: 7bca042ca133b964cb016e265d3da33f, type: 2}
+    count: 5
   Rings: []
   Weapons:
   - item: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}

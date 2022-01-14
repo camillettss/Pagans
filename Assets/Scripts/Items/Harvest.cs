@@ -8,7 +8,6 @@ enum HarvestingToolType { get, put };
 public class Harvest : ItemBase
 {
     [SerializeField] HarvestingToolType type;
-    [SerializeField] PlantTileData plant;
 
     public override void onEquip()
     {
@@ -24,7 +23,7 @@ public class Harvest : ItemBase
     {
         if (type == HarvestingToolType.get)
         {
-            if (player.TryGetSomething(out AgribleTile tile, player.GetPointedPosition_vec2int()))
+            if (player.TryGetSomething(out AgribleTile tile, player.GetPointedPosition_vec3int()))
             {
                 if(tile.seed != null)
                 {
@@ -39,7 +38,7 @@ public class Harvest : ItemBase
         else if(type == HarvestingToolType.put)
         {
             // plows a tile
-            if(player.TryGetSomething(out AgribleTile tile, player.GetPointedPosition_vec2int()))
+            if(player.TryGetSomething(out AgribleTile tile, player.GetPointedPosition_vec3int()))
             {
                 tile.Plow();
             }

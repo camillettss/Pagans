@@ -384,6 +384,8 @@ public class GameController : MonoBehaviour
                 ai.AtHour((int)hours);
             }
 
+            AgricultureUpdate(); // aggiorna le piante
+
             if (hours >= 24)
             {
                 hours = 0;
@@ -445,6 +447,14 @@ public class GameController : MonoBehaviour
             {
                 npc.HandleUpdate(); // update only if is visible.
             }
+        }
+    }
+
+    void AgricultureUpdate()
+    {
+        foreach(var plant in AgribleTile.Instances)
+        {
+            print(plant.grownDate.day);
         }
     }
 

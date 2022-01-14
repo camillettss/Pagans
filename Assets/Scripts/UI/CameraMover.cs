@@ -32,7 +32,7 @@ public class CameraMover : MonoBehaviour
             transform.position = player.position;
 
         else if (type == CameraMovingType.Lerp)
-            transform.position = Vector3.Lerp(transform.position, player.position, speed * Time.deltaTime);
+            transform.position = Vector2.Lerp(transform.position, player.position, speed * Time.deltaTime);
 
         else if (type == CameraMovingType.Threshold)
             transform.position = player.position; // missing!

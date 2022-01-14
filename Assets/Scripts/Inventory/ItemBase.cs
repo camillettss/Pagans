@@ -95,3 +95,8 @@ public abstract class ItemBase : ScriptableObject
     }
 
 }
+
+public class TypeMaintainer<T>: ScriptableObject where T: ScriptableObject
+{
+    public T original;
+}

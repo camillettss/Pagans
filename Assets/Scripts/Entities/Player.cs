@@ -181,11 +181,7 @@ public class Player : MonoBehaviour
         {
             /*if (GetFrontalCollider().TryGetComponent(out Animal animal) && animal.hp <= 0)
                 animal.Transport();*/
-            var collider = Physics2D.OverlapCircle(GetPointedPosition_vec2int(), 0.1f, farmingLayer);
-            if(collider.TryGetComponent(out AgribleTile tile))
-            {
-                tile.Grow();
-            }
+            
         }
 
 
@@ -290,7 +286,7 @@ public class Player : MonoBehaviour
             hp -= dmg;
     }
 
-    public bool TryGetSomething<T>(out T type, Vector2 pos, float radius = 0.1f, LayerMask? layer = null)
+    public bool TryGetSomething<T>(out T type, Vector3 pos, float radius = 0.1f, LayerMask? layer = null)
     {
         if (layer == null)
             layer = farmingLayer;

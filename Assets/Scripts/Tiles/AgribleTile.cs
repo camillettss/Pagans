@@ -7,8 +7,11 @@ public class AgribleTile : InstanceTracker<AgribleTile>
     public Seeds seed = null;
     public Sprite noSeedSprite;
 
-    int state = 0;
+    public Date grownDate;
     public bool isGrown = false;
+
+    int state = 0;
+    
 
     SpriteRenderer sp;
 
@@ -53,5 +56,7 @@ public class AgribleTile : InstanceTracker<AgribleTile>
         state = 0;
 
         sp.sprite = seed.growLevels[0];
+        grownDate = GameController.Instance.calendar.GetDate(seed.daysToGrow); // add a random range to this
+        print("will be grown at: " + grownDate.month+' '+grownDate.day);
     }
 }

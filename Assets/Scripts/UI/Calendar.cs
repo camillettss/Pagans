@@ -180,11 +180,11 @@ public class Calendar : MonoBehaviour
         }
     }
     
-    public Date SumDays(int distance)
+    public Date GetDate(int distance_from_today=0)
     {
         var date = new Date(today.dayNo, actualMonth);
 
-        for(int i=0; i<distance; i++)
+        for(int i=0; i<distance_from_today; i++)
         {
             date.nextDay();
         }
