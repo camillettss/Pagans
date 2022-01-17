@@ -311,13 +311,10 @@ public class Player : MonoBehaviour
         GameController.Instance.plantDetailsUI.gameObject.SetActive(true);
     }
 
-    public void Sleep()
+    public void Sleep(System.Action onwakeup)
     {
-        if(GameController.Instance.hours >= 20 || GameController.Instance.hours <= 5)
-        {
-            animator.SetTrigger("sleep");
-            StartCoroutine(GameController.Instance.Sleep());
-        }
+        animator.SetTrigger("sleep");
+        StartCoroutine(GameController.Instance.Sleep(onwakeup));
     }
 
     public IEnumerator Reach(Transform target)
@@ -409,10 +406,12 @@ public class Player : MonoBehaviour
     {
         var tree = GetFrontalCollider(farmingLayer);
 
-        if(tree != null && tree.TryGetComponent(out Tree tempTree))
+        if(tree != null)
         {
-            Debug.Log("cutting");
-            tempTree.Cut();
+            if (tree.TryGetComponent(out Tree tempTree))
+                tempTree.Cut();
+            else if (tree.TryGetComponent(out CuttableTile cuttable))
+                cuttable.takeDamage(1);
         }
     }
 
@@ -545,7 +544,7 @@ public class Player : MonoBehaviour
         animator.SetTrigger("SwordAttack");
         animator.SetBool("Attacking", false);
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, interactableLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, interactableLayer | farmingLayer);
 
         foreach (Collider2D enemy in hitEnemies)
             enemy.GetComponent<IEntity>().takeDamage(inventory.Weapons[inventory.equipedWeapon].item.GetCloseDamage());

@@ -13,7 +13,7 @@ public class Seeds : ItemBase
     public override void Use(Player player)
     {
         // pianta, set growLevels[0] at pointed position
-        if(player.TryGetSomething(out AgribleTile tile, player.GetPointedPosition_vec3int()))
+        if(player.TryGetSomething(out AgribleTile tile, player.GetPointedPosition_vec3int()) && tile.seed == null)
         {
             tile.Plant(this);
             player.inventory.Remove(this);

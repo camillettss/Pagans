@@ -213,7 +213,7 @@ public class ShopUI : MonoBehaviour
                     StartCoroutine(unaffordableTextAnimation());
                     return;
                 }
-                StoryEventHandler.i.AddToInventory(shopUIs[selected].item);
+                StoryEventHandler.i.AddToInventory(shopUIs[selected].item, amount);
 
                 if(Player.i.quest.goal.Count > 0)
                     player.quest.goal[0].SomethingBought(trader, shopUIs[selected].item, amount);

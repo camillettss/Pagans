@@ -86,9 +86,9 @@ public class StoryEventHandler : MonoBehaviour
         }
     }
 
-    public void AddToInventory(ItemBase item)
+    public void AddToInventory(ItemBase item, int quantity=1)
     {
-        Player.i.inventory.Add(item);
+        Player.i.inventory.Add(item, quantity);
         try
         {
             Player.i.quest.goal[0].SomethingAddedToInventory(item);

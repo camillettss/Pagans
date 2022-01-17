@@ -450,8 +450,9 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public IEnumerator Sleep()
+    public IEnumerator Sleep(Action onwakeup)
     {
+        player.canMove = false;
         yield return Fader.i.FadeIn(1f);
 
         if(hours >= 20)
@@ -464,6 +465,9 @@ public class GameController : MonoBehaviour
         mins = 0;
 
         yield return Fader.i.FadeOut(1f);
+        player.canMove = true;
+
+        onwakeup?.Invoke();
     }
 
     public void AgricultureUpdate()
