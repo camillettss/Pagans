@@ -37,8 +37,8 @@ public class PlayerData
     {
         health = 10;
         position = new float[3];
-        position[0] = 323;
-        position[1] = 45;
+        position[0] = 400;
+        position[1] = 70;
         position[2] = 0;
 
         firstLaunch = true;

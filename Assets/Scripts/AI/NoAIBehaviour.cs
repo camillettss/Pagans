@@ -45,11 +45,11 @@ public class NoAIBehaviour : MonoBehaviour
         }
         else if(hour == morninghour)
         {
-            isGoingSomewhere = true;
+            /*isGoingSomewhere = true;
             aipath.canMove = true;
 
             aipath.destination = triggeredCity.door.position;
-            isGoingOutdoor = true;
+            isGoingOutdoor = true;*/
         }
     }
 
