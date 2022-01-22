@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestsUI : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class QuestsUI : MonoBehaviour
     [SerializeField] QuestSlotUI questSlotPrefab;
     List<QuestSlotUI> slotUIs;
 
-    [SerializeField] UnityEngine.UI.Text DescriptionText;
+    [SerializeField] Text SafetyText;
+
+    [SerializeField] Text acceptTip;
+    [SerializeField] Text viewTip;
 
     Player player;
 
@@ -28,9 +32,18 @@ public class QuestsUI : MonoBehaviour
 
         if (player.QuestsContainer.GetQuestsByType(Type).Count == 0)
         {
-            DescriptionText.text = "No quests here";
+            SafetyText.gameObject.SetActive(true);
+            SafetyText.text = "No quests here";
+
+            acceptTip.gameObject.SetActive(false);
+            viewTip.gameObject.SetActive(false);
+
             return;
         }
+
+        acceptTip.gameObject.SetActive(true);
+        viewTip.gameObject.SetActive(true);
+        SafetyText.gameObject.SetActive(false);
 
         slotUIs = new List<QuestSlotUI>();
         foreach(var quest in player.QuestsContainer.GetQuestsByType(Type))
@@ -52,14 +65,16 @@ public class QuestsUI : MonoBehaviour
             if (i == selected)
             {
                 slotUIs[i].NameTxt.color = GameController.Instance.selectedOnBookColor;
+                if (slotUIs[i].quest == player.quest)
+                    acceptTip.text = "(Z) Stop";
+                else
+                    acceptTip.text = "(Z) Start";
             }
             else
             {
                 slotUIs[i].NameTxt.color = GameController.Instance.unselectedDefaultColor;
             }
         }
-
-        DescriptionText.text = player.QuestsContainer.GetQuestsByType(Type)[selected].description;
     }
 
     public void HandleUpdate()
@@ -70,14 +85,37 @@ public class QuestsUI : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        if(Input.GetKeyDown(KeyCode.Z))
+        var prev = selected;
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+            ++selected;
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            --selected;
+
+        selected = Mathf.Clamp(selected, 0, slotUIs.Count - 1);
+
+        if (selected != prev)
+            UpdateSelection();
+
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             if(slotUIs != null && slotUIs.Count > 0)
             {
-                // MISSING: start and pause quest
-                player.AcceptQuest(slotUIs[selected].quest);
-                gameObject.SetActive(false);
-                GameController.Instance.state = GameState.FreeRoam;
+                if(slotUIs[selected].quest != player.quest)
+                {
+                    player.AcceptQuest(slotUIs[selected].quest);
+                    gameObject.SetActive(false);
+                    GameController.Instance.state = GameState.FreeRoam;
+                }
+                else
+                {
+                    slotUIs[selected].quest.isActive = false;
+
+                    player.quest = null;
+                    player.UpdateQuestUI();
+
+                    UpdateContents();
+                }
             }
         }
     }

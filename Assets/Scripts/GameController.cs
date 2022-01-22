@@ -71,9 +71,12 @@ public class GameController : MonoBehaviour
 
     [SerializeField] bool ResetOnEnd = false;
 
-    public float mins = 55, hours = 18, day = 1, month = 1, year = 1248;
+    [SerializeField, Range(0, 59)]  public float mins = 55;
+    [SerializeField, Range(0, 24)] public int hours = 18;
+    [SerializeField, Range(0, 31)] public int day;
+    [SerializeField, Range(0, 12)] public int month;
+    public int year = 1248;
     public float timeMultiplier = 2f;
-    [SerializeField, Range(0, 24)] float TimeOfDay;
     bool activateLights;
 
     public DialogueManager dialogueBox;
@@ -143,7 +146,7 @@ public class GameController : MonoBehaviour
         player.Load();
         if (storyController.firstLaunch)
         {
-            dialogueBox.StartDialogue(new Dialogue(new string[] { "Ciao, tu devi essere Njal.", "Io sono Ulf, lo sviluppatore del gioco, ti guiderò alla scoperta di Pagans.", "Inizia entrando nella Biblioteca." }), () =>
+            dialogueBox.StartDialogue(new Dialogue(new string[] { "Ciao, tu devi essere Njal.", "Io sono Ulfr, lo sviluppatore del gioco, e ti guiderò alla scoperta di Pagans.", "Purtroppo questa versione è solo una demo quindi dovrai aspettare per partire verso Asgard." }), () =>
             {
                 player.QuestsContainer.Add(talkToHarbardQuest);
                 state = GameState.FreeRoam;
