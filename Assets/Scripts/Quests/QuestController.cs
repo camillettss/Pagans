@@ -10,13 +10,24 @@ public class QuestController : MonoBehaviour
     public Text goldText;
     public NPCController questGiver;
 
+    public void Open(Quest quest)
+    {
+        GameController.Instance.OpenState(GameState.Quest);
+
+        titleText.text = quest.title;
+        DescText.text = quest.description;
+        goldText.text = $"{quest.goldReward}";
+
+        questGiver = quest.giver;
+    }
+
     public void HandleUpdate()
     {
         if(Input.GetKeyDown(KeyCode.X))
         {
             print("agg a usci");
             gameObject.SetActive(false);
-            GameController.Instance.state = GameState.FreeRoam;
+            GameController.Instance.state = GameState.Quests;
         }
 
         if(Input.GetKeyDown(KeyCode.Z))

@@ -24,6 +24,8 @@ public class Quest
 
     public void Complete()
     {
+        Player.i.confettis.Play();
+
         GameController.Instance.player.experience += experienceReward;
         GameController.Instance.player.gold += goldReward;
         GameController.Instance.player.quest = null;

@@ -118,5 +118,12 @@ public class QuestsUI : MonoBehaviour
                 }
             }
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if(slotUIs != null && slotUIs.Count > 0)
+            {
+                GameController.Instance.questWindow.Open(slotUIs[selected].quest);
+            }
+        }
     }
 }

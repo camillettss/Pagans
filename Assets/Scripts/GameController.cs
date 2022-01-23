@@ -192,6 +192,10 @@ public class GameController : MonoBehaviour
             questsUI.gameObject.SetActive(true);
             questsUI.UpdateContents();
         }
+        else if(state == GameState.Quest)
+        {
+            questWindow.gameObject.SetActive(true);
+        }
         else if (state == GameState.ChoosingItem)
         {
             choosingUI.gameObject.SetActive(true);

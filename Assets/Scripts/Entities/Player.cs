@@ -88,6 +88,8 @@ public class Player : MonoBehaviour
 
     public bool teleporting = false;
 
+    public ParticleSystem confettis;
+
     #region saving stuffs
     public bool isFirstLaunch = false;
     public int storyProgressValue = 0;
