@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour, IEntity
 
     public string Name;
 
-    private void Awake()
+    private void Start()
     {
         m_anim = GetComponent<Animator>();
 
@@ -54,7 +54,7 @@ public class EnemyController : MonoBehaviour, IEntity
             if (m_anim.GetFloat("speed") > 0)
                 m_anim.SetFloat("speed", 0);
 
-            if (Vector3.Distance(target.position, transform.position) <= awakeRange) // awake
+            if (Vector3.Distance(Player.i.transform.position, transform.position) <= awakeRange) // awake
                 state = EnemyState.awake;
         }
         else if(state == EnemyState.awake)

@@ -35,6 +35,7 @@ public class StoryEventHandler : MonoBehaviour
         }
         else if (Player.i.activeAltar != null)
             StartCoroutine(Player.i.activeAltar.Use());
+
         else if(Player.i.activePlant != null)
         {
             Player.i.ShowPlantDetails();

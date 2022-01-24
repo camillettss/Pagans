@@ -38,7 +38,7 @@ public class QuestGoal
 
     [ConditionalField(nameof(goalType), false, GoalType.EquipItem)] [SerializeField] ItemBase itemToEquip;
 
-    [ConditionalField(nameof(goalType), false, new object[] { GoalType.BuyTot, GoalType.SellTot, GoalType.GetTot })] [SerializeField] int reqAmount;
+    [ConditionalField(nameof(goalType), false, new object[] { GoalType.BuyTot, GoalType.SellTot, GoalType.GetTot, GoalType.KillTot })] [SerializeField] int reqAmount;
 
     int currentAmount = 0;
 
@@ -64,7 +64,11 @@ public class QuestGoal
     {
         if(goalType == GoalType.KillTot)
             currentAmount++;
-        else if(goalType == GoalType.KillSomeone)
+
+        if (currentAmount >= reqAmount)
+            Complete();
+
+        else if (goalType == GoalType.KillSomeone)
         {
             if (enemy.Name == enemyName)
                 Complete();

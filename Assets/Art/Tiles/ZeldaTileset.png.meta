@@ -3392,6 +3392,12 @@ TextureImporter:
   - first:
       213: -8061560747768775382
     second: ZeldaTileset_1120
+  - first:
+      213: 1360254769435765054
+    second: Gate1-open
+  - first:
+      213: 9021424611452207950
+    second: Gate1-close
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -27041,6 +27047,48 @@ TextureImporter:
       bones: []
       spriteID: a2d720e36359f1090800000000000000
       internalID: -8061560747768775382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gate1-open
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 512
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e39ef30818890e210800000000000000
+      internalID: 1360254769435765054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gate1-close
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 544
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e434395f2e9823d70800000000000000
+      internalID: 9021424611452207950
       vertices: []
       indices: 
       edges: []

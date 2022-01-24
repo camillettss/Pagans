@@ -14,11 +14,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: dungeon key
   description: la chiave della porta di Moria, l'impero degli elfi scuri.
+  presentationDesc: a new item.
   price: 5
   icon: {fileID: 21300000, guid: 34b6569a3499fb9479b92198fcc7b3f9, type: 3}
+  discovered: 0
   closeDamage: 0
   longDamage: 0
   Defense: 0
+  presentationDialogue:
+    Teller: 
+    sentences: []
   dust: {fileID: 0}
-  category: 0
+  runes:
+    slots:
+    - {fileID: 0}
+    - {fileID: 0}
+  cookedResult: {fileID: 0}
+  cookTime: 0
+  HasDerivated: 0
+  hasItemCost: 0
+  handcraftDerivatedItem: {fileID: 0}
+  craftCost: {fileID: 0}
+  craftCostCount: 0
+  craftExperienceReward: 0
+  craftMethodIcon: {fileID: 0}
+  Category: 1
   keycode: 0

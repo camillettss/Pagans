@@ -28,11 +28,6 @@ public class CameraMover : MonoBehaviour
 
     public void HandleUpdate()
     {
-
-    }
-
-    public void Update()
-    {
         if (type == CameraMovingType.Static)
             transform.position = player.position;
 
@@ -40,6 +35,8 @@ public class CameraMover : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, player.position, speed * Time.deltaTime);
 
         else if (type == CameraMovingType.Threshold)
-            transform.position = player.position; // missing!
+        {
+            transform.position = player.transform.position;
+        }
     }
 }

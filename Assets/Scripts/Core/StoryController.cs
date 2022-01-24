@@ -24,7 +24,7 @@ public class StoryController : MonoBehaviour
     {
         if(firstLaunch)
         {
-            TutorialScene.LoadSceneAsMain();
+            //TutorialScene.LoadSceneAsMain();
         }
 
         else

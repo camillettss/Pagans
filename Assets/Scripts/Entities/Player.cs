@@ -498,7 +498,7 @@ public class Player : MonoBehaviour
             questUI.text = quest.goal[0].goal;
 
             // if is a totType goal, enable fraction
-            if(quest.goal[0].goalType == GoalType.BuyTot || quest.goal[0].goalType == GoalType.SellTot || quest.goal[0].goalType == GoalType.GetTot)
+            if(quest.goal[0].goalType == GoalType.BuyTot || quest.goal[0].goalType == GoalType.SellTot || quest.goal[0].goalType == GoalType.GetTot || quest.goal[0].goalType == GoalType.KillTot)
             {
                 questUI.alignment = TextAnchor.MiddleLeft;
                 questUIfraction.gameObject.SetActive(true);

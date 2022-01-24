@@ -144,14 +144,14 @@ public class GameController : MonoBehaviour
         //hotbar.UpdateItems();
         MinimapCanvas.SetActive(false);
         player.Load();
-        if (storyController.firstLaunch)
+        /*if (storyController.firstLaunch)
         {
             dialogueBox.StartDialogue(new Dialogue(new string[] { "Ciao, tu devi essere Njal.", "Io sono Ulfr, lo sviluppatore del gioco, e ti guiderò alla scoperta di Pagans.", "Purtroppo questa versione è solo una demo quindi dovrai aspettare per partire verso Asgard." }), () =>
             {
                 player.QuestsContainer.Add(talkToHarbardQuest);
                 state = GameState.FreeRoam;
             });
-        }
+        }*/
         Camera.main.transform.position = player.transform.position;
         hours = 5;
         mins = 55;
@@ -410,11 +410,18 @@ public class GameController : MonoBehaviour
 
         var scaleTime = hours + (((10 * mins) / 6) / 100);
 
-        if (player.currentScene.outdoor)
+        try
         {
-            player.currentScene.light.color = nightLightsColor.Evaluate(hours / 24);
-            // example: 22h 30m = 22.5f
-            player.currentScene.light.intensity = Mathf.Clamp((Mathf.Sin((scaleTime / 3.8f) - 1.58f) + 1.2f) / 2, 0.1f, 1);
+            if (player.currentScene.outdoor)
+            {
+                player.currentScene.light.color = nightLightsColor.Evaluate(hours / 24);
+                // example: 22h 30m = 22.5f
+                player.currentScene.light.intensity = Mathf.Clamp((Mathf.Sin((scaleTime / 3.8f) - 1.58f) + 1.2f) / 2, 0.1f, 1);
+            }
+        }
+        catch
+        {
+
         }
 
         HourTextUI.text = $"{hours}:{(int)mins}";
