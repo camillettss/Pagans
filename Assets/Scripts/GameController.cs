@@ -49,7 +49,6 @@ public class GameController : MonoBehaviour
     [SerializeField] public Hotbar hotbar;
     [SerializeField] public SettingsUI settingsUI;
     [SerializeField] Volume ppv; // post processing volume
-    [SerializeField] GameObject BattleScene;
     [SerializeField] public ChoosingUI choosingUI;
     [SerializeField] public GameObject MinimapCanvas;
     [SerializeField] public bool LaunchStory;
@@ -118,6 +117,10 @@ public class GameController : MonoBehaviour
     [SerializeField] Color eveningLightsColor;
     [SerializeField] Gradient nightLightsColor;
 
+    public bool isFirstLaunch = false;
+
+    public UnityEngine.Experimental.Rendering.Universal.Light2D GameplayLight;
+
     public static GameController Instance;
 
     public AudioSource audioSource;
@@ -133,6 +136,8 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        player.Load();
+
         storyController = GetComponent<StoryController>();
         ppv = gameObject.GetComponent<Volume>();
         EvH = GetComponent<StoryEventHandler>();
@@ -143,15 +148,6 @@ public class GameController : MonoBehaviour
     {
         //hotbar.UpdateItems();
         MinimapCanvas.SetActive(false);
-        player.Load();
-        /*if (storyController.firstLaunch)
-        {
-            dialogueBox.StartDialogue(new Dialogue(new string[] { "Ciao, tu devi essere Njal.", "Io sono Ulfr, lo sviluppatore del gioco, e ti guiderò alla scoperta di Pagans.", "Purtroppo questa versione è solo una demo quindi dovrai aspettare per partire verso Asgard." }), () =>
-            {
-                player.QuestsContainer.Add(talkToHarbardQuest);
-                state = GameState.FreeRoam;
-            });
-        }*/
         Camera.main.transform.position = player.transform.position;
         hours = 5;
         mins = 55;
@@ -159,9 +155,8 @@ public class GameController : MonoBehaviour
 
     private void OnDestroy()
     {
-        print("destroying");
-        //player.Save();
-        SaveSystem.Reset();
+        player.Save();
+        //SaveSystem.Reset();
         /*if (ResetOnEnd)
             SaveSystem.Reset();
         else
@@ -249,24 +244,6 @@ public class GameController : MonoBehaviour
 
         this.state = state;
     }
-
-    #region battle stuffs
-    public void StartBattle()
-    {
-        state = GameState.Battle;
-        player.transform.GetChild(0).GetComponent<Camera>().enabled = false;
-        player.gameObject.SetActive(false);
-        BattleScene.gameObject.SetActive(true);
-    }
-
-    public void EndBattle()
-    {
-        BattleScene.gameObject.SetActive(false);
-        player.transform.GetChild(0).GetComponent<Camera>().enabled = true;
-        player.gameObject.SetActive(true);
-        state = GameState.FreeRoam;
-    }
-    #endregion
 
     private void Update()
     {

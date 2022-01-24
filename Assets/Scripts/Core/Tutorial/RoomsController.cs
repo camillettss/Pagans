@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class RoomsController : MonoBehaviour
 {
@@ -8,6 +9,19 @@ public class RoomsController : MonoBehaviour
 
     [SerializeField] Gate level3gate;
     [SerializeField] Gate level1gate;
+
+    [SerializeField] Color lightSceneColor;
+    [SerializeField] float lightSceneIntensity;
+
+    Light2D Light;
+
+    private void Awake()
+    {
+        Light = GameController.Instance.GameplayLight;
+
+        Light.color = lightSceneColor;
+        Light.intensity = lightSceneIntensity;
+    }
 
     public void triggered(TutorialRoom room)
     {
@@ -35,7 +49,7 @@ public class RoomsController : MonoBehaviour
                     level3gate.Open(true);
                     StartCoroutine(StartDialogue(new string[]
                     {
-                        "ottimo! ora entra in quella stanza ed apri il forziere."
+                        "Ottimo! ora entra in quella stanza ed apri il forziere."
                     }));
                 });
             }));
@@ -50,12 +64,22 @@ public class RoomsController : MonoBehaviour
             {
                 "Hai completato il tutorial, complimenti!",
                 "Purtroppo questa è solo una demo e dovrai aspettare per partire verso Asgard.",
-                "Esci da questi sotterranei e goditi questo piccolo mondo finchè non uscirà la versione definitiva!"
+                "Esci da questi sotterranei e goditi questo piccolo mondo finchè non uscirà la versione definitiva."
             }));
         }
         else if(room.level == 5)
         {
-            // carica TutorialMain
+            Fader.i.FadeIn(.5f);
+
+            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Tutorial"); // unloads this scene
+
+            GameController.Instance.isFirstLaunch = false;
+            Player.i.transform.position = new Vector3(238, -8);
+            Player.i.Save();
+
+            GameController.Instance.storyController.Activate();
+
+            Fader.i.FadeOut(.5f);
         }
     }
 

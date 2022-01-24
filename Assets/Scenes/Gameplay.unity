@@ -1032,6 +1032,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: EssentialObjects
       objectReference: {fileID: 0}
+    - target: {fileID: 4952206250600258697, guid: 8f267ce035dcbc146a50a5715e515f90,
+        type: 3}
+      propertyPath: equipedWeapon
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952206251018915651, guid: 8f267ce035dcbc146a50a5715e515f90,
+        type: 3}
+      propertyPath: GameplayLight
+      value: 
+      objectReference: {fileID: 1417378506}
+    - target: {fileID: 4952206251134540918, guid: 8f267ce035dcbc146a50a5715e515f90,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -200
+      objectReference: {fileID: 0}
     - target: {fileID: 6779514358437517845, guid: 8f267ce035dcbc146a50a5715e515f90,
         type: 3}
       propertyPath: Midgardr
@@ -1042,5 +1057,10 @@ PrefabInstance:
       propertyPath: TutorialScene
       value: 
       objectReference: {fileID: 637793940}
+    - target: {fileID: 8396834543140197180, guid: 8f267ce035dcbc146a50a5715e515f90,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -74.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f267ce035dcbc146a50a5715e515f90, type: 3}

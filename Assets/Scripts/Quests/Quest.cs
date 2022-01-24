@@ -49,7 +49,7 @@ public class Quest
                 GameController.Instance.state = actualState;
             });
             if (title == "Tutorial")
-                GameController.Instance.storyController.firstLaunch = false;
+                GameController.Instance.isFirstLaunch = false;
             Player.i.Save();
         }
     }

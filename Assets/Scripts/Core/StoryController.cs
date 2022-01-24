@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class StoryController : MonoBehaviour
 {
-    public bool firstLaunch;
     public bool isRunningStory;
     public Quest activeQuest;
 
-    [SerializeField] SceneDetails TutorialScene;
+    public SceneDetails TutorialScene;
+
     [SerializeField] SceneDetails Midgardr;
     [SerializeField] SceneDetails Alfheimr;
     [SerializeField] SceneDetails Svartalfheimr;
@@ -20,15 +20,22 @@ public class StoryController : MonoBehaviour
     [SerializeField] SceneDetails Helheimr;
     [SerializeField] SceneDetails Asgardr;
 
-    private void Awake()
+    private void Start()
     {
-        if(firstLaunch)
+        if (GameController.Instance.isFirstLaunch)
         {
-            //TutorialScene.LoadSceneAsMain();
+            SceneManager.LoadScene("Tutorial", LoadSceneMode.Additive);
         }
 
         else
-            Midgardr.LoadSceneAsMain();
+        {
+            TutorialScene.LoadSceneAsMain();
+        }
+    }
+
+    public async void Activate()
+    {
+        Start();
     }
 
     public void hasStartedTalking(NPCController npc)

@@ -469,7 +469,7 @@ public class Player : MonoBehaviour
         hp = data.health;
         transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
         print("[*] is first launch: " + data.firstLaunch);
-        GameController.Instance.storyController.firstLaunch = data.firstLaunch;
+        GameController.Instance.isFirstLaunch = data.firstLaunch;
         enableDiagonalMovements = data.enableDiagonalMoves;
         kents = data.kents;
     }

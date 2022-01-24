@@ -27,7 +27,7 @@ public class PlayerData
         position[1] = player.transform.position.y;
         position[2] = player.transform.position.z;
 
-        firstLaunch = GameController.Instance.storyController.firstLaunch;
+        firstLaunch = GameController.Instance.isFirstLaunch;
         enableDiagonalMoves = player.enableDiagonalMovements;
 
         kents = player.kents;
