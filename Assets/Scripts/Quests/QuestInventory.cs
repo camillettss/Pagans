@@ -7,9 +7,10 @@ public class QuestInventory : MonoBehaviour
     public List<Quest> quests;
     public List<Quest> completed;
 
-    public void Add(Quest quest)
+    public void Add(Quest quest, System.Action onComplete=default)
     {
         NotificationsUI.i.AddNotification("got new quest.");
+        quest.onComplete = onComplete;
         quests.Add(quest);
         if (quest.activeOnGet)
             Player.i.AcceptQuest(quest);
@@ -19,6 +20,7 @@ public class QuestInventory : MonoBehaviour
     {
         quests.Remove(quest);
         completed.Add(quest);
+        quest.onComplete?.Invoke();
     }
 
     public List<Quest> GetQuestsByType(GoalType type)

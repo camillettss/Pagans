@@ -40,9 +40,8 @@ public class QuestGoal
 
     [ConditionalField(nameof(goalType), false, new object[] { GoalType.BuyTot, GoalType.SellTot, GoalType.GetTot, GoalType.KillTot })] [SerializeField] int reqAmount;
 
-    int currentAmount = 0;
+    public int currentAmount = 0;
 
-    public int CurrentAmount => currentAmount;
     public int RequiredAmount => reqAmount;
 
     void Complete()
@@ -63,7 +62,10 @@ public class QuestGoal
     public void EnemyKilled(NPCController enemy)
     {
         if(goalType == GoalType.KillTot)
+        {
             currentAmount++;
+            Player.i.UpdateQuestUI();
+        }
 
         if (currentAmount >= reqAmount)
             Complete();
@@ -78,7 +80,14 @@ public class QuestGoal
     public void EnemyKilled(EnemyController enemy)
     {
         if (goalType == GoalType.KillTot)
+        {
             currentAmount++;
+            Player.i.UpdateQuestUI();
+        }
+
+            if (currentAmount >= reqAmount)
+            Complete();
+
         else if (goalType == GoalType.KillSomeone)
         {
             if (enemy.Name == enemyName)

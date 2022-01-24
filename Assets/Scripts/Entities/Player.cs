@@ -502,7 +502,7 @@ public class Player : MonoBehaviour
             {
                 questUI.alignment = TextAnchor.MiddleLeft;
                 questUIfraction.gameObject.SetActive(true);
-                questUIfraction.text = $"{quest.goal[0].CurrentAmount}/{quest.goal[0].RequiredAmount}";
+                questUIfraction.text = $"{quest.goal[0].currentAmount}/{quest.goal[0].RequiredAmount}";
             }
             else
             {

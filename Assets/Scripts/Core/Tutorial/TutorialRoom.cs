@@ -9,6 +9,7 @@ public class TutorialRoom : MonoBehaviour
     public int level;
 
     public bool alreadyEntered = false;
+    public bool alreadyLeft = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

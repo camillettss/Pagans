@@ -2132,13 +2132,13 @@ Tilemap:
   - first: {x: 20, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 0
+      m_TileIndex: 2
       m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
+      m_TileObjectToInstantiateIndex: 0
       dummyAlignment: 0
-      m_AllTileFlags: 1073741825
+      m_AllTileFlags: 1073741826
   - first: {x: 21, y: -1, z: 0}
     second:
       serializedVersion: 2
@@ -2951,10 +2951,12 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 239
+  - m_RefCount: 238
     m_Data: {fileID: 11400000, guid: f5bc5f7e039752e47b1a01a50a798842, type: 2}
   - m_RefCount: 12
     m_Data: {fileID: 11400000, guid: b9990d7272771924382d943fe1c8ee0a, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 8028cd2c2932cb04485d9ed374008d37, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 239
     m_Data: {fileID: -8896782423667655292, guid: 498d6c33c89360e43b56b0934609c613,
@@ -2984,7 +2986,9 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 251
     m_Data: {r: 1, g: 1, b: 1, a: 1}
-  m_TileObjectToInstantiateArray: []
+  m_TileObjectToInstantiateArray:
+  - m_RefCount: 1
+    m_Data: {fileID: 960818684537525304, guid: 87ae79d2e08161e458e2a95d0935743b, type: 3}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -4, y: -18, z: 0}
@@ -3241,6 +3245,7 @@ MonoBehaviour:
   controller: {fileID: 775525528}
   level: 3
   alreadyEntered: 0
+  alreadyLeft: 0
 --- !u!1 &202379890
 GameObject:
   m_ObjectHideFlags: 0
@@ -3304,7 +3309,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &338090947
 GameObject:
@@ -3378,6 +3383,102 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1001 &393953335
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 723996308}
+    m_Modifications:
+    - target: {fileID: 960818684537525304, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_Name
+      value: Gate (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525305, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: isOpen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525310, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525310, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87ae79d2e08161e458e2a95d0935743b, type: 3}
+--- !u!4 &393953336 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+    type: 3}
+  m_PrefabInstance: {fileID: 393953335}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &487034826 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
+    type: 3}
+  m_PrefabInstance: {fileID: 1105424657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &620815958
 GameObject:
   m_ObjectHideFlags: 0
@@ -3451,6 +3552,7 @@ MonoBehaviour:
   controller: {fileID: 775525528}
   level: 4
   alreadyEntered: 0
+  alreadyLeft: 0
 --- !u!1 &723996307
 GameObject:
   m_ObjectHideFlags: 0
@@ -3477,7 +3579,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 487034826}
+  - {fileID: 1438448523}
+  - {fileID: 1291010046}
+  - {fileID: 393953336}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3626,6 +3732,7 @@ MonoBehaviour:
   controller: {fileID: 775525528}
   level: 2
   alreadyEntered: 0
+  alreadyLeft: 0
 --- !u!1 &775525526
 GameObject:
   m_ObjectHideFlags: 0
@@ -3658,6 +3765,7 @@ Transform:
   - {fileID: 757033876}
   - {fileID: 191549728}
   - {fileID: 620815959}
+  - {fileID: 1373646755}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3696,9 +3804,24 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 2
+      currentAmount: 0
     onEndDialogue:
       Teller: 
       sentences: []
+  level3gate: {fileID: 1291010047}
+  level1gate: {fileID: 839912080}
+--- !u!114 &839912080 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 960818684537525305, guid: 87ae79d2e08161e458e2a95d0935743b,
+    type: 3}
+  m_PrefabInstance: {fileID: 393953335}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1b4793f4734b24780b8a07fa50cd22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &878500749
 GameObject:
   m_ObjectHideFlags: 0
@@ -3927,7 +4050,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 723996308}
     m_Modifications:
     - target: {fileID: 6125970324430561126, guid: 2fc16a17f399f354a891a5fda0470085,
         type: 3}
@@ -3942,12 +4065,12 @@ PrefabInstance:
     - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.83
+      value: 17.91
       objectReference: {fileID: 0}
     - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
         type: 3}
@@ -3962,17 +4085,17 @@ PrefabInstance:
     - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
         type: 3}
@@ -3991,6 +4114,167 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fc16a17f399f354a891a5fda0470085, type: 3}
+--- !u!1001 &1291010045
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 723996308}
+    m_Modifications:
+    - target: {fileID: 960818684537525304, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_Name
+      value: Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87ae79d2e08161e458e2a95d0935743b, type: 3}
+--- !u!4 &1291010046 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 960818684537525308, guid: 87ae79d2e08161e458e2a95d0935743b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1291010045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1291010047 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 960818684537525305, guid: 87ae79d2e08161e458e2a95d0935743b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1291010045}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1b4793f4734b24780b8a07fa50cd22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1373646754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1373646755}
+  - component: {fileID: 1373646757}
+  - component: {fileID: 1373646756}
+  m_Layer: 0
+  m_Name: Exit (room5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1373646755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373646754}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 28, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 775525527}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1373646756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373646754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94b4f00cd2b12744ba01de898dd1aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 775525528}
+  level: 5
+  alreadyEntered: 0
+  alreadyLeft: 0
+--- !u!61 &1373646757
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373646754}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.4865694, y: 0.54942346}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0435467, y: 1.0744224}
+  m_EdgeRadius: 0
 --- !u!1 &1382570374
 GameObject:
   m_ObjectHideFlags: 0
@@ -4151,17 +4435,56 @@ Tilemap:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407825879}
   m_Enabled: 1
-  m_Tiles: {}
+  m_Tiles:
+  - first: {x: 30, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
+  m_TileAssetArray:
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 591b2d85fcc3311498b35f7d59628205, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileSpriteArray:
+  - m_RefCount: 1
+    m_Data: {fileID: 7331804470849511987, guid: 498d6c33c89360e43b56b0934609c613,
+      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileMatrixArray:
+  - m_RefCount: 1
+    m_Data:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  m_TileColorArray:
+  - m_RefCount: 1
+    m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
+  m_Size: {x: 31, y: 2, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -4248,8 +4571,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 606912985556755889, guid: 241ab047d969e84458ddfb83b0dfc637,
+        type: 3}
+      propertyPath: drop.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 606912985556755889, guid: 241ab047d969e84458ddfb83b0dfc637,
+        type: 3}
+      propertyPath: drop.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e7c81a4a290e45744968e547681e31a6,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 241ab047d969e84458ddfb83b0dfc637, type: 3}
+--- !u!4 &1438448523 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
+    type: 3}
+  m_PrefabInstance: {fileID: 1670699540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1449397606
 GameObject:
   m_ObjectHideFlags: 0
@@ -4443,6 +4783,7 @@ MonoBehaviour:
   controller: {fileID: 775525528}
   level: 1
   alreadyEntered: 0
+  alreadyLeft: 0
 --- !u!1 &1576073145
 GameObject:
   m_ObjectHideFlags: 0
@@ -6451,6 +6792,75 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1001 &1670699540
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 723996308}
+    m_Modifications:
+    - target: {fileID: 6125970324430561126, guid: 2fc16a17f399f354a891a5fda0470085,
+        type: 3}
+      propertyPath: Name
+      value: Spider
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557600116416994917, guid: 2fc16a17f399f354a891a5fda0470085,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557600116416994919, guid: 2fc16a17f399f354a891a5fda0470085,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2fc16a17f399f354a891a5fda0470085, type: 3}
 --- !u!1 &1926713072
 GameObject:
   m_ObjectHideFlags: 0
@@ -25540,6 +25950,8 @@ MonoBehaviour:
     onEndDialogue:
       Teller: 
       sentences: []
+  level3gate: {fileID: 0}
+  level1gate: {fileID: 0}
 --- !u!4 &4952206250281400966
 Transform:
   m_ObjectHideFlags: 0
@@ -25733,6 +26145,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -25748,6 +26161,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -25766,6 +26180,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 0}
       reqAmount: 2
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -25781,6 +26196,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 0}
       reqAmount: 2
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -25797,6 +26213,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -25814,6 +26231,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -25829,6 +26247,7 @@ MonoBehaviour:
       PortalName: CaveExit
       itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -25846,6 +26265,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
       reqAmount: 0
+      currentAmount: 0
     onEndDialogue:
       Teller: 
       sentences:
@@ -26737,6 +27157,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -26750,6 +27171,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -26763,6 +27185,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -26776,6 +27199,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -26789,6 +27213,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -26802,6 +27227,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -26815,6 +27241,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     onEndDialogue:
       Teller: 
       sentences: []
@@ -26954,9 +27381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSlots: []
-  consumableSlots:
-  - item: {fileID: 11400000, guid: e7c81a4a290e45744968e547681e31a6, type: 2}
-    count: 1
+  consumableSlots: []
   Rings: []
   Weapons:
   - item: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
@@ -26972,7 +27397,7 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 1db297b7049f56d489518375d18c35d5, type: 2}
     count: 1
   torch: {fileID: 0}
-  equipedWeapon: -1
+  equipedWeapon: 0
   secondaryWeapon: -1
   equipedRing: -1
   equipedShield: -1
@@ -29378,6 +29803,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -29391,6 +29817,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -29404,6 +29831,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -29417,6 +29845,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -29430,6 +29859,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -29443,6 +29873,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -29456,6 +29887,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     onEndDialogue:
       Teller: 
       sentences: []
@@ -32555,6 +32987,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -32568,6 +33001,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -32581,6 +33015,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -32594,6 +33029,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -32607,6 +33043,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -32620,6 +33057,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -32633,6 +33071,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     onEndDialogue:
       Teller: 
       sentences: []

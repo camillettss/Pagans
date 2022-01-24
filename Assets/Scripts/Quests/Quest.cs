@@ -22,6 +22,8 @@ public class Quest
 
     public Dialogue onEndDialogue;
 
+    public System.Action onComplete = default;
+
     public void Complete()
     {
         Player.i.confettis.Play();

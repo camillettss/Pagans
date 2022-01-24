@@ -11,16 +11,13 @@ public class Gate : MonoBehaviour, IEntity
 
     SpriteRenderer sp;
 
-    bool isOpen = false;
+    [SerializeField] bool isOpen = false;
 
     private void Start()
     {
         sp = GetComponent<SpriteRenderer>();
 
-        if (isOpen)
-            sp.sprite = openSprite;
-        else
-            sp.sprite = closedSprite;
+        UpdateCollider();
     }
 
     public void Open()
@@ -35,17 +32,26 @@ public class Gate : MonoBehaviour, IEntity
         UpdateCollider();
     }
 
-    void UpdateCollider()
+    void UpdateCollider() // automatically updates sprite
     {
+        if (!gameObject.activeSelf)
+            gameObject.SetActive(true);
+
         if (isOpen)
         {
             if (openSprite != null)
+            {
                 GetComponent<BoxCollider2D>().enabled = false;
+                sp.sprite = openSprite;
+            }
             else
                 gameObject.SetActive(false);
         }
         else
+        {
             GetComponent<BoxCollider2D>().enabled = true;
+            sp.sprite = closedSprite;
+        }
     }
 
     public void Interact(Player player)

@@ -1196,6 +1196,9 @@ TextureImporter:
   - first:
       213: -2852819707192503871
     second: medium-tree
+  - first:
+      213: -1155530699825510478
+    second: gate2-lock
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -9654,7 +9657,7 @@ TextureImporter:
         width: 22
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -9662,6 +9665,27 @@ TextureImporter:
       bones: []
       spriteID: 1c19e88579fb868d0800000000000000
       internalID: -2852819707192503871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gate2-lock
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 144
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b787d563fab6ffe0800000000000000
+      internalID: -1155530699825510478
       vertices: []
       indices: 
       edges: []
