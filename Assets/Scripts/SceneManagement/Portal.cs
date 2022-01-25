@@ -5,7 +5,20 @@ using System.Linq;
 using MyBox;
 using DG.Tweening;
 
-public enum Locations { FadsHeimr, AsbjarnarHeimr, TutorialShop, FarmHouse, MagicianHouse, Cave1, Library };
+public enum Locations { FadsHeimr, AsbjarnarHeimr, TutorialShop, FarmHouse, MagicianHouse, Cave1, Library,
+    // breidr
+    BreidrHouse1,
+    BreidrHouse2,
+    // fornburg
+    FornburgHouse,
+    FornburgBigHouse,
+    FornburgForge,
+    // furnes
+    FurnesHouse1,
+    FurnesBigHouse,
+    FurnesMansion_LevelA,
+    FurnesMansion_LevelB
+};
 public enum PortalDetails { IN, OUT, NONE };
 
 public class Portal : MonoBehaviour
