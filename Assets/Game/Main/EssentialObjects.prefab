@@ -15216,7 +15216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15225,7 +15225,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1b6801f3556e03540a31b7401ad8ff42, type: 3}
-    m_FontSize: 32
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -15236,7 +15236,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quests and To do things.
+  m_Text: 'Missioni:'
 --- !u!1 &3429888907209066311
 GameObject:
   m_ObjectHideFlags: 0
@@ -20992,6 +20992,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -21005,6 +21006,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -21018,6 +21020,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -21031,6 +21034,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -21044,6 +21048,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -21057,6 +21062,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -21070,6 +21076,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     onEndDialogue:
       Teller: 
       sentences: []
@@ -21195,6 +21202,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 1
+      currentAmount: 0
     onEndDialogue:
       Teller: 
       sentences: []
@@ -21463,7 +21471,6 @@ MonoBehaviour:
   hotbar: {fileID: 2585312656572341525}
   settingsUI: {fileID: 1659686398899740458}
   ppv: {fileID: 6928407664581579768}
-  BattleScene: {fileID: 0}
   choosingUI: {fileID: 8513521525488983298}
   MinimapCanvas: {fileID: 9046201212341980365}
   LaunchStory: 0
@@ -21539,6 +21546,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -21554,6 +21562,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -21572,6 +21581,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 0}
       reqAmount: 2
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -21587,6 +21597,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 0}
       reqAmount: 2
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -21603,6 +21614,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -21620,6 +21632,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -21635,6 +21648,7 @@ MonoBehaviour:
       PortalName: CaveExit
       itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 0.2
       introDialogue:
         Teller: 
@@ -21652,6 +21666,7 @@ MonoBehaviour:
       PortalName: library-door
       itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
       reqAmount: 0
+      currentAmount: 0
     onEndDialogue:
       Teller: 
       sentences:
@@ -21686,6 +21701,8 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
+  isFirstLaunch: 0
+  GameplayLight: {fileID: 0}
   audioSource: {fileID: 0}
 --- !u!114 &6928407664581579768
 MonoBehaviour:
@@ -21716,7 +21733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736ce7f40bf81d14ea45a872eba511c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstLaunch: 1
   isRunningStory: 0
   activeQuest:
     isActive: 0
@@ -21741,6 +21757,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -21754,6 +21771,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -21767,6 +21785,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -21780,6 +21799,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -21793,6 +21813,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -21806,6 +21827,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -21819,6 +21841,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     onEndDialogue:
       Teller: 
       sentences: []
@@ -25140,6 +25163,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -25153,6 +25177,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -25166,6 +25191,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -25179,6 +25205,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -25192,6 +25219,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -25205,6 +25233,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -25218,6 +25247,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     onEndDialogue:
       Teller: 
       sentences: []
@@ -36368,7 +36398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8352158820115956022, guid: d148b23ec3374304b8d21846318ab60a,
+  m_Sprite: {fileID: -4313441168152166993, guid: 5e4b5b86ebbffb04ca8749a7e563a6c4,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0

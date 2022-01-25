@@ -10,9 +10,15 @@ public class ScreenshotGrabber
         ScreenCapture.CaptureScreenshot(Directory.GetCurrentDirectory() + "/Screenshots/", 1);
     }
 
-    [MenuItem("Exts/Reset")]
+    [MenuItem("Exts/Saves/Reset")]
     public static void Reset()
     {
         SaveSystem.Reset();
+    }
+
+    [MenuItem("Exts/Saves/Gameplay")]
+    public static void Gameplay()
+    {
+        SaveSystem.Save_AfterTutorialState();
     }
 }

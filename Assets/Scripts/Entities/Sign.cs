@@ -17,6 +17,7 @@ public class Sign : MonoBehaviour, IEntity
     {
         if (dialogue.sentences.Length == 0)
             return;
+
         GameController.Instance.dialogueBox.StartDialogue(dialogue, () =>
         {
             isRead = true;

@@ -46,5 +46,18 @@ public class PlayerData
         kents = 0;
     }
 
+    public PlayerData(bool different)
+    {
+        health = 10;
+        position = new float[3];
+        position[0] = 238;
+        position[1] = -8;
+        position[2] = 0;
+
+        firstLaunch = false;
+        enableDiagonalMoves = false;
+        kents = 0;
+    }
+
     public static PlayerData emtpy => new PlayerData();
 }

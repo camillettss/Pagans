@@ -44,4 +44,9 @@ public static class SaveSystem
     {
         SavePlayer(PlayerData.emtpy);
     }
+
+    public static void Save_AfterTutorialState()
+    {
+        SavePlayer(new PlayerData(true));
+    }
 }

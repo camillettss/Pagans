@@ -52,7 +52,7 @@ public class Runner : MonoBehaviour
     {
         if(sel == 0) // play
         {
-            SceneManager.LoadScene("TutorialMain"); // loads gameplay, and it choose a scene.
+            SceneManager.LoadScene("Gameplay"); // loads gameplay, and it chooses a scene.
         }
         else if(sel == 1) // Reset
         {
