@@ -29,8 +29,8 @@ public class NoAIBehaviour : MonoBehaviour
         aipath.canMove = false;
 
         // be sure this gameobject has no gfx controller attached.
-        if (TryGetComponent(out AIEntityGFX _))
-            GetComponent<AIEntityGFX>().enabled = false;
+        /*if (TryGetComponent(out AIEntityGFX _))
+            GetComponent<AIEntityGFX>().enabled = false;*/
     }
 
     public void AtHour(int hour)
@@ -40,7 +40,10 @@ public class NoAIBehaviour : MonoBehaviour
             isGoingSomewhere = true;
             aipath.canMove = true;
 
-            aipath.destination = triggeredCity.Houses[Random.Range(0, triggeredCity.Houses.Count)].position; // choose random house
+            var target = triggeredCity.Houses[Random.Range(0, triggeredCity.Houses.Count)].position;
+            print(target);
+
+            aipath.destination = target; // choose random house
             isGoingOutdoor = false;
         }
         else if(hour == morninghour)

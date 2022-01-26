@@ -15,9 +15,10 @@ public enum Locations { FadsHeimr, AsbjarnarHeimr, TutorialShop, FarmHouse, Magi
     FornburgForge,
     // furnes
     FurnesHouse1,
-    FurnesBigHouse,
-    FurnesMansion_LevelA,
-    FurnesMansion_LevelB
+    FurnesBigHouse_Ingress,
+    FurnesBigHouse_Room,
+    FurnesMansion_Ingress,
+    FurnesMansion_Room
 };
 public enum PortalDetails { IN, OUT, NONE };
 

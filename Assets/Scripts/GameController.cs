@@ -366,7 +366,7 @@ public class GameController : MonoBehaviour
             
             foreach(var ai in ScanNPCs(ScanMode.Every))
             {
-                ai.AtHour((int)hours);
+                ai.AtHour(hours);
             }
 
             if (hours >= 24)

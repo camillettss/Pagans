@@ -39,8 +39,6 @@ public class RandomEntityMover : MonoBehaviour
                                    .ToArray();
 
         nClosest = nClosest.Where(val => val != target && !lastTwoTrees.Contains(val)).ToArray(); // remove unpossible trees
-
-        print(nClosest.Length);
         return nClosest[0];
     }
 }

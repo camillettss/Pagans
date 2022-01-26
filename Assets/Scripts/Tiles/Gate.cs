@@ -22,6 +22,7 @@ public class Gate : MonoBehaviour, IEntity
 
     public void Open()
     {
+        print("toggling");
         isOpen = !isOpen;
         UpdateCollider();
     }
@@ -56,10 +57,16 @@ public class Gate : MonoBehaviour, IEntity
 
     public void Interact(Player player)
     {
-        if (player.inventory.alreadyInStock(key))
-            Open(true);
+        print("yo u are interacting with me");
+        if (key != null)
+        {
+            if (player.inventory.alreadyInStock(key))
+                Open(true);
+            else
+                print("u dont have the key");
+        }
         else
-            print("u dont have the key");
+            Open();
     }
 
     public void takeDamage(int dmg)

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2576448740519100608}
   - component: {fileID: 2576448740519100611}
   - component: {fileID: 4282096619243360068}
-  - component: {fileID: 899989885983347003}
   m_Layer: 11
   m_Name: NPC
   m_TagString: Untagged
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1170453627
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 7152930139536384079, guid: edf27e9d873895b4f86a10c98de189e5,
     type: 3}
@@ -151,6 +150,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -164,6 +164,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -177,6 +178,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -190,6 +192,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     - dialogueDelay: 1
       introDialogue:
         Teller: 
@@ -203,6 +206,7 @@ MonoBehaviour:
       PortalName: 
       itemToEquip: {fileID: 0}
       reqAmount: 0
+      currentAmount: 0
     onEndDialogue:
       Teller: 
       sentences: []
@@ -267,25 +271,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7458191, y: 0.5116234}
   m_EdgeRadius: 0
---- !u!195 &899989885983347003
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2576448740519100733}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4

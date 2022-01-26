@@ -10,7 +10,10 @@ public class AIEntityGFX : MonoBehaviour
 
     private void FixedUpdate()
     {
-        animator.SetFloat("speed", aiPath.velocity.magnitude);
+        animator.SetFloat("speed", aiPath.velocity.sqrMagnitude);
+
+        if (aiPath.remainingDistance <= .15f)
+            animator.SetFloat("speed", 0);
 
         if(aiPath.desiredVelocity.x != 0)
         {
