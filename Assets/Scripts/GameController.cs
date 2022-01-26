@@ -473,7 +473,7 @@ public class GameController : MonoBehaviour
     {
         foreach(EnemyController enemy in FindObjectsOfType<EnemyController>())
         {
-            enemy.GetComponent<Animator>().SetFloat("speed", 0f);
+            enemy.GetComponent<Animator>().SetFloat("Speed", 0f);
         }
     }
 

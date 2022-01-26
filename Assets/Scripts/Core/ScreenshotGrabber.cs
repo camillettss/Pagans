@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using System.IO;
 
+#if UNITY_EDITOR
 public class ScreenshotGrabber
 {
     [MenuItem("Exts/Grab")]
@@ -22,3 +23,4 @@ public class ScreenshotGrabber
         SaveSystem.Save_AfterTutorialState();
     }
 }
+#endif

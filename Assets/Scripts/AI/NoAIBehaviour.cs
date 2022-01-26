@@ -65,7 +65,16 @@ public class NoAIBehaviour : MonoBehaviour
 
         if (timer >= actualTimeTarget)
         {
-            LookAt(getRandomDirection());
+            var dir = getRandomDirection();
+            LookAt(dir);
+
+            actualTimeTarget = Random.Range(5, 15);
+            timer = 0f;
+            if (Random.Range(0, 1) == 0) // 50%
+            {
+
+            }
+            /*LookAt(getRandomDirection());
             actualTimeTarget = Random.Range(5, 15);
             timer = 0f;
             if (Random.Range(0, 1) == 0) // 50%
@@ -74,7 +83,7 @@ public class NoAIBehaviour : MonoBehaviour
                 aipath.destination = new Vector3(transform.position.x + animator.GetFloat("FaceX"), transform.position.y + animator.GetFloat("FaceY"), transform.position.z);
             }
             else
-                aipath.canMove = false;
+                aipath.canMove = false;*/
         }
     }
 
