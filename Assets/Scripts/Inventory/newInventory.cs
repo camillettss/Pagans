@@ -262,6 +262,14 @@ public class newInventory : MonoBehaviour
                 }
                 else if (bookmark == 2 && category == 0) // consumabili
                 {
+                    if (slotUIs[selected].item == Player.i.inventory.extraSlot.item)
+                    {
+                        if (Player.i.inventory.extraSlot != null && Player.i.inventory.extraSlot.item != null && Player.i.inventory.extraSlot.item.GetType() == typeof(Seeds))
+                            ((Seeds)Player.i.inventory.extraSlot.item).onUnequip();
+                        Player.i.inventory.extraSlot = null;
+                        return;
+                    }
+
                     if (Player.i.inventory.extraSlot != null && Player.i.inventory.extraSlot.item != null && Player.i.inventory.extraSlot.item.GetType() == typeof(Seeds))
                         ((Seeds)Player.i.inventory.extraSlot.item).onUnequip();
 
@@ -271,7 +279,6 @@ public class newInventory : MonoBehaviour
                     {
                         ((Seeds)invslot.item).onEquip();
                     }
-
 
                     Player.i.inventory.extraSlot = invslot;
                 }

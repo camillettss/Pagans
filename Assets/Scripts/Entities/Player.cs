@@ -440,7 +440,8 @@ public class Player : MonoBehaviour
 
     public Vector3Int GetPointedPosition_vec3int()
     {
-        var res = new Vector3Int((int)(transform.position.x + animator.GetFloat("FacingHorizontal")/2), (int)(transform.position.y + animator.GetFloat("FacingVertical")/2 - .3f)-1, (int)transform.position.z);
+        var res = new Vector3Int((int)(transform.position.x + animator.GetFloat("FacingHorizontal")), (int)((transform.position.y + animator.GetFloat("FacingVertical"))-.2f), 0);
+        //var res = new Vector3Int((int)(transform.position.x + animator.GetFloat("FacingHorizontal")/2), (int)(transform.position.y + animator.GetFloat("FacingVertical")/2 - .3f)-1, (int)transform.position.z);
         return res;
     }
 

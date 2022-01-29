@@ -25,10 +25,13 @@ public class AgribleTile : InstanceTracker<AgribleTile>
     {
         sp = GetComponent<SpriteRenderer>();
 
-        if (seed)
+        if (seed != null)
             sp.sprite = seed.growLevels[state];
         else
+        {
+            print("no seeds detected");
             sp.sprite = noSeedSprite;
+        }
 
         daysToGrow = Random.Range(daysToGrow - sub_variation, daysToGrow + up_variation);
     }

@@ -29,6 +29,7 @@ public abstract class ItemBase : ScriptableObject
     public int cookTime;
 
     public bool HasDerivated = false;
+    [SerializeField] bool harvestingItem = false;
 
     public Sprite droppedSprite;
 
@@ -51,7 +52,17 @@ public abstract class ItemBase : ScriptableObject
     }
     public virtual void onUnequip()
     {
+        if (harvestingItem)
+        {
+            try
+            {
+                FindObjectOfType<GridController>().FlooshHoverTiles();
+            }
+            catch
+            {
 
+            }
+        }
     }
     #endregion
 

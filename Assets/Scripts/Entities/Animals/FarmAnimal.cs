@@ -7,6 +7,7 @@ public class FarmAnimal : Animal
 {
     bool hasProduct = false;
     bool waiting = false;
+    bool meatTaken = false;
     int count = 0;
 
     bool inLove = false;
@@ -40,23 +41,35 @@ public class FarmAnimal : Animal
 
     public override void Interact(Player player)
     {
-        if(product != null)
+        if(hp <= 0)
         {
-            if (hasProduct)
+            if (!meatTaken)
             {
-                player.inventory.Add(product); // TODO: secchi
-                hasProduct = false;
-                StartCoroutine(waitForMilk());
+                GetComponent<Animator>().enabled = false;
+                GetComponent<SpriteRenderer>().sprite = bloodSprite;
+                player.inventory.Add(meat);
             }
-            else
+        }
+        else
+        {
+            if (product != null)
             {
-                if (!waiting)
+                if (hasProduct)
                 {
+                    player.inventory.Add(product); // TODO: secchi
+                    hasProduct = false;
                     StartCoroutine(waitForMilk());
                 }
                 else
                 {
-                    print($"count: {count}");
+                    if (!waiting)
+                    {
+                        StartCoroutine(waitForMilk());
+                    }
+                    else
+                    {
+                        print($"count: {count}");
+                    }
                 }
             }
         }

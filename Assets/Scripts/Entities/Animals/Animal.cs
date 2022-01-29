@@ -9,6 +9,8 @@ public abstract class Animal : MonoBehaviour, IEntity
     int ate = 0;
     public int hp = 10;
     [SerializeField] protected Skill tameskill;
+    [SerializeField] protected Sprite bloodSprite;
+    [SerializeField] protected Curative meat;
 
     public virtual void Interact(Player player)
     {
