@@ -195,10 +195,20 @@ public class Player : MonoBehaviour
         }
 
         // minimap show
-        if (Input.GetKeyDown(KeyCode.Q) && canShowMinimap && !GameController.Instance.MinimapCanvas.activeSelf)
+        /*if (Input.GetKeyDown(KeyCode.Q) && canShowMinimap && !GameController.Instance.MinimapCanvas.activeSelf)
             GameController.Instance.MinimapCanvas.SetActive(true);
         if (Input.GetKeyUp(KeyCode.Q))
-            GameController.Instance.MinimapCanvas.SetActive(false);
+            GameController.Instance.MinimapCanvas.SetActive(false);*/
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (TryGetSomething(out FarmAnimal animal, transform.position, 0.2f, interactableLayer | farmingLayer))
+            {
+                if (animal.hp <= 0)
+                    animal.Transport();
+            }
+            else
+                NotificationsUI.i.AddNotification("Nessun animale qui");
+        }
 
         if (Input.GetKeyDown(KeyCode.Z)) // Interact
         {
@@ -217,6 +227,7 @@ public class Player : MonoBehaviour
                 activeBoat.Dismount();
             else if(transportingAnimal != null)
             {
+                transportingAnimal.GetComponent<BoxCollider2D>().enabled = true;
                 transportingAnimal = null;
                 animator.SetBool("carrying", false);
             }

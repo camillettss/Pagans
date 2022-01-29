@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using Pathfinding;
 
 public class FarmAnimal : Animal
 {
     bool hasProduct = false;
     bool waiting = false;
     bool meatTaken = false;
+
+    public bool isMale = false;
+
     int count = 0;
+    int birthHour;
 
     bool inLove = false;
 
@@ -16,20 +21,30 @@ public class FarmAnimal : Animal
     AudioSource source;
 
     [SerializeField] ItemBase product = null;
-    [SerializeField] Baby babySon;
+    [SerializeField] FarmAnimal animalPrefab;
 
     float timer=0;
     float maxTimer = 3f;
+
+    CustomAIPath ai;
+
+    [Header("babies options")]
+    [SerializeField] int daysToGrow = 0;
+
+    // setted by FarmAnimal:Spawn();
+    int daysPassed = 0;
+    FarmAnimal mom;
 
     private void Awake()
     {
         m_anim = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
+        ai = GetComponent<CustomAIPath>();
     }
 
     private void FixedUpdate()
     {
-        if (Vector2.Distance(transform.position, Player.i.transform.position) <= 20 && !source.isPlaying && timer >= maxTimer)
+        if (timer >= maxTimer && !source.isPlaying && Vector2.Distance(transform.position, Player.i.transform.position) <= 20)
         {
             source.Play();
             timer = 0f;
@@ -48,6 +63,7 @@ public class FarmAnimal : Animal
                 GetComponent<Animator>().enabled = false;
                 GetComponent<SpriteRenderer>().sprite = bloodSprite;
                 player.inventory.Add(meat);
+                meatTaken = true;
             }
         }
         else
@@ -75,31 +91,63 @@ public class FarmAnimal : Animal
         }
     }
 
-    public override void Eat(ItemBase food)
+    public void Spawn(FarmAnimal mom)
     {
-        if (!inLove)
+        transform.position = mom.transform.position;
+        this.mom = mom;
+        daysToGrow = 2;
+        daysPassed = 0;
+        m_anim.SetBool("grown", false);
+    }
+
+    public void newDay()
+    {
+        if (daysPassed < daysToGrow)
+            daysPassed++;
+        else
+            return;
+
+        if(daysPassed >= daysToGrow && !m_anim.GetBool("grown"))
         {
-            inLove = false;
-            print("now is in love.");
-            StartCoroutine(BecomePregnant());
+            // crescono tutti a mezzanotte, add che scelgono un orario casuale.
+            Grow(); // come crescono in fretta :')
         }
     }
 
-    IEnumerator BecomePregnant()
+    void Grow()
     {
+        // change animator controller
+        m_anim.SetBool("grown", true);
+    }
+
+    public override void Eat(ItemBase food)
+    {
+        if (isMale)
+        {
+            if (m_anim.GetBool("grown") && !inLove)
+                MakeBaby();
+            else
+                hp += ((Curative)food).cure;
+        }
+        else
+            hp += ((Curative)food).cure;
+    }
+
+    void MakeBaby()
+    {
+        ai.alreadyCalledTargetReached = false;
         if (cowInRange(out FarmAnimal cow))
         {
-            while (Vector3.Distance(transform.position, cow.transform.position) > 1.7)
-            {
-                FollowTarget(cow.transform);
-                yield return new WaitForFixedUpdate();
-            }
-            m_anim.SetFloat("speed", 0f);
-            var son = Instantiate(babySon);
-            son.Spawn(this);
+            ai.destination = cow.transform.position;
         }
         else
             print("no near cow");
+    }
+
+    public void OnFemaleReached()
+    {
+        var son = Instantiate(animalPrefab);
+        son.Spawn(this);
     }
 
     bool isInRange(IEntity entity, float radius = 1.5f)
@@ -133,7 +181,7 @@ public class FarmAnimal : Animal
         {
             if(collider.TryGetComponent<FarmAnimal>(out FarmAnimal e))
             {
-                if(e != this)
+                if((e != this) && !(e.hp<=0))
                 {
                     cow = e;
                     return true;

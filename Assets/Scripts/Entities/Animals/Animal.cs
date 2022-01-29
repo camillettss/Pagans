@@ -46,6 +46,8 @@ public abstract class Animal : MonoBehaviour, IEntity
         Player.i.animator.SetFloat("FacingHorizontal", -Player.i.animator.GetFloat("FacingHorizontal"));
         Player.i.animator.SetFloat("FacingVertical", -Player.i.animator.GetFloat("FacingVertical"));
         Player.i.animator.SetBool("carrying", true);
+
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 
     public abstract void nonTamedAction();

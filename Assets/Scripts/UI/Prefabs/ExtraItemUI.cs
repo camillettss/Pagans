@@ -18,7 +18,7 @@ public class ExtraItemUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        print($"updating xtraUI, slot is: {Player.i.inventory.extraSlot}");
+        //print($"updating xtraUI, slot is: {Player.i.inventory.extraSlot}");
         if (Player.i.inventory.extraSlot != null && Player.i.inventory.extraSlot.item != null)
             Show(Player.i.inventory.extraSlot);
 

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UI Texts Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: UI Texts
+  m_TableCollectionNameGuidString: 4bae294db74b8b64eaa5773153b82f2a
+  m_Entries:
+  - m_Id: 1679679418368
+    m_Key: Quests
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35348672512
+    m_Key: Bag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1760981807104
+    m_Key: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1814165581824
+    m_Key: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100126605312
+    m_Key: Category
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7860942663680
+    m_Key: EquipTip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8029796954112
+    m_Key: SacrificeTip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8174982787072
+    m_Key: UseTip
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1643494898282

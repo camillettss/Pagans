@@ -29,7 +29,6 @@ public class AgribleTile : InstanceTracker<AgribleTile>
             sp.sprite = seed.growLevels[state];
         else
         {
-            print("no seeds detected");
             sp.sprite = noSeedSprite;
         }
 

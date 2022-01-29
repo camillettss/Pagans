@@ -110,6 +110,7 @@ public class GameController : MonoBehaviour
     [HideInInspector] public GameState state = GameState.FreeRoam;
     [HideInInspector] public NPCController ActiveNPC;
     [HideInInspector] public StoryController storyController;
+    public List<FarmAnimal> babyAnimals;
 
     [SerializeField] Quest talkToHarbardQuest;
 
@@ -164,7 +165,7 @@ public class GameController : MonoBehaviour
 
     public void OpenState(GameState state, TraderController trader = null, Cauldron c = null, ItemBase craftItem = null)
     {
-        print($"target state:{state}, trader passed:{trader}.");
+        //print($"target state:{state}, trader passed:{trader}.");
         IdleAllEnemies();
         #region state control
         if (state == GameState.Menu)
@@ -372,7 +373,7 @@ public class GameController : MonoBehaviour
             {
                 hours = 0;
                 calendar.newDay();
-                AgricultureUpdate(); // aggiorna le piante
+                StartCoroutine(AgricultureUpdate()); // aggiorna le piante
             }
         }
 
@@ -448,7 +449,7 @@ public class GameController : MonoBehaviour
         if(hours >= 20)
         {
             calendar.newDay();
-            AgricultureUpdate();
+            StartCoroutine(AgricultureUpdate());
         }
 
         hours = 7;
@@ -460,15 +461,21 @@ public class GameController : MonoBehaviour
         onwakeup?.Invoke();
     }
 
-    public void AgricultureUpdate()
+    public IEnumerator AgricultureUpdate() // comprende anche la crescita degli animali
     {
         foreach(var plant in AgribleTile.Instances)
         {
             plant.NewDay();
         }
+        foreach(var animal in babyAnimals)
+        {
+            animal.newDay();
+        }
+        yield return null;
+
     }
 
-    void IdleAllEnemies() // this is heavy
+    void IdleAllEnemies() // this is heavy porcoddio 
     {
         foreach(EnemyController enemy in FindObjectsOfType<EnemyController>())
         {

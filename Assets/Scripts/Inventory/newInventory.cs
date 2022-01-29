@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+using UnityEditor;
 
 public class newInventory : MonoBehaviour
 {
@@ -44,6 +47,33 @@ public class newInventory : MonoBehaviour
     public const int dusts_category = 1;
     public const int gems_category = 2;
 
+    public LocalizedString myString;
+
+    string localizedText;
+
+    /// <summary>
+    /// Register a ChangeHandler. This is called whenever the string needs to be updated.
+    /// </summary>
+    void OnEnable()
+    {
+        myString.StringChanged += UpdateString;
+    }
+
+    void OnDisable()
+    {
+        myString.StringChanged -= UpdateString;
+    }
+
+    void UpdateString(string s)
+    {
+        localizedText = s;
+    }
+
+    void OnGUI()
+    {
+        EditorGUILayout.LabelField(localizedText);
+    }
+
     private void Awake()
     {
         UpdateView();
@@ -78,7 +108,7 @@ public class newInventory : MonoBehaviour
 
         if(bookmark == 0)
         {
-            leftTip.text = "(Z) Equipaggia";
+            leftTip.text = "(Z) Equipaggia"; // make this dynamic
             rightTip.text = "";
         }
         else if(bookmark == 1)
@@ -254,7 +284,7 @@ public class newInventory : MonoBehaviour
                 else if (bookmark == 3 && category == 1) // libri
                 {
                     slotUIs[selected].item.Use(Player.i); // usa il libro
-                    GameController.Instance.StartCoroutine(learn_book());
+                    learn_book();
                 }
                 else if (bookmark == 1 && category == 0) // runes
                 {
@@ -262,7 +292,7 @@ public class newInventory : MonoBehaviour
                 }
                 else if (bookmark == 2 && category == 0) // consumabili
                 {
-                    if (slotUIs[selected].item == Player.i.inventory.extraSlot.item)
+                    if (slotUIs[selected].item != null && slotUIs[selected].item == Player.i.inventory.extraSlot.item)
                     {
                         if (Player.i.inventory.extraSlot != null && Player.i.inventory.extraSlot.item != null && Player.i.inventory.extraSlot.item.GetType() == typeof(Seeds))
                             ((Seeds)Player.i.inventory.extraSlot.item).onUnequip();
@@ -286,10 +316,10 @@ public class newInventory : MonoBehaviour
         }
     }
 
-    IEnumerator learn_book()
+    void learn_book()
     {
         slotUIs[selected].GetComponent<Animator>().SetTrigger("die");
-        yield return new WaitForSeconds(.5f);
+        //yield return new WaitForSeconds(.5f);
         UpdateView(false);
     }
 }

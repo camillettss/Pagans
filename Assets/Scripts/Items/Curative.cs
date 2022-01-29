@@ -16,14 +16,14 @@ public class Curative : ItemBase
             if(entity.TryGetComponent(out Animal animal))
             {
                 animal.Eat(this);
+                player.inventory.Remove(this);
             }
                 
         }
         else
         {
             player.hp = Mathf.Clamp(player.hp+cure, 0, player.maxHp);
+            player.inventory.Remove(this);
         }
-
-        player.inventory.Remove(this); // this calls the remove func, DONT CALL IT TWO TIMES!
     }
 }

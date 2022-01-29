@@ -68,7 +68,7 @@ public class SceneDetails : MonoBehaviour
     {
         if(!IsLoaded)
         {
-            print(gameObject.name + " will be loaded");
+            //print(gameObject.name + " will be loaded");
             SceneManager.LoadScene(gameObject.name, LoadSceneMode.Additive);
         }
     }
