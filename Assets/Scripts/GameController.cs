@@ -2,7 +2,6 @@
 using UnityEngine;
 using System;
 using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine.Audio;
 using UnityEngine.Tilemaps;

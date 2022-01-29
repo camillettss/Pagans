@@ -30,6 +30,8 @@ public abstract class ItemBase : ScriptableObject
 
     public bool HasDerivated = false;
 
+    public Sprite droppedSprite;
+
     [ConditionalField(nameof(HasDerivated))] public bool hasItemCost = false;
     [ConditionalField(nameof(HasDerivated))] public ItemBase handcraftDerivatedItem;
     [ConditionalField(nameof(HasDerivated))] public ItemBase craftCost;

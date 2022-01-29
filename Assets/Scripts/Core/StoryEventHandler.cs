@@ -40,12 +40,18 @@ public class StoryEventHandler : MonoBehaviour
         {
             Player.i.ShowPlantDetails();
         }
+        else if (Player.i.liftingItem != null)
+        {
+            StartCoroutine(Player.i.liftingItem.Throw());
+        }
         else
         {
             Del handler = DelegateMethod; // crea un istanza del delegato
             var front = Player.i.GetFrontalCollider();
             if (front == null)
+            {
                 return;
+            }
 
             if(front.TryGetComponent(out TraderController trader))
             {

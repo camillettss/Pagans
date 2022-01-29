@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     float attackCounter;
     float arrowSpeed = 15f;
     float walkingSpeedDefault = 3.9f;
+    public Transform Head;
 
     [HideInInspector] public int maxHp = 30;
 
@@ -71,6 +72,7 @@ public class Player : MonoBehaviour
     public AgribleTile activePlant;
 
     public Animal transportingAnimal = null;
+    public LiftableItem liftingItem = null;
 
     public InteractableObject activeBench;
     public Boat activeBoat = null;
@@ -132,6 +134,10 @@ public class Player : MonoBehaviour
         {
             transportingAnimal.transform.position = transportPoint.position;
         }
+        if(liftingItem != null)
+        {
+            liftingItem.transform.position = Head.position;
+        }
 
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
@@ -184,8 +190,9 @@ public class Player : MonoBehaviour
         {
             /*if (GetFrontalCollider().TryGetComponent(out Animal animal) && animal.hp <= 0)
                 animal.Transport();*/
+            if (Player.i.liftingItem != null)
+                StartCoroutine(liftingItem.Throw());
         }
-
 
         // minimap show
         if (Input.GetKeyDown(KeyCode.Q) && canShowMinimap && !GameController.Instance.MinimapCanvas.activeSelf)

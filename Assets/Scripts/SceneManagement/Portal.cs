@@ -18,7 +18,9 @@ public enum Locations { FadsHeimr, AsbjarnarHeimr, TutorialShop, FarmHouse, Magi
     FurnesBigHouse_Ingress,
     FurnesBigHouse_Room,
     FurnesMansion_Ingress,
-    FurnesMansion_Room
+    FurnesMansion_Room,
+    // fornburg
+    FornburgHouse_SecretGate,
 };
 public enum PortalDetails { IN, OUT, NONE };
 
@@ -38,6 +40,9 @@ public class Portal : MonoBehaviour
 
         if(collision.tag == "Player")
         {
+            if (Player.i.liftingItem != null)
+                StartCoroutine(Player.i.liftingItem.Throw(true));
+
             Player.i.teleporting = true;
             Player.i.GetComponent<SpriteRenderer>().DOFade(0f, .3f);
             StartCoroutine(GameController.Instance.EvH.changeScene(destPortal));
