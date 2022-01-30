@@ -12,11 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9be44467ae31844a829589fe9d86d3, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  Name: axe
+  _Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:2b0d2423265bbf1418095f705ba97c9a
+    m_TableEntryReference:
+      m_KeyId: 4748127367168
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   description: si
   presentationDesc: used for tree cutting
   price: 15
   icon: {fileID: 21300000, guid: 45cfe68fb47a8514f96477d0fb432286, type: 3}
+  locname:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   discovered: 0
   closeDamage: 0
   longDamage: 0
@@ -32,6 +49,8 @@ MonoBehaviour:
   cookedResult: {fileID: 0}
   cookTime: 0
   HasDerivated: 0
+  harvestingItem: 0
+  droppedSprite: {fileID: 0}
   hasItemCost: 0
   handcraftDerivatedItem: {fileID: 0}
   craftCost: {fileID: 0}
@@ -39,3 +58,5 @@ MonoBehaviour:
   craftExperienceReward: 0
   craftMethodIcon: {fileID: 0}
   Category: -2
+  references:
+    version: 1

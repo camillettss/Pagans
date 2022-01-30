@@ -12,14 +12,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67be4e9796aa554ba07953bb9938d7a, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  Name: Sword
+  _Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:2b0d2423265bbf1418095f705ba97c9a
+    m_TableEntryReference:
+      m_KeyId: 4400167907328
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   description: this is the sword of your grandpa.
   presentationDesc: a new item.
   price: 10
   icon: {fileID: 21300000, guid: e90c8bb5842829f4c94cade996dc0aa8, type: 3}
+  locname:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   discovered: 0
   closeDamage: 10
   longDamage: 0
   Defense: 0
+  presentationDialogue:
+    Teller: 
+    sentences: []
   dust: {fileID: 0}
+  runes:
+    slots:
+    - {fileID: 0}
+    - {fileID: 0}
+  cookedResult: {fileID: 0}
+  cookTime: 0
+  HasDerivated: 0
+  harvestingItem: 0
+  droppedSprite: {fileID: 0}
+  hasItemCost: 0
+  handcraftDerivatedItem: {fileID: 0}
+  craftCost: {fileID: 0}
+  craftCostCount: 0
+  craftExperienceReward: 0
+  craftMethodIcon: {fileID: 0}
   Category: -1
+  references:
+    version: 1

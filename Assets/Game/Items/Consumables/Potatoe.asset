@@ -12,11 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620fa6e86837f074f8cab49b2cf66185, type: 3}
   m_Name: Potatoe
   m_EditorClassIdentifier: 
-  Name: patata
+  _Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:2b0d2423265bbf1418095f705ba97c9a
+    m_TableEntryReference:
+      m_KeyId: 3985099583488
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   description: un tubero
   presentationDesc: a new item.
   price: 5
   icon: {fileID: 21300000, guid: 3d9791791d28a9745b616ce8d8113662, type: 3}
+  locname:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   discovered: 0
   closeDamage: 0
   longDamage: 0
@@ -31,11 +48,18 @@ MonoBehaviour:
     - {fileID: 0}
   cookedResult: {fileID: 0}
   cookTime: 0
+  HasDerivated: 0
+  harvestingItem: 0
+  droppedSprite: {fileID: 0}
+  hasItemCost: 0
   handcraftDerivatedItem: {fileID: 11400000, guid: c28c95184ee61234e958f1483e135bed,
     type: 2}
   craftCost: {fileID: 11400000, guid: 4d20530b3289eb6459bb94a5cba40867, type: 2}
   craftCostCount: 1
   craftExperienceReward: 5
+  craftMethodIcon: {fileID: 0}
   Category: 1
   cure: 1
   animals_eat_this: 0
+  references:
+    version: 1

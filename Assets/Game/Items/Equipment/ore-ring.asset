@@ -12,15 +12,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 486eb1325f207fa4a88d06053b8781c4, type: 3}
   m_Name: ore-ring
   m_EditorClassIdentifier: 
-  Name: ore ring
+  _Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:2b0d2423265bbf1418095f705ba97c9a
+    m_TableEntryReference:
+      m_KeyId: 4343259590656
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   description: a magic ring forged by brokk
   presentationDesc: a new item.
   price: 5
   icon: {fileID: 21300000, guid: 89f3e30c79bcaee4e98d42ffcf57897f, type: 3}
+  locname:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   discovered: 0
   closeDamage: 0
   longDamage: 0
   Defense: 0
+  presentationDialogue:
+    Teller: 
+    sentences: []
   dust: {fileID: 0}
+  runes:
+    slots:
+    - {fileID: 0}
+    - {fileID: 0}
+  cookedResult: {fileID: 0}
+  cookTime: 0
+  HasDerivated: 0
+  harvestingItem: 0
+  droppedSprite: {fileID: 0}
+  hasItemCost: 0
+  handcraftDerivatedItem: {fileID: 0}
+  craftCost: {fileID: 0}
+  craftCostCount: 0
+  craftExperienceReward: 0
+  craftMethodIcon: {fileID: 0}
   Category: -4
   fortune: -4
+  references:
+    version: 1

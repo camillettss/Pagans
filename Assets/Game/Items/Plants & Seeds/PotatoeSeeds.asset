@@ -12,11 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996d78ac724b8c049af00513b494e80b, type: 3}
   m_Name: PotatoeSeeds
   m_EditorClassIdentifier: 
-  Name: potatoe seeds
+  _Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:2b0d2423265bbf1418095f705ba97c9a
+    m_TableEntryReference:
+      m_KeyId: 5369320566784
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   description: s
   presentationDesc: a new item.
   price: 2
   icon: {fileID: 21300000, guid: a402c3ecefb2ea44abb2dc8fef3e46d2, type: 3}
+  locname:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   discovered: 1
   closeDamage: 0
   longDamage: 0
@@ -32,6 +49,8 @@ MonoBehaviour:
   cookedResult: {fileID: 0}
   cookTime: 0
   HasDerivated: 0
+  harvestingItem: 0
+  droppedSprite: {fileID: 0}
   hasItemCost: 0
   handcraftDerivatedItem: {fileID: 0}
   craftCost: {fileID: 0}
@@ -45,3 +64,5 @@ MonoBehaviour:
   - {fileID: -3419757470847074293, guid: 451b3e4971f72be499d91e4cafaaa6bb, type: 3}
   HarvestItemDrop: {fileID: 11400000, guid: 852010e32bb98e6458a0d946c9cf2d46, type: 2}
   daysToGrow: 30
+  references:
+    version: 1

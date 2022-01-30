@@ -12,11 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9546bee0cccbc564fa3fb5a82850e4c1, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  Name: Legna
+  _Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:2b0d2423265bbf1418095f705ba97c9a
+    m_TableEntryReference:
+      m_KeyId: 5231579623424
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   description: legna di un albero
   presentationDesc: a new item.
   price: 5
   icon: {fileID: 21300000, guid: efe2ac1e04c61d1429e370eb4e493aa0, type: 3}
+  locname:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   discovered: 1
   closeDamage: 0
   longDamage: 0
@@ -32,6 +49,8 @@ MonoBehaviour:
   cookedResult: {fileID: 0}
   cookTime: 0
   HasDerivated: 0
+  harvestingItem: 0
+  droppedSprite: {fileID: 0}
   hasItemCost: 0
   handcraftDerivatedItem: {fileID: 0}
   craftCost: {fileID: 0}
@@ -39,3 +58,5 @@ MonoBehaviour:
   craftExperienceReward: 0
   craftMethodIcon: {fileID: 0}
   Category: 1
+  references:
+    version: 1

@@ -12,11 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384587703e20b964291ae04e15cabb36, type: 3}
   m_Name: rod
   m_EditorClassIdentifier: 
-  Name: corda
+  _Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:2b0d2423265bbf1418095f705ba97c9a
+    m_TableEntryReference:
+      m_KeyId: 5024850767872
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   description: "una semplice corda, pu\xF2 essere molto utile."
   presentationDesc: questo sembra interessante
   price: 2
   icon: {fileID: 21300000, guid: 4634d87584aafe546b622ae2f6e5b9ac, type: 3}
+  locname:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   discovered: 0
   closeDamage: 0
   longDamage: 0
@@ -32,6 +49,8 @@ MonoBehaviour:
   cookedResult: {fileID: 0}
   cookTime: 0
   HasDerivated: 0
+  harvestingItem: 0
+  droppedSprite: {fileID: 0}
   hasItemCost: 0
   handcraftDerivatedItem: {fileID: 0}
   craftCost: {fileID: 0}
@@ -39,3 +58,5 @@ MonoBehaviour:
   craftExperienceReward: 0
   craftMethodIcon: {fileID: 0}
   Category: 0
+  references:
+    version: 1

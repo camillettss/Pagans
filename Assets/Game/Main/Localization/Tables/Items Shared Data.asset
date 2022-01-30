@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Items Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Items
+  m_TableCollectionNameGuidString: 2b0d2423265bbf1418095f705ba97c9a
+  m_Entries:
+  - m_Id: 8601595904
+    m_Key: SheepMeet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3392696086528
+    m_Key: HarbardsBok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3531577880576
+    m_Key: Mimisbok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3618114760704
+    m_Key: OdinsBok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3731394523136
+    m_Key: ThorsBok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3878933360640
+    m_Key: Apple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3910575190016
+    m_Key: Pesce1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3985099583488
+    m_Key: Potatoe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4039826862080
+    m_Key: "Pur\xE8"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4117840916480
+    m_Key: Forbici
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4218571321344
+    m_Key: IronBow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4276519825408
+    m_Key: Labrys
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4343259590656
+    m_Key: oreRing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4400167907328
+    m_Key: Sword(wooden)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4474692300800
+    m_Key: Shield(wooden)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4564249079808
+    m_Key: Zappa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4654812491776
+    m_Key: DungeonKey(Tutorial)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4748127367168
+    m_Key: Axe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4796311531520
+    m_Key: BoneMeal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4940427816960
+    m_Key: "Cutter(2, c cazz \xE8??)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5024850767872
+    m_Key: Rod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5078005182464
+    m_Key: StickRod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5193092689920
+    m_Key: Torch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5231579623424
+    m_Key: wood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5339662643200
+    m_Key: ortica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5369320566784
+    m_Key: PotatoeSeeds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5495791415296
+    m_Key: Calendar
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1643582003064

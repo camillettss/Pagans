@@ -12,11 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630751a0ef362da45b3850db8321aac7, type: 3}
   m_Name: Zappa
   m_EditorClassIdentifier: 
-  Name: harvest
+  _Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:2b0d2423265bbf1418095f705ba97c9a
+    m_TableEntryReference:
+      m_KeyId: 4564249079808
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   description: wow
   presentationDesc: a new item.
   price: 5
   icon: {fileID: 1202984965197363600, guid: 0c316fac58e8e7e4a81c26f180d6f20a, type: 3}
+  locname:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   discovered: 0
   closeDamage: 0
   longDamage: 0
@@ -42,3 +59,5 @@ MonoBehaviour:
   craftMethodIcon: {fileID: 0}
   Category: -2
   type: 1
+  references:
+    version: 1

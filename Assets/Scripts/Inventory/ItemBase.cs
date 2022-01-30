@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using MyBox;
+using UnityEngine.Localization;
 
 public abstract class ItemBase : ScriptableObject
 {
-    public string Name;
+    [SerializeField] private LocalizedString _Name;
+    public string Name
+    {
+        get => _Name.GetLocalizedString();
+        private set
+        {
+
+        }
+    }
     public string description;
     public string presentationDesc = "a new item.";
     public int price = 5;
     public Sprite icon;
+
+    public LocalizedString locname;
 
     public bool discovered = false;
 

@@ -12,12 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620fa6e86837f074f8cab49b2cf66185, type: 3}
   m_Name: SheepMeat
   m_EditorClassIdentifier: 
-  Name: Carne di pecora
+  _Name:
+    m_TableReference:
+      m_TableCollectionName: GUID:2b0d2423265bbf1418095f705ba97c9a
+    m_TableEntryReference:
+      m_KeyId: 8601595904
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   description: "la carne \xE8 sempre buona, anche se poca. Almeno cos\xEC dicevano."
   presentationDesc: un po' dolciastra
   price: 4
   icon: {fileID: 21300000, guid: eab87f10d2afa594c92ed3d29451b618, type: 3}
-  discovered: 0
+  locname:
+    m_TableReference:
+      m_TableCollectionName: GUID:2b0d2423265bbf1418095f705ba97c9a
+    m_TableEntryReference:
+      m_KeyId: 8601595904
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  discovered: 1
   closeDamage: 0
   longDamage: 0
   Defense: 0
@@ -43,3 +60,5 @@ MonoBehaviour:
   Category: 0
   cure: 1
   animals_eat_this: 0
+  references:
+    version: 1
