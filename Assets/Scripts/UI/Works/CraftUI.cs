@@ -23,6 +23,14 @@ public class CraftUI : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.X))
         {
             GameController.Instance.state = GameState.Inventory;
+            try
+            {
+                FindObjectOfType<newInventory>().UpdateView();
+            }
+            catch
+            {
+                print("this point should never be reached. <newInventory> object must always be found,");
+            }
             gameObject.SetActive(false);
         }
 
@@ -35,7 +43,8 @@ public class CraftUI : MonoBehaviour
                     Player.i.inventory.Remove(item.craftCost, item.craftCostCount);
 
                 Player.i.experience += item.craftExperienceReward;
-                Player.i.inventory.Add(item.handcraftDerivatedItem);
+                Player.i.inventory.Add(item.handcraftDerivatedItem, item.craftResultQuantity);
+                Player.i.inventory.Remove(item);
             }
         }
     }
@@ -47,11 +56,15 @@ public class CraftUI : MonoBehaviour
         checkPrice();
 
         startItemIcon.sprite = item.icon;
-        resultIcon.sprite = item.handcraftDerivatedItem.icon;
+        if (item.hasItemCost)
+        {
+            resultIcon.sprite = item.handcraftDerivatedItem.icon;
+            workDescription.text = $"questo lavoro ti darà 1 {item.handcraftDerivatedItem.Name}, ma ti costerà {item.craftCostCount} {item.craftCost.Name}. otterrai anche {item.craftExperienceReward} punti esperienza";
+            // TODO: add levels
+        }
+        workDescription.text = $"questo lavoro ti darà 1 {item.handcraftDerivatedItem.Name}, e non ti costerà nulla. otterrai anche {item.craftExperienceReward} punti esperienza";
         methodIcon.sprite = item.craftMethodIcon;
         itemNameText.text = item.Name;
-        workDescription.text = $"questo lavoro ti darà 1 {item.handcraftDerivatedItem.Name}, ma ti costerà {item.craftCostCount} {item.craftCost.Name}. otterrai anche {item.craftExperienceReward} punti esperienza";
-        // TODO: add levels
         experienceReward.text = $"{item.craftExperienceReward} XP";
 
         if (isAffordable)

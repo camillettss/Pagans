@@ -21,11 +21,16 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  description: this is the sword of your grandpa.
-  presentationDesc: a new item.
-  price: 10
-  icon: {fileID: 21300000, guid: e90c8bb5842829f4c94cade996dc0aa8, type: 3}
-  locname:
+  _description:
+    m_TableReference:
+      m_TableCollectionName: GUID:f0cd6a0ff4be44b419460bc7717a9ea9
+    m_TableEntryReference:
+      m_KeyId: 11523354390528
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _presentationDesc:
     m_TableReference:
       m_TableCollectionName: 
     m_TableEntryReference:
@@ -34,6 +39,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  price: 10
+  icon: {fileID: 21300000, guid: e90c8bb5842829f4c94cade996dc0aa8, type: 3}
   discovered: 0
   closeDamage: 10
   longDamage: 0

@@ -420,7 +420,7 @@ public class Inventory : MonoBehaviour
                     ((Seeds)item).onUnequip();
                 }
 
-                if (item == extraSlot.item)
+                if (extraSlot != null && item == extraSlot.item)
                     extraSlot = null;
             }
             ExtraItemUI.i.HandleUpdate();

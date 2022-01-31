@@ -21,11 +21,16 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  description: libro di thorr
-  presentationDesc: molto interessante
-  price: 9999
-  icon: {fileID: 21300000, guid: b94a824ab1351e24aa2a404d7ae4b5fd, type: 3}
-  locname:
+  _description:
+    m_TableReference:
+      m_TableCollectionName: GUID:f0cd6a0ff4be44b419460bc7717a9ea9
+    m_TableEntryReference:
+      m_KeyId: 1492919644160
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _presentationDesc:
     m_TableReference:
       m_TableCollectionName: 
     m_TableEntryReference:
@@ -34,6 +39,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  price: 9999
+  icon: {fileID: 21300000, guid: b94a824ab1351e24aa2a404d7ae4b5fd, type: 3}
   discovered: 0
   closeDamage: 0
   longDamage: 0

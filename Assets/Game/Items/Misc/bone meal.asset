@@ -21,11 +21,16 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  description: polvere di ossa, concima giuro
-  presentationDesc: a new item.
-  price: 5
-  icon: {fileID: 21300000, guid: 45854289d4f5e5a418b189bc9b896389, type: 3}
-  locname:
+  _description:
+    m_TableReference:
+      m_TableCollectionName: GUID:f0cd6a0ff4be44b419460bc7717a9ea9
+    m_TableEntryReference:
+      m_KeyId: 14314047139840
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _presentationDesc:
     m_TableReference:
       m_TableCollectionName: 
     m_TableEntryReference:
@@ -34,6 +39,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  price: 5
+  icon: {fileID: 21300000, guid: 45854289d4f5e5a418b189bc9b896389, type: 3}
   discovered: 0
   closeDamage: 0
   longDamage: 0

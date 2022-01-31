@@ -21,20 +21,26 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  description: ottima per fare una corda.
-  presentationDesc: "non capisco perch\xE8 raccogliere tutto ci\xF2 che si trova
-    sotto tiro..."
-  price: 1
-  icon: {fileID: 21300000, guid: 9b93b28672c3b5648a8e4701a14a1945, type: 3}
-  locname:
+  _description:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:f0cd6a0ff4be44b419460bc7717a9ea9
+    m_TableEntryReference:
+      m_KeyId: 16507366141952
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _presentationDesc:
+    m_TableReference:
+      m_TableCollectionName: GUID:f0cd6a0ff4be44b419460bc7717a9ea9
     m_TableEntryReference:
       m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  price: 1
+  icon: {fileID: -4539084928890175368, guid: 451b3e4971f72be499d91e4cafaaa6bb, type: 3}
   discovered: 0
   closeDamage: 0
   longDamage: 0
@@ -53,11 +59,13 @@ MonoBehaviour:
   harvestingItem: 0
   droppedSprite: {fileID: 0}
   hasItemCost: 0
-  handcraftDerivatedItem: {fileID: 0}
+  handcraftDerivatedItem: {fileID: 11400000, guid: edbea4fb02bc7b145bbf4253b3bdbb71,
+    type: 2}
+  craftResultQuantity: 1
   craftCost: {fileID: 0}
   craftCostCount: 0
   craftExperienceReward: 0
-  craftMethodIcon: {fileID: 0}
+  craftMethodIcon: {fileID: 21300000, guid: 5956b21b64af5fc45909ff4f0aebc1f0, type: 3}
   Category: 0
   references:
     version: 1

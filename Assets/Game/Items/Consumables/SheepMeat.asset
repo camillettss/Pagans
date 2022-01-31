@@ -21,19 +21,26 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  description: "la carne \xE8 sempre buona, anche se poca. Almeno cos\xEC dicevano."
-  presentationDesc: un po' dolciastra
-  price: 4
-  icon: {fileID: 21300000, guid: eab87f10d2afa594c92ed3d29451b618, type: 3}
-  locname:
+  _description:
     m_TableReference:
-      m_TableCollectionName: GUID:2b0d2423265bbf1418095f705ba97c9a
+      m_TableCollectionName: GUID:f0cd6a0ff4be44b419460bc7717a9ea9
     m_TableEntryReference:
-      m_KeyId: 8601595904
+      m_KeyId: 9789127127040
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  _presentationDesc:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  price: 4
+  icon: {fileID: 21300000, guid: eab87f10d2afa594c92ed3d29451b618, type: 3}
   discovered: 1
   closeDamage: 0
   longDamage: 0

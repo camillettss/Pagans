@@ -16,12 +16,26 @@ public abstract class ItemBase : ScriptableObject
 
         }
     }
-    public string description;
-    public string presentationDesc = "a new item.";
+    [SerializeField] private LocalizedString _description;
+    public string description
+    {
+        get => _description.GetLocalizedString();
+        private set
+        {
+
+        }
+    }
+    [SerializeField] private LocalizedString _presentationDesc;
+    public string presentationDesc
+    {
+        get => _presentationDesc.GetLocalizedString();
+        private set
+        {
+
+        }
+    }
     public int price = 5;
     public Sprite icon;
-
-    public LocalizedString locname;
 
     public bool discovered = false;
 
@@ -46,6 +60,7 @@ public abstract class ItemBase : ScriptableObject
 
     [ConditionalField(nameof(HasDerivated))] public bool hasItemCost = false;
     [ConditionalField(nameof(HasDerivated))] public ItemBase handcraftDerivatedItem;
+    [ConditionalField(nameof(HasDerivated))] public int craftResultQuantity=1;
     [ConditionalField(nameof(HasDerivated))] public ItemBase craftCost;
     [ConditionalField(nameof(HasDerivated))] public int craftCostCount;
     [ConditionalField(nameof(HasDerivated))] public int craftExperienceReward;

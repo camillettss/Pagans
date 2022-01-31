@@ -21,11 +21,16 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  description: s
-  presentationDesc: a new item.
-  price: 2
-  icon: {fileID: 21300000, guid: a402c3ecefb2ea44abb2dc8fef3e46d2, type: 3}
-  locname:
+  _description:
+    m_TableReference:
+      m_TableCollectionName: GUID:f0cd6a0ff4be44b419460bc7717a9ea9
+    m_TableEntryReference:
+      m_KeyId: 16936258891776
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _presentationDesc:
     m_TableReference:
       m_TableCollectionName: 
     m_TableEntryReference:
@@ -34,6 +39,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  price: 2
+  icon: {fileID: 21300000, guid: a402c3ecefb2ea44abb2dc8fef3e46d2, type: 3}
   discovered: 1
   closeDamage: 0
   longDamage: 0

@@ -21,11 +21,16 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  description: a fruit that grows in midgardr
-  presentationDesc: sembra sia caduta dall'albero.
-  price: 5
-  icon: {fileID: 21300000, guid: b062564958279c341b36c9105e34673d, type: 3}
-  locname:
+  _description:
+    m_TableReference:
+      m_TableCollectionName: GUID:2b0d2423265bbf1418095f705ba97c9a
+    m_TableEntryReference:
+      m_KeyId: 3878933360640
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _presentationDesc:
     m_TableReference:
       m_TableCollectionName: 
     m_TableEntryReference:
@@ -34,6 +39,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  price: 5
+  icon: {fileID: 21300000, guid: b062564958279c341b36c9105e34673d, type: 3}
   discovered: 0
   closeDamage: 0
   longDamage: 0

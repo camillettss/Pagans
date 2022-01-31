@@ -2022,6 +2022,11 @@ PrefabInstance:
       propertyPath: GameplayLight
       value: 
       objectReference: {fileID: 1417378506}
+    - target: {fileID: 4952206251018915651, guid: 8f267ce035dcbc146a50a5715e515f90,
+        type: 3}
+      propertyPath: EssentialObjectsPrefab
+      value: 
+      objectReference: {fileID: 1017795928519957807}
     - target: {fileID: 4952206251134540918, guid: 8f267ce035dcbc146a50a5715e515f90,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2219,3 +2224,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f267ce035dcbc146a50a5715e515f90, type: 3}
+--- !u!1 &1017795928519957807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4952206250344249737, guid: 8f267ce035dcbc146a50a5715e515f90,
+    type: 3}
+  m_PrefabInstance: {fileID: 1017795928519957806}
+  m_PrefabAsset: {fileID: 0}

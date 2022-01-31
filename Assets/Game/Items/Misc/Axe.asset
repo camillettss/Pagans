@@ -21,11 +21,16 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  description: si
-  presentationDesc: used for tree cutting
-  price: 15
-  icon: {fileID: 21300000, guid: 45cfe68fb47a8514f96477d0fb432286, type: 3}
-  locname:
+  _description:
+    m_TableReference:
+      m_TableCollectionName: GUID:f0cd6a0ff4be44b419460bc7717a9ea9
+    m_TableEntryReference:
+      m_KeyId: 14215694905344
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _presentationDesc:
     m_TableReference:
       m_TableCollectionName: 
     m_TableEntryReference:
@@ -34,6 +39,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  price: 15
+  icon: {fileID: 21300000, guid: 45cfe68fb47a8514f96477d0fb432286, type: 3}
   discovered: 0
   closeDamage: 0
   longDamage: 0

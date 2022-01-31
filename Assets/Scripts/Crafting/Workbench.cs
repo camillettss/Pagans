@@ -45,7 +45,6 @@ public class Recipe
 {
     public ItemBase slot1, slot2, result;
     public Boat boat_result;
-    public int cost;
 
     public Recipe(ItemBase ingredient1, ItemBase ingredient2, ItemBase result)
     {
