@@ -21,6 +21,20 @@ public enum Locations { FadsHeimr, AsbjarnarHeimr, TutorialShop, FarmHouse, Magi
     FurnesMansion_Room,
     // fornburg
     FornburgHouse_SecretGate,
+    // Caves
+    FornburgCave_South,
+    FornburgCave_North,
+    // Hruttstalidr
+    Hruttstalidr_Forge,
+    Hruttstalidr_Storage,
+    Hruttstalidr_FarmadsHeimr,
+    Hruttstalidr_HeirdaHeimr,
+    Hruttstalidr_GodaHeimr,
+    Hruttstalidr_FarmerHouse1,
+    Hruttstalidr_FarmerHouse2,
+    Hruttstalidr_FarmerHouse3,
+    Hruttstalidr_FarmerHouse4,
+    Hruttstalidr_Biblioteca,
 };
 public enum PortalDetails { IN, OUT, NONE };
 
