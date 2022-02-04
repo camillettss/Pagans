@@ -234,7 +234,7 @@ public class Inventory : MonoBehaviour
         Books.Remove(skillbook);
     }
 
-    void Unequip(int itype)
+    public void Unequip(int itype)
     {
         if(itype == 0)
         {
@@ -346,6 +346,9 @@ public class Inventory : MonoBehaviour
 
     public void Add(ItemBase item, int quantity = 1)
     {
+        if (item == null)
+            return;
+
         if(TryGetComponent(out Player _) && !item.discovered && !GameController.Instance.newItemUI.isActiveAndEnabled) // altrimenti se prende due oggetti fa un casino della madonna
         {
             StartCoroutine(Player.i.DiscoveredNewItem());

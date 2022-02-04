@@ -422,19 +422,6 @@ public class Player : MonoBehaviour
         canMove = true;
     }
 
-    public void Cut()
-    {
-        var tree = GetFrontalCollider(farmingLayer);
-
-        if(tree != null)
-        {
-            if (tree.TryGetComponent(out Tree tempTree))
-                tempTree.Cut();
-            else if (tree.TryGetComponent(out CuttableTile cuttable))
-                cuttable.takeDamage(1);
-        }
-    }
-
     float getSpeed()
     {
         if (animator.GetBool("isRiding"))

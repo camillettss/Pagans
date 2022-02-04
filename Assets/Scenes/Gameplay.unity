@@ -544,6 +544,8 @@ MonoBehaviour:
   - {fileID: 1792628239}
   - {fileID: 2080567025}
   - {fileID: 941962713}
+  - {fileID: 2129073419}
+  - {fileID: 1955640885}
   light: {fileID: 1417378506}
   lightBrightness: 1
   lightColor: {r: 1, g: 1, b: 1, a: 0}
@@ -1509,6 +1511,7 @@ Transform:
   - {fileID: 2080567023}
   - {fileID: 941962711}
   - {fileID: 2129073417}
+  - {fileID: 1955640883}
   m_Father: {fileID: 637793941}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1821,6 +1824,83 @@ MonoBehaviour:
   lights: []
   outdoor: 0
   door: {x: 0, y: 0}
+--- !u!1 &1955640882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1955640883}
+  - component: {fileID: 1955640885}
+  - component: {fileID: 1955640884}
+  m_Layer: 0
+  m_Name: HruttstalidrMerchantHouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1955640883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955640882}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -222.79, y: 380.02, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1512365301}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1955640884
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955640882}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -2.3857632, y: -0.81973267}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 11, y: 13}
+  m_EdgeRadius: 0
+--- !u!114 &1955640885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955640882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee60f4e1a55b5ec4b82de4c0c7dbe704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectedScenes: []
+  light: {fileID: 1417378506}
+  lightBrightness: 0.2
+  lightColor: {r: 1, g: 0.972549, b: 0.9098039, a: 0}
+  lights: []
+  outdoor: 0
+  door: {x: 0, y: 0}
 --- !u!1 &2080567022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2111,7 +2191,7 @@ PrefabInstance:
     - target: {fileID: 708650987861184386, guid: 8f267ce035dcbc146a50a5715e515f90,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 103.85011
+      value: 103.8501
       objectReference: {fileID: 0}
     - target: {fileID: 754662289491670957, guid: 8f267ce035dcbc146a50a5715e515f90,
         type: 3}
@@ -2382,6 +2462,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952206251302890386, guid: 8f267ce035dcbc146a50a5715e515f90,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5155302685910727992, guid: 8f267ce035dcbc146a50a5715e515f90,
         type: 3}

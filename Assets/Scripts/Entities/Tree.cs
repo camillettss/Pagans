@@ -22,7 +22,7 @@ public class Tree : MonoBehaviour, IEntity
         GetComponent<SpriteRenderer>().sprite = TreeSprite;
     }
 
-    void unshowSignal()
+    /*void unshowSignal()
     {
         if (showingSignal)
         {
@@ -32,11 +32,12 @@ public class Tree : MonoBehaviour, IEntity
             }
             showingSignal = false;
         }
-    }
+    }*/
 
     public void ShowSignal()
     {
-        if (!showingSignal && Player.i.inventory.equipedTool != -1 && !cutted) // hardcoded. but axes are always -2 as type.
+        /*unshowSignal(); // it must be deleted
+        if (!cutted && !hasFruits)
         {
             if (Player.i.inventory.Tools[Player.i.inventory.equipedTool].item is Axe)
             {
@@ -44,14 +45,14 @@ public class Tree : MonoBehaviour, IEntity
                 showingSignal = true;
             }
         }
-        else if(!showingSignal && !cutted && hasFruits)
+        else if (!cutted && hasFruits)
         {
             Instantiate(GameController.Instance.keytip_Z, transform);
             showingSignal = true;
-        }
+        }*/
     }
 
-    private void FixedUpdate()
+    /*private void FixedUpdate()
     {
         if (GameController.Instance.state != GameState.FreeRoam)
         {
@@ -63,13 +64,14 @@ public class Tree : MonoBehaviour, IEntity
             ShowSignal();
         else
             unshowSignal();
-    }
+    }*/
 
     public void Interact(Player player)
     {
         // Drop a fruit
         if(!cutted)
             StoryEventHandler.i.AddToInventory(dropfruit);
+        ShowSignal();
     }
 
     public void Cut()
@@ -84,6 +86,9 @@ public class Tree : MonoBehaviour, IEntity
 
         cutted = true;
         GetComponent<CircleCollider2D>().enabled = false;
+
+        ShowSignal(); // Update signal
+        
     }
 
     public void takeDamage(int dmg)
