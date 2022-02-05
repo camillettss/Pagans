@@ -6,6 +6,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class RoomsController : MonoBehaviour
 {
     [SerializeField] Quest killTwo_Quest;
+    [SerializeField] Quest ActivateAfterTutorial;
 
     [SerializeField] Gate level3gate;
     [SerializeField] Gate level1gate;
@@ -80,6 +81,8 @@ public class RoomsController : MonoBehaviour
             GameController.Instance.storyController.Activate();
 
             Fader.i.FadeOut(.5f);
+
+            Player.i.QuestsContainer.Add(ActivateAfterTutorial);
         }
     }
 

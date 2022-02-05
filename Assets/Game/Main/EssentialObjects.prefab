@@ -21237,35 +21237,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSlots: []
-  consumableSlots:
-  - item: {fileID: 11400000, guid: 4d20530b3289eb6459bb94a5cba40867, type: 2}
-    count: 2
-  - item: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
-    count: 2
-  - item: {fileID: 11400000, guid: 7bca042ca133b964cb016e265d3da33f, type: 2}
-    count: 5
-  - item: {fileID: 11400000, guid: f06f4d53d8a2a784a98ee480ed4e757e, type: 2}
-    count: 1
+  consumableSlots: []
   Rings: []
   Weapons:
   - item: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
     count: 1
-  Shields:
-  - item: {fileID: 11400000, guid: fd64f7706a1177044b8c21c515c74dae, type: 2}
-    count: 1
+  Shields: []
   Tools:
   - item: {fileID: 11400000, guid: 957dc4adc587bf44e90e8aab6907954c, type: 2}
     count: 1
-  - item: {fileID: 11400000, guid: 9652a1320e43eff44abd57f5bfa0e7e3, type: 2}
-    count: 1
-  - item: {fileID: 11400000, guid: 1db297b7049f56d489518375d18c35d5, type: 2}
-    count: 1
   torch: {fileID: 0}
-  equipedWeapon: -1
+  equipedWeapon: 0
   secondaryWeapon: -1
   equipedRing: -1
   equipedShield: -1
-  equipedTool: 0
+  equipedTool: -1
   equips: 
   runes: []
   dusts: []
@@ -22258,7 +22244,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -200}
+  m_AnchoredPosition: {x: 0, y: -200.00003}
   m_SizeDelta: {x: -80, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4952206251134540916
@@ -24562,8 +24548,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 185.3, y: -12.820124}
-  m_SizeDelta: {x: 340.6, y: 25.640247}
+  m_AnchoredPosition: {x: 185.3, y: -13.118265}
+  m_SizeDelta: {x: 340.6, y: 26.23653}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7008227580424801113
 CanvasRenderer:
@@ -27412,7 +27398,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.00005340576}
-  m_SizeDelta: {x: 0, y: 25.640247}
+  m_SizeDelta: {x: 0, y: 26.23653}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4224952113446858265
 MonoBehaviour:
@@ -30129,7 +30115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -259.54, y: -179.26001}
+  m_AnchoredPosition: {x: -259.54, y: -179.26004}
   m_SizeDelta: {x: 372.6, y: -334.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6071307154498586022

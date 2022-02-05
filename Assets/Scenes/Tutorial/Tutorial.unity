@@ -16521,7 +16521,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.53526664, y: -0.62609005}
+  m_Offset: {x: -0.5352669, y: 0.7733474}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -16532,7 +16532,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 10}
+  m_Size: {x: 10, y: 12.798875}
   m_EdgeRadius: 0
 --- !u!114 &191549730
 MonoBehaviour:
@@ -17134,6 +17134,40 @@ MonoBehaviour:
     onEndDialogue:
       Teller: 
       sentences: []
+  ActivateAfterTutorial:
+    isActive: 0
+    activeOnGet: 1
+    title: Tutorial
+    description: Impara le basi di pagans per non perderti nel mondo.
+    experienceReward: 10
+    goldReward: 15
+    giver: {fileID: 0}
+    successReaction: 
+    goal:
+    - dialogueDelay: 0
+      introDialogue:
+        Teller: 
+        sentences:
+        - "Questo \xE8 Midgardr, il regno degli uomini."
+        - Questa missione serve ad insegnarti come fare le cose base su questo mondo,puoi
+          interromperla e andare liberamente.
+        - puoi farlo premendo Enter, seleziona Quests e clicca su Tutorial.
+        - Se vuoi continuare con la quest invece, apri Zaino dal menu e vai sulla
+          sezione Strumenti per equipaggiare l'ascia.
+      goal: Equipaggia un'ascia
+      goalType: 8
+      enemyName: 
+      talkTo: 
+      sellerName: 
+      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
+      PortalName: 
+      itemToEquip: {fileID: 11400000, guid: 957dc4adc587bf44e90e8aab6907954c, type: 2}
+      reqAmount: 2
+      currentAmount: 0
+    onEndDialogue:
+      Teller: 
+      sentences:
+      - bravo cojone, hai fatto.
   level3gate: {fileID: 1291010047}
   level1gate: {fileID: 839912080}
   lightSceneColor: {r: 0.7137255, g: 0.7882353, b: 0.8862745, a: 1}
@@ -39502,6 +39536,19 @@ MonoBehaviour:
     onEndDialogue:
       Teller: 
       sentences: []
+  ActivateAfterTutorial:
+    isActive: 0
+    activeOnGet: 0
+    title: 
+    description: 
+    experienceReward: 0
+    goldReward: 0
+    giver: {fileID: 0}
+    successReaction: 
+    goal: []
+    onEndDialogue:
+      Teller: 
+      sentences: []
   level3gate: {fileID: 0}
   level1gate: {fileID: 0}
   lightSceneColor: {r: 0, g: 0, b: 0, a: 0}
@@ -39675,154 +39722,20 @@ MonoBehaviour:
   state: 0
   ActiveNPC: {fileID: 0}
   storyController: {fileID: 0}
-  talkToHarbardQuest:
+  babyAnimals: []
+  activateAfterTutorialQuest:
     isActive: 0
     activeOnGet: 0
-    title: Tutorial
-    description: impara le basi di Pagans.
-    experienceReward: 5
+    title: 
+    description: 
+    experienceReward: 0
     goldReward: 0
     giver: {fileID: 0}
     successReaction: 
-    goal:
-    - dialogueDelay: 0
-      introDialogue:
-        Teller: corri scemo di un gelataro fallito.
-        sentences: []
-      goal: vai in biblioteca
-      goalType: 5
-      enemyName: 
-      talkTo: Harbardr
-      sellerName: fish
-      GoalItem: {fileID: 0}
-      PortalName: library-door
-      itemToEquip: {fileID: 0}
-      reqAmount: 0
-      currentAmount: 0
-    - dialogueDelay: 0.2
-      introDialogue:
-        Teller: 
-        sentences:
-        - nella biblioteca ci sono dei libri sullo svolgimento del gioco. per iniziare
-          vai a dargli un'occhiata.
-      goal: leggi qualcosa
-      goalType: 2
-      enemyName: 
-      talkTo: librarian
-      sellerName: 
-      GoalItem: {fileID: 0}
-      PortalName: library-door
-      itemToEquip: {fileID: 0}
-      reqAmount: 0
-      currentAmount: 0
-    - dialogueDelay: 0.2
-      introDialogue:
-        Teller: 
-        sentences:
-        - "bene, ora ti insegner\xF2 a combattere. hai gi\xE0 l'ascia equipaggiata
-          perci\xF2 vai a tagliare della legna."
-        - "la legna \xE8 utile per fare il fuoco, costruire strumenti provvisori
-          o per farsi qualche soldo. venderla potrebbe darti abbastanza soldi per
-          una spada."
-      goal: taglia un albero
-      goalType: 11
-      enemyName: 
-      talkTo: librarian
-      sellerName: 
-      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
-      PortalName: library-door
-      itemToEquip: {fileID: 0}
-      reqAmount: 2
-      currentAmount: 0
-    - dialogueDelay: 0.2
-      introDialogue:
-        Teller: 
-        sentences:
-        - "ottimo. c'\xE8 un venditore non lontano da qui, \xE8 un mercante di armi
-          ma sono sicuro che accetter\xE0 la legna. "
-      goal: vendi la legna
-      goalType: 10
-      enemyName: 
-      talkTo: librarian
-      sellerName: 
-      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
-      PortalName: library-door
-      itemToEquip: {fileID: 0}
-      reqAmount: 2
-      currentAmount: 0
-    - dialogueDelay: 0.2
-      introDialogue:
-        Teller: 
-        sentences:
-        - ecco fatto, ora hai abbastanza kent per una spada.
-        - "premi tab per vedere cosa pu\xF2 venderci, avr\xE0 sicuramente ci\xF2
-          che cerchiamo."
-      goal: compra un'arma
-      goalType: 7
-      enemyName: 
-      talkTo: librarian
-      sellerName: 
-      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
-      PortalName: library-door
-      itemToEquip: {fileID: 0}
-      reqAmount: 0
-      currentAmount: 0
-    - dialogueDelay: 0.2
-      introDialogue:
-        Teller: 
-        sentences:
-        - hai comprato la tua prima arma! esci dalla schermata del mercante, poi
-          entra nell'inventario premendo enter e selezionanbdo Bag
-        - "troverai tutti gli oggetti ordinati in categorie. la spada sar\xE0 proprio
-          nella prima quindi selezionala ed equipaggiala con Z."
-      goal: Equipaggia l'arma
-      goalType: 8
-      enemyName: 
-      talkTo: librarian
-      sellerName: 
-      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
-      PortalName: library-door
-      itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
-      reqAmount: 0
-      currentAmount: 0
-    - dialogueDelay: 0.2
-      introDialogue:
-        Teller: 
-        sentences:
-        - ecco fatto. ora sei pronto per il tuo primo combattimento.
-        - vai nella caverna per incontrare il nemico.
-      goal: entra nella caverna
-      goalType: 5
-      enemyName: 
-      talkTo: librarian
-      sellerName: 
-      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
-      PortalName: CaveExit
-      itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
-      reqAmount: 0
-      currentAmount: 0
-    - dialogueDelay: 0.2
-      introDialogue:
-        Teller: 
-        sentences:
-        - "ecco il nemico, questo \xE8 un goblin e lo troverai anche nel bestiario
-          in bibioteca."
-        - "ti attaccher\xE0 con la sua spada se ti avvicini troppo perci\xF2 fa'
-          attenzione."
-      goal: uccidi il goblin
-      goalType: 1
-      enemyName: Spider
-      talkTo: librarian
-      sellerName: 
-      GoalItem: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
-      PortalName: library-door
-      itemToEquip: {fileID: 11400000, guid: 52d183a283520e348a81d3504dda9fd7, type: 2}
-      reqAmount: 0
-      currentAmount: 0
+    goal: []
     onEndDialogue:
       Teller: 
-      sentences:
-      - hai completato il tutorial, ottimo!
+      sentences: []
   eveningLightsColor: {r: 1, g: 1, b: 1, a: 1}
   nightLightsColor:
     serializedVersion: 2
@@ -40685,6 +40598,7 @@ MonoBehaviour:
   MonstersBooks: []
   StoriesBooks: []
   moveInput: {x: 0, y: 0}
+  Head: {fileID: 0}
   maxHp: 30
   gold: 0
   experience: 0
@@ -40822,6 +40736,7 @@ MonoBehaviour:
   activeAgrimap: {fileID: 0}
   activePlant: {fileID: 0}
   transportingAnimal: {fileID: 0}
+  liftingItem: {fileID: 0}
   activeBench: {fileID: 0}
   activeBoat: {fileID: 0}
   targetBoat: {fileID: 0}
@@ -47984,14 +47899,12 @@ MonoBehaviour:
     slot2: {fileID: 11400000, guid: 04716ccd0a2bee744a9cba32a040e01a, type: 2}
     result: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
     boat_result: {fileID: 0}
-    cost: 0
   NavalRecipes:
   - slot1: {fileID: 11400000, guid: d04ac9deb510f014eb2dbfbbee7b2022, type: 2}
     slot2: {fileID: 11400000, guid: 4d20530b3289eb6459bb94a5cba40867, type: 2}
     result: {fileID: 0}
     boat_result: {fileID: 6532916771954464428, guid: f01bfcea2eac3f74bb41de27bf23885f,
       type: 3}
-    cost: 0
 --- !u!224 &7316737469830306730
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48346,6 +48259,17 @@ MonoBehaviour:
   rightTip: {fileID: 4979652351908243059}
   stats: {fileID: 4367941291654453631}
   innerStatsText: {fileID: 7187627671293624582}
+  myString:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 1
 --- !u!1 &7461971600296998471
 GameObject:
   m_ObjectHideFlags: 0
@@ -55963,7 +55887,6 @@ MonoBehaviour:
     slot2: {fileID: 0}
     result: {fileID: 0}
     boat_result: {fileID: 0}
-    cost: 0
   text: {fileID: 5821672018188959502}
 --- !u!114 &8528697071176749143
 MonoBehaviour:

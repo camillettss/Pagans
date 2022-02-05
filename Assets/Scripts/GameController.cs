@@ -112,7 +112,7 @@ public class GameController : MonoBehaviour
     [HideInInspector] public StoryController storyController;
     public List<FarmAnimal> babyAnimals;
 
-    [SerializeField] Quest talkToHarbardQuest;
+    [SerializeField] Quest activateAfterTutorialQuest;
 
     [SerializeField] Color eveningLightsColor;
     [SerializeField] Gradient nightLightsColor;
