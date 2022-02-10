@@ -4,7 +4,7 @@ using System;
 using UnityEngine.Rendering;
 using System.Collections.Generic;
 using UnityEngine.Audio;
-using UnityEngine.Tilemaps;
+using UnityEngine.Localization.Settings;
 
 public enum GameState {
     FreeRoam,
@@ -107,6 +107,8 @@ public class GameController : MonoBehaviour
     public Color unselectedActualDayColor;
     public Color unselectedDayDefaultColor;
 
+    public string lid = "en";
+
     [HideInInspector] public GameState state = GameState.FreeRoam;
     [HideInInspector] public NPCController ActiveNPC;
     [HideInInspector] public StoryController storyController;
@@ -144,8 +146,9 @@ public class GameController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return LocalizationSettings.InitializationOperation;
         //hotbar.UpdateItems();
         MinimapCanvas.SetActive(false);
         Camera.main.transform.position = player.transform.position;

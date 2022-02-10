@@ -69,10 +69,12 @@ public class newInventory : MonoBehaviour
         localizedText = s;
     }
 
+#if UNITY_EDITOR
     void OnGUI()
     {
         EditorGUILayout.LabelField(localizedText);
     }
+#endif
 
     private void Awake()
     {

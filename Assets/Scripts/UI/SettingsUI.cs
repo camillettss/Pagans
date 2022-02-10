@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Localization;
 using System;
 
 public class SettingsUI : MonoBehaviour
 {
     int selected = 0;
-    [SerializeField] UnityEngine.UI.Text diagonalMovesText;
+    [SerializeField] Text diagonalMovesText;
+
+    [SerializeField] LanguageContentController languageContentController;
 
     private void Awake()
     {
@@ -18,6 +22,7 @@ public class SettingsUI : MonoBehaviour
     public void HandleUpdate(Action onBack)
     {
         int prev = selected;
+
         if (Input.GetKeyDown(KeyCode.X))
             onBack?.Invoke();
 
@@ -25,6 +30,7 @@ public class SettingsUI : MonoBehaviour
             ++selected;
         else if (Input.GetKeyDown(KeyCode.UpArrow))
             --selected;
+
         selected = Mathf.Clamp(selected, 0, transform.childCount - 1);
 
         if (prev != selected)
@@ -36,10 +42,16 @@ public class SettingsUI : MonoBehaviour
 
     public void UpdateSelection()
     {
-        foreach (Transform child in transform)
-            child.GetComponent<UnityEngine.UI.Text>().color = GameController.Instance.unselectedDefaultColor;
-
-        transform.GetChild(selected).GetComponent<UnityEngine.UI.Text>().color = GameController.Instance.selectedDefaultColor;
+        for(int i=0; i<transform.childCount; i++)
+        {
+            if(transform.GetChild(i).TryGetComponent(out Text text))
+            {
+                if (i == selected)
+                    text.color = GameController.Instance.selectedDefaultColor;
+                else
+                    text.color = GameController.Instance.unselectedDefaultColor;
+            }
+        }
     }
 
     void Perform(int choosen)
@@ -62,6 +74,11 @@ public class SettingsUI : MonoBehaviour
         {
             Player.i.enableDiagonalMovements = !Player.i.enableDiagonalMovements;
             diagonalMovesText.text = $"diagonal:{Player.i.enableDiagonalMovements}";
+        }
+
+        else if (choosen == 3) // change language
+        {
+            languageContentController.Activate();
         }
     }
 }
