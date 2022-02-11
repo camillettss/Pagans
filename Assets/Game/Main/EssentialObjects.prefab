@@ -3402,7 +3402,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3555,7 +3555,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 38.162228}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &631146681975919558
 MonoBehaviour:
@@ -9779,7 +9779,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diagonalMovesText: {fileID: 1099052626791159581}
-  languageContentController: {fileID: 8240342896957827112}
 --- !u!1 &1261235203693762617
 GameObject:
   m_ObjectHideFlags: 0
@@ -15293,6 +15292,7 @@ GameObject:
   - component: {fileID: 4322833559671226882}
   - component: {fileID: 4949625794289484526}
   - component: {fileID: 2489836576780967136}
+  - component: {fileID: 8001117031886754565}
   m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
@@ -15361,6 +15361,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Missioni:'
+--- !u!114 &8001117031886754565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3391230321879122243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:4bae294db74b8b64eaa5773153b82f2a
+    m_TableEntryReference:
+      m_KeyId: 4527071162048512
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls: []
+  references:
+    version: 1
 --- !u!1 &3429888907209066311
 GameObject:
   m_ObjectHideFlags: 0
@@ -16325,9 +16352,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2898361406385973635
 CanvasRenderer:
@@ -19307,14 +19334,11 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:4bae294db74b8b64eaa5773153b82f2a
     m_TableEntryReference:
-      m_KeyId: 3222781750800384
+      m_KeyId: 3830141523456000
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-    m_LocalVariables:
-    - name: data
-      variable:
-        id: 0
+    m_LocalVariables: []
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
@@ -19333,11 +19357,6 @@ MonoBehaviour:
         m_CallState: 2
   references:
     version: 1
-    00000000:
-      type: {class: ObjectVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables,
-        asm: Unity.Localization}
-      data:
-        m_Value: {fileID: 11500000, guid: 76e839f08830b9d4497888452580f13c, type: 3}
 --- !u!1 &4515833080930336974
 GameObject:
   m_ObjectHideFlags: 0
@@ -21587,8 +21606,24 @@ MonoBehaviour:
   quest:
     isActive: 0
     activeOnGet: 0
-    title: 
-    description: 
+    title:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    description:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     experienceReward: 0
     goldReward: 0
     giver: {fileID: 0}
@@ -21728,6 +21763,8 @@ MonoBehaviour:
   confettis: {fileID: 8285674075279938809}
   isFirstLaunch: 0
   storyProgressValue: 0
+  references:
+    version: 1
 --- !u!114 &4952206250600258697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21784,8 +21821,24 @@ MonoBehaviour:
   quests:
   - isActive: 0
     activeOnGet: 1
-    title: test
-    description: vendi mele
+    title:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    description:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     experienceReward: 0
     goldReward: 0
     giver: {fileID: 0}
@@ -21809,6 +21862,8 @@ MonoBehaviour:
       Teller: 
       sentences: []
   completed: []
+  references:
+    version: 1
 --- !u!1 &4952206250633643930
 GameObject:
   m_ObjectHideFlags: 0
@@ -22086,6 +22141,7 @@ MonoBehaviour:
   craftUI: {fileID: 1614896084994380133}
   workbenchUI: {fileID: 5306357175905444057}
   portUI: {fileID: 4857909758449401922}
+  languageContentController: {fileID: 8240342896957827112}
   calendar: {fileID: 1112095469064186282}
   plantDetailsUI: {fileID: 1790782821083994431}
   HourTextUI: {fileID: 8512455447631457548}
@@ -22130,8 +22186,24 @@ MonoBehaviour:
   activateAfterTutorialQuest:
     isActive: 0
     activeOnGet: 0
-    title: 
-    description: 
+    title:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    description:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     experienceReward: 0
     goldReward: 0
     giver: {fileID: 0}
@@ -22173,6 +22245,8 @@ MonoBehaviour:
   isFirstLaunch: 0
   GameplayLight: {fileID: 0}
   audioSource: {fileID: 0}
+  references:
+    version: 1
 --- !u!114 &6928407664581579768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22206,8 +22280,24 @@ MonoBehaviour:
   activeQuest:
     isActive: 0
     activeOnGet: 0
-    title: 
-    description: 
+    title:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    description:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     experienceReward: 0
     goldReward: 0
     giver: {fileID: 0}
@@ -22324,6 +22414,8 @@ MonoBehaviour:
   Jotunheimr: {fileID: 0}
   Helheimr: {fileID: 0}
   Asgardr: {fileID: 0}
+  references:
+    version: 1
 --- !u!114 &3929372844949258897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25665,10 +25757,10 @@ RectTransform:
   m_Father: {fileID: 3598047884059431607}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 226.5, y: -19.081114}
-  m_SizeDelta: {x: 413, y: 38.162228}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3848647247448965283
 CanvasRenderer:
@@ -25728,8 +25820,24 @@ MonoBehaviour:
   quest:
     isActive: 0
     activeOnGet: 0
-    title: 
-    description: 
+    title:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    description:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
     experienceReward: 0
     goldReward: 0
     giver: {fileID: 0}
@@ -25836,6 +25944,8 @@ MonoBehaviour:
     onEndDialogue:
       Teller: 
       sentences: []
+  references:
+    version: 1
 --- !u!1 &5909274560471294559
 GameObject:
   m_ObjectHideFlags: 0

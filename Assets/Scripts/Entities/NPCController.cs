@@ -100,7 +100,7 @@ public class NPCController : MonoBehaviour, IEntity
         if (!storyGizmosDone) {
             foreach (var pdialogue in particleDialogues)
             {
-                if (pdialogue.questName == Player.i.quest.title)
+                if (pdialogue.questName == Player.i.quest.title.GetLocalizedString())
                 {
                     GameController.Instance.dialogueBox.StartDialogue(pdialogue.differentDialogue, () =>
                     {
@@ -396,8 +396,8 @@ public class NPCController : MonoBehaviour, IEntity
         var questWindow = GameController.Instance.questWindow;
 
         questWindow.gameObject.SetActive(true);
-        questWindow.titleText.text = quest.title;
-        questWindow.DescText.text = quest.description;
+        questWindow.titleText.text = quest.title.GetLocalizedString();
+        questWindow.DescText.text = quest.description.GetLocalizedString();
         questWindow.goldText.text = $"{quest.goldReward}";
         questWindow.questGiver = this;
         GameController.Instance.state = GameState.Quest;

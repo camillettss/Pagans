@@ -14,8 +14,8 @@ public class QuestController : MonoBehaviour
     {
         GameController.Instance.OpenState(GameState.Quest);
 
-        titleText.text = quest.title;
-        DescText.text = quest.description;
+        titleText.text = quest.title.GetLocalizedString();
+        DescText.text = quest.description.GetLocalizedString();
         goldText.text = $"{quest.goldReward}";
 
         questGiver = quest.giver;

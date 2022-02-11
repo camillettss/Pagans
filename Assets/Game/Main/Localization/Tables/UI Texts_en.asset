@@ -16,8 +16,7 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 4bae294db74b8b64eaa5773153b82f2a, type: 2}
   m_Metadata:
-    m_Items:
-    - id: 0
+    m_Items: []
   m_TableData:
   - m_Id: 35348672512
     m_Localized: Bag
@@ -51,18 +50,13 @@ MonoBehaviour:
     m_Localized: (E) Use
     m_Metadata:
       m_Items: []
-  - m_Id: 3222781750800384
-    m_Localized: 'language: {data.lid}'
+  - m_Id: 4527071162048512
+    m_Localized: Quests
     m_Metadata:
-      m_Items:
-      - id: 0
+      m_Items: []
   - m_Id: 3830141523456000
     m_Localized: change language
     m_Metadata:
       m_Items: []
   references:
     version: 1
-    00000000:
-      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries: 00f071591a730b00

@@ -9,6 +9,6 @@ public class QuestSlotUI : MonoBehaviour
     public void SetData(Quest quest)
     {
         this.quest = quest;
-        NameTxt.text = quest.title;
+        NameTxt.text = quest.title.GetLocalizedString();
     }
 }

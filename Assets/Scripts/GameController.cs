@@ -25,7 +25,8 @@ public enum GameState {
     CraftUI,
     Workbench,
     Port,
-    Calendar
+    Calendar,
+    ChooseLanguage
 };
 
 public enum ScanMode
@@ -60,6 +61,7 @@ public class GameController : MonoBehaviour
     public CraftUI craftUI;
     public WorkbenchUI workbenchUI;
     public PortUI portUI;
+    public LanguageContentController languageContentController;
     public Calendar calendar;
     public PlantDetails plantDetailsUI;
     public UnityEngine.UI.Text HourTextUI;
@@ -241,6 +243,11 @@ public class GameController : MonoBehaviour
             calendar.gameObject.SetActive(true);
             calendar.UpdateContents();
         }
+        else if(state == GameState.ChooseLanguage)
+        {
+            // automatically did in LangContentController.Activate
+            // just set the state.
+        }
         else
             print("[!!] No state specified or unhandled option.");
         #endregion
@@ -274,6 +281,9 @@ public class GameController : MonoBehaviour
         {
             gameOverUI.HandleUpdate();
         }
+
+        else if (state == GameState.ChooseLanguage)
+            languageContentController.HandleUpdate();
 
         else if (state == GameState.Cauldron)
             cauldronUI.HandleUpdate();

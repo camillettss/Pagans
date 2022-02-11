@@ -10,8 +10,6 @@ public class SettingsUI : MonoBehaviour
     int selected = 0;
     [SerializeField] Text diagonalMovesText;
 
-    [SerializeField] LanguageContentController languageContentController;
-
     private void Awake()
     {
         selected = 0;
@@ -78,7 +76,15 @@ public class SettingsUI : MonoBehaviour
 
         else if (choosen == 3) // change language
         {
-            languageContentController.Activate();
+            for (int i = 0; i < transform.childCount; i++) // deselect all
+            {
+                if (transform.GetChild(i).TryGetComponent(out Text text))
+                {
+                    text.color = GameController.Instance.unselectedDefaultColor;
+                }
+            }
+
+            GameController.Instance.languageContentController.Activate();
         }
     }
 }

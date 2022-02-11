@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.Localization;
 using MyBox;
 
 [System.Serializable]
@@ -9,8 +9,10 @@ public class Quest
     public bool isActive;
     public bool activeOnGet = false;
 
-    public string title;
-    public string description;
+    public bool initialized = false; // so default will be false.
+
+    public LocalizedString title;
+    public LocalizedString description;
 
     public int experienceReward;
     public int goldReward;
@@ -48,7 +50,7 @@ public class Quest
             {
                 GameController.Instance.state = actualState;
             });
-            if (title == "Tutorial")
+            if (title.GetLocalizedString() == "Tutorial")
                 GameController.Instance.isFirstLaunch = false;
             Player.i.Save();
         }

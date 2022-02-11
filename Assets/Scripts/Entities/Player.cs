@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
         attackCounter = attackTime;
 
         UpdateQuestUI();
-        if (quest == null || quest.title == "")
+        if (quest == null || quest.title.GetLocalizedString() == "")
             ActiveQuestBG.gameObject.SetActive(false);
 
         // set date
@@ -492,7 +492,7 @@ public class Player : MonoBehaviour
 
     public void UpdateQuestUI()
     {
-        if(quest!=null && quest.goal != null)
+        if(quest!=null && quest.goal != null || quest.initialized)
         {
             if (quest.goal[0].goal == "")
                 return;
@@ -512,14 +512,13 @@ public class Player : MonoBehaviour
             }
             else
             {
-                questUIfraction.gameObject.SetActive(false); // this doesn't work :/
+                questUIfraction.gameObject.SetActive(false);
                 questUI.alignment = TextAnchor.MiddleCenter;
             }
 
         }
         else
         {
-            // only disable background image
             ActiveQuestBG.gameObject.SetActive(false);
         }
     }
