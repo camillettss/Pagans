@@ -9,7 +9,7 @@ public class Quest
     public bool isActive;
     public bool activeOnGet = false;
 
-    public bool initialized = false; // so default will be false.
+    public bool initialized = false; // used in player.updateQuestUI
 
     public LocalizedString title;
     public LocalizedString description;
@@ -33,8 +33,9 @@ public class Quest
         GameController.Instance.player.experience += experienceReward;
         GameController.Instance.player.gold += goldReward;
         GameController.Instance.player.quest = null;
-        GameController.Instance.player.UpdateQuestUI();
         GameController.Instance.player.QuestsContainer.OnComplete(this);
+
+        Player.i.UpdateQuestUI();
 
         isActive = false;
 

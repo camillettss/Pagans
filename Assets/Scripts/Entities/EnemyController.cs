@@ -135,6 +135,7 @@ public class EnemyController : MonoBehaviour, IEntity
     public void takeDamage(int dmg)
     {
         hp -= dmg;
+        print("remaining hp: "+hp);
         if(hp <= 0)
         {
             if (Player.i.quest != null && Player.i.quest.goal != null)

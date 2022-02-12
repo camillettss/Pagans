@@ -107,9 +107,10 @@ public class Player : MonoBehaviour
 
         attackCounter = attackTime;
 
-        UpdateQuestUI();
-        if (quest == null || quest.title.GetLocalizedString() == "")
+        if (quest == null || !quest.initialized)
             ActiveQuestBG.gameObject.SetActive(false);
+        else
+            UpdateQuestUI();
 
         // set date
         GameController.Instance.calendar.actualMonth = GameController.Instance.calendar.Months[0]; // primo mese
@@ -492,7 +493,7 @@ public class Player : MonoBehaviour
 
     public void UpdateQuestUI()
     {
-        if(quest!=null && quest.goal != null || quest.initialized)
+        if(quest!=null && quest.goal != null && !quest.initialized)
         {
             if (quest.goal[0].goal == "")
                 return;
