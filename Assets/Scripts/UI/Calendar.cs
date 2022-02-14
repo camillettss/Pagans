@@ -31,7 +31,7 @@ public class Calendar : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        /*if(Input.GetKeyDown(KeyCode.X))
         {
             if (!dayDetails.isActiveAndEnabled)
             {
@@ -89,7 +89,7 @@ public class Calendar : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Z))
         {
             ViewDetails();
-        }
+        }*/
     }
 
     void ViewDetails()

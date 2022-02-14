@@ -20,7 +20,7 @@ public class LanguageContentController : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        /*if(Input.GetKeyDown(KeyCode.X))
         {
             gameObject.SetActive(false);
             GameController.Instance.OpenState(GameState.Settings); // gobject should be already activated
@@ -41,7 +41,7 @@ public class LanguageContentController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[selected];
-        }
+        }*/
 
     }
 

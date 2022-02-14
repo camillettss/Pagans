@@ -29,7 +29,7 @@ public class WorkbenchUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        /*if(Input.GetKeyDown(KeyCode.X))
         {
             GameController.Instance.state = GameState.FreeRoam;
             gameObject.SetActive(false);
@@ -59,7 +59,7 @@ public class WorkbenchUI : MonoBehaviour
 
                 UpdateSelection();
             }
-        }
+        }*/
     }
 
     public void UpdateContents()

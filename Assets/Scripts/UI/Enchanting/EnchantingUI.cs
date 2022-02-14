@@ -165,6 +165,7 @@ public class EnchantingUI : MonoBehaviour
     }
     public void HandleUpdate()
     {
+        /*
 
         if (EntireScrollview.activeSelf)
         {
@@ -247,7 +248,7 @@ public class EnchantingUI : MonoBehaviour
                     config.Upload(item);
                 }
             }
-        }
+        }*/
     }
 
 }

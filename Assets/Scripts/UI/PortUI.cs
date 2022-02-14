@@ -12,7 +12,7 @@ public class PortUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        /*if(Input.GetKeyDown(KeyCode.X))
         {
             gameObject.SetActive(false);
             GameController.Instance.state = GameState.FreeRoam;
@@ -33,7 +33,7 @@ public class PortUI : MonoBehaviour
             slotUIs[selected].boat.Mount();
             gameObject.SetActive(false);
             GameController.Instance.state = GameState.FreeRoam;
-        }
+        }*/
     }
 
     public void UpdateContents()

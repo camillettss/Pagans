@@ -39,7 +39,7 @@ public class LibUI : MonoBehaviour
         int prev_sel = selected_book;
         int prev_cat = selected_category;
 
-        if(Input.GetKeyDown(KeyCode.X)) // exit
+        /*if(Input.GetKeyDown(KeyCode.X)) // exit
         {
             if (readingBook.activeSelf)
             {
@@ -120,7 +120,7 @@ public class LibUI : MonoBehaviour
                 StartCoroutine(changePage());
             } 
 
-        }
+        }*/
     }
 
     IEnumerator changePage()

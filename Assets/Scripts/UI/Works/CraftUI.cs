@@ -20,7 +20,7 @@ public class CraftUI : MonoBehaviour
     public void HandleUpdate()
     {
         // TODO: add worktype change
-        if(Input.GetKeyDown(KeyCode.X))
+        /*if(Input.GetKeyDown(KeyCode.X))
         {
             GameController.Instance.state = GameState.Inventory;
             try
@@ -46,7 +46,7 @@ public class CraftUI : MonoBehaviour
                 Player.i.inventory.Add(item.handcraftDerivatedItem, item.craftResultQuantity);
                 Player.i.inventory.Remove(item);
             }
-        }
+        }*/
     }
 
     public void UpdateContents(ItemBase item)

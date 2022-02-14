@@ -23,7 +23,7 @@ public class QuestController : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        /*if(Input.GetKeyDown(KeyCode.X))
         {
             print("agg a usci");
             gameObject.SetActive(false);
@@ -35,6 +35,6 @@ public class QuestController : MonoBehaviour
             // See details
             questGiver.AcceptQuest();
             FindObjectOfType<Player>().UpdateQuestUI();
-        }
+        }*/
     }
 }

@@ -31,7 +31,7 @@ public class CauldronUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        /*if(Input.GetKeyDown(KeyCode.X))
         {
             gameObject.SetActive(false);
             GameController.Instance.state = GameState.FreeRoam;
@@ -53,7 +53,7 @@ public class CauldronUI : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Z))
         {
             Perform();
-        }
+        }*/
     }
 
     public void UpdateContents()

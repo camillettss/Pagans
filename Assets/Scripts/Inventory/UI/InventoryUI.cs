@@ -80,7 +80,7 @@ public class InventoryUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        int prevSel = selectedItm;
+        /*int prevSel = selectedItm;
         int prevCat = selectedCat;
 
         if(Input.GetKeyDown(KeyCode.X))

@@ -47,7 +47,7 @@ public class ChoosingUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        var prev = sel;
+        /*var prev = sel;
         if (Input.GetKeyDown(KeyCode.DownArrow))
             sel++;
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -68,6 +68,6 @@ public class ChoosingUI : MonoBehaviour
         {
             gameObject.SetActive(false);
             GameController.Instance.EnchUI.Open(slotUIs[sel].item);
-        }
+        }*/
     }
 }

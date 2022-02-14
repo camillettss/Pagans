@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Tilemaps;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -117,6 +118,11 @@ public class Player : MonoBehaviour
         GameController.Instance.calendar.today = GameController.Instance.calendar.actualMonth.days[29]; // primo day del primo mese
     }
 
+    public void Move(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+
     public void HandleUpdate()
     {
         if (!teleporting)
@@ -140,8 +146,8 @@ public class Player : MonoBehaviour
             liftingItem.transform.position = Head.position;
         }
 
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
+        //moveInput.x = Input.GetAxisRaw("Horizontal");
+        //moveInput.y = Input.GetAxisRaw("Vertical");
 
         if(moveInput != Vector2.zero)
         {
@@ -187,19 +193,19 @@ public class Player : MonoBehaviour
 
         // BINDS: E: use, R: use weapon, Z: interact, F: use xtra, X: shield, Q: minimap, LShift: run
 
-        if(Input.GetKeyDown(KeyCode.P))
+        /*if(Input.GetKeyDown(KeyCode.P))
         {
             /*if (GetFrontalCollider().TryGetComponent(out Animal animal) && animal.hp <= 0)
-                animal.Transport();*/
+                animal.Transport();
             if (Player.i.liftingItem != null)
                 StartCoroutine(liftingItem.Throw());
         }
 
         // minimap show
-        /*if (Input.GetKeyDown(KeyCode.Q) && canShowMinimap && !GameController.Instance.MinimapCanvas.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Q) && canShowMinimap && !GameController.Instance.MinimapCanvas.activeSelf)
             GameController.Instance.MinimapCanvas.SetActive(true);
         if (Input.GetKeyUp(KeyCode.Q))
-            GameController.Instance.MinimapCanvas.SetActive(false);*/
+            GameController.Instance.MinimapCanvas.SetActive(false);
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (TryGetSomething(out FarmAnimal animal, transform.position, 0.2f, interactableLayer | farmingLayer))
@@ -235,7 +241,7 @@ public class Player : MonoBehaviour
         }
 
         /*if (Input.GetKeyDown(KeyCode.Space) && inventory.torch != null && !currentScene.outdoor) // Toggle torch
-            inventory.torch.Use(this);*/
+            inventory.torch.Use(this);
 
         if (Input.GetKeyDown(KeyCode.Return)) // Menu
             GameController.Instance.OpenState(GameState.Menu);
@@ -294,7 +300,12 @@ public class Player : MonoBehaviour
         {
             if (inventory.extraSlot != null && inventory.extraSlot.item != null)
                 inventory.extraSlot.item.Use(this);
-        }
+        }*/
+    }
+
+    public void TestFunction(InputAction.CallbackContext context)
+    {
+        StartCoroutine(Camera.main.GetComponent<CameraMover>().Shake(.15f, .2f));
     }
 
     public void GetDamage(int dmg)
@@ -429,8 +440,8 @@ public class Player : MonoBehaviour
             return ridingSpeed;
         else if (animator.GetBool("isClimbing"))
             return 2.5f;
-        else if (Input.GetKey(KeyCode.LeftShift))
-            return runningSpeed;
+        //else if (Input.GetKey(KeyCode.LeftShift))
+        //    return runningSpeed;
         else if (animator.GetBool("holdingShield"))
             return holdingShieldSpeed;
         else

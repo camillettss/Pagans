@@ -156,7 +156,7 @@ public class ShopUI : MonoBehaviour
         int prev = selected;
         int pamount = amount;
         
-        if(Input.GetKeyDown(KeyCode.X))
+        /*if(Input.GetKeyDown(KeyCode.X))
         {
             GameController.Instance.state = GameState.FreeRoam;
             gameObject.SetActive(false);
@@ -174,7 +174,7 @@ public class ShopUI : MonoBehaviour
 
         //category = Mathf.Clamp(category, 0, 1); // Hardcoded, fix!
         /*if (sellMode && shopUIs.Count > 0 && pamount != amount)
-            amount = Mathf.Clamp(amount, 1, Player.i.inventory.findItem(shopUIs[selected].item).count);*/
+            amount = Mathf.Clamp(amount, 1, Player.i.inventory.findItem(shopUIs[selected].item).count);
 
         if(pamount != amount)
         {
@@ -196,7 +196,7 @@ public class ShopUI : MonoBehaviour
         }
         /*else if (!sellMode && shopUIs.Count > 0)
             amount = Mathf.Clamp(amount, 1, trader.inventory.findItem(shopUIs[selected].item).count); //FIX
-        */
+        
 
         selected = Mathf.Clamp(selected, 0, shopUIs.Count - 1);
 
@@ -241,6 +241,6 @@ public class ShopUI : MonoBehaviour
             UpdateView();
         }
         else if (Input.GetKeyDown(KeyCode.Tab))
-            switchToSell();
+            switchToSell();*/
     }
 }

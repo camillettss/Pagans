@@ -79,7 +79,7 @@ public class QuestsUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        /*if(Input.GetKeyDown(KeyCode.X))
         {
             GameController.Instance.state = GameState.FreeRoam;
             gameObject.SetActive(false);
@@ -124,6 +124,6 @@ public class QuestsUI : MonoBehaviour
             {
                 GameController.Instance.questWindow.Open(slotUIs[selected].quest);
             }
-        }
+        }*/
     }
 }

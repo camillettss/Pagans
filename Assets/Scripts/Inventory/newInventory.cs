@@ -195,7 +195,7 @@ public class newInventory : MonoBehaviour
             int prev_cat = category;
             int prev_bok = bookmark;
 
-            if (Input.GetKeyDown(KeyCode.X))
+            /*if (Input.GetKeyDown(KeyCode.X))
             {
                 gameObject.SetActive(false);
                 GameController.Instance.state = GameState.FreeRoam;
@@ -215,7 +215,7 @@ public class newInventory : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftControl))
                 ++bookmark;
             if (Input.GetKeyDown(KeyCode.LeftAlt))
-                --bookmark;
+                --bookmark;*/
 
             bookmark = Mathf.Clamp(bookmark, 0, tags_container.transform.childCount - 1); // 0, 3 tecnicamente.
             category = Mathf.Clamp(category, 0, Inventory.BookmarkSize(bookmark) - 1);
@@ -230,7 +230,7 @@ public class newInventory : MonoBehaviour
             if (selected != prev_sel)
                 UpdateSelection();
 
-            if (Input.GetKeyDown(KeyCode.S))
+            /*if (Input.GetKeyDown(KeyCode.S))
             {
                 if(bookmark==2 && category == 0) // puoi sacrificare solo i consumabili
                     GameController.Instance.sacrificeUI.Open(slotUIs[selected].item);
@@ -285,7 +285,7 @@ public class newInventory : MonoBehaviour
 
                     Player.i.inventory.extraSlot = invslot;
                 }
-            }
+            }*/
         }
     }
 

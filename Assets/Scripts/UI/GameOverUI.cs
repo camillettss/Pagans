@@ -24,7 +24,7 @@ public class GameOverUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        int prev = selected;
+        /*int prev = selected;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             selected = 0;
@@ -38,7 +38,7 @@ public class GameOverUI : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
-            Perform();
+            Perform();*/
     }
 
     void updateSelection()

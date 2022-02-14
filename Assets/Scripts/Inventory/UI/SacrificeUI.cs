@@ -27,7 +27,7 @@ public class SacrificeUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        /*if(Input.GetKeyDown(KeyCode.X))
         {
             gameObject.SetActive(false);
         }
@@ -38,6 +38,6 @@ public class SacrificeUI : MonoBehaviour
             Player.i.experience += getItemExp(item);
             gameObject.SetActive(false);
             GameController.Instance.inventory2.UpdateView();
-        }
+        }*/
     }
 }
