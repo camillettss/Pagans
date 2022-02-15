@@ -3,7 +3,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Rendering;
 using System.Collections.Generic;
-using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 using UnityEngine.Localization.Settings;
 
 public enum GameState {
@@ -255,6 +255,11 @@ public class GameController : MonoBehaviour
         this.state = state;
     }
 
+    public void OnUIButton(InputAction.CallbackContext context)
+    {
+        print(context.ToString());
+    }
+
     private void Update()
     {
         UpdateTime();
@@ -266,7 +271,6 @@ public class GameController : MonoBehaviour
             player.canShowMinimap = false;
         }
         #region update choose
-        // fast switching: inventory -> equipment -> quests -> inventory.
 
         if (state == GameState.FreeRoam)
         {

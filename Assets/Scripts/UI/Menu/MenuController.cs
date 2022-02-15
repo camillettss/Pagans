@@ -15,7 +15,7 @@ public class MenuController : MonoBehaviour
 
     public void HandleUpdate(Action onBack)
     {
-        int prev = selected;
+        /*int prev = selected;
         if (Input.GetKeyDown(KeyCode.X))
             onBack?.Invoke();
 
@@ -29,7 +29,7 @@ public class MenuController : MonoBehaviour
             UpdateSelection();
 
         if (Input.GetKeyDown(KeyCode.Z))
-            Perform(selected);
+            Perform(selected);*/
     }
 
     void UpdateSelection()

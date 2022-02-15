@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     [SerializeField] public float attackRange;
     public float plantRange;
 
+    [SerializeField] PlayerInput playerInput;
+
     public List<StoryBook> Recipes;
     public List<StoryBook> GodsBooks;
     public List<StoryBook> ElvesBooks;
@@ -301,6 +303,17 @@ public class Player : MonoBehaviour
             if (inventory.extraSlot != null && inventory.extraSlot.item != null)
                 inventory.extraSlot.item.Use(this);
         }*/
+    }
+
+    public void OpenMenu(InputAction.CallbackContext ctx)
+    {
+        GameController.Instance.OpenState(GameState.Menu);
+        playerInput.SwitchCurrentActionMap("UI");
+    }
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        GameController.Instance.EvH.Interact();
     }
 
     public void TestFunction(InputAction.CallbackContext context)

@@ -9072,7 +9072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -49.081055}
+  m_AnchoredPosition: {x: 90, y: -49.081116}
   m_SizeDelta: {x: 180, y: 38.162228}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8452224988329398524
@@ -21154,7 +21154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4952206249498335268}
   - component: {fileID: 4952206249498335269}
-  - component: {fileID: 4952206249498335270}
+  - component: {fileID: 6805946469239765575}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -21191,7 +21191,7 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &4952206249498335270
+--- !u!114 &6805946469239765575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21200,16 +21200,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 4952206249498335271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ee93443d0f1265d41ac55d0f84d42d29,
+    type: 3}
+  m_PointAction: {fileID: -4639539803287874255, guid: ee93443d0f1265d41ac55d0f84d42d29,
+    type: 3}
+  m_MoveAction: {fileID: 4171274902750024966, guid: ee93443d0f1265d41ac55d0f84d42d29,
+    type: 3}
+  m_SubmitAction: {fileID: -3038558988437593845, guid: ee93443d0f1265d41ac55d0f84d42d29,
+    type: 3}
+  m_CancelAction: {fileID: 7532938890092641371, guid: ee93443d0f1265d41ac55d0f84d42d29,
+    type: 3}
+  m_LeftClickAction: {fileID: 1416837181328611421, guid: ee93443d0f1265d41ac55d0f84d42d29,
+    type: 3}
+  m_MiddleClickAction: {fileID: -7557124679002159445, guid: ee93443d0f1265d41ac55d0f84d42d29,
+    type: 3}
+  m_RightClickAction: {fileID: -2989038031414602252, guid: ee93443d0f1265d41ac55d0f84d42d29,
+    type: 3}
+  m_ScrollWheelAction: {fileID: 7639038153838203365, guid: ee93443d0f1265d41ac55d0f84d42d29,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: 1384984056087319848, guid: ee93443d0f1265d41ac55d0f84d42d29,
+    type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 9064141899395492317, guid: ee93443d0f1265d41ac55d0f84d42d29,
+    type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
 --- !u!1 &4952206249531695945
 GameObject:
   m_ObjectHideFlags: 0
@@ -21947,6 +21966,7 @@ MonoBehaviour:
   transportPoint: {fileID: 8757089287074438242}
   attackRange: 0.5
   plantRange: 0.25
+  playerInput: {fileID: 0}
   Recipes:
   - {fileID: 11400000, guid: 387346dc438ed6e4cb07389cd77ddcaa, type: 2}
   GodsBooks:
@@ -22240,7 +22260,7 @@ MonoBehaviour:
   m_Actions: {fileID: -944628639613478452, guid: ee93443d0f1265d41ac55d0f84d42d29,
     type: 3}
   m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
+  m_UIInputModule: {fileID: 6805946469239765575}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -22267,10 +22287,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f0cc6dd5-f87b-47e7-a680-9c8653ece481
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3ba2015f-b879-4360-8b27-424177a76eec
-    m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4952206250600258692}
@@ -22327,6 +22343,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8fa5098a-b99a-4b5e-a86c-bbf22a8b7d88
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4952206250600258692}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OpenMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9fde2e23-a509-4dfa-b569-f59d72a60d61
+    m_ActionName: Player/Menu[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
