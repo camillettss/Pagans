@@ -1,20 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.UI;
 using System;
 
 public class MenuController : MonoBehaviour
 {
     int selected = 0;
+    InputSystemUIInputModule inputSystemUIInputModule;
 
     private void Awake()
     {
         selected = 0;
         UpdateSelection();
+        inputSystemUIInputModule = GetComponent<InputSystemUIInputModule>();
     }
 
     public void HandleUpdate(Action onBack)
     {
+        
         /*int prev = selected;
         if (Input.GetKeyDown(KeyCode.X))
             onBack?.Invoke();
@@ -34,13 +38,13 @@ public class MenuController : MonoBehaviour
 
     void UpdateSelection()
     {
-        for(int i=0; i<4; i++)
+        /*for(int i=0; i<4; i++)
         {
             if(i==selected)
                 transform.GetChild(i).GetComponent<UnityEngine.UI.Text>().color = GameController.Instance.selectedDefaultColor;
             else
                 transform.GetChild(i).GetComponent<UnityEngine.UI.Text>().color = GameController.Instance.unselectedDefaultColor;
-        }
+        }*/
     }
 
     void Perform(int choosen)

@@ -307,8 +307,11 @@ public class Player : MonoBehaviour
 
     public void OpenMenu(InputAction.CallbackContext ctx)
     {
-        GameController.Instance.OpenState(GameState.Menu);
-        playerInput.SwitchCurrentActionMap("UI");
+        if(ctx.started)
+        {
+            GameController.Instance.OpenState(GameState.Menu);
+            playerInput.currentActionMap = playerInput.actions.FindActionMap("UI");
+        }
     }
 
     public void Interact(InputAction.CallbackContext context)
