@@ -111,7 +111,7 @@ public class GameController : MonoBehaviour
 
     public string lid = "en";
 
-    [HideInInspector] public GameState state = GameState.FreeRoam;
+    public GameState state = GameState.FreeRoam;
     [HideInInspector] public NPCController ActiveNPC;
     [HideInInspector] public StoryController storyController;
     public List<FarmAnimal> babyAnimals;
@@ -136,6 +136,8 @@ public class GameController : MonoBehaviour
         {"attack", ((int)KeyCode.R) },
         {"use", ((int)KeyCode.R) },
     };
+
+    public GameState prevState;
 
     private void Awake()
     {
@@ -172,7 +174,11 @@ public class GameController : MonoBehaviour
     {
         //print($"target state:{state}, trader passed:{trader}.");
         IdleAllEnemies();
+
+        prevState = this.state;
+
         #region state control
+        
         if (state == GameState.Menu)
         {
             menu.gameObject.SetActive(true);
@@ -251,27 +257,13 @@ public class GameController : MonoBehaviour
         else
             print("[!!] No state specified or unhandled option.");
         #endregion
-
+        print($"overriding {this.state} with {state}");
         this.state = state;
-    }
-
-    public void OnUIButton(InputAction.CallbackContext context)
-    {
-        print(context.ToString());
     }
 
     private void Update()
     {
         UpdateTime();
-        if (state != GameState.FreeRoam)
-        {
-            player.animator.SetFloat("Speed", 0.0f);
-            player.moveInput = Vector2.zero;
-            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            player.canShowMinimap = false;
-        }
-        #region update choose
-
         if (state == GameState.FreeRoam)
         {
             if (!player.canShowMinimap)
@@ -280,96 +272,13 @@ public class GameController : MonoBehaviour
             UpdateEnemiesInViewport();
             player.HandleUpdate();
         }
-
-        else if (state == GameState.GameOver)
+        else
         {
-            gameOverUI.HandleUpdate();
+            player.animator.SetFloat("Speed", 0.0f);
+            player.moveInput = Vector2.zero;
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            player.canShowMinimap = false;
         }
-
-        else if (state == GameState.ChooseLanguage)
-            languageContentController.HandleUpdate();
-
-        else if (state == GameState.Cauldron)
-            cauldronUI.HandleUpdate();
-
-        else if (state == GameState.Calendar)
-            calendar.HandleUpdate();
-
-        else if (state == GameState.Workbench)
-            workbenchUI.HandleUpdate();
-
-        else if (state == GameState.CraftUI)
-            craftUI.HandleUpdate();
-
-        else if (state == GameState.Port)
-            portUI.HandleUpdate();
-
-        else if (state == GameState.Menu)
-        {
-            Action onBack = () =>
-            {
-                menu.gameObject.SetActive(false);
-                state = GameState.FreeRoam;
-            };
-            menu.HandleUpdate(onBack);
-        }
-
-        else if (state == GameState.Dialogue)
-            dialogueBox.HandleUpdate();
-
-        else if (state == GameState.Quest)
-            questWindow.HandleUpdate();
-
-        else if (state == GameState.Inventory)
-        {
-            /*inventoryUI.HandleUpdate();
-            if(Input.GetKeyDown(KeyCode.Tab) || Input.GetButtonDown("RShoulder"))
-            {
-                inventoryUI.gameObject.SetActive(false);
-                OpenState(GameState.Equipment);
-            }*/
-            inventory2.HandleUpdate();
-        }
-
-        else if (state == GameState.Shop)
-            shopUI.HandleUpdate();
-
-        else if (state == GameState.Quests)
-        {
-            questsUI.HandleUpdate();
-
-            if (Input.GetKeyDown(KeyCode.Tab) || Input.GetButtonDown("RShoulder"))
-            {
-                questsUI.gameObject.SetActive(false);
-                OpenState(GameState.Inventory);
-            }
-        }
-
-        else if (state == GameState.ChoosingItem)
-        {
-            choosingUI.HandleUpdate();
-        }
-
-        else if (state == GameState.Enchanting)
-        {
-            enchantingUI.HandleUpdate();
-        }
-
-        else if (state == GameState.Settings)
-        {
-            Action onBack = () =>
-            {
-                settingsUI.gameObject.SetActive(false);
-                OpenState(GameState.Menu);
-            };
-            settingsUI.HandleUpdate(onBack);
-        }
-
-        else if (state == GameState.Library)
-        {
-            libUI.HandleUpdate();
-        }
-        #endregion
     }
 
     // day/night cycle
@@ -446,7 +355,7 @@ public class GameController : MonoBehaviour
         return new List<NoAIBehaviour>();
     }
 
-    void UpdateEnemiesInViewport()
+    void UpdateEnemiesInViewport() // this shouldn't be used, just create chunks!!
     {
         foreach(EnemyController npc in FindObjectsOfType<EnemyController>())
         {

@@ -56,7 +56,7 @@ public class SettingsUI : MonoBehaviour
     {
         if (choosen == 0) // Save
         {
-            Player.i.Save(); // Save
+            Player.i.Save(); // Save func
 
             // Back to freeroam;
             gameObject.SetActive(false);

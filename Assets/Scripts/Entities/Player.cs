@@ -23,7 +23,9 @@ public class Player : MonoBehaviour
     [SerializeField] public float attackRange;
     public float plantRange;
 
-    [SerializeField] PlayerInput playerInput;
+    // input sys
+    public InputActionMap UIInputMap;
+    public PlayerInput playerInput;
 
     public List<StoryBook> Recipes;
     public List<StoryBook> GodsBooks;
@@ -314,9 +316,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Interact(InputAction.CallbackContext context)
+    public void Interact(InputAction.CallbackContext ctx)
     {
-        GameController.Instance.EvH.Interact();
+        if(ctx.started)
+        {
+            GameController.Instance.EvH.Interact();
+        }
     }
 
     public void TestFunction(InputAction.CallbackContext context)

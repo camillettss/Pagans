@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.InputSystem;
 using System;
 
-public class MenuController : MonoBehaviour
+public class MenuController : MonoBehaviour, UIController
 {
     int selected = 0;
-    InputSystemUIInputModule inputSystemUIInputModule;
 
     private void Awake()
     {
         selected = 0;
         UpdateSelection();
-        inputSystemUIInputModule = GetComponent<InputSystemUIInputModule>();
+
+        Player.i.playerInput.actions["Submit"].performed += onSubmit;
+        Player.i.playerInput.actions["Navigate"].performed += onNavigate;
+        Player.i.playerInput.actions["Cancel"].performed += onCancel;
     }
 
     public void HandleUpdate(Action onBack)
     {
-        
-        /*int prev = selected;
-        if (Input.GetKeyDown(KeyCode.X))
+        /*
+        int prev = selected;
+        if (Input.GetKeyDown(KeyCode.X)) // UI Back
             onBack?.Invoke();
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow)) // ui navigation
             ++selected;
         else if (Input.GetKeyDown(KeyCode.UpArrow))
             --selected;
@@ -32,19 +35,19 @@ public class MenuController : MonoBehaviour
         if (prev != selected)
             UpdateSelection();
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z)) // UI accept
             Perform(selected);*/
     }
 
     void UpdateSelection()
     {
-        /*for(int i=0; i<4; i++)
+        for(int i=0; i<4; i++)
         {
             if(i==selected)
                 transform.GetChild(i).GetComponent<UnityEngine.UI.Text>().color = GameController.Instance.selectedDefaultColor;
             else
                 transform.GetChild(i).GetComponent<UnityEngine.UI.Text>().color = GameController.Instance.unselectedDefaultColor;
-        }*/
+        }
     }
 
     void Perform(int choosen)
@@ -68,5 +71,31 @@ public class MenuController : MonoBehaviour
 
         else if (choosen == 3) // Exit
             Application.Quit();
+    }
+
+    public void onSubmit(InputAction.CallbackContext ctx)
+    {
+        Perform(selected);
+    }
+
+    public void onCancel(InputAction.CallbackContext ctx)
+    {
+        gameObject.SetActive(false);
+        GameController.Instance.state = GameController.Instance.prevState;
+        Player.i.playerInput.SwitchCurrentActionMap("Player");
+    }
+
+    public void onNavigate(InputAction.CallbackContext ctx)
+    {
+        var input = ctx.ReadValue<Vector2>();
+
+        if (input.y < 0)
+            selected++;
+        else if (input.y > 0)
+            selected--;
+
+        selected = Mathf.Clamp(selected, 0, 3);
+
+        UpdateSelection();
     }
 }
