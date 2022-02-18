@@ -22365,6 +22365,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9fde2e23-a509-4dfa-b569-f59d72a60d61
     m_ActionName: Player/Menu[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8fdd2fca-8781-4510-bfc4-8182fc2b32ed
+    m_ActionName: UI/ExtraNavigation[/Keyboard/w,/Keyboard/s]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -22752,6 +22756,7 @@ MonoBehaviour:
   isFirstLaunch: 0
   GameplayLight: {fileID: 0}
   audioSource: {fileID: 0}
+  prevState: 0
   references:
     version: 1
 --- !u!114 &6928407664581579768

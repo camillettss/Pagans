@@ -51,6 +51,7 @@ public class newInventory : MonoBehaviour
         Player.i.playerInput.actions["Submit"].performed += onSubmit;
         Player.i.playerInput.actions["Navigate"].performed += onNavigate;
         Player.i.playerInput.actions["Cancel"].performed += onCancel;
+        Player.i.playerInput.actions["ExtraNavigation"].performed += xtraNav;
     }
 
     public void UpdateView(bool resetCategory=true)
@@ -253,8 +254,6 @@ public class newInventory : MonoBehaviour
         if(input.x < 0) category--;
         else if (input.x > 0) category++;
 
-        // change bookmark here TODO
-
         bookmark = Mathf.Clamp(bookmark, 0, tags_container.transform.childCount - 1); // 0 - 3, teoricamente.
         category = Mathf.Clamp(category, 0, Inventory.BookmarkSize(bookmark) - 1);
         selected = Mathf.Clamp(selected, 0, slotUIs.Count - 1);
@@ -269,7 +268,20 @@ public class newInventory : MonoBehaviour
             UpdateSelection();
 }
 
-public void HandleUpdate()
+    void xtraNav(InputAction.CallbackContext ctx)
+    {
+        var input = ctx.ReadValue<Vector2>();
+
+        // check for change selected
+        if (input.y < 0) bookmark++;
+        else if (input.y > 0) bookmark--;
+
+        bookmark = Mathf.Clamp(bookmark, 0, tags_container.transform.childCount - 1); // 0 - 3, teoricamente.
+
+        UpdateView();
+    }
+
+    public void HandleUpdate()
 {
     if(GameController.Instance.sacrificeUI.gameObject.activeSelf)
     {

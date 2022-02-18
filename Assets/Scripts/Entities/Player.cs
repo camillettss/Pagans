@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Door closeDoor = null;
     [HideInInspector] public Horse activeHorse;
 
-    [HideInInspector] public int defense; // quando attaccano il danno subito è danno-defense
+    [HideInInspector] public int defense; // quando attaccano il danno subito è danno-defense TODO
 
     public SceneDetails currentScene;
     public bool SnapToGridMovments = false;
