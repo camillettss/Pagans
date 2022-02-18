@@ -44,7 +44,7 @@ public class newInventory : MonoBehaviour
     public const int dusts_category = 1;
     public const int gems_category = 2;
 
-    private void Awake()
+    private void OnEnable()
     {
         UpdateView();
 
@@ -52,6 +52,14 @@ public class newInventory : MonoBehaviour
         Player.i.playerInput.actions["Navigate"].performed += onNavigate;
         Player.i.playerInput.actions["Cancel"].performed += onCancel;
         Player.i.playerInput.actions["ExtraNavigation"].performed += xtraNav;
+    }
+     
+    private void OnDisable() // DONT FORGET THIS MF
+    {
+        Player.i.playerInput.actions["Submit"].performed -= onSubmit;
+        Player.i.playerInput.actions["Navigate"].performed -= onNavigate;
+        Player.i.playerInput.actions["Cancel"].performed -= onCancel;
+        Player.i.playerInput.actions["ExtraNavigation"].performed -= xtraNav;
     }
 
     public void UpdateView(bool resetCategory=true)
@@ -240,26 +248,21 @@ public class newInventory : MonoBehaviour
     {
         int prev_sel = selected;
         int prev_cat = category;
-        int prev_bok = bookmark;
 
         var input = ctx.ReadValue<Vector2>();
 
+        print($"input: {input}");
+
         // check for change selected
-        if (input.y < 0)
-            selected++;
-        else if (input.y > 0)
-            selected--;
+        if (input.y < 0) selected++;
+        else if (input.y > 0) selected--;
 
         // check for change category
         if(input.x < 0) category--;
         else if (input.x > 0) category++;
 
-        bookmark = Mathf.Clamp(bookmark, 0, tags_container.transform.childCount - 1); // 0 - 3, teoricamente.
         category = Mathf.Clamp(category, 0, Inventory.BookmarkSize(bookmark) - 1);
         selected = Mathf.Clamp(selected, 0, slotUIs.Count - 1);
-
-        if (prev_bok != bookmark)
-            UpdateView();
 
         if (prev_cat != category)
             UpdateView(false);
@@ -268,7 +271,7 @@ public class newInventory : MonoBehaviour
             UpdateSelection();
 }
 
-    void xtraNav(InputAction.CallbackContext ctx)
+    void xtraNav(InputAction.CallbackContext ctx) // changing bookmark
     {
         var input = ctx.ReadValue<Vector2>();
 

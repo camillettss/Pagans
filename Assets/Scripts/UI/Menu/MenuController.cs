@@ -9,7 +9,7 @@ public class MenuController : MonoBehaviour, UIController
 {
     int selected = 0;
 
-    private void Awake()
+    private void OnEnable()
     {
         selected = 0;
         UpdateSelection();
@@ -19,24 +19,11 @@ public class MenuController : MonoBehaviour, UIController
         Player.i.playerInput.actions["Cancel"].performed += onCancel;
     }
 
-    public void HandleUpdate(Action onBack)
+    private void OnDisable()
     {
-        /*
-        int prev = selected;
-        if (Input.GetKeyDown(KeyCode.X)) // UI Back
-            onBack?.Invoke();
-
-        if (Input.GetKeyDown(KeyCode.DownArrow)) // ui navigation
-            ++selected;
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-            --selected;
-        selected = Mathf.Clamp(selected, 0, 3);
-
-        if (prev != selected)
-            UpdateSelection();
-
-        if (Input.GetKeyDown(KeyCode.Z)) // UI accept
-            Perform(selected);*/
+        Player.i.playerInput.actions["Submit"].performed -= onSubmit;
+        Player.i.playerInput.actions["Navigate"].performed -= onNavigate;
+        Player.i.playerInput.actions["Cancel"].performed -= onCancel;
     }
 
     void UpdateSelection()

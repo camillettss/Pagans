@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public enum DialogueTypes
@@ -9,7 +10,7 @@ public enum DialogueTypes
     Question
 }
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour, UIController
 {
     [SerializeField] Text content;
     public Animator animator;
@@ -34,6 +35,15 @@ public class DialogueManager : MonoBehaviour
     void Awake()
     {
         sentences = new Queue<string>();
+    }
+    private void OnEnable()
+    {
+        Player.i.playerInput.actions["Submit"].performed += onSubmit;
+    }
+
+    private void OnDisable() // DONT FORGET THIS MF
+    {
+        Player.i.playerInput.actions["Submit"].performed -= onSubmit;
     }
 
     DialogueTypes actualType = DialogueTypes.Std;
@@ -230,5 +240,33 @@ public class DialogueManager : MonoBehaviour
             handleDialogue();
         else
             handleQuestion();
+    }
+
+    public void onSubmit(InputAction.CallbackContext ctx)
+    {
+        if(dialogueState)
+        {
+            if (!isWriting)
+                StartCoroutine(DisplayNextSentence());
+            else
+                skip = true;
+        }
+        else
+        {
+            Perform();
+        }
+    }
+
+    public void onCancel(InputAction.CallbackContext ctx)
+    {
+        
+    }
+
+    public void onNavigate(InputAction.CallbackContext ctx)
+    {
+        if(!dialogueState)
+        {
+
+        }
     }
 }
