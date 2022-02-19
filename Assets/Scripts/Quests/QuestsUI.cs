@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class QuestsUI : MonoBehaviour
+public class QuestsUI : MonoBehaviour, UIController
 {
     [SerializeField] GameObject contents;
     [SerializeField] QuestSlotUI questSlotPrefab;
@@ -77,53 +78,61 @@ public class QuestsUI : MonoBehaviour
         }
     }
 
-    public void HandleUpdate()
+    private void OnDisable()
     {
-        /*if(Input.GetKeyDown(KeyCode.X))
+        player.playerInput.actions["Submit"].performed -= onSubmit;
+        player.playerInput.actions["Navigate"].performed -= onNavigate;
+        player.playerInput.actions["Cancel"].performed -= onCancel;
+    }
+
+    private void OnEnable()
+    {
+        if(player.playerInput.currentActionMap.name != "UI")
+            Player.i.playerInput.SwitchCurrentActionMap("UI");
+
+        Player.i.playerInput.actions["Submit"].performed += onSubmit;
+        Player.i.playerInput.actions["Navigate"].performed += onNavigate;
+        Player.i.playerInput.actions["Cancel"].performed += onCancel;
+    }
+
+    public void onSubmit(InputAction.CallbackContext ctx)
+    {
+        if (slotUIs != null && slotUIs.Count > 0)
         {
-            GameController.Instance.state = GameState.FreeRoam;
-            gameObject.SetActive(false);
+            if (slotUIs[selected].quest != player.quest)
+            {
+                player.AcceptQuest(slotUIs[selected].quest);
+                gameObject.SetActive(false);
+                GameController.Instance.state = GameState.FreeRoam;
+            }
+            else
+            {
+                slotUIs[selected].quest.isActive = false;
+
+                player.quest = null;
+                player.UpdateQuestUI();
+
+                UpdateContents();
+            }
         }
+    }
 
-        var prev = selected;
+    public void onCancel(InputAction.CallbackContext ctx)
+    {
+        GameController.Instance.state = GameState.FreeRoam;
+        gameObject.SetActive(false);
+        player.playerInput.SwitchCurrentActionMap("Player");
+    }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            ++selected;
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            --selected;
+    public void onNavigate(InputAction.CallbackContext ctx)
+    {
+        var input = ctx.ReadValue<Vector2>().y;
+
+        if (input < 0) selected++;
+        else if(input > 0) selected--;
 
         selected = Mathf.Clamp(selected, 0, slotUIs.Count - 1);
 
-        if (selected != prev)
-            UpdateSelection();
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            if(slotUIs != null && slotUIs.Count > 0)
-            {
-                if(slotUIs[selected].quest != player.quest)
-                {
-                    player.AcceptQuest(slotUIs[selected].quest);
-                    gameObject.SetActive(false);
-                    GameController.Instance.state = GameState.FreeRoam;
-                }
-                else
-                {
-                    slotUIs[selected].quest.isActive = false;
-
-                    player.quest = null;
-                    player.UpdateQuestUI();
-
-                    UpdateContents();
-                }
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if(slotUIs != null && slotUIs.Count > 0)
-            {
-                GameController.Instance.questWindow.Open(slotUIs[selected].quest);
-            }
-        }*/
+        UpdateSelection();
     }
 }

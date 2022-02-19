@@ -47,7 +47,7 @@ public class newInventory : MonoBehaviour
     private void OnEnable()
     {
         UpdateView();
-
+        Player.i.playerInput.SwitchCurrentActionMap("UI");
         Player.i.playerInput.actions["Submit"].performed += onSubmit;
         Player.i.playerInput.actions["Navigate"].performed += onNavigate;
         Player.i.playerInput.actions["Cancel"].performed += onCancel;
@@ -60,6 +60,7 @@ public class newInventory : MonoBehaviour
         Player.i.playerInput.actions["Navigate"].performed -= onNavigate;
         Player.i.playerInput.actions["Cancel"].performed -= onCancel;
         Player.i.playerInput.actions["ExtraNavigation"].performed -= xtraNav;
+        Player.i.playerInput.SwitchCurrentActionMap("Player");
     }
 
     public void UpdateView(bool resetCategory=true)

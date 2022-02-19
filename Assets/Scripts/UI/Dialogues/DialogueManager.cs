@@ -31,19 +31,11 @@ public class DialogueManager : MonoBehaviour, UIController
     bool skip = false;
 
     int selected;
+    bool alreadyClicked = false;
 
     void Awake()
     {
         sentences = new Queue<string>();
-    }
-    private void OnEnable()
-    {
-        Player.i.playerInput.actions["Submit"].performed += onSubmit;
-    }
-
-    private void OnDisable() // DONT FORGET THIS MF
-    {
-        Player.i.playerInput.actions["Submit"].performed -= onSubmit;
     }
 
     DialogueTypes actualType = DialogueTypes.Std;
@@ -58,8 +50,18 @@ public class DialogueManager : MonoBehaviour, UIController
         selected = 0;
     }
 
+    void ControlsSetup()
+    {
+        Player.i.playerInput.SwitchCurrentActionMap("UI");
+        Player.i.playerInput.actions["Submit"].performed += onSubmit;
+        Player.i.playerInput.actions["Navigate"].performed += onNavigate;
+        alreadyClicked = false;
+    }
+
     public void StartDialogue(Dialogue dialogue, System.Action onEndDialogue)
     {
+        ControlsSetup();
+
         resetUIElements();
 
         actualType = DialogueTypes.Std;
@@ -135,6 +137,7 @@ public class DialogueManager : MonoBehaviour, UIController
 
     public void StartQuestionDialogue(Dialogue dialogue, string op1, string op2, System.Action onOp1, System.Action onOp2)
     {
+        ControlsSetup();
         resetUIElements();
 
         actualType = DialogueTypes.Question;
@@ -183,39 +186,13 @@ public class DialogueManager : MonoBehaviour, UIController
             GameController.Instance.ActiveNPC.canMove = true;
             GameController.Instance.ActiveNPC = null;
         }
-        
-    }
-
-    void handleDialogue()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
+        Player.i.playerInput.actions["Submit"].performed -= onSubmit;
+        Player.i.playerInput.actions["Navigate"].performed -= onNavigate;
+        if (actualType == DialogueTypes.Std)
         {
-            if (!isWriting)
-                StartCoroutine(DisplayNextSentence());
-            else
-                skip = true;
+            print("imma reset controls");
+            Player.i.playerInput.SwitchCurrentActionMap("Player");
         }
-    }
-
-    void handleQuestion()
-    {
-        var prev = selected;
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            --selected;
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            ++selected;
-
-        if (selected > 1)
-            selected = 0;
-        else if (selected < 0)
-            selected = 1;
-
-        if (prev != selected)
-            UpdateSelection();
-
-        if(Input.GetKeyDown(KeyCode.Z))
-            Perform();
     }
 
     void UpdateSelection()
@@ -234,14 +211,6 @@ public class DialogueManager : MonoBehaviour, UIController
         EndDialogue();
     }
 
-    public void HandleUpdate()
-    {
-        if (dialogueState)
-            handleDialogue();
-        else
-            handleQuestion();
-    }
-
     public void onSubmit(InputAction.CallbackContext ctx)
     {
         if(dialogueState)
@@ -252,8 +221,12 @@ public class DialogueManager : MonoBehaviour, UIController
                 skip = true;
         }
         else
-        {
-            Perform();
+        {       
+            if(alreadyClicked)
+                Perform();
+
+            if (!ctx.started)
+                alreadyClicked = true;
         }
     }
 
@@ -266,7 +239,13 @@ public class DialogueManager : MonoBehaviour, UIController
     {
         if(!dialogueState)
         {
+            var input = ctx.ReadValue<Vector2>().x;
+            print(input);
 
+            if (input < 0) selected = 0;
+            else if(input > 0) selected = 1;
+
+            UpdateSelection();
         }
     }
 }

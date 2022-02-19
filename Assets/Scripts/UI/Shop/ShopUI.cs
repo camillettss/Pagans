@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class ShopUI : MonoBehaviour
+public class ShopUI : MonoBehaviour, UIController
 {
     [SerializeField] GameObject scrollviewContent;
     [SerializeField] ShopItemUI itemPrefab;
@@ -31,6 +32,7 @@ public class ShopUI : MonoBehaviour
     {
         selected = 0;
         UpdateView();
+        Player.i.playerInput.SwitchCurrentActionMap("UI");
     }
 
     public void SetTrader(TraderController trader)
@@ -56,39 +58,39 @@ public class ShopUI : MonoBehaviour
 
     void UpdateView()
     {
-        if(!sellMode)
+        foreach (Transform child in scrollviewContent.transform)
+            Destroy(child.gameObject);
+
+        shopUIs = new List<ShopItemUI>();
+
+        if (!sellMode)
         {
             traderName.text = trader.Name;
 
-            foreach (Transform child in scrollviewContent.transform)
-                Destroy(child.gameObject);
-
-            shopUIs = new List<ShopItemUI>();
-
-            foreach (var item in trader.inventory.GetShopSlots())
+            if (trader.inventory.GetShopSlots().Count != 0)
             {
-                var itemUI = Instantiate(itemPrefab, scrollviewContent.transform);
-                itemUI.SetData(item, item.item.price);
+                foreach (var item in trader.inventory.GetShopSlots())
+                {
+                    var itemUI = Instantiate(itemPrefab, scrollviewContent.transform);
+                    itemUI.SetData(item, item.item.price);
 
-                shopUIs.Add(itemUI);
+                    shopUIs.Add(itemUI);
+                }
             }
         }
         else
         {
             traderName.text = "you";
 
-            foreach (Transform child in scrollviewContent.transform)
-                Destroy(child.gameObject);
-
-            shopUIs = new List<ShopItemUI>();
-
-            shopUIs = new List<ShopItemUI>();
-            foreach (var item in Player.i.inventory.GetShopSlots())
+            if(Player.i.inventory.GetShopSlots().Count != 0)
             {
-                var itemUI = Instantiate(itemPrefab, scrollviewContent.transform);
-                itemUI.SetData(item, item.item.price);
+                foreach (var item in Player.i.inventory.GetShopSlots())
+                {
+                    var itemUI = Instantiate(itemPrefab, scrollviewContent.transform);
+                    itemUI.SetData(item, item.item.price);
 
-                shopUIs.Add(itemUI);
+                    shopUIs.Add(itemUI);
+                }
             }
         }
 
@@ -149,7 +151,6 @@ public class ShopUI : MonoBehaviour
             i++;
         }*/
     }
-
 
     public void HandleUpdate()
     {
@@ -242,5 +243,116 @@ public class ShopUI : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Tab))
             switchToSell();*/
+    }
+
+    private void OnDisable()
+    {
+        Player.i.playerInput.actions["Submit"].performed -= onSubmit;
+        Player.i.playerInput.actions["Navigate"].performed -= onNavigate;
+        Player.i.playerInput.actions["Cancel"].performed -= onCancel;
+    }
+
+    private void OnEnable()
+    {
+        //Player.i.playerInput.SwitchCurrentActionMap("UI");
+
+        Player.i.playerInput.actions["Submit"].performed += onSubmit;
+        Player.i.playerInput.actions["Navigate"].performed += onNavigate;
+        Player.i.playerInput.actions["Cancel"].performed += onCancel;
+    }
+
+    public void onSubmit(InputAction.CallbackContext ctx)
+    {
+        if(ctx.started)
+        {
+            var player = Player.i;
+            if (!sellMode)
+            {
+                if (player.kents < shopUIs[selected].price * amount)
+                {
+                    StartCoroutine(unaffordableTextAnimation());
+                    return;
+                }
+                StoryEventHandler.i.AddToInventory(shopUIs[selected].item, amount);
+
+                if (Player.i.quest.goal.Count > 0)
+                    player.quest.goal[0].SomethingBought(trader, shopUIs[selected].item, amount);
+
+                player.kents -= shopUIs[selected].price * amount;
+
+                for (int i = 0; i < amount; i++)
+                    trader.inventory.Remove(shopUIs[selected].item);
+            }
+            else
+            {
+                player.kents += shopUIs[selected].price * amount;
+
+                if (player.quest != null && player.quest.goal != null && player.quest.goal.Count > 0)
+                    player.quest.goal[0].SomethingSelled(trader, shopUIs[selected].item, amount);
+
+                for (int i = 0; i < amount; i++)
+                {
+                    trader.inventory.Add(shopUIs[selected].item);
+                    player.inventory.Remove(shopUIs[selected].item);
+                }
+            }
+
+            selected = 0;
+            UpdateView();
+        }
+    }
+
+    public void onCancel(InputAction.CallbackContext ctx)
+    {
+        GameController.Instance.state = GameState.FreeRoam;
+        gameObject.SetActive(false);
+        Player.i.playerInput.SwitchCurrentActionMap("Player");
+    }
+
+    public void onNavigate(InputAction.CallbackContext ctx)
+    {
+        if(shopUIs.Count > 0)
+        {
+            var input = ctx.ReadValue<Vector2>();
+            var pamount = amount;
+
+            if (input.y < 0) ++selected;
+            else if (input.y > 0) --selected;
+
+            if (input.x < 0) --amount;
+            else if (input.x > 0) ++amount;
+
+            //category = Mathf.Clamp(category, 0, 1); // Hardcoded, fix!
+            if (sellMode && shopUIs.Count > 0 && pamount != amount)
+                amount = Mathf.Clamp(amount, 1, Player.i.inventory.findItem(shopUIs[selected].item).count);
+
+            selected = Mathf.Clamp(selected, 0, shopUIs.Count-1);
+
+            if (pamount != amount)
+            {
+                try
+                {
+                    if (sellMode) // lo trovi nell'inv del player
+                    {
+                        amount = Mathf.Clamp(amount, 1, Player.i.inventory.findItem(shopUIs[selected].item).count);
+                    }
+                    else
+                    {
+                        amount = Mathf.Clamp(amount, 1, trader.inventory.findItem(shopUIs[selected].item).count);
+                    }
+                }
+                catch (System.NullReferenceException)
+                {
+                    print("oggetto rimosso già dall'inventario ma sono stati lasciati dei riferimenti attivi nella UI.");
+                }
+            }
+            else if (!sellMode && shopUIs.Count > 0)
+                amount = Mathf.Clamp(amount, 1, trader.inventory.findItem(shopUIs[selected].item).count); //FIX
+
+
+            selected = Mathf.Clamp(selected, 0, shopUIs.Count - 1);
+
+            UpdateSelection();
+        }
     }
 }

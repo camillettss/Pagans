@@ -14,6 +14,7 @@ public class MenuController : MonoBehaviour, UIController
         selected = 0;
         UpdateSelection();
 
+        Player.i.playerInput.SwitchCurrentActionMap("UI");
         Player.i.playerInput.actions["Submit"].performed += onSubmit;
         Player.i.playerInput.actions["Navigate"].performed += onNavigate;
         Player.i.playerInput.actions["Cancel"].performed += onCancel;

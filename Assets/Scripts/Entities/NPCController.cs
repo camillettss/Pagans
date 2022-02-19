@@ -159,10 +159,9 @@ public class NPCController : MonoBehaviour, IEntity
         }
     }
 
-    [System.Obsolete("unmainteined function, use NPCController.LookAt() instead.", true)]
+    [System.Obsolete("unmaintained function, use NPCController.LookAt() instead.", true)]
     void PointToPlayer() // nessuno ha capito perchè non cambia i float dell'animator ma okk
     {
-        /*
         var n = transform.position; // you
         var p = Player.i.transform.position; // player
 
@@ -183,7 +182,7 @@ public class NPCController : MonoBehaviour, IEntity
                 animator.SetFloat("FaceY", 1f);
             else
                 animator.SetFloat("FaceY", -1f);
-        }*/
+        }
     }
 
     void unshowSignal()

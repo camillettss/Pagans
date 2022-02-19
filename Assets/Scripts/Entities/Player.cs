@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     public bool canMove = true;
     public bool canJump = false;
     public bool isFishing = false;
+    public bool canAttack = true;
 
     [HideInInspector] public bool canShowMinimap = true;
     public Key keyToUse = null;
@@ -119,12 +120,16 @@ public class Player : MonoBehaviour
 
         // set date
         GameController.Instance.calendar.actualMonth = GameController.Instance.calendar.Months[0]; // primo mese
-        GameController.Instance.calendar.today = GameController.Instance.calendar.actualMonth.days[29]; // primo day del primo mese
+        GameController.Instance.calendar.today = GameController.Instance.calendar.actualMonth.days[29]; // last day
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+    }
+
+    private void FixedUpdate()
+    {
     }
 
     public void HandleUpdate()
@@ -137,7 +142,8 @@ public class Player : MonoBehaviour
             StartCoroutine(Die());
         }
 
-        if(activeBoat != null)
+        #region related objects carrying
+        if (activeBoat != null)
         {
             activeBoat.transform.position = new Vector3(transform.position.x-1, transform.position.y, 0);
         }
@@ -149,11 +155,9 @@ public class Player : MonoBehaviour
         {
             liftingItem.transform.position = Head.position;
         }
+        #endregion
 
-        //moveInput.x = Input.GetAxisRaw("Horizontal");
-        //moveInput.y = Input.GetAxisRaw("Vertical");
-
-        if(moveInput != Vector2.zero)
+        if (moveInput != Vector2.zero)
         {
             animator.SetFloat("FacingHorizontal", moveInput.x);
             animator.SetFloat("FacingVertical", moveInput.y);
@@ -161,11 +165,12 @@ public class Player : MonoBehaviour
 
         if(enableDiagonalMovements)
         {
-            if (moveInput.x != 0 && moveInput.y != 0)
+            /*if (moveInput.x != 0 && moveInput.y != 0)
             {
                 moveInput.x *= moveLimiter;
                 moveInput.y *= moveLimiter;
-            }
+            }*/ 
+            // with the new input system this is already done
         }
         else
         {
@@ -187,126 +192,9 @@ public class Player : MonoBehaviour
 
         attackPoint.position = new Vector3(transform.position.x + animator.GetFloat("FacingHorizontal"), transform.position.y+animator.GetFloat("FacingVertical"), transform.position.z);
         transportPoint.localPosition = new Vector3(-1*animator.GetFloat("FacingHorizontal"), -1*animator.GetFloat("FacingVertical"), transform.position.z);
-
-        if (inventory.equipedShield != -1)
-            animator.SetBool("hasShield", true);
-        else
-            animator.SetBool("hasShield", false);
-
-        // HANDLE INPUTS
-
-        // BINDS: E: use, R: use weapon, Z: interact, F: use xtra, X: shield, Q: minimap, LShift: run
-
-        /*if(Input.GetKeyDown(KeyCode.P))
-        {
-            /*if (GetFrontalCollider().TryGetComponent(out Animal animal) && animal.hp <= 0)
-                animal.Transport();
-            if (Player.i.liftingItem != null)
-                StartCoroutine(liftingItem.Throw());
-        }
-
-        // minimap show
-        if (Input.GetKeyDown(KeyCode.Q) && canShowMinimap && !GameController.Instance.MinimapCanvas.activeSelf)
-            GameController.Instance.MinimapCanvas.SetActive(true);
-        if (Input.GetKeyUp(KeyCode.Q))
-            GameController.Instance.MinimapCanvas.SetActive(false);
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (TryGetSomething(out FarmAnimal animal, transform.position, 0.2f, interactableLayer | farmingLayer))
-            {
-                if (animal.hp <= 0)
-                    animal.Transport();
-            }
-            else
-                NotificationsUI.i.AddNotification("Nessun animale qui");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z)) // Interact
-        {
-            // passes through Event Handler.
-            GameController.Instance.EvH.Interact();
-        }
-
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            if (GameController.Instance.plantDetailsUI.gameObject.activeSelf)
-                GameController.Instance.plantDetailsUI.gameObject.SetActive(false);
-
-            if (activeHorse != null)
-                Dismount();
-            else if (activeBoat != null)
-                activeBoat.Dismount();
-            else if(transportingAnimal != null)
-            {
-                transportingAnimal.GetComponent<BoxCollider2D>().enabled = true;
-                transportingAnimal = null;
-                animator.SetBool("carrying", false);
-            }
-        }
-
-        /*if (Input.GetKeyDown(KeyCode.Space) && inventory.torch != null && !currentScene.outdoor) // Toggle torch
-            inventory.torch.Use(this);
-
-        if (Input.GetKeyDown(KeyCode.Return)) // Menu
-            GameController.Instance.OpenState(GameState.Menu);
-
-        if (Input.GetKeyDown(KeyCode.R)) // Attack
-        {
-            if(inventory.equipedWeapon != -1)
-            {
-                if (inventory.Weapons[inventory.equipedWeapon].item.longDamage == 0) // arma da vicino (spada)
-                    StartCoroutine(useWeapon());
-                else
-                    StartCoroutine(useBow());
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.E)) // Use
-        {
-            if(GameController.Instance.keyUI.isActiveAndEnabled)
-            {
-                keyToUse.Use(this);
-                inventory.Remove(keyToUse);
-                closeDoor.Open();
-            } else
-            {
-                useItem();
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space)) // Shield
-        {
-            if(inventory.equipedShield != -1)
-            {
-                defense = inventory.Shields[inventory.equipedShield].item.GetDefense();
-                useShield();
-            }
-            
-        }
-        if (Input.GetKeyUp(KeyCode.Space)) // off
-        {
-            if(inventory.equipedShield != -1)
-            {
-                defense = 0;
-                animator.SetBool("holdingShield", false);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            var temp = inventory.equipedWeapon;
-            inventory.equipedWeapon = inventory.secondaryWeapon;
-            inventory.secondaryWeapon = temp;
-            GameController.Instance.hotbar.UpdateItems();
-        }
-
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            if (inventory.extraSlot != null && inventory.extraSlot.item != null)
-                inventory.extraSlot.item.Use(this);
-        }*/
     }
 
+    #region bindings
     public void OpenMenu(InputAction.CallbackContext ctx)
     {
         if(ctx.started)
@@ -324,13 +212,69 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void TestFunction(InputAction.CallbackContext context)
+    public void useWeapon(InputAction.CallbackContext _)
     {
-        StartCoroutine(Camera.main.GetComponent<CameraMover>().Shake(.15f, .2f));
+        if(canAttack)
+        {
+            if (inventory.equipedWeapon != -1)
+            {
+                if (inventory.Weapons[inventory.equipedWeapon].item.longDamage == 0) // arma da vicino (spada)
+                    StartCoroutine(useWeapon());
+                else
+                    StartCoroutine(useBow());
+            }
+        }
     }
+
+    public void useTool(InputAction.CallbackContext _)
+    {
+        if (GameController.Instance.keyUI.isActiveAndEnabled)
+        {
+            keyToUse.Use(this);
+            inventory.Remove(keyToUse);
+            closeDoor.Open();
+        }
+        else
+        {
+            useItem();
+        }
+    }
+
+    public void cancelAction(InputAction.CallbackContext _)
+    {
+        if (GameController.Instance.plantDetailsUI.gameObject.activeSelf)
+            GameController.Instance.plantDetailsUI.gameObject.SetActive(false);
+
+        if (activeHorse != null)
+            Dismount();
+        else if (activeBoat != null)
+            activeBoat.Dismount();
+        else if (transportingAnimal != null)
+        {
+            transportingAnimal.GetComponent<BoxCollider2D>().enabled = true;
+            transportingAnimal = null;
+            animator.SetBool("carrying", false);
+        }
+    }
+
+    public void switchWeapons(InputAction.CallbackContext _)
+    {
+        var temp = inventory.equipedWeapon;
+        inventory.equipedWeapon = inventory.secondaryWeapon;
+        inventory.secondaryWeapon = temp;
+        GameController.Instance.hotbar.UpdateItems();
+    }
+
+    public void useExtraSlot(InputAction.CallbackContext _)
+    {
+        if (inventory.extraSlot != null && inventory.extraSlot.item != null)
+            inventory.extraSlot.item.Use(this);
+    }
+    #endregion
 
     public void GetDamage(int dmg)
     {
+        StartCoroutine(Camera.main.GetComponent<CameraMover>().Shake(.15f, .15f));
         if (animator.GetBool("holdingShield"))
         {
             if (inventory.Shields[inventory.equipedShield].item.Defense < dmg)
@@ -416,6 +360,8 @@ public class Player : MonoBehaviour
 
     IEnumerator useWeapon()
     {
+        canAttack = false;
+
         rb.velocity = Vector2.zero;
         canMove = false;
         print(inventory.equipedWeapon);
@@ -423,15 +369,21 @@ public class Player : MonoBehaviour
             inventory.Weapons[inventory.equipedWeapon].item.Use(this); // trova l'arma e usala
         yield return new WaitForSeconds(.5f);
         canMove = true;
+
+        canAttack = true;
     }
 
     IEnumerator useBow()
     {
+        canAttack = false;
+
         animator.SetTrigger("Shoot");
         canMove = false;
         yield return new WaitForSeconds(0.5f);
         canMove = true;
         Shoot();
+
+        canAttack = true;
     }
 
     void useShield()
