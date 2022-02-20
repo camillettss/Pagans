@@ -65,6 +65,7 @@ public class GameController : MonoBehaviour
     public Calendar calendar;
     public PlantDetails plantDetailsUI;
     public UnityEngine.UI.Text HourTextUI;
+    public ExtraItemUI extraItemUI;
 
     public AudioClip outdoorBackgroundTrack;
     public AudioClip indoorBackgroundTrack;
@@ -141,6 +142,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        
         Instance = this;
         player.Load();
 

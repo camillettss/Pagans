@@ -195,7 +195,7 @@ public class newInventory : MonoBehaviour
 
     public void onSubmit(InputAction.CallbackContext ctx)
     {
-        if (slotUIs.Count <= 0)
+        if (slotUIs.Count <= 0) // dont really now how it can be negative, but who knows
             return;
 
         if (bookmark == 0) // armi, scudi, strumenti e anelli
@@ -235,6 +235,7 @@ public class newInventory : MonoBehaviour
             }
 
             Player.i.inventory.extraSlot = invslot;
+            GameController.Instance.extraItemUI.HandleUpdate();
         }
     }
 

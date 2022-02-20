@@ -22629,6 +22629,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f193ecdb-007e-4691-8414-d46094f5c614
     m_ActionName: Player/useXtraTool[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4952206250600258692}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: RunOrWalk
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c9954230-3b7f-4546-bad9-8ed48ea5aa25
+    m_ActionName: Player/Run[/Keyboard/shift,/DualShock4GamepadHID/leftStickPress]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -22915,6 +22931,7 @@ MonoBehaviour:
   calendar: {fileID: 1112095469064186282}
   plantDetailsUI: {fileID: 1790782821083994431}
   HourTextUI: {fileID: 8512455447631457548}
+  extraItemUI: {fileID: 1010789469366504594}
   outdoorBackgroundTrack: {fileID: 0}
   indoorBackgroundTrack: {fileID: 0}
   ResetOnEnd: 0

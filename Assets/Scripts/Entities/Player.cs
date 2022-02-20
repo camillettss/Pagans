@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Tilemaps;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class Player : MonoBehaviour
 {
@@ -39,7 +40,6 @@ public class Player : MonoBehaviour
     float attackTime = 0.7f;
     float attackCounter;
     float arrowSpeed = 15f;
-    float walkingSpeedDefault = 3.9f;
     public Transform Head;
 
     [HideInInspector] public int maxHp = 30;
@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
     public bool canJump = false;
     public bool isFishing = false;
     public bool canAttack = true;
+    public bool canUseTool = true;
 
     [HideInInspector] public bool canShowMinimap = true;
     public Key keyToUse = null;
@@ -89,7 +90,8 @@ public class Player : MonoBehaviour
     public bool drawSelected_Agrimap = true;
 
     float ridingSpeed = 8.2f;
-    float runningSpeed = 6.5f;
+    float runningSpeed = 10f;
+    float walkingSpeedDefault = 7f;
     float holdingShieldSpeed = 2.5f;
 
     public bool enableDiagonalMovements = false;
@@ -121,11 +123,15 @@ public class Player : MonoBehaviour
         // set date
         GameController.Instance.calendar.actualMonth = GameController.Instance.calendar.Months[0]; // primo mese
         GameController.Instance.calendar.today = GameController.Instance.calendar.actualMonth.days[29]; // last day
+
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+
+        if (moveInput == Vector2.zero)
+            speed = walkingSpeedDefault;
     }
 
     private void FixedUpdate()
@@ -187,7 +193,7 @@ public class Player : MonoBehaviour
             animator.SetFloat("Speed", moveInput.sqrMagnitude);
 
             rb.velocity = moveInput * getSpeed();
-            rb.MovePosition(rb.position + moveInput * getSpeed() * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + moveInput * speed * Time.deltaTime);
         }
 
         attackPoint.position = new Vector3(transform.position.x + animator.GetFloat("FacingHorizontal"), transform.position.y+animator.GetFloat("FacingVertical"), transform.position.z);
@@ -197,7 +203,7 @@ public class Player : MonoBehaviour
     #region bindings
     public void OpenMenu(InputAction.CallbackContext ctx)
     {
-        if(ctx.started)
+        if(ctx.performed)
         {
             GameController.Instance.OpenState(GameState.Menu);
             playerInput.currentActionMap = playerInput.actions.FindActionMap("UI");
@@ -206,37 +212,49 @@ public class Player : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext ctx)
     {
-        if(ctx.started)
+        if(ctx.performed)
         {
             GameController.Instance.EvH.Interact();
         }
     }
 
-    public void useWeapon(InputAction.CallbackContext _)
+    public void RunOrWalk(InputAction.CallbackContext ctx)
     {
-        if(canAttack)
+        if (ctx.performed)
+            speed = runningSpeed;
+    }
+
+    public void useWeapon(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
         {
-            if (inventory.equipedWeapon != -1)
+            if (canAttack)
             {
-                if (inventory.Weapons[inventory.equipedWeapon].item.longDamage == 0) // arma da vicino (spada)
-                    StartCoroutine(useWeapon());
-                else
-                    StartCoroutine(useBow());
+                if (inventory.equipedWeapon != -1)
+                {
+                    if (inventory.Weapons[inventory.equipedWeapon].item.longDamage == 0) // arma da vicino (spada)
+                        StartCoroutine(useWeapon());
+                    else
+                        StartCoroutine(useBow());
+                }
             }
         }
     }
 
-    public void useTool(InputAction.CallbackContext _)
+    public void useTool(InputAction.CallbackContext ctx)
     {
-        if (GameController.Instance.keyUI.isActiveAndEnabled)
+        if(ctx.performed && !isFishing)
         {
-            keyToUse.Use(this);
-            inventory.Remove(keyToUse);
-            closeDoor.Open();
-        }
-        else
-        {
-            useItem();
+            if (GameController.Instance.keyUI.isActiveAndEnabled)
+            {
+                keyToUse.Use(this);
+                inventory.Remove(keyToUse);
+                closeDoor.Open();
+            }
+            else
+            {
+                useItem();
+            }
         }
     }
 
@@ -265,10 +283,18 @@ public class Player : MonoBehaviour
         GameController.Instance.hotbar.UpdateItems();
     }
 
-    public void useExtraSlot(InputAction.CallbackContext _)
+    public void useExtraSlot(InputAction.CallbackContext ctx)
     {
-        if (inventory.extraSlot != null && inventory.extraSlot.item != null)
-            inventory.extraSlot.item.Use(this);
+        if(ctx.started)
+        {
+            if (inventory.extraSlot != null && inventory.extraSlot.item != null)
+            {
+                print($"using {inventory.extraSlot.item.name}");
+                inventory.extraSlot.item.Use(this);
+            }
+            else
+                print("extra slot is empty");
+        }
     }
     #endregion
 
