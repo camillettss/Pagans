@@ -90,8 +90,8 @@ public class Player : MonoBehaviour
     public bool drawSelected_Agrimap = true;
 
     float ridingSpeed = 8.2f;
-    float runningSpeed = 10f;
-    float walkingSpeedDefault = 7f;
+    float runningSpeed = 5f;
+    float walkingSpeedDefault = 3f;
     float holdingShieldSpeed = 2.5f;
 
     public bool enableDiagonalMovements = false;
@@ -193,7 +193,7 @@ public class Player : MonoBehaviour
             animator.SetFloat("Speed", moveInput.sqrMagnitude);
 
             rb.velocity = moveInput * getSpeed();
-            rb.MovePosition(rb.position + moveInput * speed * Time.deltaTime);
+            rb.MovePosition(rb.position + moveInput * speed * Time.fixedDeltaTime);
         }
 
         attackPoint.position = new Vector3(transform.position.x + animator.GetFloat("FacingHorizontal"), transform.position.y+animator.GetFloat("FacingVertical"), transform.position.z);

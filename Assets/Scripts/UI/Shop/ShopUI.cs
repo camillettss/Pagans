@@ -263,7 +263,7 @@ public class ShopUI : MonoBehaviour, UIController
 
     public void onSubmit(InputAction.CallbackContext ctx)
     {
-        if(ctx.started)
+        if(ctx.performed)
         {
             var player = Player.i;
             if (!sellMode)

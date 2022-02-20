@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.InputSystem;
 
-public class LibUI : MonoBehaviour
+public class LibUI : MonoBehaviour, UIController
 {
     [SerializeField] List<StoryBook> heroesBooks;
 
@@ -27,100 +28,31 @@ public class LibUI : MonoBehaviour
 
     [SerializeField] List<GameObject> keyTips_toFade; // struct: image(inner)text so fade children too
 
+    private void OnDisable()
+    {
+        Player.i.playerInput.actions["Submit"].performed -= onSubmit;
+        Player.i.playerInput.actions["Navigate"].performed -= onNavigate;
+        Player.i.playerInput.actions["ExtraNavigation"].performed -= onExtraNav;
+        Player.i.playerInput.actions["Cancel"].performed -= onCancel;
+
+        Player.i.playerInput.SwitchCurrentActionMap("Player");
+    }
+
+    private void OnEnable()
+    {
+        Player.i.playerInput.SwitchCurrentActionMap("UI");
+
+        Player.i.playerInput.actions["Submit"].performed += onSubmit;
+        Player.i.playerInput.actions["Navigate"].performed += onNavigate;
+        Player.i.playerInput.actions["ExtraNavigation"].performed += onExtraNav;
+        Player.i.playerInput.actions["Cancel"].performed += onCancel;
+    }
+
     private void Awake()
     {
         selected_category = 0;
         selected_book = 0;
         selected_page = 0;
-    }
-
-    public void HandleUpdate()
-    {
-        int prev_sel = selected_book;
-        int prev_cat = selected_category;
-
-        /*if(Input.GetKeyDown(KeyCode.X)) // exit
-        {
-            if (readingBook.activeSelf)
-            {
-                readingBook.SetActive(false);
-                categoriesContainer.GetComponent<Image>().DOFade(1f, 0.1f);
-
-                foreach (Transform child in categoriesContainer)
-                    child.GetComponent<Text>().DOFade(1f, 0.5f); // fade categories
-
-                foreach (var child in keyTips_toFade)
-                {
-                    child.GetComponent<Image>().DOFade(1f, 0.5f); // fade tips
-                    child.transform.GetChild(0).GetComponent<Text>().DOFade(1f, 0.6f); // fade tips
-                }
-            }
-            else
-            {
-                GameController.Instance.state = GameState.FreeRoam;
-                gameObject.SetActive(false);
-                if (GameController.Instance.ActiveNPC != null)
-                {
-                    GameController.Instance.ActiveNPC.canMove = true;
-                    GameController.Instance.ActiveNPC = null;
-                }
-                //Player.i.transform.position = portal.transform.position; // make them collide so player will go back
-            }
-        }
-
-        if(!readingBook.activeSelf)
-        {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-                selected_book += 3;
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-                selected_book -= 3;
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-                selected_book--;
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-                selected_book++;
-
-            if (Input.GetKeyDown(KeyCode.Tab))
-                --selected_category;
-            if (Input.GetKeyDown(KeyCode.LeftControl))
-                ++selected_category;
-
-            selected_category = Mathf.Clamp(selected_category, 0, categoriesContainer.childCount - 1);
-            selected_book = Mathf.Clamp(selected_book, 0, booksContainer.childCount - 1);
-
-            if (selected_category != prev_cat)
-                UpdateCategorySelection();
-
-            else if (selected_book != prev_sel)
-                UpdateBookSelection();
-
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                StartCoroutine(openBook());
-            }
-        }
-        else if(slotUIs[selected_book].book.Pages.Count > 2)
-        {
-            var prev_page = selected_page;
-
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                selected_page -= 2;
-                change_direction = 1f;
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                selected_page += 2;
-                change_direction = 0f;
-            }
-
-            selected_page = Mathf.Clamp(selected_page, 0, slotUIs[selected_book].book.Pages.Count - 3);
-
-            if(selected_page != prev_page)
-            {
-                StartCoroutine(changePage());
-            } 
-
-        }*/
     }
 
     IEnumerator changePage()
@@ -209,6 +141,7 @@ public class LibUI : MonoBehaviour
         {
             // actually does nothing
             // 1.5.1: write ur own book.
+            // 1.5.1? sarò arrivato alla 2.3.0 e ancora devo fixare bug coddio
         }
 
         selected_book = 0;
@@ -241,5 +174,90 @@ public class LibUI : MonoBehaviour
             else
                 slotUIs[i].nameText.color = GameController.Instance.unselectedDefaultColor;
         }
+    }
+
+    public void onSubmit(InputAction.CallbackContext ctx)
+    {
+        if (!readingBook.activeSelf) StartCoroutine(openBook());
+    }
+
+    public void onCancel(InputAction.CallbackContext ctx)
+    {
+        if (readingBook.activeSelf)
+        {
+            readingBook.SetActive(false);
+            categoriesContainer.GetComponent<Image>().DOFade(1f, 0.1f);
+
+            foreach (Transform child in categoriesContainer)
+                child.GetComponent<Text>().DOFade(1f, 0.5f); // fade categories
+
+            foreach (var child in keyTips_toFade)
+            {
+                child.GetComponent<Image>().DOFade(1f, 0.5f); // fade tips
+                child.transform.GetChild(0).GetComponent<Text>().DOFade(1f, 0.6f); // fade tips
+            }
+        }
+        else
+        {
+            GameController.Instance.state = GameState.FreeRoam;
+            gameObject.SetActive(false);
+            if (GameController.Instance.ActiveNPC != null)
+            {
+                GameController.Instance.ActiveNPC.canMove = true;
+                GameController.Instance.ActiveNPC = null;
+            }
+        }
+    }
+
+    public void onNavigate(InputAction.CallbackContext ctx)
+    {
+        var input = ctx.ReadValue<Vector2>();
+
+        if (!readingBook.activeSelf)
+        {
+            if (input == Vector2.down)
+                selected_book += 3;
+            else if(input == Vector2.up)
+                selected_book -= 3;
+            else if (input == Vector2.left)
+                selected_book--;
+            else if (input == Vector2.right)
+                selected_book++;
+
+            selected_book = Mathf.Clamp(selected_book, 0, booksContainer.childCount - 1);
+
+            UpdateBookSelection();
+        }
+        else if (slotUIs[selected_book].book.Pages.Count > 2)
+        {
+            if (input.x > 0)
+            {
+                selected_page += 2;
+                change_direction = 0f;
+            }
+            else if (input.x < 0)
+            {
+                selected_page -= 2;
+                change_direction = 1f;
+
+                selected_page = Mathf.Clamp(selected_page, 0, slotUIs[selected_book].book.Pages.Count - 3);
+
+                StartCoroutine(changePage());
+            }
+        }
+    }
+
+    void onExtraNav(InputAction.CallbackContext ctx)
+    {
+        var input = ctx.ReadValue<Vector2>().y;
+
+        if (input > 0)
+            --selected_category;
+        else if (input < 0)
+            ++selected_category;
+
+        selected_category = Mathf.Clamp(selected_category, 0, categoriesContainer.childCount - 1);
+
+        UpdateCategorySelection();
     }
 }

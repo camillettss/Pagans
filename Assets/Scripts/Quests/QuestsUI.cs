@@ -83,6 +83,7 @@ public class QuestsUI : MonoBehaviour, UIController
         player.playerInput.actions["Submit"].performed -= onSubmit;
         player.playerInput.actions["Navigate"].performed -= onNavigate;
         player.playerInput.actions["Cancel"].performed -= onCancel;
+        player.playerInput.SwitchCurrentActionMap("Player");
     }
 
     private void OnEnable()

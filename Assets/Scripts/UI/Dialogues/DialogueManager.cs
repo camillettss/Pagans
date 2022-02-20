@@ -221,12 +221,9 @@ public class DialogueManager : MonoBehaviour, UIController
                 skip = true;
         }
         else
-        {       
-            if(alreadyClicked)
+        {
+            if (ctx.performed)
                 Perform();
-
-            if (!ctx.started)
-                alreadyClicked = true;
         }
     }
 
