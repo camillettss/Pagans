@@ -60,7 +60,8 @@ public class GameController : MonoBehaviour
     [SerializeField] public CauldronUI cauldronUI;
     public CraftUI craftUI;
     public WorkbenchUI workbenchUI;
-    public PortUI portUI;
+    public PortMapUI portMapUI;
+    public GameObject portTip;
     public LanguageContentController languageContentController;
     public Calendar calendar;
     public PlantDetails plantDetailsUI;
@@ -243,8 +244,8 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.Port)
         {
-            portUI.gameObject.SetActive(true);
-            portUI.UpdateContents();
+            portMapUI.gameObject.SetActive(true);
+            portMapUI.UpdateSelection();
         }
         else if (state == GameState.Calendar)
         {

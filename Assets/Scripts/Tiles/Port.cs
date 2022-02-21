@@ -33,7 +33,7 @@ public class Port : MonoBehaviour
         if(collision.tag == "Player")
         {
             Player.i.activePort = this;
-            GameController.Instance.portUI.gameObject.SetActive(true);
+            GameController.Instance.portTip.SetActive(true);
         }
     }
 
@@ -47,7 +47,7 @@ public class Port : MonoBehaviour
         if (collision.tag == "Player")
         {
             Player.i.activePort = null;
-            GameController.Instance.portUI.gameObject.SetActive(false);
+            GameController.Instance.portTip.SetActive(false);
         }
     }
 }
