@@ -15,6 +15,7 @@ public enum EnemyType
     Swordman
 }
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : MonoBehaviour, IEntity
 {
     float speed = 3.5f;
@@ -22,6 +23,7 @@ public class EnemyController : MonoBehaviour, IEntity
     Transform target;
     float awakeRange = 5f;
     float attackRange = 1f;
+    float attackAimOffset = .8f;
     bool canAttack = true;
     int hp = 10;
 
@@ -47,7 +49,7 @@ public class EnemyController : MonoBehaviour, IEntity
         target = Player.i.transform;
     }
 
-    public void HandleUpdate() // this should become HandleUpdate and being called only if gobj is in fov
+    public void HandleUpdate() // this should being called only if gobj is in fov
     {
         if (state == EnemyState.sleeping)
         {
@@ -59,7 +61,7 @@ public class EnemyController : MonoBehaviour, IEntity
         }
         else if(state == EnemyState.awake)
         {
-            if (Vector3.Distance(target.position, transform.position) <= attackRange)
+            if (Vector3.Distance(target.position, transform.position) <= attackRange+attackAimOffset)
             {
                 AtkPoint.position = new Vector3(transform.position.x + m_anim.GetFloat("FacingHorizontal"), transform.position.y + m_anim.GetFloat("FacingVertical"), transform.position.z);
 
@@ -103,7 +105,7 @@ public class EnemyController : MonoBehaviour, IEntity
         else if(type == EnemyType.Swordman)
         {
             yield return StartCoroutine(SwordAttack());
-            yield return new WaitForSeconds(1f); // anti spam
+            yield return new WaitForSeconds(Random.Range(.7f, 1.5f)); // anti spam
         }
         canAttack = true;
     }
@@ -116,6 +118,7 @@ public class EnemyController : MonoBehaviour, IEntity
     IEnumerator SwordAttack()
     {
         m_anim.SetTrigger("attack");
+        yield return new WaitForSeconds(.2f); // wait for animation
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AtkPoint.position, attackRange, PlayerLayer);
 

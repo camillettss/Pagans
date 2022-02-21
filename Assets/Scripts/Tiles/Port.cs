@@ -7,7 +7,6 @@ public class Port : MonoBehaviour
 
     public void Choose()
     {
-        print("now should start portUI");
         GameController.Instance.OpenState(GameState.Port);
     }
 
@@ -34,6 +33,7 @@ public class Port : MonoBehaviour
         if(collision.tag == "Player")
         {
             Player.i.activePort = this;
+            GameController.Instance.portUI.gameObject.SetActive(true);
         }
     }
 
@@ -47,6 +47,7 @@ public class Port : MonoBehaviour
         if (collision.tag == "Player")
         {
             Player.i.activePort = null;
+            GameController.Instance.portUI.gameObject.SetActive(false);
         }
     }
 }
