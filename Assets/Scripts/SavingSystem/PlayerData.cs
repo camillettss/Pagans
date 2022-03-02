@@ -17,7 +17,6 @@ public class PlayerData
     // inventory
     public int kents;
 
-
     public PlayerData(Player player)
     {
         health = player.hp;
@@ -50,8 +49,8 @@ public class PlayerData
     {
         health = 10;
         position = new float[3];
-        position[0] = 238;
-        position[1] = -8;
+        position[0] = 138;
+        position[1] = 47;
         position[2] = 0;
 
         firstLaunch = false;

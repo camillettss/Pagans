@@ -23,13 +23,28 @@ public class SceneDetails : MonoBehaviour
         {
             print($"entered {gameObject.name}");
 
+            LoadSceneAsMain();
+            Player.i.SetScene(this);
+
+            // unload chunks that are no longer connected
+            if (Player.i.prevScene != null)
+            {
+                var prevLoadedScenes = Player.i.prevScene.connectedScenes;
+                foreach (var scene in prevLoadedScenes)
+                {
+                    if (!connectedScenes.Contains(scene) && scene != this)
+                    {
+                        print($"unloading {scene}");
+                        scene.UnloadScene();
+                    }
+                }
+            }
+
             light.color = lightColor;
             light.intensity = lightBrightness;
 
-            Player.i.currentScene = this;
-
-            if (gameObject.name != "Midgardr")
-                NotificationsUI.i.AddNotification("entered " + gameObject.name);
+            /*if (gameObject.name != "Midgardr")
+                NotificationsUI.i.AddNotification("entered " + gameObject.name);*/
 
             if (outdoor)
             {
@@ -40,6 +55,8 @@ public class SceneDetails : MonoBehaviour
                 GameController.Instance.audioSource.clip = GameController.Instance.indoorBackgroundTrack;
 
             GameController.Instance.audioSource.Play();
+
+
         }
         else if(collision.tag == "NPC")
         {
@@ -50,32 +67,21 @@ public class SceneDetails : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
     public void LoadSceneAsMain()
     {
         LoadScene();
         foreach (var scene in connectedScenes)
             scene.LoadScene();
-
-        //AstarPath.active.Scan();
     }
 
     public void LoadScene()
     {
+        print($"loading {gameObject.name}");
         if(!IsLoaded)
         {
-            //print(gameObject.name + " will be loaded");
-            SceneManager.LoadScene(gameObject.name, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(gameObject.name, LoadSceneMode.Additive);
+            IsLoaded = true;
         }
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        //AstarPath.active.Scan();
     }
 
     public void UnloadScene()

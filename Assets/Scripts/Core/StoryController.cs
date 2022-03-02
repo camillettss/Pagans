@@ -20,23 +20,23 @@ public class StoryController : MonoBehaviour
     [SerializeField] SceneDetails Helheimr;
     [SerializeField] SceneDetails Asgardr;
 
-    private void Start()
+    /*private void Start()
     {
         if (GameController.Instance.isFirstLaunch)
         {
-            SceneManager.LoadScene("Tutorial", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Tutorial");
         }
 
         else
         {
-            TutorialScene.LoadSceneAsMain();
+            SceneManager.LoadScene("Gameplay"); // i chunk verranno caricati con il trigger
         }
-    }
+    } // rem cuz Runner.cs will choose the scene.
 
     public async void Activate()
     {
         Start();
-    }
+    }*/
 
     public void hasStartedTalking(NPCController npc)
     {

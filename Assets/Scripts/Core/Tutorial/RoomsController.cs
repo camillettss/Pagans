@@ -78,7 +78,7 @@ public class RoomsController : MonoBehaviour
             Player.i.transform.position = new Vector3(238, -8);
             Player.i.Save();
 
-            GameController.Instance.storyController.Activate();
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
 
             Fader.i.FadeOut(.5f);
 
