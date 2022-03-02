@@ -70,6 +70,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public int defense; // quando attaccano il danno subito è danno-defense TODO
 
     public SceneDetails currentScene;
+    public SceneDetails prevScene;
+
     public bool SnapToGridMovments = false;
     public int kents = 0;
     public CityDetails triggeredCity=null;
@@ -124,6 +126,12 @@ public class Player : MonoBehaviour
         GameController.Instance.calendar.actualMonth = GameController.Instance.calendar.Months[0]; // primo mese
         GameController.Instance.calendar.today = GameController.Instance.calendar.actualMonth.days[29]; // last day
 
+    }
+
+    public void SetScene(SceneDetails currscene)
+    {
+        prevScene = currentScene;
+        currentScene = currscene;
     }
 
     public void Move(InputAction.CallbackContext context)

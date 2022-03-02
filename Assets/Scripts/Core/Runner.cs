@@ -1,38 +1,63 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
-public class Runner : MonoBehaviour
+public class Runner : MonoBehaviour, UIController
 {
     [SerializeField] GameObject optionsContainer;
 
     [SerializeField] Color selectedColor;
     [SerializeField] Color unselectedColor;
 
-    int sel;
+    [SerializeField] PlayerInput pinput;
+    
 
-    private void Start()
+    int sel = 0;
+
+    public void onSubmit(InputAction.CallbackContext _)
     {
-        sel = 0;
+        Perform();
     }
 
-    private void Update()
+    public void onCancel(InputAction.CallbackContext _)
     {
-        var prev = sel;
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            sel++;
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-            --sel;
 
-        sel = Mathf.Clamp(sel, 0, 2); // sti cazzi che è hardcoded, fanculo le convenzioni lasciatemi morire da solo
+    }
+
+    public void onNavigate(InputAction.CallbackContext ctx)
+    {
+        var input = ctx.ReadValue<Vector2>().y;
+
+        var prev = sel;
+
+        if (input > 0) --sel;
+        else if(input < 0) ++sel;
+
+        sel = Mathf.Clamp(sel, 0, 2);
 
         if (prev != sel)
             UpdateSelection();
+    }
 
-        if (Input.GetKeyDown(KeyCode.Z))
-            Perform();
+    private void OnDisable()
+    {
+        pinput.actions["Submit"].performed -= onSubmit;
+        pinput.actions["Navigate"].performed -= onNavigate;
+        pinput.actions["Cancel"].performed -= onCancel;
+    }
+
+    private void OnEnable()
+    {
+        pinput.SwitchCurrentActionMap("UI");
+
+        pinput.actions["Submit"].performed += onSubmit;
+        pinput.actions["Navigate"].performed += onNavigate;
+        pinput.actions["Cancel"].performed += onCancel;
     }
 
     void UpdateSelection()
@@ -52,7 +77,7 @@ public class Runner : MonoBehaviour
     {
         if(sel == 0) // play
         {
-            SceneManager.LoadScene("Gameplay"); // loads gameplay, and it chooses a scene.
+            Play();
         }
         else if(sel == 1) // Reset
         {
@@ -61,6 +86,42 @@ public class Runner : MonoBehaviour
         else if(sel == 2)
         {
             Application.Quit();
+        }
+    }
+
+    void Play()
+    {
+        string path = Application.persistentDataPath + "/player.fun";
+        if (File.Exists(path))
+        {
+            // leggi i dati binari
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = new FileStream(path, FileMode.Open);
+
+            PlayerData pd = bf.Deserialize(fs) as PlayerData;
+            fs.Close();
+
+            // verifica l'integrità del salvataggio
+            try
+            {
+                if (pd.firstLaunch)
+                {
+                    SceneManager.LoadScene("Tutorial");
+                }
+                else
+                {
+                    SceneManager.LoadScene("Gameplay");
+                }
+            }
+            catch
+            {
+                Debug.LogError("File di salvataggio corrotto, effettua un reset.");
+                SceneManager.LoadScene("Tutorial");
+            }
+        }
+        else // se non ci sono file di salvataggio allora è il primo avvio
+        {
+            SceneManager.LoadScene("Tutorial");
         }
     }
 }

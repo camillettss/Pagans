@@ -133,17 +133,10 @@ public class GameController : MonoBehaviour
 
     public EnchantingUI EnchUI => enchantingUI;
 
-    public Dictionary<string, int> Bindings = new Dictionary<string, int>()
-    {
-        {"attack", ((int)KeyCode.R) },
-        {"use", ((int)KeyCode.R) },
-    };
-
     public GameState prevState;
 
     private void Awake()
     {
-        
         Instance = this;
         player.Load();
 
