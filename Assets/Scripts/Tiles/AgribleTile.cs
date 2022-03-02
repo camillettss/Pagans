@@ -108,6 +108,7 @@ public class AgribleTile : InstanceTracker<AgribleTile>
         if(collision.tag == "Player")
         {
             Player.i.activePlant = null;
+            GameController.Instance.plantDetailsUI.UpdateUI();
         }
     }
 }
