@@ -80,6 +80,7 @@ public class GameController : MonoBehaviour
     public int year = 1248;
     public float timeMultiplier = 2f;
     bool activateLights;
+    public bool canHandleLight = true;
 
     public DialogueManager dialogueBox;
     public QuestController questWindow;
@@ -311,11 +312,11 @@ public class GameController : MonoBehaviour
 
         try
         {
-            if (player.currentScene.outdoor)
+            if (player.currentScene.outdoor && canHandleLight)
             {
-                player.currentScene.light.color = nightLightsColor.Evaluate(hours / 24);
+                GameplayLight.color = nightLightsColor.Evaluate(hours / 24);
                 // example: 22h 30m = 22.5f
-                player.currentScene.light.intensity = Mathf.Clamp((Mathf.Sin((scaleTime / 3.8f) - 1.58f) + 1.2f) / 2, 0.1f, 1);
+                GameplayLight.intensity = Mathf.Clamp((Mathf.Sin((scaleTime / 3.8f) - 1.58f) + 1.2f) / 2, 0.1f, 1);
             }
         }
         catch
