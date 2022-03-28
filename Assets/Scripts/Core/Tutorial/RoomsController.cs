@@ -75,7 +75,7 @@ public class RoomsController : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Tutorial"); // unloads this scene
 
             GameController.Instance.isFirstLaunch = false;
-            Player.i.transform.position = new Vector3(238, -8);
+            Player.i.transform.position = new Vector3(260, 165);
             Player.i.Save();
 
             UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
